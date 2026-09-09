@@ -1,0 +1,25 @@
+{
+  "name": "Petroleu — Petrol Pump Management",
+  "short_name": "Petroleu",
+  "description": "Petrol Pump Management System — manage sales, purchases, inventory offline",
+  "theme_color": "#ea580c",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/dashboard",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

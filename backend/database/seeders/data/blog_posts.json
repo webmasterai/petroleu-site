@@ -1,0 +1,287 @@
+[
+  {
+    "slug": "petroleu-dashboard-overview",
+    "title": "Petroleu Dashboard Overview",
+    "excerpt": "See today’s sales, cash, credit, stock, and key pump metrics from the Petroleu dashboard.",
+    "content": "This clip shows the Petroleu dashboard view that owners and managers open at the start of the day.\n\nSales, cash, credit, stock, and receivable figures appear in one place so you can review pump performance without opening separate registers.",
+    "image_url": "/images/blog/petroleu-dashboard-overview.jpg",
+    "category": "Video",
+    "author": "Petroleu",
+    "date": "March 18, 2026",
+    "media_type": "video",
+    "video_url": "/videos/petroleu-dashboard-overview.mp4",
+    "duration": "0:18",
+    "show_on_homepage": true,
+    "published": true,
+    "sort_order": 1,
+    "tags": [
+      "Video"
+    ]
+  },
+  {
+    "slug": "petroleu-sales-summary",
+    "title": "Sales Summary in Petroleu",
+    "excerpt": "Review petrol, diesel, and HOBC sales totals with shift-wise and day-wise figures in one summary.",
+    "content": "This clip walks through the sales summary section where nozzle readings roll up into product-wise totals.\n\nOwners can check how much fuel was sold during the day before moving to cash, credit, and closing review.",
+    "image_url": "/images/blog/petroleu-sales-summary.jpg",
+    "category": "Video",
+    "author": "Petroleu",
+    "date": "March 16, 2026",
+    "media_type": "video",
+    "video_url": "/videos/petroleu-sales-summary.mp4",
+    "duration": "0:18",
+    "show_on_homepage": true,
+    "published": true,
+    "sort_order": 2,
+    "tags": [
+      "Video"
+    ]
+  },
+  {
+    "slug": "petroleu-cash-receivables",
+    "title": "Cash & Receivables Overview",
+    "excerpt": "Track cash in hand, credit outstanding, and customer receivables from the same daily view.",
+    "content": "This clip shows how Petroleu separates cash collections from credit customer balances.\n\nManagers can see what was collected in hand and what remains outstanding before closing the shift.",
+    "image_url": "/images/blog/petroleu-cash-receivables.jpg",
+    "category": "Video",
+    "author": "Petroleu",
+    "date": "March 14, 2026",
+    "media_type": "video",
+    "video_url": "/videos/petroleu-cash-receivables.mp4",
+    "duration": "0:18",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 3,
+    "tags": [
+      "Video"
+    ]
+  },
+  {
+    "slug": "petroleu-stock-summary",
+    "title": "Stock Summary Report",
+    "excerpt": "Check opening stock, purchases, nozzle sales, and closing stock for each fuel product.",
+    "content": "This clip covers the stock summary where book stock, sales movement, and closing levels are visible by product.\n\nIt helps owners compare system stock with dipping records during daily operations.",
+    "image_url": "/images/blog/petroleu-stock-summary.jpg",
+    "category": "Video",
+    "author": "Petroleu",
+    "date": "March 15, 2026",
+    "media_type": "video",
+    "video_url": "/videos/petroleu-stock-summary.mp4",
+    "duration": "0:18",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 4,
+    "tags": [
+      "Video"
+    ]
+  },
+  {
+    "slug": "petroleu-tank-stock-levels",
+    "title": "Tank Stock Levels",
+    "excerpt": "View live petrol, diesel, and HOBC tank levels alongside dip readings and stock variance.",
+    "content": "This clip shows tank-wise stock levels so managers know how much fuel is available in each underground tank.\n\nIt supports dipping, delivery planning, and stock control during busy forecourt shifts.",
+    "image_url": "/images/blog/petroleu-tank-stock-levels.jpg",
+    "category": "Video",
+    "author": "Petroleu",
+    "date": "March 10, 2026",
+    "media_type": "video",
+    "video_url": "/videos/petroleu-tank-stock-levels.mp4",
+    "duration": "0:18",
+    "show_on_homepage": true,
+    "published": true,
+    "sort_order": 5,
+    "tags": [
+      "Video"
+    ]
+  },
+  {
+    "slug": "petroleu-daily-performance",
+    "title": "Daily Pump Performance",
+    "excerpt": "Review daily sales, cash, credit, stock movement, and closing figures from one performance view.",
+    "content": "Petroleu's daily performance view helps owners check sales, cash, credit, stock movement, and closing figures without opening multiple reports. This is useful for reviewing the station's day-end position and quickly spotting differences in cash, credit, or stock.",
+    "image_url": "/images/blog/petroleu-daily-performance.jpg",
+    "category": "Reports",
+    "author": "Petroleu",
+    "date": "March 5, 2026",
+    "media_type": "video",
+    "video_url": "/videos/petroleu-daily-performance.mp4",
+    "duration": "0:18",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 6,
+    "tags": [
+      "Reports"
+    ]
+  },
+  {
+    "slug": "petrol-pump-automation-dispenser-integration",
+    "title": "Petrol Pump Automation with Dispenser Integration",
+    "excerpt": "Connect compatible dispensers so live nozzle sales flow into daily closing without duplicate entry.",
+    "content": "Re-typing nozzle figures during a rush hour shift is where mistakes often start. Petroleu links compatible dispensers so live sales post directly to your station records.\n\nOwners can compare dispenser totals with tank stock and cash collected before closing the day. If a nozzle total looks off, the variance shows up while staff are still on the forecourt.\n\nDispenser data stays tied to credit customers, dipping records, and financial reports — so automation supports your existing closing process rather than replacing it.",
+    "image_url": "/resources/dispenser-integration.jpg",
+    "category": "Automation",
+    "author": "Petroleu",
+    "date": "March 15, 2026",
+    "media_type": "video",
+    "video_url": "#",
+    "duration": "2:00",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 7,
+    "tags": [
+      "Automation"
+    ]
+  },
+  {
+    "slug": "atg-tank-monitoring-fuel-stations",
+    "title": "ATG Tank Monitoring for Fuel Stations",
+    "excerpt": "See live tank levels with dip readings and nozzle sales to track gain, loss, and delivery timing.",
+    "content": "Tank stock affects every closing decision. Petroleu supports ATG monitoring so live tank levels appear next to dip readings and nozzle sales in one view.\n\nWhen dipped stock and system stock do not match, the variance is visible before month-end reconciliation. Managers can plan deliveries and investigate gain or loss patterns from dated records.\n\nATG data works alongside Petroleu dipping reports and purchase entries, giving owners a clearer picture of what is inside each underground tank.",
+    "image_url": "/resources/atg-tank-monitoring.jpg",
+    "category": "Tank Automation",
+    "author": "Petroleu",
+    "date": "March 10, 2026",
+    "media_type": "video",
+    "video_url": "#",
+    "duration": "2:00",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 8,
+    "tags": [
+      "Tank Automation"
+    ]
+  },
+  {
+    "slug": "ai-reporting-business-analysis-petrol-pumps",
+    "title": "AI Reporting & Business Analysis for Petrol Pumps",
+    "excerpt": "Sales, stock, receivables, and payables in exportable reports — with AI summaries for quicker review.",
+    "content": "Pump owners often need more than a daily sales total. Petroleu reporting brings nozzle performance, credit outstanding, tank variance, and supplier payables into structured reports you can export for your accountant.\n\nAI-assisted summaries highlight patterns in daily closing, dip gain/loss, and credit recovery — so managers spend less time searching registers and more time reviewing what changed.\n\nWhether you run one forecourt or several branches, the same report set helps you compare periods and share figures with partners or staff.",
+    "image_url": "/resources/ai-reporting.jpg",
+    "category": "AI Reports",
+    "author": "Petroleu",
+    "date": "March 5, 2026",
+    "media_type": "video",
+    "video_url": "#",
+    "duration": "2:00",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 9,
+    "tags": [
+      "AI Reports"
+    ]
+  },
+  {
+    "slug": "whatsapp-invoices-payment-reminders",
+    "title": "WhatsApp Invoices and Payment Reminders",
+    "excerpt": "Share credit invoices and payment reminders on WhatsApp from the same ledger that records the sale.",
+    "content": "Fleet and corporate credit customers expect quick billing. Petroleu lets your team send invoice details and payment reminders on WhatsApp without copying figures from a separate register.\n\nWhen a customer disputes an amount, staff can pull the linked ledger entry and vehicle-wise fill history in the same system. That shortens follow-up calls and keeps collection records dated.\n\nWhatsApp messaging works alongside credit limits, vehicle-wise accounts, and daily closing — so billing stays part of your accounts workflow.",
+    "image_url": "/resources/whatsapp-invoices.jpg",
+    "category": "WhatsApp",
+    "author": "Petroleu",
+    "date": "February 25, 2026",
+    "media_type": "video",
+    "video_url": "#",
+    "duration": "2:00",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 10,
+    "tags": [
+      "WhatsApp"
+    ]
+  },
+  {
+    "slug": "multi-station-fuel-network-management",
+    "title": "Multi-Station Fuel Network Management",
+    "excerpt": "Review sales, stock, and daily closing across multiple petrol pumps from one owner dashboard.",
+    "content": "Running two or more stations means collecting figures from different forecourts every night. Petroleu gives head office branch-wise sales, stock, and closing reports without manual consolidation.\n\nCompare receivables by location, check which branch had a dip loss this week, and confirm each site followed the same shift closing steps. Site managers keep local control while owners see the full network picture.\n\nMulti-station management suits operators growing from a single pump to a regional fuel group.",
+    "image_url": "/resources/multi-station-management.jpg",
+    "category": "Multi-Station",
+    "author": "Petroleu",
+    "date": "February 18, 2026",
+    "media_type": "video",
+    "video_url": "#",
+    "duration": "2:00",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 11,
+    "tags": [
+      "Multi-Station"
+    ]
+  },
+  {
+    "slug": "daily-closing-shift-management",
+    "title": "Daily Closing and Shift Management",
+    "excerpt": "Close each shift with nozzle totals, cash and credit splits, dipping records, and a reconciled day report.",
+    "content": "Night closing falls apart when nozzle totals, cash in hand, and credit charges come from different notebooks. Petroleu records readings, cash sales, credit sales, and dip entries in one shift workflow.\n\nSupervisors reconcile totals before sign-off and can reopen a previous closing if a cash difference needs investigation. The daily report matches what owners expect to hand their accountant.\n\nStructured shift closing means less rework at month-end and fewer surprises when reviewing staff cash responsibility.",
+    "image_url": "/resources/daily-closing.jpg",
+    "category": "Daily Closing",
+    "author": "Petroleu",
+    "date": "February 12, 2026",
+    "media_type": "video",
+    "video_url": "#",
+    "duration": "2:00",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 12,
+    "tags": [
+      "Daily Closing"
+    ]
+  },
+  {
+    "slug": "credit-customer-vehicle-wise-billing",
+    "title": "Credit Customer and Vehicle-Wise Billing",
+    "excerpt": "Credit limits, vehicle-wise fills, outstanding balances, and monthly billing in one customer ledger.",
+    "content": "Credit sales are common at Pakistani pumps, but manual registers make outstanding balances hard to track. Petroleu records each fill by customer and vehicle, checks limits before dispensing, and keeps a dated payment history.\n\nWhen month-end arrives, staff can print or share statements showing opening balance, new charges, and receipts. Owners see who owes what without adding up separate notebooks.\n\nVehicle-wise billing reduces disputes with fleet customers and makes collection follow-up more straightforward.",
+    "image_url": "/resources/credit-customer-billing.jpg",
+    "category": "Credit Management",
+    "author": "Petroleu",
+    "date": "February 6, 2026",
+    "media_type": "video",
+    "video_url": "#",
+    "duration": "2:00",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 13,
+    "tags": [
+      "Credit Management"
+    ]
+  },
+  {
+    "slug": "tank-dipping-stock-gain-loss-reports",
+    "title": "Tank Dipping and Stock Gain/Loss Reports",
+    "excerpt": "Link dip readings with nozzle sales and deliveries to spot gain, loss, and stock gaps early.",
+    "content": "A dip reading only helps if you compare it with book stock and nozzle sales. Petroleu ties dipping records to delivery entries and dispenser totals so gain and loss show up in dated reports.\n\nIf petrol stock drops faster than sales suggest, managers can review the variance that week instead of finding the gap at month-end. Regular dipping reports support daily stock discipline on busy forecourts.\n\nUsed with ATG monitoring or manual dips, Petroleu stock reports give owners a practical view of what is inside each tank.",
+    "image_url": "/resources/tank-dipping-gain-loss.jpg",
+    "category": "Stock Control",
+    "author": "Petroleu",
+    "date": "January 30, 2026",
+    "media_type": "video",
+    "video_url": "#",
+    "duration": "2:00",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 14,
+    "tags": [
+      "Stock Control"
+    ]
+  },
+  {
+    "slug": "cloud-based-petrol-pump-management",
+    "title": "Cloud-Based Petrol Pump Management",
+    "excerpt": "Access sales, stock, and closing reports from the forecourt, office, or mobile app with cloud backups.",
+    "content": "Owners are not always on the forecourt when a cash difference or stock issue needs attention. Petroleu stores station data in the cloud so sales, credit outstanding, and closing reports are available from desktop or mobile.\n\nAutomatic backups reduce the risk of losing readings and closings if a local PC fails. Managers can review yesterday's closing from home or check a second branch while travelling.\n\nCloud access suits growing pumps that add staff, shifts, or branches and need records available beyond a single on-site computer.",
+    "image_url": "/resources/cloud-petrol-software.jpg",
+    "category": "Cloud Software",
+    "author": "Petroleu",
+    "date": "January 22, 2026",
+    "media_type": "video",
+    "video_url": "#",
+    "duration": "2:00",
+    "show_on_homepage": false,
+    "published": true,
+    "sort_order": 15,
+    "tags": [
+      "Cloud Software"
+    ]
+  }
+]

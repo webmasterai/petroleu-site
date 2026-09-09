@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-PK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developers — Petroleu Public API &amp; Integration Guide</title>
+  <meta name="description" content="Petroleu developer resources: read-only public API, OpenAPI specification, authentication guidance, and integration examples for petrol pump software." />
+  
+  <link rel="canonical" href="https://www.petroleu.com/developers" />
+  <link rel="alternate" type="text/markdown" href="/agent/markdown/developers.md" title="Markdown" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.petroleu.com/developers" />
+  <meta property="og:site_name" content="Petroleu" />
+  <meta property="og:title" content="Developers — Petroleu Public API &amp; Integration Guide" />
+  <meta property="og:description" content="Petroleu developer resources: read-only public API, OpenAPI specification, authentication guidance, and integration examples for petrol pump software." />
+  <meta property="og:image" content="https://www.petroleu.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Developers — Petroleu Public API &amp; Integration Guide" />
+  <meta name="twitter:description" content="Petroleu developer resources: read-only public API, OpenAPI specification, authentication guidance, and integration examples for petrol pump software." />
+  <meta name="twitter:image" content="https://www.petroleu.com/og-image.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.petroleu.com#website",
+      "url": "https://www.petroleu.com",
+      "name": "Petroleu",
+      "inLanguage": "en-PK",
+      "publisher": {
+        "@id": "https://www.petroleu.com#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.petroleu.com#organization",
+      "name": "Petroleu",
+      "url": "https://www.petroleu.com",
+      "logo": "https://www.petroleu.com/icons/icon-512.png",
+      "description": "Fuel station management software for petrol pumps in Pakistan by Digital Softs.",
+      "telephone": "+923257865000",
+      "email": "sales@petroleu.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "sales@petroleu.com",
+        "telephone": "+923257865000",
+        "areaServed": "PK",
+        "availableLanguage": [
+          "English",
+          "Urdu"
+        ]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "addressCountry": "PK"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Petroleu",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Petroleu developer resources: read-only public API, OpenAPI specification, authentication guidance, and integration examples for petrol pump software.",
+      "provider": {
+        "@id": "https://www.petroleu.com#organization"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "1999",
+        "priceCurrency": "PKR",
+        "url": "https://www.petroleu.com/pricing"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.petroleu.com/developers#webpage",
+      "url": "https://www.petroleu.com/developers",
+      "name": "Developers — Petroleu Public API & Integration Guide",
+      "description": "Petroleu developer resources: read-only public API, OpenAPI specification, authentication guidance, and integration examples for petrol pump software.",
+      "isPartOf": {
+        "@id": "https://www.petroleu.com#website"
+      },
+      "inLanguage": "en-PK"
+    }
+  ]
+}</script>
+  <style>.agent-prerender{font-family:system-ui,sans-serif;max-width:42rem;margin:0 auto;padding:1rem;line-height:1.55;color:#111}.agent-prerender h1{font-size:1.75rem;margin:.5rem 0}.agent-prerender h2{font-size:1.15rem;margin:1rem 0 .5rem}.agent-prerender nav{margin-bottom:1rem;font-size:.875rem}.agent-prerender a{color:#059669}.js-loaded .agent-prerender{display:none}</style>
+</head>
+<body>
+  <main id="agent-prerender" class="agent-prerender">
+    <nav aria-label="Primary">
+    <a href="/">Home</a> ·
+    <a href="/features">Features</a> ·
+    <a href="/pricing">Pricing</a> ·
+    <a href="/faq">FAQ</a> ·
+    <a href="/contact">Contact</a> ·
+    <a href="/developers">Developers</a>
+  </nav>
+    <h1>Petroleu developer resources</h1>
+    <p>Integrate with Petroleu using our read-only public API. These endpoints expose product information, features, pricing, FAQs, and contact details suitable for AI agents, partner integrations, and developer tooling.</p>
+<p>Write APIs, customer data, station sales, accounts, invoices, and admin CMS endpoints require Sanctum authentication and are not available through the public API. API keys for write access require partnership approval.</p>
+    <h2>API overview</h2><p>Base URL: https://www.petroleu.com/api/public</p><p>All public endpoints return JSON. Rate limit: 120 requests per minute per IP.</p><ul><li>GET /api/public/product — product overview</li><li>GET /api/public/features — feature list</li><li>GET /api/public/pricing — pricing plans</li><li>GET /api/public/faqs — FAQ categories</li><li>GET /api/public/contact — contact information</li><li>GET /api/public/health — health check</li></ul>
+<h2>OpenAPI specification</h2><p>Download the machine-readable OpenAPI 3.1 specification:</p><ul><li>https://www.petroleu.com/openapi.json</li><li>https://www.petroleu.com/api/public/openapi.json</li></ul>
+<h2>Example requests</h2><p>curl -s https://www.petroleu.com/api/public/product</p><ul><li>curl -s https://www.petroleu.com/api/public/features</li><li>curl -s https://www.petroleu.com/api/public/pricing</li><li>curl -s https://www.petroleu.com/api/public/health</li></ul>
+<h2>Error format</h2><p>Errors return JSON with code, message, resolution, status, and optional requestId. Example: RESOURCE_NOT_FOUND for unknown API paths.</p>
+<h2>Support</h2><p>Email sales@petroleu.com for partnership API access or integration questions.</p>
+  </main>
+  <div id="root"></div>
+  <script type="module" src="/assets/index-CCg41FFu.js" defer></script>
+  <script>document.documentElement.classList.add('js-loaded')</script>
+</body>
+</html>

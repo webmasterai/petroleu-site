@@ -1,0 +1,332 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Petroleu Public API",
+    "version": "1.0.0",
+    "description": "Read-only public endpoints for Petroleu petrol pump software product information, features, pricing, FAQs, and contact details. Safe for AI agents and developer integrations. Write APIs and API keys require partnership approval.",
+    "contact": {
+      "name": "Petroleu Sales",
+      "email": "sales@petroleu.com",
+      "url": "https://www.petroleu.com/contact"
+    },
+    "license": {
+      "name": "Proprietary",
+      "url": "https://www.petroleu.com/privacy-policy"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.petroleu.com/api/public",
+      "description": "Production public API"
+    }
+  ],
+  "tags": [
+    { "name": "Product", "description": "Petroleu product information" },
+    { "name": "Health", "description": "Service health checks" }
+  ],
+  "paths": {
+    "/product": {
+      "get": {
+        "operationId": "getProductInformation",
+        "tags": ["Product"],
+        "summary": "Get Petroleu product overview",
+        "description": "Returns canonical product name, description, supported capabilities, and links for petrol pump software in Pakistan.",
+        "responses": {
+          "200": {
+            "description": "Product information",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ProductResponse" },
+                "example": {
+                  "name": "Petroleu",
+                  "tagline": "Petrol pump software for fuel station management in Pakistan",
+                  "canonicalUrl": "https://www.petroleu.com"
+                }
+              }
+            }
+          },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/features": {
+      "get": {
+        "operationId": "listFeatures",
+        "tags": ["Product"],
+        "summary": "List Petroleu features",
+        "description": "Returns fuel station management features such as nozzle readings, tank dipping, credit sales, and reporting.",
+        "responses": {
+          "200": {
+            "description": "Feature list",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/FeaturesResponse" }
+              }
+            }
+          },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/pricing": {
+      "get": {
+        "operationId": "getPricing",
+        "tags": ["Product"],
+        "summary": "Get Petroleu pricing plans",
+        "description": "Returns indicative PKR pricing plans. Contact sales for tailored multi-station quotes.",
+        "responses": {
+          "200": {
+            "description": "Pricing plans",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/PricingResponse" }
+              }
+            }
+          },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/faqs": {
+      "get": {
+        "operationId": "listFaqs",
+        "tags": ["Product"],
+        "summary": "List frequently asked questions",
+        "description": "Returns categorized FAQs about Petroleu petrol pump software.",
+        "responses": {
+          "200": {
+            "description": "FAQ categories",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/FaqsResponse" }
+              }
+            }
+          },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/contact": {
+      "get": {
+        "operationId": "getContactInformation",
+        "tags": ["Product"],
+        "summary": "Get Petroleu contact information",
+        "description": "Returns sales and support contact details for demos and onboarding.",
+        "responses": {
+          "200": {
+            "description": "Contact information",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ContactResponse" }
+              }
+            }
+          },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "getPublicHealth",
+        "tags": ["Health"],
+        "summary": "Public API health check",
+        "description": "Returns service status for monitoring and CLI health commands.",
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HealthResponse" },
+                "example": {
+                  "status": "ok",
+                  "service": "petroleu-public-api",
+                  "version": "1.1.6"
+                }
+              }
+            }
+          },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProductResponse": {
+        "type": "object",
+        "required": ["name", "description", "canonicalUrl"],
+        "properties": {
+          "name": { "type": "string" },
+          "tagline": { "type": "string" },
+          "description": { "type": "string" },
+          "canonicalUrl": { "type": "string", "format": "uri" },
+          "applicationCategory": { "type": "string" },
+          "operatingSystem": { "type": "string" },
+          "markets": { "type": "array", "items": { "type": "string" } },
+          "useCases": { "type": "array", "items": { "type": "string" } },
+          "supportedCapabilities": { "type": "array", "items": { "type": "string" } },
+          "demo": {
+            "type": "object",
+            "properties": {
+              "url": { "type": "string", "format": "uri" },
+              "label": { "type": "string" }
+            }
+          },
+          "pricingUrl": { "type": "string", "format": "uri" },
+          "documentationUrl": { "type": "string", "format": "uri" }
+        }
+      },
+      "FeatureItem": {
+        "type": "object",
+        "required": ["id", "title", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "category": { "type": "string" }
+        }
+      },
+      "FeaturesResponse": {
+        "type": "object",
+        "required": ["features"],
+        "properties": {
+          "features": { "type": "array", "items": { "$ref": "#/components/schemas/FeatureItem" } }
+        }
+      },
+      "PricingPlan": {
+        "type": "object",
+        "required": ["name", "price"],
+        "properties": {
+          "name": { "type": "string" },
+          "price": { "type": "string" },
+          "description": { "type": "string" },
+          "popular": { "type": "boolean" }
+        }
+      },
+      "PricingResponse": {
+        "type": "object",
+        "required": ["currency", "plans"],
+        "properties": {
+          "currency": { "type": "string", "enum": ["PKR"] },
+          "billingCycles": { "type": "array", "items": { "type": "string", "enum": ["monthly", "yearly"] } },
+          "plans": {
+            "type": "object",
+            "additionalProperties": { "type": "array", "items": { "$ref": "#/components/schemas/PricingPlan" } }
+          },
+          "note": { "type": "string" },
+          "contactUrl": { "type": "string", "format": "uri" }
+        }
+      },
+      "FaqItem": {
+        "type": "object",
+        "required": ["question", "answer"],
+        "properties": {
+          "question": { "type": "string" },
+          "answer": { "type": "string" }
+        }
+      },
+      "FaqCategory": {
+        "type": "object",
+        "required": ["id", "label", "faqs"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "faqs": { "type": "array", "items": { "$ref": "#/components/schemas/FaqItem" } }
+        }
+      },
+      "FaqsResponse": {
+        "type": "object",
+        "required": ["categories"],
+        "properties": {
+          "categories": { "type": "array", "items": { "$ref": "#/components/schemas/FaqCategory" } },
+          "faqPageUrl": { "type": "string", "format": "uri" }
+        }
+      },
+      "ContactResponse": {
+        "type": "object",
+        "required": ["salesEmail", "website"],
+        "properties": {
+          "phone": { "type": "string" },
+          "phoneTel": { "type": "string" },
+          "salesEmail": { "type": "string", "format": "email" },
+          "supportEmail": { "type": "string", "format": "email" },
+          "address": { "type": "string" },
+          "website": { "type": "string", "format": "uri" },
+          "contactPage": { "type": "string", "format": "uri" },
+          "developers": { "type": "string", "format": "uri" }
+        }
+      },
+      "HealthResponse": {
+        "type": "object",
+        "required": ["status", "service"],
+        "properties": {
+          "status": { "type": "string", "enum": ["ok"] },
+          "service": { "type": "string" },
+          "version": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ApiError": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": ["code", "message", "resolution", "status"],
+            "properties": {
+              "code": { "type": "string" },
+              "message": { "type": "string" },
+              "resolution": { "type": "string" },
+              "status": { "type": "integer" },
+              "requestId": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "NotFound": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ApiError" },
+            "example": {
+              "error": {
+                "code": "RESOURCE_NOT_FOUND",
+                "message": "The requested resource was not found.",
+                "resolution": "Review /sitemap.xml, /llms.txt or /developers.",
+                "status": 404
+              }
+            }
+          }
+        }
+      },
+      "RateLimited": {
+        "description": "Rate limit exceeded (120 requests/minute per IP on public endpoints)",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ApiError" }
+          }
+        }
+      },
+      "InternalError": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ApiError" }
+          }
+        }
+      }
+    }
+  },
+  "x-rateLimit": {
+    "publicEndpoints": "120 requests per minute per IP",
+    "authentication": "Public read endpoints require no API key. Write access and customer data APIs require Sanctum authentication and are not part of this specification."
+  }
+}

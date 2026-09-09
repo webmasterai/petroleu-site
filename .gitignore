@@ -1,0 +1,23 @@
+node_modules
+dist
+.env
+.env.*
+!.env.example
+*.log
+
+# Laravel CMS backend
+backend/vendor
+backend/node_modules
+backend/storage/*.key
+backend/storage/app/public/*
+!backend/storage/app/public/.gitignore
+backend/storage/framework/cache/data/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/storage/logs/*
+backend/bootstrap/cache/*.php
+!backend/bootstrap/cache/.gitignore
+backend/database/*.sqlite
+backend/database/*.sqlite-journal
+backend/.env
+backend/public/storage
