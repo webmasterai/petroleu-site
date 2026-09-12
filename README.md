@@ -9,6 +9,13 @@ Public-facing Petroleu marketing website (React + Vite) with a dedicated Laravel
 | Frontend | this directory (`src/`) |
 | CMS API | `backend/` (Laravel 12 + Sanctum + SQLite/MySQL) |
 
+## Production (Coolify / Docker)
+
+Separate containers for the Vite/React frontend and **this repo’s** Laravel CMS API.  
+Domains are configured only via Coolify env (`VITE_CMS_API_BASE_URL`, `APP_URL`, `FRONTEND_URL`).  
+This project does **not** deploy or call the original Petroleu product stack.  
+See **[docs/COOLIFY.md](docs/COOLIFY.md)**.
+
 ## Frontend setup
 
 ```bash

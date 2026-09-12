@@ -10,7 +10,8 @@ import { websiteContent } from '../../content/websiteContent'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useUiCopy } from '../../hooks/useUiCopy'
 
-const CMS_PUBLIC_BASE = '/api/cms'
+/** Absolute in production (VITE_CMS_API_BASE_URL); relative `/api/cms` for local Vite proxy. */
+const CMS_PUBLIC_BASE = (import.meta.env.VITE_CMS_API_BASE_URL || '/api/cms').replace(/\/+$/, '')
 const ICON_MAP = { BookOpen, Code2, Globe, FileText }
 
 export default function DevelopersMarketingPage() {
@@ -43,7 +44,7 @@ export default function DevelopersMarketingPage() {
       description:
         'Read-only CMS endpoints serve hero sections, pricing, FAQs, and legal pages for the Petroleu website.',
       href: `${CMS_PUBLIC_BASE}/pricing`,
-      external: false,
+      external: CMS_PUBLIC_BASE.startsWith('http'),
     },
     {
       icon: 'FileText',
