@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Orange background circle -->
+  <circle cx="256" cy="256" r="256" fill="#ea580c"/>
+  <!-- White person: head -->
+  <circle cx="256" cy="185" r="75" fill="white"/>
+  <!-- White person: body / shoulders -->
+  <ellipse cx="256" cy="390" rx="135" ry="110" fill="white"/>
+  <!-- Clip the bottom so it stays within the circle -->
+  <circle cx="256" cy="256" r="256" fill="none"/>
+</svg>

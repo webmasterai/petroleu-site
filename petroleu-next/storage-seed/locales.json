@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "code": "en-PK",
+    "name": "English (Pakistan)",
+    "native_name": "English",
+    "dir": "ltr",
+    "is_active": true
+  },
+  {
+    "id": 2,
+    "code": "fa-AF",
+    "name": "Dari",
+    "native_name": "دری",
+    "dir": "rtl",
+    "is_active": true,
+    "font_stack": "naskh"
+  },
+  {
+    "id": 3,
+    "code": "ps-AF",
+    "name": "Pashto",
+    "native_name": "پښتو",
+    "dir": "rtl",
+    "is_active": true,
+    "font_stack": "naskh"
+  },
+  {
+    "id": 4,
+    "code": "en-AF",
+    "name": "English (Afghanistan)",
+    "native_name": "English",
+    "dir": "ltr",
+    "is_active": true
+  }
+]

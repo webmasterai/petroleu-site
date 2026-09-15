@@ -1,0 +1,1860 @@
+@import "tailwindcss";
+
+/* ── Dari / Pashto Naskh foundation (Afghanistan RTL) ───────────────────── */
+@font-face {
+  font-family: 'Noto Naskh Arabic';
+  src:
+    url('/fonts/NotoNaskhArabic-400.woff2') format('woff2'),
+    url('/fonts/NotoNaskhArabic-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+  font-family: 'Noto Naskh Arabic';
+  src:
+    url('/fonts/NotoNaskhArabic-700.woff2') format('woff2'),
+    url('/fonts/NotoNaskhArabic-Bold.ttf') format('truetype');
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+html.font-naskh,
+html.font-naskh body {
+  font-family: 'Noto Naskh Arabic', 'Noto Sans Arabic', 'Segoe UI', Tahoma, serif;
+  line-height: 1.8;
+}
+
+html.font-naskh .font-mono,
+html.font-naskh code,
+html.font-naskh kbd,
+html.font-naskh pre,
+html.font-naskh [dir='ltr'],
+html.font-naskh a[href^='mailto:'],
+html.font-naskh a[href^='tel:'] {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif !important;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* Logical properties / RTL chrome */
+html[dir='rtl'] .cms-directional-icon {
+  transform: scaleX(-1);
+}
+
+html[dir='rtl'] input[type='email'],
+html[dir='rtl'] input[type='tel'],
+html[dir='rtl'] input[type='url'],
+html[dir='rtl'] input[type='number'] {
+  direction: ltr;
+  text-align: left;
+}
+
+html[dir='rtl'] .text-left {
+  text-align: right;
+}
+
+html[dir='rtl'] .text-right {
+  text-align: left;
+}
+
+/* ── Urdu / RTL font ─────────────────────────────────────────────────────── */
+/* Jameel Noori Nastaleeq loaded first; Noto Nastaliq Urdu as fallback        */
+html.font-urdu,
+html.font-urdu body,
+html.font-urdu * {
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif !important;
+  line-height: 2.2 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Toast notifications always use a Latin-compatible font regardless of Urdu mode.
+   react-hot-toast v2 wraps everything in [data-rht-toaster]; individual messages
+   carry role="status". Both selectors needed to cover container + children. */
+html.font-urdu [data-rht-toaster],
+html.font-urdu [data-rht-toaster] * {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+  line-height: 1.5 !important;
+  letter-spacing: normal !important;
+  font-size: 0.875rem !important;
+}
+
+/* Nastaliq needs a slightly larger root scale than typical Latin UI (tables stay readable). */
+html.font-urdu {
+  font-size: 20px !important;
+}
+
+/* UI numeric/code chips use Inter; real monospace only for pre/code/kbd */
+html.font-urdu .font-mono {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+html.font-urdu code,
+html.font-urdu kbd,
+html.font-urdu pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !important;
+}
+
+/* Sidebar has dir="ltr" on the aside element — no extra RTL overrides needed */
+
+/* RTL form elements */
+html[dir="rtl"] .form-label {
+  display: block;
+  text-align: right;
+}
+/* Text fields: bidi "auto" so English, codes, and emails type LTR; Urdu still flows RTL from typed text.
+   Forced RTL on every input was breaking mixed bilingual use. Use .urdu-input for narrative fields you want RTL-only. */
+html[dir="rtl"] .form-input,
+html[dir="rtl"] .form-input-app-select,
+html[dir="rtl"] input[type="text"],
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="password"],
+html[dir="rtl"] input[type="search"],
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] input[type="url"],
+html[dir="rtl"] textarea,
+html[dir="rtl"] select {
+  direction: auto;
+  unicode-bidi: plaintext;
+  text-align: start;
+}
+html[dir="rtl"] input[type="date"],
+html[dir="rtl"] input[type="datetime-local"],
+html[dir="rtl"] input[type="month"],
+html[dir="rtl"] input[type="week"],
+html[dir="rtl"] input[type="time"] {
+  direction: ltr;
+  text-align: start;
+}
+/* NOTE: blanket .flex reversal removed — it was breaking ALL flex containers
+   including flex-col layouts (sidebar, main content column, etc.).
+   RTL layout is handled by specific component rules below + direction:rtl on <html>. */
+
+/* Main app shell: dir="rtl" on <html> naturally reverses flex row direction,
+   so sidebar (first child) appears on the right automatically — no extra rule needed. */
+/* Sidebar border: was border-r (right), in RTL should be border-l (left) */
+html[dir="rtl"] .app-print-root > aside {
+  border-right: none;
+  border-left: 1px solid rgb(226 232 240);
+}
+/* Sidebar collapse button: reverse icon direction in RTL */
+html[dir="rtl"] .sidebar-toggle-icon {
+  transform: rotate(180deg);
+}
+html[dir="rtl"] .sidebar-toggle-icon.collapsed {
+  transform: rotate(0deg);
+}
+
+/* dir="rtl" naturally reverses flex row — topbar title goes right, actions go left automatically */
+/* User dropdown: position from left in RTL (was right-0 in LTR) */
+html[dir="rtl"] .app-topbar-dropdown {
+  left: 0;
+  right: auto;
+}
+html[dir="rtl"] .space-y-4 > * + * {
+  margin-top: 1rem;
+}
+/* Keep number inputs LTR even in RTL mode */
+html[dir="rtl"] input[type="number"] {
+  direction: ltr;
+  text-align: left;
+}
+/* Page header RTL */
+html[dir="rtl"] .page-header-actions {
+  flex-direction: row-reverse;
+}
+/* Table RTL */
+html[dir="rtl"] th,
+html[dir="rtl"] td {
+  text-align: start;
+}
+/* Modal RTL */
+html[dir="rtl"] .modal-footer {
+  flex-direction: row-reverse;
+}
+/* Badges stay LTR */
+html[dir="rtl"] .badge {
+  direction: ltr;
+}
+/* Buttons in RTL */
+html[dir="rtl"] button .flex,
+html[dir="rtl"] .btn-flex {
+  flex-direction: row-reverse;
+}
+/* DataTable search bar */
+html[dir="rtl"] .search-bar {
+  direction: auto;
+  text-align: start;
+}
+/* React-select: auto bidi so English search tokens and Urdu labels both behave */
+html[dir="rtl"] [class*="-container"] [class*="-ValueContainer"] {
+  direction: auto;
+  unicode-bidi: plaintext;
+  text-align: start;
+}
+html[dir="rtl"] [class*="-container"] [class*="-menu"] {
+  text-align: start;
+}
+/* Urdu font for Urdu text inputs */
+.urdu-input {
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif !important;
+  font-size: 1.05rem !important;
+  line-height: 2 !important;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Codes / SKUs / Latin-only fields: keep typing LTR while UI is RTL */
+html[dir="rtl"] .input-ltr,
+html[dir="rtl"] input.input-ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Design Token System (Marketing + Onboarding + Admin CMS)
+   Ported from Petroleu reference design system. Zone 4 (PMS app) continues
+   to use legacy slate/orange/emerald utility classes below.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --background: oklch(0.98 0.005 70);
+  --foreground: oklch(0.18 0.03 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.03 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.03 260);
+  --primary: oklch(0.62 0.22 50);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: #89BFE1;
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.95 0.01 50);
+  --muted-foreground: oklch(0.45 0.02 260);
+  --accent: #89BFE1;
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.90 0.02 50);
+  --input: oklch(0.94 0.01 50);
+  --ring: oklch(0.62 0.22 50);
+  --chart-1: oklch(0.62 0.22 50);
+  --chart-2: #89BFE1;
+  --chart-3: oklch(0.60 0.12 200);
+  --chart-4: oklch(0.65 0.14 80);
+  --chart-5: oklch(0.50 0.15 30);
+  --radius: 7px;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.62 0.22 50);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.18 0.03 70);
+  --foreground: oklch(0.95 0.005 70);
+  --card: oklch(0.20 0.02 70);
+  --card-foreground: oklch(0.95 0.005 70);
+  --popover: oklch(0.20 0.02 70);
+  --popover-foreground: oklch(0.95 0.005 70);
+  --primary: oklch(0.70 0.20 50);
+  --primary-foreground: oklch(0.18 0.03 70);
+  --secondary: #A8D5F7;
+  --secondary-foreground: oklch(0.18 0.03 70);
+  --muted: oklch(0.25 0.01 50);
+  --muted-foreground: oklch(0.60 0.02 260);
+  --accent: #A8D5F7;
+  --accent-foreground: oklch(0.18 0.03 70);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.25 0.02 50);
+  --input: oklch(0.25 0.02 50);
+  --ring: oklch(0.70 0.20 50);
+  --chart-1: oklch(0.70 0.20 50);
+  --chart-2: #A8D5F7;
+  --chart-3: oklch(0.65 0.12 200);
+  --chart-4: oklch(0.70 0.14 80);
+  --chart-5: oklch(0.60 0.15 30);
+  --sidebar: oklch(0.15 0.02 70);
+  --sidebar-foreground: oklch(0.95 0.005 70);
+  --sidebar-primary: oklch(0.70 0.20 50);
+  --sidebar-primary-foreground: oklch(0.18 0.03 70);
+  --sidebar-accent: oklch(0.25 0.01 50);
+  --sidebar-accent-foreground: oklch(0.95 0.005 70);
+  --sidebar-border: oklch(0.25 0.02 50);
+  --sidebar-ring: oklch(0.50 0.02 50);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: var(--radius);
+  --radius-2xl: var(--radius);
+  --radius-3xl: var(--radius);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* App used font-mono for numeric alignment; use Inter + tabular figures (not system monospace). */
+  --font-mono: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+
+  /* Tailwind font-mono: same family as UI, with lining tabular figures for column alignment */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  /* GUI controls — unified corner radius via --radius (7px) */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="hidden"]),
+  select,
+  textarea {
+    border-radius: var(--radius);
+  }
+
+  /* Remove number input spinners */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Orange accent for checkboxes and radio buttons */
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: #f97316;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    appearance: auto;
+    -webkit-appearance: auto;
+  }
+
+  /* Global scrollbar styling */
+  ::-webkit-scrollbar       { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+}
+
+@layer components {
+  /* ── Buttons ─────────────────────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed bg-orange-500 text-white hover:bg-orange-600 focus:ring-orange-400;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed bg-slate-100 text-slate-700 hover:bg-slate-200 focus:ring-slate-300;
+  }
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed bg-red-500 text-white hover:bg-red-600 focus:ring-red-400;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed bg-transparent text-slate-600 hover:bg-slate-100 focus:ring-slate-300;
+  }
+  .btn-sm {
+    @apply !px-3 !py-1.5 !text-xs;
+  }
+  .btn-lg {
+    @apply !px-6 !py-3 !text-base;
+  }
+
+  /* ── Forms ───────────────────────────────────────────────────────────── */
+  .form-input {
+    @apply block w-full px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white text-slate-800
+           focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400
+           placeholder:text-slate-400 disabled:bg-slate-50 disabled:text-slate-500;
+  }
+  /* Match AppSelect control: 38px height, rounded corners, orange focus ring */
+  .form-input-app-select {
+    @apply block w-full h-[38px] min-h-[38px] box-border px-[10px] text-sm leading-normal border border-slate-300 rounded-lg bg-white text-slate-800
+           focus:outline-none focus:ring-2 focus:ring-orange-400/35 focus:border-orange-400
+           placeholder:text-slate-400 disabled:bg-slate-50 disabled:text-slate-500;
+  }
+  .form-label {
+    @apply block text-sm font-medium text-slate-700 mb-1;
+  }
+  .form-error {
+    @apply text-xs text-red-600 mt-1;
+  }
+  .form-group {
+    @apply space-y-1;
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────────────── */
+  .card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm;
+  }
+  .card-header {
+    @apply px-5 py-4 border-b border-slate-100;
+  }
+  .card-body {
+    @apply p-5;
+  }
+
+  /* ── Tables ──────────────────────────────────────────────────────────── */
+  .table-wrapper {
+    @apply overflow-x-auto rounded-xl border border-slate-200 bg-white;
+  }
+  .data-table {
+    @apply w-full text-sm text-left;
+  }
+  .data-table thead tr {
+    @apply bg-slate-50 border-b border-slate-200;
+  }
+  .data-table thead th {
+    @apply px-4 py-3 font-semibold text-slate-600 uppercase text-xs tracking-wide whitespace-nowrap;
+  }
+  .data-table tbody tr {
+    @apply border-b border-slate-100 hover:bg-orange-50/40 transition-colors;
+  }
+  .data-table tbody tr:last-child {
+    @apply border-0;
+  }
+  .data-table tbody td {
+    @apply px-4 py-3 text-slate-700;
+  }
+
+  /* ── Badges ──────────────────────────────────────────────────────────── */
+  .badge       { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium; }
+  .badge-green { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700; }
+  .badge-red   { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700; }
+  .badge-orange{ @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-700; }
+  .badge-blue  { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700; }
+  .badge-slate { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600; }
+
+  /* ── Sidebar ─────────────────────────────────────────────────────────── */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150
+           text-slate-600 hover:bg-slate-100 hover:text-slate-900;
+  }
+  .sidebar-link.active {
+    @apply bg-orange-500 text-white hover:bg-orange-600 hover:text-white;
+  }
+  .sidebar-link-standalone:not(.active) {
+    @apply bg-slate-50 hover:bg-slate-100;
+  }
+  .sidebar-section-toggle {
+    @apply w-full px-3 pt-4 pb-1.5 text-xs font-semibold uppercase tracking-wider flex items-center justify-between rounded-lg transition-colors duration-150
+           text-slate-400 hover:text-slate-600;
+  }
+  .sidebar-section-toggle.expanded {
+    @apply bg-orange-50 text-orange-700 border border-orange-100 hover:text-orange-800 hover:bg-orange-100/80;
+  }
+  .sidebar-link-icon {
+    @apply w-5 h-5 flex-shrink-0;
+  }
+
+  /* ── Stat card ───────────────────────────────────────────────────────── */
+  .stat-card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-5 flex items-start gap-4;
+  }
+}
+
+/* ── react-datepicker overrides (orange theme) ───────────────────────── */
+.react-datepicker-wrapper { width: 100%; }
+.react-datepicker-popper  { z-index: 9999 !important; }
+
+.react-datepicker {
+  font-family: 'Inter', system-ui, sans-serif;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+.react-datepicker__header {
+  background: #fff7ed;
+  border-bottom: 1px solid #fed7aa;
+  border-radius: 0 !important;
+  padding-top: 10px;
+}
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: #c2410c;
+  font-weight: 600;
+}
+.react-datepicker__day-name { font-size: 0.7rem; }
+.react-datepicker__day {
+  border-radius: var(--radius);
+  color: #1e293b;
+  font-size: 0.8rem;
+}
+.react-datepicker__day:hover {
+  background: #fff7ed;
+  color: #c2410c;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background: #f97316 !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+.react-datepicker__day--today {
+  font-weight: 700;
+  color: #f97316;
+}
+.react-datepicker__day--outside-month { color: #cbd5e1; }
+.react-datepicker__day--disabled { color: #e2e8f0 !important; cursor: not-allowed; }
+.react-datepicker__navigation-icon::before {
+  border-color: #f97316;
+}
+.react-datepicker__navigation:hover .react-datepicker__navigation-icon::before {
+  border-color: #c2410c;
+}
+.react-datepicker__month-select,
+.react-datepicker__year-select {
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius);
+  padding: 2px 4px;
+  font-size: 0.8rem;
+  color: #c2410c;
+  background: #fff7ed;
+  cursor: pointer;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  /*
+   * When the daily report route is active we add body.pms-print-daily-report so
+   * only the portal-mounted report prints (not the rest of the SPA).
+   */
+  body.pms-print-daily-report > #root {
+    display: none !important;
+  }
+
+  body.pms-print-daily-report #pms-daily-report-print {
+    display: block !important;
+    break-before: auto;
+    page-break-before: auto;
+  }
+
+  /* Trial Balance 6 Column — portal print only, landscape-friendly table */
+  body.pms-print-trial-balance-six-column > #root {
+    display: none !important;
+  }
+
+  body.pms-print-trial-balance-six-column #pms-trial-balance-6col-print {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  body.pms-print-trial-balance-six-column .daily-pro-table-6col {
+    font-size: 7pt;
+  }
+
+  body.pms-print-trial-balance-six-column .daily-pro-table-6col th,
+  body.pms-print-trial-balance-six-column .daily-pro-table-6col td {
+    padding: 2.5pt 3pt;
+  }
+
+  body.pms-print-trial-balance-six-column .daily-pro-table-6col thead th {
+    font-size: 7pt;
+  }
+
+  body.pms-print-trial-balance-six-column .daily-pro-table-6col .tb6col-account-col {
+    width: 34%;
+  }
+
+  body.pms-print-trial-balance-six-column .daily-pro-table-6col .tb6col-amount-col {
+    width: 11%;
+  }
+
+  body.pms-print-trial-balance-six-column .daily-pro-table-6col .tb6col-account-cell {
+    width: 34%;
+    min-width: 34%;
+  }
+
+  body.pms-print-trial-balance-six-column .daily-pro-header {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body.pms-print-trial-balance-six-column .daily-pro-tfoot td {
+    font-weight: 700;
+  }
+
+  /* Purchase voucher print — portal host is a direct child of body */
+  body.pms-print-purchase-voucher > #root {
+    display: none !important;
+  }
+
+  body.pms-print-bulk-sale-voucher > #root {
+    display: none !important;
+  }
+
+  #pms-purchase-voucher-print-host {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pms-bulk-sale-voucher-print-host {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.pms-print-credit-sale-voucher > #root {
+    display: none !important;
+  }
+
+  #pms-credit-sale-voucher-print-host {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.pms-print-cash-voucher > #root {
+    display: none !important;
+  }
+
+  #pms-cash-voucher-print-host {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  html.font-urdu .cash-voucher-print-surface,
+  html.font-urdu #pms-cash-voucher-print-host .cash-voucher-print-surface {
+    font-size: 11.25pt !important;
+    line-height: 1.75 !important;
+  }
+
+  body.pms-print-dip-gain-loss-voucher > #root {
+    display: none !important;
+  }
+
+  body.pms-print-journal-voucher > #root {
+    display: none !important;
+  }
+
+  body.pms-print-credit-debit-note > #root {
+    display: none !important;
+  }
+
+  body.pms-print-shift-close-report > #root {
+    display: none !important;
+  }
+
+  #pms-shift-close-report-print-host {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pms-dip-gain-loss-print-host {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pms-daily-report-print {
+    display: block !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  /* Hide chrome / actions when printing (works without relying on Tailwind print: variant) */
+  .no-print {
+    display: none !important;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Full-width report: hide app shell chrome */
+  .app-print-root {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  .app-print-root > aside,
+  .app-print-root > div > header {
+    display: none !important;
+  }
+
+  .app-print-root > div {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .app-print-root > div > main {
+    padding: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .report-print-table {
+    font-size: 11px;
+  }
+
+  .report-print-table thead th,
+  .report-print-table tbody td {
+    padding: 6px 8px;
+  }
+
+  .report-print-table thead {
+    display: table-header-group;
+  }
+
+  /* Financial statements — allow long tables to paginate (avoid blank first page) */
+  .financial-statements-print > .mb-6 {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .financial-statement-card {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  .financial-statement-card .report-print-table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .financial-statements-print .card.mb-5 {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Financial statements — balance sheet prints as a single column stack */
+  .financial-bs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .financial-bs-grid .financial-bs-section-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .card {
+    border: 1px solid #d1d5db !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* ── Daily report — professional print (PMS Lite / Digital Softs) ── */
+  .daily-stationery {
+    display: block !important;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.38;
+    color: #111;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .daily-pro-header {
+    border-bottom: 2pt solid #1a1a1a;
+    padding-bottom: 10pt;
+    margin-bottom: 12pt;
+  }
+
+  .daily-pro-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12pt;
+    flex-wrap: wrap;
+  }
+
+  .daily-pro-company {
+    font-size: 16pt;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #0f172a;
+  }
+
+  .daily-pro-product-line {
+    font-size: 10pt;
+    color: #334155;
+    margin-top: 2pt;
+  }
+
+  .daily-pro-by {
+    font-weight: 600;
+    color: #64748b;
+  }
+
+  .daily-pro-header-meta {
+    font-size: 8.5pt;
+    color: #475569;
+    text-align: right;
+    line-height: 1.45;
+  }
+
+  .daily-pro-meta-k {
+    font-weight: 600;
+    color: #334155;
+    margin-right: 4px;
+  }
+
+  .daily-pro-title {
+    font-size: 15pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 12pt 0 4pt;
+    color: #0f172a;
+  }
+
+  .daily-pro-subtitle {
+    font-size: 9pt;
+    color: #64748b;
+    margin: 0 0 4pt;
+    max-width: 95%;
+  }
+
+  .daily-pro-block {
+    margin-bottom: 14pt;
+  }
+
+  .daily-pro-h2 {
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 6pt;
+    padding-bottom: 3pt;
+    border-bottom: 1pt solid #334155;
+    color: #1e293b;
+  }
+
+  .daily-pro-help {
+    font-size: 8pt;
+    color: #64748b;
+    margin: 0 0 5pt;
+  }
+
+  .daily-pro-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 0 0 8pt;
+    border: 1pt solid #1a1a1a;
+  }
+
+  .daily-pro-table-compact {
+    font-size: 8.5pt;
+  }
+
+  .daily-pro-summary {
+    font-size: 9.5pt;
+  }
+
+  .daily-pro-table th,
+  .daily-pro-table td {
+    border: 0.75pt solid #333;
+    padding: 4pt 5pt;
+    vertical-align: top;
+    word-wrap: break-word;
+  }
+
+  .daily-pro-table thead th {
+    background: #e2e8f0;
+    font-weight: 700;
+    font-size: 8.5pt;
+    text-align: left;
+    color: #0f172a;
+  }
+
+  .daily-pro-th-num {
+    text-align: right !important;
+  }
+
+  .daily-pro-td {
+    font-size: 9pt;
+  }
+
+  .daily-pro-td-small {
+    font-size: 8.5pt;
+    color: #334155;
+  }
+
+  .daily-pro-num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-size: 9pt;
+  }
+
+  .daily-pro-mono {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+    font-size: 8.5pt;
+  }
+
+  .daily-pro-strong {
+    font-weight: 700;
+  }
+
+  .daily-pro-tr-muted .daily-pro-td {
+    font-style: italic;
+    color: #64748b;
+    text-align: center;
+    padding: 8pt;
+  }
+
+  .daily-pro-tr-strong {
+    background: #f1f5f9;
+  }
+
+  .daily-pro-tfoot td {
+    background: #f8fafc;
+    font-weight: 600;
+  }
+
+  .daily-pro-tfoot-label {
+    text-align: right;
+    font-size: 9pt;
+    color: #334155;
+  }
+
+  .daily-pro-footer {
+    margin-top: 16pt;
+    padding-top: 8pt;
+    border-top: 1pt solid #94a3b8;
+    font-size: 8pt;
+    color: #64748b;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* ── Stock report print (aligned with financial print feel) ───────────── */
+  .stock-print-header {
+    border-bottom: 2pt solid #1a1a1a;
+    padding-bottom: 9pt;
+    margin-bottom: 10pt;
+  }
+
+  .stock-print-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12pt;
+    font-size: 8.5pt;
+    color: #475569;
+    margin-bottom: 6pt;
+  }
+
+  .stock-print-k {
+    font-weight: 600;
+    color: #334155;
+    margin-right: 4px;
+  }
+
+  .stock-print-title {
+    font-size: 15pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 4pt;
+    color: #0f172a;
+  }
+
+  .stock-print-subtitle {
+    font-size: 9pt;
+    color: #64748b;
+    margin: 0;
+  }
+
+  .stock-print-table {
+    border: 1pt solid #1a1a1a !important;
+    border-collapse: collapse !important;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 9pt;
+  }
+
+  .stock-print-table thead th,
+  .stock-print-table tbody td,
+  .stock-print-table tfoot td {
+    border: 0.75pt solid #333 !important;
+    padding: 4pt 5pt !important;
+    vertical-align: top;
+  }
+
+  .stock-print-table thead th {
+    background: #e2e8f0 !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  .stock-print-table tfoot td {
+    background: #f8fafc !important;
+    font-weight: 700 !important;
+  }
+
+  /* Sale Bill report — date group & reference continuation (same print theme as stock) */
+  .stock-print-table tbody tr.sale-bill-print-date-row td {
+    background: #e2e8f0 !important;
+    font-weight: 700 !important;
+    font-size: 8.5pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .stock-print-table tbody tr.sale-bill-ref-continuation td {
+    background: #f8fafc !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sale-bill-print-page-break {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  /* ── Account ledger — professional print (dedicated route; not .daily-stationery) ── */
+  #pms-account-ledger-print.account-ledger-print-doc {
+    display: block !important;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    line-height: 1.35;
+    color: #111;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #pms-account-ledger-print .alp-header {
+    margin-bottom: 10pt;
+  }
+
+  #pms-account-ledger-print .alp-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 8pt;
+    align-items: start;
+  }
+
+  #pms-account-ledger-print .alp-header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 8pt;
+    min-width: 0;
+  }
+
+  #pms-account-ledger-print .alp-logo {
+    max-height: 36pt;
+    max-width: 120pt;
+    object-fit: contain;
+  }
+
+  #pms-account-ledger-print .alp-co-name {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+  }
+
+  #pms-account-ledger-print .alp-co-tag {
+    font-size: 7.5pt;
+    color: #64748b;
+    margin-top: 2pt;
+  }
+
+  #pms-account-ledger-print .alp-header-center {
+    text-align: center;
+    padding: 0 4pt;
+  }
+
+  #pms-account-ledger-print .alp-title {
+    font-size: 14pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 3pt;
+    color: #0f172a;
+  }
+
+  #pms-account-ledger-print .alp-subtitle {
+    font-size: 8.5pt;
+    color: #64748b;
+    margin: 0;
+  }
+
+  #pms-account-ledger-print .alp-header-right {
+    font-size: 8pt;
+    color: #475569;
+    text-align: right;
+    line-height: 1.45;
+  }
+
+  #pms-account-ledger-print .alp-meta-row {
+    display: block;
+    margin-bottom: 3pt;
+  }
+
+  #pms-account-ledger-print .alp-meta-lbl {
+    font-weight: 600;
+    color: #334155;
+    margin-right: 4px;
+  }
+
+  #pms-account-ledger-print .alp-header-rule {
+    height: 2pt;
+    background: #1a1a1a;
+    margin-top: 8pt;
+  }
+
+  #pms-account-ledger-print .alp-info {
+    margin-bottom: 10pt;
+  }
+
+  #pms-account-ledger-print .alp-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6pt;
+  }
+
+  #pms-account-ledger-print .alp-info-box {
+    border: 0.75pt solid #334155;
+    padding: 5pt 6pt;
+    background: #f8fafc;
+  }
+
+  #pms-account-ledger-print .alp-info-lbl {
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #475569;
+    margin-bottom: 2pt;
+  }
+
+  #pms-account-ledger-print .alp-info-val {
+    font-size: 9pt;
+    font-weight: 600;
+    color: #0f172a;
+    word-break: break-word;
+  }
+
+  #pms-account-ledger-print .alp-voucher-legend--bottom {
+    margin: 8pt 0 0;
+    padding: 6pt 0 0;
+    border-top: 0.6pt solid #cbd5e1;
+    font-size: 7.5pt;
+    line-height: 1.45;
+    color: #475569;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  #pms-account-ledger-print .alp-voucher-legend-label {
+    font-weight: 700;
+    color: #334155;
+  }
+
+  #pms-account-ledger-print .alp-voucher-legend-text {
+    font-weight: 500;
+    color: #1e293b;
+  }
+
+  #pms-account-ledger-print .alp-amt-cell {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  #pms-account-ledger-print .alp-amt-rs {
+    font-variant-numeric: tabular-nums;
+  }
+
+  #pms-account-ledger-print .alp-drcr {
+    font-size: 8.5pt;
+    font-weight: 700;
+  }
+
+  #pms-account-ledger-print .alp-drcr-dr {
+    color: #047857;
+  }
+
+  #pms-account-ledger-print .alp-drcr-cr {
+    color: #b91c1c;
+  }
+
+  #pms-account-ledger-print .account-ledger-print-table.alp-table-horz-only {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border: none;
+    border-top: 1.25pt solid #1a1a1a;
+    border-bottom: 1.25pt solid #1a1a1a;
+    font-size: 8.5pt;
+  }
+
+  #pms-account-ledger-print .account-ledger-print-table.alp-table-horz-only .alp-th {
+    background: #e2e8f0 !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+    text-align: left;
+    padding: 4pt 5pt;
+    border: none !important;
+    border-bottom: 1.25pt solid #1a1a1a !important;
+    vertical-align: bottom;
+  }
+
+  #pms-account-ledger-print .account-ledger-print-table.alp-table-horz-only .alp-th.alp-th-num {
+    text-align: right !important;
+  }
+
+  #pms-account-ledger-print .alp-th-date {
+    width: 12%;
+    white-space: nowrap;
+    word-wrap: normal;
+  }
+
+  #pms-account-ledger-print .alp-th-vch {
+    width: 14%;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow-wrap: normal;
+  }
+
+  #pms-account-ledger-print .alp-th-desc {
+    width: 24%;
+  }
+
+  #pms-account-ledger-print .alp-th-vehicle,
+  #pms-account-ledger-print .alp-td-vehicle {
+    width: 11%;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    font-size: 8.25pt;
+  }
+
+  #pms-account-ledger-print .alp-th.alp-col-debit,
+  #pms-account-ledger-print .alp-td.alp-col-debit {
+    width: 11%;
+    box-sizing: border-box;
+  }
+
+  #pms-account-ledger-print .alp-th.alp-col-credit,
+  #pms-account-ledger-print .alp-td.alp-col-credit {
+    width: 11%;
+    box-sizing: border-box;
+  }
+
+  #pms-account-ledger-print .alp-th.alp-col-balance,
+  #pms-account-ledger-print .alp-td.alp-col-balance {
+    width: 19%;
+    box-sizing: border-box;
+    padding-left: 4pt !important;
+    padding-right: 6pt !important;
+    overflow: visible;
+  }
+
+  #pms-account-ledger-print .account-ledger-print-table.alp-table-horz-only .alp-td {
+    padding: 3pt 5pt;
+    border: none !important;
+    border-bottom: 0.6pt solid #cbd5e1 !important;
+    vertical-align: top;
+    word-wrap: break-word;
+  }
+
+  #pms-account-ledger-print .alp-td-date {
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  #pms-account-ledger-print .alp-tr-open .alp-td {
+    background: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pms-account-ledger-print .alp-tr-data.alp-zebra-even .alp-td {
+    background: #f8fafc !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pms-account-ledger-print .alp-tr-data.alp-zebra-odd .alp-td {
+    background: #fff !important;
+  }
+
+  #pms-account-ledger-print .alp-td-open-lbl {
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  #pms-account-ledger-print .alp-tr-total .alp-td {
+    background: transparent !important;
+    border-bottom: 1pt solid #64748b !important;
+    font-weight: 700;
+  }
+
+  #pms-account-ledger-print .alp-td-total-lbl {
+    text-align: left;
+    font-size: 8.5pt;
+    letter-spacing: 0.02em;
+    color: #0f172a;
+  }
+
+  #pms-account-ledger-print .alp-tr-grand .alp-td {
+    background: transparent !important;
+    border-bottom: none !important;
+    font-weight: 700;
+  }
+
+  #pms-account-ledger-print .alp-td-grand {
+    font-variant-numeric: tabular-nums;
+  }
+
+  #pms-account-ledger-print .alp-td-mono {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+    font-size: 8pt;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow-wrap: normal;
+  }
+
+  #pms-account-ledger-print .alp-td-num {
+    text-align: right !important;
+    font-variant-numeric: tabular-nums;
+  }
+
+  #pms-account-ledger-print .alp-td-bal {
+    text-align: right !important;
+    font-weight: 600;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    overflow: visible;
+  }
+
+  #pms-account-ledger-print .alp-amt-cell .alp-amt-rs,
+  #pms-account-ledger-print .alp-amt-cell .alp-drcr {
+    flex-shrink: 0;
+  }
+
+  #pms-account-ledger-print .alp-td-num .alp-amt-cell,
+  #pms-account-ledger-print .alp-td-bal .alp-amt-cell {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+    vertical-align: baseline;
+  }
+
+  #pms-account-ledger-print .alp-td-empty {
+    text-align: center;
+    font-style: italic;
+    color: #64748b;
+    padding: 10pt !important;
+  }
+
+  #pms-account-ledger-print .alp-dash {
+    color: #94a3b8;
+  }
+
+  #pms-account-ledger-print .alp-doc-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12pt;
+    padding-top: 6pt;
+    border-top: 0.75pt solid #94a3b8;
+    font-size: 7.5pt;
+    color: #64748b;
+  }
+}
+
+@media screen {
+  .daily-stationery {
+    display: none;
+  }
+
+  /* Ledger print route: wide on-screen preview (print layout unchanged via @media print) */
+  body.ledger-print-route main {
+    padding: 0.75rem 0.65rem;
+  }
+
+  body.ledger-print-route .ledger-print-preview-shell {
+    width: 100%;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print.account-ledger-print-doc {
+    display: block;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #111;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 1.25rem 1.35rem 1.5rem;
+    background: #fff;
+    box-shadow: 0 2px 16px rgba(15, 23, 42, 0.14);
+    border: 1px solid #e2e8f0;
+    box-sizing: border-box;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-logo {
+    max-height: 52px;
+    max-width: 140px;
+    object-fit: contain;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-co-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-co-tag {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-header-center {
+    text-align: center;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 4px;
+    color: #0f172a;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-subtitle {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-header-right {
+    font-size: 11px;
+    color: #475569;
+    text-align: right;
+    line-height: 1.45;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-meta-lbl {
+    font-weight: 600;
+    color: #334155;
+    margin-right: 4px;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-header-rule {
+    height: 3px;
+    background: #1a1a1a;
+    margin-top: 12px;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-info {
+    margin: 14px 0;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-info-box {
+    border: 1px solid #cbd5e1;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: #f8fafc;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-info-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #475569;
+    margin-bottom: 4px;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-info-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-voucher-legend--bottom {
+    margin: 12px 0 0;
+    padding: 10px 0 0;
+    border-top: 1px solid #e2e8f0;
+    font-size: 12px;
+    line-height: 1.45;
+    color: #64748b;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-voucher-legend-label {
+    font-weight: 700;
+    color: #475569;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-voucher-legend-text {
+    font-weight: 500;
+    color: #334155;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-drcr-dr {
+    color: #047857;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-drcr-cr {
+    color: #b91c1c;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .account-ledger-print-table.alp-table-horz-only {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border: none;
+    border-top: 2px solid #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
+    font-size: 13.5px;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .account-ledger-print-table.alp-table-horz-only .alp-th {
+    background: #e2e8f0;
+    font-weight: 700;
+    text-align: left;
+    padding: 6px 8px;
+    border: none;
+    border-bottom: 2px solid #1a1a1a;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .account-ledger-print-table.alp-table-horz-only .alp-th.alp-th-num {
+    text-align: right !important;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-th-date {
+    width: 12%;
+    white-space: nowrap;
+    word-wrap: normal;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-th-desc {
+    width: 24%;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-th-vehicle,
+  body.ledger-print-route #pms-account-ledger-print .alp-td-vehicle {
+    width: 11%;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    font-size: 9px;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-th-vch {
+    width: 14%;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow-wrap: normal;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-th.alp-col-debit,
+  body.ledger-print-route #pms-account-ledger-print .alp-td.alp-col-debit {
+    width: 11%;
+    box-sizing: border-box;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-th.alp-col-credit,
+  body.ledger-print-route #pms-account-ledger-print .alp-td.alp-col-credit {
+    width: 11%;
+    box-sizing: border-box;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-th.alp-col-balance,
+  body.ledger-print-route #pms-account-ledger-print .alp-td.alp-col-balance {
+    width: 19%;
+    box-sizing: border-box;
+    padding-left: 6px !important;
+    padding-right: 10px !important;
+    overflow: visible;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-td-date {
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .account-ledger-print-table.alp-table-horz-only .alp-td {
+    padding: 5px 8px;
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-tr-open .alp-td {
+    background: #f1f5f9;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-tr-data.alp-zebra-even .alp-td {
+    background: #f8fafc;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-tr-data.alp-zebra-odd .alp-td {
+    background: #fff;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-td-open-lbl {
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-tr-total .alp-td {
+    background: transparent;
+    border-bottom: 1px solid #64748b;
+    font-weight: 700;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-td-total-lbl {
+    text-align: left;
+    color: #0f172a;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-tr-grand .alp-td {
+    background: transparent;
+    border-bottom: none;
+    font-weight: 700;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-td-grand {
+    font-variant-numeric: tabular-nums;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-td-mono {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+    font-size: 11px;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow-wrap: normal;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-td-num {
+    text-align: right !important;
+    font-variant-numeric: tabular-nums;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-amt-cell {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-td-bal {
+    text-align: right !important;
+    font-weight: 600;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    overflow: visible;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-amt-cell .alp-amt-rs,
+  body.ledger-print-route #pms-account-ledger-print .alp-amt-cell .alp-drcr {
+    flex-shrink: 0;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-td-num .alp-amt-cell,
+  body.ledger-print-route #pms-account-ledger-print .alp-td-bal .alp-amt-cell {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+    vertical-align: baseline;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-td-empty {
+    text-align: center;
+    color: #64748b;
+    font-style: italic;
+    padding: 24px !important;
+  }
+
+  body.ledger-print-route #pms-account-ledger-print .alp-doc-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 10px;
+    border-top: 1px solid #cbd5e1;
+    font-size: 11px;
+    color: #64748b;
+    flex-wrap: wrap;
+  }
+}
+
+/* ── Initial sync overlay (desktop first-time download) ─────────────────── */
+@keyframes initial-sync-orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(12px, -8px) scale(1.05); }
+}
+
+@keyframes initial-sync-bar-shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes initial-sync-logo-pulse {
+  0%, 100% { box-shadow: 0 10px 40px rgba(249, 115, 22, 0.35); }
+  50% { box-shadow: 0 14px 48px rgba(249, 115, 22, 0.55); }
+}
+
+.initial-sync-orb {
+  animation: initial-sync-orb-float 8s ease-in-out infinite;
+}
+
+.initial-sync-orb-delay {
+  animation-delay: -4s;
+}
+
+.initial-sync-logo {
+  animation: initial-sync-logo-pulse 3s ease-in-out infinite;
+}
+
+.initial-sync-bar {
+  background-size: 200% 100%;
+  animation: initial-sync-bar-shimmer 2.5s linear infinite;
+}
+
+.initial-sync-overlay ul::-webkit-scrollbar {
+  width: 4px;
+}
+
+.initial-sync-overlay ul::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+}

@@ -1,0 +1,432 @@
+[
+  {
+    "id": 1,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "path": "/",
+    "title": "Petroleu — Petrol Pump Software Pakistan",
+    "description": "Petrol pump management software for Pakistan.",
+    "status": "published",
+    "noindex": false
+  },
+  {
+    "id": 2,
+    "market_code": "af",
+    "locale_code": "en-AF",
+    "path": "/af/en",
+    "title": "Petroleu — Petrol Pump Software Afghanistan",
+    "description": "Fuel station management software for Afghanistan — stock, nozzle sales, credit, and reports.",
+    "canonical_url": "https://petroleu.com/af/en",
+    "og_title": "Petroleu — Petrol Pump Software Afghanistan",
+    "og_description": "Fuel station management software for Afghanistan — stock, nozzle sales, credit, and reports.",
+    "og_locale": "en_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 3,
+    "market_code": "af",
+    "locale_code": "en-AF",
+    "path": "/af/en/about",
+    "title": "About | Petroleu Afghanistan",
+    "description": "About Petroleu for Afghanistan fuel stations.",
+    "canonical_url": "https://petroleu.com/af/en/about",
+    "og_title": "About | Petroleu Afghanistan",
+    "og_description": "About Petroleu for Afghanistan fuel stations.",
+    "og_locale": "en_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 4,
+    "market_code": "af",
+    "locale_code": "en-AF",
+    "path": "/af/en/blog",
+    "title": "Blog | Petroleu Afghanistan",
+    "description": "Guides for fuel station operators in Afghanistan.",
+    "canonical_url": "https://petroleu.com/af/en/blog",
+    "og_title": "Blog | Petroleu Afghanistan",
+    "og_description": "Guides for fuel station operators in Afghanistan.",
+    "og_locale": "en_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 5,
+    "market_code": "af",
+    "locale_code": "en-AF",
+    "path": "/af/en/contact",
+    "title": "Contact | Petroleu Afghanistan",
+    "description": "Contact Petroleu about Afghanistan deployments.",
+    "canonical_url": "https://petroleu.com/af/en/contact",
+    "og_title": "Contact | Petroleu Afghanistan",
+    "og_description": "Contact Petroleu about Afghanistan deployments.",
+    "og_locale": "en_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 6,
+    "market_code": "af",
+    "locale_code": "en-AF",
+    "path": "/af/en/faq",
+    "title": "FAQ | Petroleu Afghanistan",
+    "description": "Frequently asked questions about Petroleu.",
+    "canonical_url": "https://petroleu.com/af/en/faq",
+    "og_title": "FAQ | Petroleu Afghanistan",
+    "og_description": "Frequently asked questions about Petroleu.",
+    "og_locale": "en_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 7,
+    "market_code": "af",
+    "locale_code": "en-AF",
+    "path": "/af/en/features",
+    "title": "Features | Petroleu Afghanistan",
+    "description": "Petroleu modules for nozzle, stock, credit, and reports.",
+    "canonical_url": "https://petroleu.com/af/en/features",
+    "og_title": "Features | Petroleu Afghanistan",
+    "og_description": "Petroleu modules for nozzle, stock, credit, and reports.",
+    "og_locale": "en_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 8,
+    "market_code": "af",
+    "locale_code": "en-AF",
+    "path": "/af/en/pricing",
+    "title": "Pricing | Petroleu Afghanistan",
+    "description": "Contact Petroleu for Afghanistan pricing.",
+    "canonical_url": "https://petroleu.com/af/en/pricing",
+    "og_title": "Pricing | Petroleu Afghanistan",
+    "og_description": "Contact Petroleu for Afghanistan pricing.",
+    "og_locale": "en_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 9,
+    "market_code": "af",
+    "locale_code": "fa-AF",
+    "path": "/af",
+    "title": "Petroleu — نرم‌افزار پمپ تیل افغانستان",
+    "description": "نرم‌افزار مدیریت پمپ تیل برای افغانستان — موجودی، فروش نوزل، اعتبار و گزارش‌ها.",
+    "canonical_url": "https://petroleu.com/af",
+    "og_title": "Petroleu — نرم‌افزار پمپ تیل افغانستان",
+    "og_description": "نرم‌افزار مدیریت پمپ تیل برای افغانستان — موجودی، فروش نوزل، اعتبار و گزارش‌ها.",
+    "og_locale": "fa_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 10,
+    "market_code": "af",
+    "locale_code": "fa-AF",
+    "path": "/af/about",
+    "title": "درباره ما | Petroleu",
+    "description": "درباره Petroleu برای پمپ‌های تیل افغانستان.",
+    "canonical_url": "https://petroleu.com/af/about",
+    "og_title": "درباره ما | Petroleu",
+    "og_description": "درباره Petroleu برای پمپ‌های تیل افغانستان.",
+    "og_locale": "fa_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 11,
+    "market_code": "af",
+    "locale_code": "fa-AF",
+    "path": "/af/blog",
+    "title": "وبلاگ | Petroleu",
+    "description": "راهنما برای اپراتورهای پمپ تیل در افغانستان.",
+    "canonical_url": "https://petroleu.com/af/blog",
+    "og_title": "وبلاگ | Petroleu",
+    "og_description": "راهنما برای اپراتورهای پمپ تیل در افغانستان.",
+    "og_locale": "fa_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 12,
+    "market_code": "af",
+    "locale_code": "fa-AF",
+    "path": "/af/contact",
+    "title": "تماس | Petroleu",
+    "description": "تماس با Petroleu درباره افغانستان.",
+    "canonical_url": "https://petroleu.com/af/contact",
+    "og_title": "تماس | Petroleu",
+    "og_description": "تماس با Petroleu درباره افغانستان.",
+    "og_locale": "fa_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 13,
+    "market_code": "af",
+    "locale_code": "fa-AF",
+    "path": "/af/faq",
+    "title": "پرسش‌های متداول | Petroleu",
+    "description": "پرسش‌های رایج درباره Petroleu.",
+    "canonical_url": "https://petroleu.com/af/faq",
+    "og_title": "پرسش‌های متداول | Petroleu",
+    "og_description": "پرسش‌های رایج درباره Petroleu.",
+    "og_locale": "fa_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 14,
+    "market_code": "af",
+    "locale_code": "fa-AF",
+    "path": "/af/features",
+    "title": "امکانات | Petroleu",
+    "description": "ماژول‌های نوزل، موجودی، اعتبار و گزارش.",
+    "canonical_url": "https://petroleu.com/af/features",
+    "og_title": "امکانات | Petroleu",
+    "og_description": "ماژول‌های نوزل، موجودی، اعتبار و گزارش.",
+    "og_locale": "fa_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 15,
+    "market_code": "af",
+    "locale_code": "fa-AF",
+    "path": "/af/pricing",
+    "title": "قیمت‌ها | Petroleu",
+    "description": "برای قیمت‌گذاری افغانستان با Petroleu تماس بگیرید.",
+    "canonical_url": "https://petroleu.com/af/pricing",
+    "og_title": "قیمت‌ها | Petroleu",
+    "og_description": "برای قیمت‌گذاری افغانستان با Petroleu تماس بگیرید.",
+    "og_locale": "fa_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 16,
+    "market_code": "af",
+    "locale_code": "ps-AF",
+    "path": "/af/ps",
+    "title": "Petroleu — د افغانستان تیل پمپ سافټویر",
+    "description": "د افغانستان لپاره د تیل پمپ مدیریت سافټویر — موجودي، نوزل پلور، اعتبار او راپورونه.",
+    "canonical_url": "https://petroleu.com/af/ps",
+    "og_title": "Petroleu — د افغانستان تیل پمپ سافټویر",
+    "og_description": "د افغانستان لپاره د تیل پمپ مدیریت سافټویر — موجودي، نوزل پلور، اعتبار او راپورونه.",
+    "og_locale": "ps_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 17,
+    "market_code": "af",
+    "locale_code": "ps-AF",
+    "path": "/af/ps/about",
+    "title": "زموږ په اړه | Petroleu",
+    "description": "د افغانستان تیل پمپونو لپاره د Petroleu په اړه.",
+    "canonical_url": "https://petroleu.com/af/ps/about",
+    "og_title": "زموږ په اړه | Petroleu",
+    "og_description": "د افغانستان تیل پمپونو لپاره د Petroleu په اړه.",
+    "og_locale": "ps_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 18,
+    "market_code": "af",
+    "locale_code": "ps-AF",
+    "path": "/af/ps/blog",
+    "title": "بلاګ | Petroleu",
+    "description": "د افغانستان تیل پمپ چلوونکو لپاره لارښودونه.",
+    "canonical_url": "https://petroleu.com/af/ps/blog",
+    "og_title": "بلاګ | Petroleu",
+    "og_description": "د افغانستان تیل پمپ چلوونکو لپاره لارښودونه.",
+    "og_locale": "ps_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 19,
+    "market_code": "af",
+    "locale_code": "ps-AF",
+    "path": "/af/ps/contact",
+    "title": "اړیکه | Petroleu",
+    "description": "د افغانستان په اړه له Petroleu سره اړیکه.",
+    "canonical_url": "https://petroleu.com/af/ps/contact",
+    "og_title": "اړیکه | Petroleu",
+    "og_description": "د افغانستان په اړه له Petroleu سره اړیکه.",
+    "og_locale": "ps_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 20,
+    "market_code": "af",
+    "locale_code": "ps-AF",
+    "path": "/af/ps/faq",
+    "title": "پوښتنې | Petroleu",
+    "description": "د Petroleu په اړه عامې پوښتنې.",
+    "canonical_url": "https://petroleu.com/af/ps/faq",
+    "og_title": "پوښتنې | Petroleu",
+    "og_description": "د Petroleu په اړه عامې پوښتنې.",
+    "og_locale": "ps_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 21,
+    "market_code": "af",
+    "locale_code": "ps-AF",
+    "path": "/af/ps/features",
+    "title": "ځانګړتیاوې | Petroleu",
+    "description": "نوزل، موجودي، اعتبار او راپور ماډیولونه.",
+    "canonical_url": "https://petroleu.com/af/ps/features",
+    "og_title": "ځانګړتیاوې | Petroleu",
+    "og_description": "نوزل، موجودي، اعتبار او راپور ماډیولونه.",
+    "og_locale": "ps_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  },
+  {
+    "id": 22,
+    "market_code": "af",
+    "locale_code": "ps-AF",
+    "path": "/af/ps/pricing",
+    "title": "بیې | Petroleu",
+    "description": "د افغانستان بیو لپاره له Petroleu سره اړیکه ونیسئ.",
+    "canonical_url": "https://petroleu.com/af/ps/pricing",
+    "og_title": "بیې | Petroleu",
+    "og_description": "د افغانستان بیو لپاره له Petroleu سره اړیکه ونیسئ.",
+    "og_locale": "ps_AF",
+    "noindex": false,
+    "status": "published",
+    "hreflang": {
+      "fa-af": "https://petroleu.com/af",
+      "ps-af": "https://petroleu.com/af/ps",
+      "en-af": "https://petroleu.com/af/en",
+      "en-pk": "https://petroleu.com/"
+    }
+  }
+]

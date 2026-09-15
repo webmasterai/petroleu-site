@@ -1,0 +1,1323 @@
+{
+    "pages": [
+        {
+            "slug": "about",
+            "title": "About",
+            "description": "Afghanistan about page",
+            "frontend_path": "\/af\/en\/about"
+        },
+        {
+            "slug": "analytics",
+            "title": "Analytics",
+            "description": "Afghanistan analytics page",
+            "frontend_path": "\/af\/en\/analytics"
+        },
+        {
+            "slug": "blog",
+            "title": "Blog",
+            "description": "Afghanistan blog page",
+            "frontend_path": "\/af\/en\/blog"
+        },
+        {
+            "slug": "contact",
+            "title": "Contact",
+            "description": "Afghanistan contact page",
+            "frontend_path": "\/af\/en\/contact"
+        },
+        {
+            "slug": "developers",
+            "title": "Developers",
+            "description": "Afghanistan developers page",
+            "frontend_path": "\/af\/en\/developers"
+        },
+        {
+            "slug": "docs",
+            "title": "Docs",
+            "description": "Afghanistan docs page",
+            "frontend_path": "\/af\/en\/docs"
+        },
+        {
+            "slug": "faq",
+            "title": "Faq",
+            "description": "Afghanistan faq page",
+            "frontend_path": "\/af\/en\/faq"
+        },
+        {
+            "slug": "features",
+            "title": "Features",
+            "description": "Afghanistan features page",
+            "frontend_path": "\/af\/en\/features"
+        },
+        {
+            "slug": "home",
+            "title": "Home",
+            "description": "Afghanistan home page",
+            "frontend_path": "\/af\/en"
+        },
+        {
+            "slug": "industries",
+            "title": "Industries",
+            "description": "Afghanistan industries page",
+            "frontend_path": "\/af\/en\/industries"
+        },
+        {
+            "slug": "legal",
+            "title": "Legal",
+            "description": "Afghanistan legal page",
+            "frontend_path": "\/af\/en\/legal"
+        },
+        {
+            "slug": "pricing",
+            "title": "Pricing",
+            "description": "Afghanistan pricing page",
+            "frontend_path": "\/af\/en\/pricing"
+        },
+        {
+            "slug": "product-reports",
+            "title": "Product Reports",
+            "description": "Afghanistan product-reports page",
+            "frontend_path": "\/af\/en\/product\/reports"
+        }
+    ],
+    "nav": [
+        {
+            "location": "header",
+            "label": "Features",
+            "url": "\/af\/en\/features",
+            "sort_order": 0,
+            "menu_group": "primary"
+        },
+        {
+            "location": "header",
+            "label": "Pricing",
+            "url": "\/af\/en\/pricing",
+            "sort_order": 1,
+            "menu_group": "primary"
+        },
+        {
+            "location": "header",
+            "label": "FAQ",
+            "url": "\/af\/en\/faq",
+            "sort_order": 2,
+            "menu_group": "primary"
+        },
+        {
+            "location": "header",
+            "label": "Mobile App",
+            "url": "\/af\/en\/#mobile",
+            "sort_order": 3,
+            "menu_group": "primary"
+        },
+        {
+            "location": "header",
+            "label": "About",
+            "url": "\/af\/en\/about",
+            "sort_order": 4,
+            "menu_group": "primary"
+        },
+        {
+            "location": "header",
+            "label": "Blog",
+            "url": "\/af\/en\/blog",
+            "sort_order": 5,
+            "menu_group": "primary"
+        },
+        {
+            "location": "header",
+            "label": "Contact",
+            "url": "\/af\/en\/contact",
+            "sort_order": 6,
+            "menu_group": "primary"
+        },
+        {
+            "location": "mega",
+            "label": "Analytics",
+            "url": "\/af\/en\/analytics",
+            "sort_order": 0,
+            "menu_group": "resources"
+        },
+        {
+            "location": "mega",
+            "label": "Reports",
+            "url": "\/af\/en\/product\/reports",
+            "sort_order": 1,
+            "menu_group": "resources"
+        },
+        {
+            "location": "mega",
+            "label": "FAQ",
+            "url": "\/af\/en\/faq",
+            "sort_order": 2,
+            "menu_group": "resources"
+        },
+        {
+            "location": "mega",
+            "label": "Docs",
+            "url": "\/af\/en\/docs",
+            "sort_order": 3,
+            "menu_group": "resources"
+        },
+        {
+            "location": "announcement",
+            "label": "Petroleu — Fuel station software for Afghanistan",
+            "url": null,
+            "sort_order": 0,
+            "menu_group": "announcement"
+        }
+    ],
+    "settings": [
+        {
+            "key": "currency",
+            "value": "AFN",
+            "label": "Currency"
+        },
+        {
+            "key": "site_name",
+            "value": "Petroleu",
+            "label": "Site Name"
+        },
+        {
+            "key": "translation_note",
+            "value": "Professional Afghan Dari and Pashto translations required before publish. Do not use Iranian Persian as approved Dari.",
+            "label": "Translation note"
+        },
+        {
+            "key": "site_tagline",
+            "value": "Modern fuel station management software for Afghanistan.",
+            "label": "Site Tagline"
+        },
+        {
+            "key": "footer_description",
+            "value": "Petroleu helps fuel station owners run nozzle sales, tank stock, credit, and reporting from one system.",
+            "label": "Footer description"
+        },
+        {
+            "key": "footer_credit",
+            "value": "Petroleu",
+            "label": "Footer credit line"
+        },
+        {
+            "key": "country_label",
+            "value": "Afghanistan",
+            "label": "Country label"
+        },
+        {
+            "key": "sales_email",
+            "value": "sales@petroleu.com",
+            "label": "Sales Email"
+        },
+        {
+            "key": "primary_email",
+            "value": "support@petroleu.com",
+            "label": "Support Email"
+        },
+        {
+            "key": "contact_email",
+            "value": "sales@petroleu.com",
+            "label": "Contact Email"
+        },
+        {
+            "key": "phone",
+            "value": "",
+            "label": "Phone"
+        },
+        {
+            "key": "phone_tel",
+            "value": "",
+            "label": "Phone tel"
+        },
+        {
+            "key": "whatsapp",
+            "value": "",
+            "label": "WhatsApp"
+        },
+        {
+            "key": "address",
+            "value": "",
+            "label": "Address"
+        },
+        {
+            "key": "announcement_text",
+            "value": "Petroleu — Fuel station software for Afghanistan",
+            "label": "Announcement"
+        },
+        {
+            "key": "demo_admin_emails",
+            "value": "",
+            "label": "Inquiry emails"
+        }
+    ],
+    "seo": [
+        {
+            "path": "\/af\/en",
+            "title": "Petroleu — Petrol Pump Software Afghanistan",
+            "description": "Fuel station management software for Afghanistan — stock, nozzle sales, credit, and reports.",
+            "og_title": "Petroleu Afghanistan",
+            "og_description": "Run your fuel station with Petroleu."
+        },
+        {
+            "path": "\/af\/en\/about",
+            "title": "[Translation required] About | Petroleu",
+            "description": "Afghanistan market page — draft, translation required, noindex until published.",
+            "og_title": null,
+            "og_description": null
+        },
+        {
+            "path": "\/af\/en\/blog",
+            "title": "[Translation required] Blog | Petroleu",
+            "description": "Afghanistan market page — draft, translation required, noindex until published.",
+            "og_title": null,
+            "og_description": null
+        },
+        {
+            "path": "\/af\/en\/contact",
+            "title": "[Translation required] Contact | Petroleu",
+            "description": "Afghanistan market page — draft, translation required, noindex until published.",
+            "og_title": null,
+            "og_description": null
+        },
+        {
+            "path": "\/af\/en\/faq",
+            "title": "[Translation required] Faq | Petroleu",
+            "description": "Afghanistan market page — draft, translation required, noindex until published.",
+            "og_title": null,
+            "og_description": null
+        },
+        {
+            "path": "\/af\/en\/features",
+            "title": "[Translation required] Features | Petroleu",
+            "description": "Afghanistan market page — draft, translation required, noindex until published.",
+            "og_title": null,
+            "og_description": null
+        },
+        {
+            "path": "\/af\/en\/pricing",
+            "title": "[Translation required] Pricing | Petroleu",
+            "description": "Afghanistan market page — draft, translation required, noindex until published.",
+            "og_title": null,
+            "og_description": null
+        }
+    ],
+    "blog_categories": [],
+    "blog_posts": [],
+    "sections": [
+        {
+            "page_slug": "about",
+            "section_key": "cta",
+            "sort_order": 0,
+            "title": "Work with the Petroleu team",
+            "description": "We help fuel stations across Afghanistan run cleaner daily operations.",
+            "content": null,
+            "link_label": "Contact",
+            "image_alt": null,
+            "data": {
+                "btn1_text": "Contact",
+                "btn1_link": "\/contact",
+                "btn2_text": null,
+                "btn2_link": null
+            }
+        },
+        {
+            "page_slug": "about",
+            "section_key": "hero",
+            "sort_order": 0,
+            "title": "About Petroleu",
+            "description": "Digital Softs builds Petroleu for petrol pump owners and managers.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": "Petroleu"
+            }
+        },
+        {
+            "page_slug": "about",
+            "section_key": "mission",
+            "sort_order": 0,
+            "title": "Accuracy",
+            "description": "Reduce register mistakes with structured nozzle and stock entry.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "about",
+            "section_key": "story",
+            "sort_order": 0,
+            "title": "Our story",
+            "description": "Petroleu is built by Digital Softs for petrol pump operators who need reliable stock, sales, credit, and accounting tools.",
+            "content": "Petroleu is built by Digital Softs for petrol pump operators who need reliable stock, sales, credit, and accounting tools.",
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "about",
+            "section_key": "mission",
+            "sort_order": 1,
+            "title": "Visibility",
+            "description": "Give owners clear mobile insight into station performance.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "about",
+            "section_key": "mission",
+            "sort_order": 2,
+            "title": "Support",
+            "description": "Help teams adopt Petroleu with practical training.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "analytics",
+            "section_key": "module-card",
+            "sort_order": 0,
+            "title": "Sales Analytics",
+            "description": "Track product-wise and station-wise sales performance.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "analytics",
+            "section_key": "module-card",
+            "sort_order": 1,
+            "title": "Stock Analytics",
+            "description": "Monitor tank levels, dips, and variance trends.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "analytics",
+            "section_key": "module-card",
+            "sort_order": 2,
+            "title": "Credit Analytics",
+            "description": "See outstanding balances and recovery patterns.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "blog",
+            "section_key": "hero",
+            "sort_order": 0,
+            "title": "[Translation required] Blog",
+            "description": "Translation required — unpublished Afghanistan draft. Do not use Iranian Persian as approved Dari.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": "Petroleu Afghanistan",
+                "title_highlight": "Afghanistan",
+                "translation_required": true
+            }
+        },
+        {
+            "page_slug": "contact",
+            "section_key": "cta",
+            "sort_order": 0,
+            "title": "Prefer WhatsApp?",
+            "description": "Message our sales team for a quick response.",
+            "content": null,
+            "link_label": "WhatsApp",
+            "image_alt": null,
+            "data": {
+                "btn1_text": "WhatsApp",
+                "btn1_link": "https:\/\/wa.me\/923257865000",
+                "btn2_text": null,
+                "btn2_link": null
+            }
+        },
+        {
+            "page_slug": "contact",
+            "section_key": "hero",
+            "sort_order": 0,
+            "title": "Contact Petroleu",
+            "description": "Send a message and our team will respond within one business day.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": "Petroleu"
+            }
+        },
+        {
+            "page_slug": "faq",
+            "section_key": "faq",
+            "sort_order": 0,
+            "title": "What is Petroleu?",
+            "description": "Petroleu is petrol pump management software for fuel stations in Afghanistan.",
+            "content": "Petroleu is petrol pump management software for fuel stations in Afghanistan.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "question": "What is Petroleu?",
+                "answer": "Petroleu is petrol pump management software for fuel stations in Afghanistan."
+            }
+        },
+        {
+            "page_slug": "faq",
+            "section_key": "hero",
+            "sort_order": 0,
+            "title": "[Translation required] Faq",
+            "description": "Translation required — unpublished Afghanistan draft. Do not use Iranian Persian as approved Dari.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": "Petroleu Afghanistan",
+                "title_highlight": "Afghanistan",
+                "translation_required": true
+            }
+        },
+        {
+            "page_slug": "faq",
+            "section_key": "faq",
+            "sort_order": 1,
+            "title": "How does pricing work?",
+            "description": "Plans are available monthly and yearly. Contact sales for multi-station quotes.",
+            "content": "Plans are available monthly and yearly. Contact sales for multi-station quotes.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "question": "How does pricing work?",
+                "answer": "Plans are available monthly and yearly. Contact sales for multi-station quotes."
+            }
+        },
+        {
+            "page_slug": "faq",
+            "section_key": "faq",
+            "sort_order": 2,
+            "title": "Is training included?",
+            "description": "Yes. Setup guidance and training are part of onboarding.",
+            "content": "Yes. Setup guidance and training are part of onboarding.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "question": "Is training included?",
+                "answer": "Yes. Setup guidance and training are part of onboarding."
+            }
+        },
+        {
+            "page_slug": "faq",
+            "section_key": "faq",
+            "sort_order": 3,
+            "title": "Can I request a demo?",
+            "description": "Yes. Use the contact form or WhatsApp on the website.",
+            "content": "Yes. Use the contact form or WhatsApp on the website.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "question": "Can I request a demo?",
+                "answer": "Yes. Use the contact form or WhatsApp on the website."
+            }
+        },
+        {
+            "page_slug": "features",
+            "section_key": "cta",
+            "sort_order": 0,
+            "title": "See every module in action",
+            "description": "Request a walkthrough tailored to your station.",
+            "content": null,
+            "link_label": "Contact Us",
+            "image_alt": null,
+            "data": {
+                "btn1_text": "Contact Us",
+                "btn1_link": "\/contact",
+                "btn2_text": null,
+                "btn2_link": null
+            }
+        },
+        {
+            "page_slug": "features",
+            "section_key": "hero",
+            "sort_order": 0,
+            "title": "Everything your petrol pump needs",
+            "description": "From nozzle readings to accounts — modules built for Afghanistan fuel stations.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": "Petroleu"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "analytics-card",
+            "sort_order": 0,
+            "title": "Margin trends",
+            "description": "Track buying vs selling rates and profitability.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "faq",
+            "sort_order": 0,
+            "title": "What is Petroleu?",
+            "description": "Petroleu is petrol pump management software for fuel stations in Afghanistan — covering nozzle readings, tank stock, credit customers, accounts, and reports.",
+            "content": "Petroleu is petrol pump management software for fuel stations in Afghanistan — covering nozzle readings, tank stock, credit customers, accounts, and reports.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "question": "What is Petroleu?",
+                "answer": "Petroleu is petrol pump management software for fuel stations in Afghanistan — covering nozzle readings, tank stock, credit customers, accounts, and reports."
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "feature:card",
+            "sort_order": 0,
+            "title": "Nozzle Reading Management",
+            "description": "Record opening and closing nozzle readings, calculate fuel sale quantity, and review nozzle-wise daily sales without manual register work.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": "Core"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "hero",
+            "sort_order": 0,
+            "title": "Petrol Pump Software",
+            "description": "Run your fuel station smarter with Petroleu. Manage nozzle readings, tank stock, credit customers, daily closing, accounts, reports, and mobile monitoring from one system.",
+            "content": null,
+            "link_label": "See it in Action",
+            "image_alt": "Petroleu dashboard",
+            "data": {
+                "title_highlight": "Afghanistan",
+                "cta2_link": "\/pricing",
+                "features": [
+                    "Nozzle reading management",
+                    "Tank dipping and stock control",
+                    "Cash and credit sale tracking",
+                    "Customer ledgers and vehicle-wise billing",
+                    "Daily closing and shift reports",
+                    "Mobile owner dashboard"
+                ],
+                "badge": "Best Petrol Pump Management Software",
+                "dashboard_url": "app.petroleu.com\/dashboard",
+                "cta2_text": "View Pricing"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "how-it-works",
+            "sort_order": 0,
+            "title": "Share your station details",
+            "description": "Tell us about your pumps, tanks, and current workflow.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "step_number": 1
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "industry",
+            "sort_order": 0,
+            "title": "Retail Petrol Pumps",
+            "description": "Daily nozzle, stock, and credit tools for retail forecourts.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "logo",
+            "sort_order": 0,
+            "title": "Trusted logos",
+            "description": null,
+            "content": null,
+            "link_label": null,
+            "image_alt": "Trusted oil marketing companies",
+            "data": {
+                "name": "Trusted brands strip"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "mobile-feature",
+            "sort_order": 0,
+            "title": "Live sales snapshot",
+            "description": "See cash and credit sales without waiting for paper reports.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "stat",
+            "sort_order": 0,
+            "title": "1350+",
+            "description": "Petrol Pumps",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "value": "1350+",
+                "label": "Petrol Pumps"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "supported-brand",
+            "sort_order": 0,
+            "title": "PSO",
+            "description": null,
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "name": "PSO"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "testimonial",
+            "sort_order": 0,
+            "title": "Station Manager",
+            "description": "Urdu interface helps our attendants with nozzle entry and shift closing.",
+            "content": "Urdu interface helps our attendants with nozzle entry and shift closing.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "quote": "Urdu interface helps our attendants with nozzle entry and shift closing.",
+                "author_name": "Station Manager",
+                "author_role": "Station Manager",
+                "author_company": "Afghanistan",
+                "city": "Afghanistan",
+                "rating": 5
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "why-choose",
+            "sort_order": 0,
+            "title": "Built for Afghanistan pumps",
+            "description": "Workflows match local nozzle, dipping, and credit practices.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "analytics-card",
+            "sort_order": 1,
+            "title": "Station compare",
+            "description": "Compare outlets across your network.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "faq",
+            "sort_order": 1,
+            "title": "Who is Petroleu for?",
+            "description": "Independent pumps, dealer networks, and multi-station operators who need reliable daily closing and stock control.",
+            "content": "Independent pumps, dealer networks, and multi-station operators who need reliable daily closing and stock control.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "question": "Who is Petroleu for?",
+                "answer": "Independent pumps, dealer networks, and multi-station operators who need reliable daily closing and stock control."
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "feature:card",
+            "sort_order": 1,
+            "title": "Tank Dipping & Stock Control",
+            "description": "Track tank stock, purchases, sales, dip readings, and dip gain\/loss for petrol, diesel, HOBC, and lubricants.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": "Core"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "how-it-works",
+            "sort_order": 1,
+            "title": "We configure Petroleu",
+            "description": "Our team sets up products, tanks, users, and reporting for your site.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "step_number": 2
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "industry",
+            "sort_order": 1,
+            "title": "Dealer Networks",
+            "description": "Multi-station visibility for dealers and distributors.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "mobile-feature",
+            "sort_order": 1,
+            "title": "Stock alerts",
+            "description": "Spot low tanks before you run out.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "stat",
+            "sort_order": 1,
+            "title": "20+",
+            "description": "Years of Excellence",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "value": "20+",
+                "label": "Years of Excellence"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "supported-brand",
+            "sort_order": 1,
+            "title": "Shell",
+            "description": null,
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "name": "Shell"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "testimonial",
+            "sort_order": 1,
+            "title": "Owner",
+            "description": "Credit customers like receiving WhatsApp invoice details after fills.",
+            "content": "Credit customers like receiving WhatsApp invoice details after fills.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "quote": "Credit customers like receiving WhatsApp invoice details after fills.",
+                "author_name": "Owner",
+                "author_role": "Owner",
+                "author_company": "Afghanistan",
+                "city": "Afghanistan",
+                "rating": 5
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "why-choose",
+            "sort_order": 1,
+            "title": "Reliable daily closing",
+            "description": "Cash, credit, and stock figures stay tied together.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "analytics-card",
+            "sort_order": 2,
+            "title": "Credit recovery",
+            "description": "Focus on customers with rising outstanding balances.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "faq",
+            "sort_order": 2,
+            "title": "Does Petroleu support Urdu?",
+            "description": "Yes. Station staff can work in Urdu or English depending on your configuration.",
+            "content": "Yes. Station staff can work in Urdu or English depending on your configuration.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "question": "Does Petroleu support Urdu?",
+                "answer": "Yes. Station staff can work in Urdu or English depending on your configuration."
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "feature:card",
+            "sort_order": 2,
+            "title": "Cash & Credit Sales",
+            "description": "Separate cash sales, credit sales, card sales, and bulk sales so daily closing stays clear and easy to verify.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": null
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "how-it-works",
+            "sort_order": 2,
+            "title": "Train your staff",
+            "description": "Attendants and managers learn daily closing, dipping, and credit billing.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "step_number": 3
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "industry",
+            "sort_order": 2,
+            "title": "Fleet & Credit Customers",
+            "description": "Vehicle-wise billing and receivables tracking.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "mobile-feature",
+            "sort_order": 2,
+            "title": "Shift status",
+            "description": "Review attendant closing figures on the go.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "stat",
+            "sort_order": 2,
+            "title": "4.8",
+            "description": "Google Reviews",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "value": "4.8",
+                "label": "Google Reviews"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "supported-brand",
+            "sort_order": 2,
+            "title": "Total",
+            "description": null,
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "name": "Total"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "testimonial",
+            "sort_order": 2,
+            "title": "Operations Lead",
+            "description": "Daily closing is faster since stock and sales stay in one system.",
+            "content": "Daily closing is faster since stock and sales stay in one system.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "quote": "Daily closing is faster since stock and sales stay in one system.",
+                "author_name": "Operations Lead",
+                "author_role": "Operations Lead",
+                "author_company": "Afghanistan",
+                "city": "Afghanistan",
+                "rating": 5
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "why-choose",
+            "sort_order": 2,
+            "title": "Owner visibility",
+            "description": "Check station health from mobile without being on-site all day.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "faq",
+            "sort_order": 3,
+            "title": "How do I request a demo?",
+            "description": "Use the contact form or WhatsApp on this website and our team will schedule a walkthrough.",
+            "content": "Use the contact form or WhatsApp on this website and our team will schedule a walkthrough.",
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "question": "How do I request a demo?",
+                "answer": "Use the contact form or WhatsApp on this website and our team will schedule a walkthrough."
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "feature:card",
+            "sort_order": 3,
+            "title": "Customer Credit Management",
+            "description": "Maintain customer ledgers, vehicle-wise billing, monthly credit bills, payments, and outstanding balances.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": "Popular"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "how-it-works",
+            "sort_order": 3,
+            "title": "Go live with support",
+            "description": "Run live operations with onboarding support from Petroleu.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "step_number": 4
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "stat",
+            "sort_order": 3,
+            "title": "24\/7",
+            "description": "Support",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "value": "24\/7",
+                "label": "Support"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "supported-brand",
+            "sort_order": 3,
+            "title": "Attock",
+            "description": null,
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "name": "Attock"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "why-choose",
+            "sort_order": 3,
+            "title": "Supported onboarding",
+            "description": "Training and setup help your team start with confidence.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "home",
+            "section_key": "feature:card",
+            "sort_order": 4,
+            "title": "Daily Closing Reports",
+            "description": "Review sales, stock, cash, credit, expenses, and shift-wise closing reports from one dashboard.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": null
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "supported-brand",
+            "sort_order": 4,
+            "title": "Independent",
+            "description": null,
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "name": "Independent"
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "feature:card",
+            "sort_order": 5,
+            "title": "Accounts & Ledgers",
+            "description": "Manage cash book, ledgers, supplier payments, receivables, payables, profit\/loss, and balance sheet reports.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": null
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "feature:card",
+            "sort_order": 6,
+            "title": "Mobile Owner Dashboard",
+            "description": "Check sales, stock, cash, credit, and reports from mobile without staying at the station all day.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": null
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "feature:card",
+            "sort_order": 7,
+            "title": "Automation Station Monitoring",
+            "description": "Support for dispenser integration and ATG tank monitoring can help track live nozzle sales and tank stock.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": null
+            }
+        },
+        {
+            "page_slug": "home",
+            "section_key": "feature:card",
+            "sort_order": 8,
+            "title": "AI Reporting & Business Analysis",
+            "description": "Use smart reports to review station performance, stock movement, receivables, and business trends.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": "AI Powered"
+            }
+        },
+        {
+            "page_slug": "home-bottom",
+            "section_key": "cta",
+            "sort_order": 0,
+            "title": "Start with Petroleu today",
+            "description": "Request a demo and see daily closing, dipping, and credit tools in action.",
+            "content": null,
+            "link_label": "Get Started",
+            "image_alt": null,
+            "data": {
+                "btn1_text": "Get Started",
+                "btn1_link": "\/get-started",
+                "btn2_text": "View Pricing",
+                "btn2_link": "\/pricing"
+            }
+        },
+        {
+            "page_slug": "home-mid",
+            "section_key": "cta",
+            "sort_order": 0,
+            "title": "Ready to modernize your petrol pump?",
+            "description": "Talk to Petroleu about nozzle, stock, credit, and reporting needs.",
+            "content": null,
+            "link_label": "Contact Sales",
+            "image_alt": null,
+            "data": {
+                "btn1_text": "Contact Sales",
+                "btn1_link": "\/contact",
+                "btn2_text": "WhatsApp",
+                "btn2_link": "https:\/\/wa.me\/923257865000"
+            }
+        },
+        {
+            "page_slug": "industries",
+            "section_key": "industry-card",
+            "sort_order": 0,
+            "title": "Retail Petrol Pumps",
+            "description": "Daily nozzle, stock, and credit tools for retail forecourts.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "title": "Retail Petrol Pumps",
+                "description": "Daily nozzle, stock, and credit tools for retail forecourts."
+            }
+        },
+        {
+            "page_slug": "industries",
+            "section_key": "industry-card",
+            "sort_order": 1,
+            "title": "Dealer Networks",
+            "description": "Multi-station visibility for dealers and distributors.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "title": "Dealer Networks",
+                "description": "Multi-station visibility for dealers and distributors."
+            }
+        },
+        {
+            "page_slug": "industries",
+            "section_key": "industry-card",
+            "sort_order": 2,
+            "title": "Fleet & Credit Customers",
+            "description": "Vehicle-wise billing and receivables tracking.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "title": "Fleet & Credit Customers",
+                "description": "Vehicle-wise billing and receivables tracking."
+            }
+        },
+        {
+            "page_slug": "industries",
+            "section_key": "industry-card",
+            "sort_order": 3,
+            "title": "Wholesale & Supply",
+            "description": "Track wholesale fuel deliveries and supplier accounts.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "title": "Wholesale & Supply",
+                "description": "Track wholesale fuel deliveries and supplier accounts."
+            }
+        },
+        {
+            "page_slug": "legal",
+            "section_key": "privacy-policy",
+            "sort_order": 0,
+            "title": "Privacy Policy",
+            "description": "Privacy Policy",
+            "content": "Petroleu respects your privacy.\n\nWe collect contact details you submit through forms to respond to sales and support requests. We do not sell personal data. Contact sales@petroleu.com for privacy questions.",
+            "link_label": null,
+            "image_alt": null,
+            "data": null
+        },
+        {
+            "page_slug": "pricing",
+            "section_key": "hero",
+            "sort_order": 0,
+            "title": "[Translation required] Pricing",
+            "description": "Translation required — unpublished Afghanistan draft. Do not use Iranian Persian as approved Dari.",
+            "content": null,
+            "link_label": null,
+            "image_alt": null,
+            "data": {
+                "badge": "Petroleu Afghanistan",
+                "title_highlight": "Afghanistan",
+                "translation_required": true
+            }
+        },
+        {
+            "page_slug": "pricing",
+            "section_key": "plan",
+            "sort_order": 0,
+            "title": "Starter",
+            "description": "Perfect for single station owners",
+            "content": null,
+            "link_label": "Get Started",
+            "image_alt": null,
+            "data": {
+                "price": "4,999",
+                "price_yearly": "49,999",
+                "period": "month",
+                "is_popular": false,
+                "features": [
+                    "1 Fuel Station",
+                    "Up to 4 Nozzles",
+                    "Basic Reports",
+                    "Email Support",
+                    "Mobile App Access"
+                ]
+            }
+        },
+        {
+            "page_slug": "pricing",
+            "section_key": "plan",
+            "sort_order": 1,
+            "title": "Professional",
+            "description": "For growing fuel businesses",
+            "content": null,
+            "link_label": "Get Started",
+            "image_alt": null,
+            "data": {
+                "price": "9,999",
+                "price_yearly": "99,999",
+                "period": "month",
+                "is_popular": true,
+                "features": [
+                    "Up to 3 Stations",
+                    "Unlimited Nozzles",
+                    "Advanced Reports",
+                    "Priority Support",
+                    "WhatsApp Integration",
+                    "Credit Management",
+                    "Multi-user Access"
+                ]
+            }
+        },
+        {
+            "page_slug": "pricing",
+            "section_key": "plan",
+            "sort_order": 2,
+            "title": "Enterprise",
+            "description": "For large fuel networks",
+            "content": null,
+            "link_label": "Get Started",
+            "image_alt": null,
+            "data": {
+                "price": "Custom",
+                "price_yearly": "Custom",
+                "period": "month",
+                "is_popular": false,
+                "features": [
+                    "Unlimited Stations",
+                    "Dedicated Account Manager",
+                    "Custom Integrations",
+                    "On-site Training",
+                    "SLA Guarantee",
+                    "API Access",
+                    "White-label Option"
+                ]
+            }
+        }
+    ]
+}

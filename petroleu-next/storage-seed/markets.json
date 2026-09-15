@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "code": "pk",
+    "name": "Pakistan",
+    "default_locale": "en-PK",
+    "currency": "PKR",
+    "is_active": true,
+    "is_shared": false,
+    "phone": "0325 7865000",
+    "email": "sales@petroleu.com"
+  },
+  {
+    "id": 2,
+    "code": "af",
+    "name": "Afghanistan",
+    "default_locale": "fa-AF",
+    "currency": "AFN",
+    "is_active": true,
+    "is_shared": false
+  }
+]
