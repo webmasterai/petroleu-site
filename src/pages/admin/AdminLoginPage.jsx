@@ -17,8 +17,14 @@ export default function AdminLoginPage() {
       await adminLogin(email.trim(), password)
       navigate('/admin', { replace: true })
     } catch (err) {
+      const data = err?.response?.data
+      const fieldErrors = data?.errors
+      const firstField =
+        fieldErrors &&
+        (fieldErrors.email?.[0] || fieldErrors.password?.[0] || Object.values(fieldErrors).flat()?.[0])
       const msg =
-        err?.response?.data?.message ||
+        firstField ||
+        data?.message ||
         err?.message ||
         'Login failed. Check your credentials.'
       setError(String(msg))

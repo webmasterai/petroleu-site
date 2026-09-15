@@ -21,3 +21,9 @@ backend/database/*.sqlite
 backend/database/*.sqlite-journal
 backend/.env
 backend/public/storage
+
+# Node CMS API
+server/node_modules
+server/uploads/*
+!server/uploads/.gitkeep
+server/.env

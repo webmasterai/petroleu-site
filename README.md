@@ -11,10 +11,13 @@ Public-facing Petroleu marketing website (React + Vite) with a dedicated Laravel
 
 ## Production (Coolify / Docker)
 
-Separate containers for the Vite/React frontend and **this repo’s** Laravel CMS API.  
-Domains are configured only via Coolify env (`VITE_CMS_API_BASE_URL`, `APP_URL`, `FRONTEND_URL`).  
-This project does **not** deploy or call the original Petroleu product stack.  
-See **[docs/COOLIFY.md](docs/COOLIFY.md)**.
+### Preferred (new): one Node service
+React `dist/` + Express CMS API on one port — see **[docs/NODE_CMS_MIGRATION.md](docs/NODE_CMS_MIGRATION.md)** and `Dockerfile.node`.
+
+### Legacy (still present): split Vite nginx + Laravel
+Domains via Coolify env only. See **[docs/COOLIFY.md](docs/COOLIFY.md)**.  
+Do **not** remove `backend/` until Node cutover is verified.
+
 
 ## Frontend setup
 
