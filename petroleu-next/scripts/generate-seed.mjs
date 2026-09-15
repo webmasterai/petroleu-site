@@ -6,7 +6,6 @@ import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'fs'
 import { createRequire } from 'module'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import bcrypt from 'bcryptjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.join(__dirname, '..')
@@ -243,19 +242,8 @@ if (blogSrc) {
   }
 }
 
-const passwordHash = await bcrypt.hash('PetroleuAdmin123!', 12)
-const users = [
-  {
-    id: 1,
-    name: 'CMS Admin',
-    email: 'admin@petroleu.local',
-    passwordHash,
-    role: 'super_admin',
-    isActive: true,
-    assignedMarkets: null,
-    assignedLocales: null,
-  },
-]
+// Do not embed passwords/hashes in seed — create admin via: npm run cms:create-admin
+const users = []
 
 w('markets.json', markets)
 w('locales.json', locales)
@@ -271,3 +259,4 @@ w('inquiries.json', [])
 w('users.json', users)
 
 console.log('Seed complete → storage-seed/')
+console.log('Note: users.json is empty — run npm run cms:create-admin')
