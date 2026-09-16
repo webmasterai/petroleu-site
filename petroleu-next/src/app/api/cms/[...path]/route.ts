@@ -291,6 +291,87 @@ export async function GET(
     }
     if (resource === 'blog' && parts[2] === 'posts') return ok(await findAll('blog-posts'))
     if (resource === 'blog' && parts[2] === 'categories') return ok(await findAll('blog-categories'))
+    if (resource === 'pages') {
+      let rows = (await findAll('pages')) as Record<string, unknown>[]
+      const group = req.nextUrl.searchParams.get('group')
+      const m = req.nextUrl.searchParams.get('market')
+      const l = req.nextUrl.searchParams.get('locale')
+      const q = req.nextUrl.searchParams.get('q')
+      const status = req.nextUrl.searchParams.get('status')
+      const grouped = group === '1' || group === 'true'
+
+      if (grouped) {
+        if (m) rows = rows.filter((r) => r.market_code === m)
+        if (status) rows = rows.filter((r) => String(r.status || '') === status)
+        if (q) {
+          const term = q.toLowerCase()
+          rows = rows.filter(
+            (r) =>
+              String(r.slug || '')
+                .toLowerCase()
+                .includes(term) ||
+              String(r.title || '')
+                .toLowerCase()
+                .includes(term),
+          )
+        }
+
+        const localeOrder = ['fa-AF', 'ps-AF', 'en-AF', 'en-PK']
+        const buckets = new Map<string, Record<string, unknown>[]>()
+        for (const row of rows) {
+          const marketCode = String(row.market_code || 'shared')
+          const slug = String(row.slug || '')
+          const key = `${marketCode}:${slug}`
+          const list = buckets.get(key)
+          if (list) list.push(row)
+          else buckets.set(key, [row])
+        }
+
+        const logical = Array.from(buckets.entries())
+          .map(([logical_key, items]) => {
+            const translations = [...items].sort((a, b) => {
+              const la = String(a.locale_code || '')
+              const lb = String(b.locale_code || '')
+              const ia = localeOrder.indexOf(la)
+              const ib = localeOrder.indexOf(lb)
+              const oa = ia === -1 ? 999 : ia
+              const ob = ib === -1 ? 999 : ib
+              if (oa !== ob) return oa - ob
+              return la.localeCompare(lb)
+            })
+            const first = translations[0] || {}
+            return {
+              logical_key,
+              market_code: first.market_code,
+              slug: first.slug,
+              title: first.title,
+              template: first.template ?? null,
+              is_enabled: first.is_enabled !== false,
+              translations: translations.map((t) => ({
+                id: t.id,
+                market_code: t.market_code,
+                locale_code: t.locale_code,
+                slug: t.slug,
+                title: t.title,
+                description: t.description ?? null,
+                status: t.status,
+                translation_status: t.translation_status ?? null,
+                frontend_path: t.frontend_path ?? null,
+                template: t.template ?? null,
+                is_enabled: t.is_enabled !== false,
+                is_shared: Boolean(t.is_shared),
+              })),
+            }
+          })
+          .sort((a, b) => String(a.slug || '').localeCompare(String(b.slug || '')))
+
+        return ok(logical)
+      }
+
+      if (m) rows = rows.filter((r) => r.market_code === m)
+      if (l) rows = rows.filter((r) => r.locale_code === l)
+      return ok(rows)
+    }
     if (map[resource]) {
       let rows = (await findAll(map[resource])) as Record<string, unknown>[]
       const m = req.nextUrl.searchParams.get('market')
