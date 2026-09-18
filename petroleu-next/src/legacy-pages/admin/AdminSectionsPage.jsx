@@ -46,7 +46,7 @@ const btnDanger =
 function sectionToForm(s) {
   return {
     market_code: s.market_code ?? 'pk',
-    locale_code: s.locale_code ?? 'en',
+    locale_code: s.locale_code ?? 'en-PK',
     page_slug: s.page_slug ?? '',
     section_key: s.section_key ?? '',
     title: s.title ?? '',
@@ -173,13 +173,14 @@ export default function AdminSectionsPage() {
       const payload = { ...formToPayload(form), status: 'draft' }
       if (editingId) {
         await adminPut(`/sections/${editingId}`, payload)
-        setMessage('Draft saved')
+        setForm((prev) => ({ ...prev, status: 'draft' }))
+        setMessage('Saved as draft — publish to update the live website.')
       } else {
         const created = await adminPost('/sections', payload)
         setEditingId(created?.id ?? null)
-        setMessage('Section created as draft')
+        setForm((prev) => ({ ...prev, status: 'draft' }))
+        setMessage('Saved as draft — publish to update the live website.')
       }
-      setShowForm(false)
       await load()
     } catch (err) {
       setError(err?.message || err?.response?.data?.message || 'Save failed')
@@ -195,10 +196,10 @@ export default function AdminSectionsPage() {
       if (showForm && editingId === id) {
         const payload = { ...formToPayload(form), status: 'published' }
         await adminPut(`/sections/${id}`, payload)
+        setForm((prev) => ({ ...prev, status: 'published' }))
       }
       await adminPost(`/sections/${id}/publish`)
-      setMessage('Published')
-      setShowForm(false)
+      setMessage('Published successfully.')
       await load()
     } catch (err) {
       setError(err?.message || err?.response?.data?.message || 'Publish failed')
@@ -210,7 +211,8 @@ export default function AdminSectionsPage() {
     setMessage('')
     try {
       await adminPost(`/sections/${id}/unpublish`)
-      setMessage('Unpublished')
+      if (editingId === id) setForm((prev) => ({ ...prev, status: 'draft' }))
+      setMessage('Unpublished — section is draft and no longer live.')
       await load()
     } catch (err) {
       setError(err?.response?.data?.message || err?.message || 'Unpublish failed')
@@ -265,7 +267,10 @@ export default function AdminSectionsPage() {
         <div>
           <h1 className="text-lg font-semibold tracking-tight">Sections</h1>
           <p className="text-sm text-muted-foreground">
-            Filtered by workspace (use “Show all markets/locales” to override)
+            Filtered by workspace (use “Show all markets/locales” to override). Save stores a draft;
+            Publish is required for the live website. Homepage CTAs use page_slug{' '}
+            <code className="text-xs">home-mid</code> / <code className="text-xs">home-bottom</code>{' '}
+            (not <code className="text-xs">home</code>).
           </p>
         </div>
         <button type="button" className={btnPrimary} onClick={openCreate}>
@@ -362,14 +367,16 @@ export default function AdminSectionsPage() {
                 onChange={(e) => setField('content', e.target.value)}
               />
             </label>
-            <label className="block text-xs sm:col-span-2 lg:col-span-3">
-              <span className="text-muted-foreground">Data (JSON)</span>
+            <details className="sm:col-span-2 lg:col-span-3 rounded-md border border-border p-2">
+              <summary className="cursor-pointer text-xs text-muted-foreground">
+                Advanced only — raw data JSON (prefer Pages → Edit page for normal content/images)
+              </summary>
               <textarea
-                className={fieldCls + ' mt-1 min-h-[100px] font-mono text-xs'}
+                className={fieldCls + ' mt-2 min-h-[100px] font-mono text-xs'}
                 value={form.data}
                 onChange={(e) => setField('data', e.target.value)}
               />
-            </label>
+            </details>
             <label className="flex items-center gap-2 text-xs mt-2">
               <input
                 type="checkbox"
@@ -392,10 +399,14 @@ export default function AdminSectionsPage() {
                 className={fieldCls + ' mt-1'}
                 value={form.status}
                 onChange={(e) => setField('status', e.target.value)}
+                disabled
               >
-                <option value="draft">draft</option>
-                <option value="published">published</option>
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
               </select>
+              <span className="mt-1 block text-[11px] text-muted-foreground">
+                Use Save draft / Publish / Unpublish — do not edit status directly.
+              </span>
             </label>
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -494,7 +505,18 @@ export default function AdminSectionsPage() {
                   <td className="px-2 py-1.5">{row.page_slug}</td>
                   <td className="px-2 py-1.5">{row.market_code}</td>
                   <td className="px-2 py-1.5">{row.locale_code}</td>
-                  <td className="px-2 py-1.5">{row.status}</td>
+                  <td className="px-2 py-1.5">
+                    <span
+                      className={
+                        row.status === 'published'
+                          ? 'rounded bg-emerald-100 px-1.5 py-0.5 text-emerald-800'
+                          : 'rounded bg-amber-100 px-1.5 py-0.5 text-amber-900'
+                      }
+                    >
+                      {row.status === 'published' ? 'Published' : 'Draft'}
+                      {row.is_enabled === false ? ' (disabled)' : ''}
+                    </span>
+                  </td>
                   <td className="px-2 py-1.5 max-w-[160px] truncate">{row.title || '—'}</td>
                   <td className="px-2 py-1.5">
                     <div className="flex flex-wrap gap-1">

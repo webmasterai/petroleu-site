@@ -1,10 +1,14 @@
 import { websiteContent } from '../../content/websiteContent'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
+import { useSectionHeading } from '../../hooks/useSectionHeading'
 
 export function StatsSection() {
   const { market, isAfghanistan } = useMarketLocale()
   const { data } = useCmsQuery(['stats'], '/stats')
+  const logosHeading = useSectionHeading('logos', {
+    title: "Trusted by Pakistan's leading fuel networks",
+  })
 
   const stats = Array.isArray(data) && data.length
     ? data.map((s) => ({
@@ -27,6 +31,11 @@ export function StatsSection() {
       (Array.isArray(logosData) && logosData[0]?.image_url) ||
       websiteContent.trustedLogosImage
 
+  const logosCaption =
+    logosHeading.title ||
+    logosHeading.subtitle ||
+    (isAfghanistan ? '' : "Trusted by Pakistan's leading fuel networks")
+
   if (isAfghanistan && stats.length === 0 && !trustedLogosImage) return null
 
   return (
@@ -45,16 +54,16 @@ export function StatsSection() {
 
         {trustedLogosImage ? (
           <div className={stats.length ? 'mt-12' : ''}>
-            {!isAfghanistan ? (
+            {logosCaption ? (
               <p className="text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Trusted by Pakistan&apos;s leading fuel networks
+                {logosCaption}
               </p>
             ) : null}
             <div className="mt-6 flex justify-center items-center px-4 sm:px-0">
               <div className="w-full max-w-3xl overflow-hidden rounded-xl border border-orange-100 bg-white shadow-sm">
                 <img
                   src={trustedLogosImage}
-                  alt="Petroleu"
+                  alt={logosHeading.imageAlt || 'Petroleu'}
                   className="h-auto w-full object-contain opacity-80"
                   loading="lazy"
                 />

@@ -35,14 +35,17 @@ export function FaqSection({ staticOnly = false } = {}) {
       : market === 'af'
         ? []
         : websiteContent.faq
-  const faqs = [...baseFaqs]
-  if (!staticOnly && market !== 'af') {
-    for (const faq of HOMEPAGE_FAQ_APPEND) {
-      if (!faqs.some((item) => item.question === faq.question)) {
-        faqs.push(faq)
-      }
-    }
-  }
+  // When CMS FAQs exist, do not append hardcoded extras (one source of truth).
+  const faqs =
+    !staticOnly && market !== 'af' && !(normalized && normalized.length)
+      ? (() => {
+          const next = [...baseFaqs]
+          for (const faq of HOMEPAGE_FAQ_APPEND) {
+            if (!next.some((item) => item.question === faq.question)) next.push(faq)
+          }
+          return next
+        })()
+      : baseFaqs
 
   if (market === 'af' && faqs.length === 0) return null
 

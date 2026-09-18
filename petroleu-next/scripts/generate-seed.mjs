@@ -177,9 +177,20 @@ addSection({
 })
 
 const pages = [
-  { id: 1, market_code: 'pk', locale_code: 'en-PK', slug: 'home', title: 'Home', status: 'published', is_enabled: true },
-  { id: 2, market_code: 'pk', locale_code: 'en-PK', slug: 'pricing', title: 'Pricing', status: 'published', is_enabled: true },
-  { id: 3, market_code: 'af', locale_code: 'fa-AF', slug: 'home', title: 'خانه', status: 'published', is_enabled: true },
+  { id: 1, market_code: 'pk', locale_code: 'en-PK', slug: 'home', title: 'Home', description: 'Petroleu homepage', frontend_path: '/', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 2, market_code: 'pk', locale_code: 'en-PK', slug: 'pricing', title: 'Pricing', description: 'Petroleu pricing', frontend_path: '/pricing', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 3, market_code: 'pk', locale_code: 'en-PK', slug: 'about', title: 'About', description: 'About Petroleu', frontend_path: '/about', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 4, market_code: 'pk', locale_code: 'en-PK', slug: 'analytics', title: 'Analytics', description: 'Analytics and reports', frontend_path: '/analytics', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 5, market_code: 'pk', locale_code: 'en-PK', slug: 'blog', title: 'Blog', description: 'Petroleu blog', frontend_path: '/blog', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 6, market_code: 'pk', locale_code: 'en-PK', slug: 'contact', title: 'Contact', description: 'Contact Petroleu', frontend_path: '/contact', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 7, market_code: 'pk', locale_code: 'en-PK', slug: 'developers', title: 'Developers', description: 'Developer docs and API', frontend_path: '/developers', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 8, market_code: 'pk', locale_code: 'en-PK', slug: 'docs', title: 'Docs', description: 'Documentation', frontend_path: '/docs', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 9, market_code: 'pk', locale_code: 'en-PK', slug: 'faq', title: 'FAQ', description: 'Frequently asked questions', frontend_path: '/faq', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 10, market_code: 'pk', locale_code: 'en-PK', slug: 'features', title: 'Features', description: 'Petroleu features', frontend_path: '/features', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 11, market_code: 'pk', locale_code: 'en-PK', slug: 'industries', title: 'Industries', description: 'Industries we serve', frontend_path: '/industries', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 12, market_code: 'pk', locale_code: 'en-PK', slug: 'legal', title: 'Legal', description: 'Privacy and legal', frontend_path: '/privacy', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 13, market_code: 'pk', locale_code: 'en-PK', slug: 'product-reports', title: 'Product Reports', description: 'Product reports', frontend_path: '/product/reports', status: 'published', is_enabled: true, translation_status: 'ready' },
+  { id: 14, market_code: 'af', locale_code: 'fa-AF', slug: 'home', title: 'خانه', status: 'published', is_enabled: true },
 ]
 
 const settings = [

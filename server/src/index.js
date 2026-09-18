@@ -39,6 +39,10 @@ if (config.serveStatic) {
       if (req.path.startsWith('/api') || req.path.startsWith('/uploads') || req.path.startsWith('/storage')) {
         return next()
       }
+      // Never SPA-fallback static assets (missing file → 404, not index.html as text/css|js)
+      if (/\.(?:js|mjs|css|map|png|jpe?g|gif|svg|webp|ico|woff2?|ttf|eot|json|txt|xml|webmanifest)$/i.test(req.path)) {
+        return res.status(404).end()
+      }
       res.sendFile(path.join(dist, 'index.html'))
     })
   }

@@ -17,8 +17,19 @@ export function HeroSection() {
   const titleHighlight = cms?.title_highlight ?? cms?.titleHighlight ?? fallback?.titleHighlight ?? ''
   const description = cms?.subheading ?? cms?.description ?? fallback?.description ?? ''
   const secondaryButton =
-    cms?.cta2_text ?? cms?.secondary_button ?? fallback?.secondaryButton ?? copy.view_pricing ?? ''
-  const primaryLabel = cms?.cta_text ?? cms?.primary_button ?? copy.see_demo ?? ''
+    cms?.cta2_text ??
+    cms?.secondary_button ??
+    cms?.secondaryButton ??
+    fallback?.secondaryButton ??
+    copy.view_pricing ??
+    ''
+  const primaryLabel =
+    cms?.cta_text ??
+    cms?.primary_button ??
+    cms?.primaryButton ??
+    cms?.link_label ??
+    copy.see_demo ??
+    ''
   const dashboardImageUrl =
     cms?.image_url ?? cms?.dashboard_image_url ?? cms?.dashboardImageUrl ?? fallback?.dashboardImageUrl
   const dashboardUrl = cms?.dashboard_url ?? cms?.dashboardUrl ?? fallback?.dashboardUrl

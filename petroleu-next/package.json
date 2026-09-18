@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -H 0.0.0.0 -p 3000",
+    "start": "node scripts/run-standalone.mjs",
     "lint": "next lint",
     "cms:seed": "node scripts/generate-seed.mjs",
     "cms:seed-af": "node scripts/seed-afghanistan.mjs",

@@ -3,6 +3,7 @@ import { Quote, Star, MapPin, ChevronLeft, ChevronRight } from 'lucide-react'
 import { websiteContent } from '../../content/websiteContent'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
+import { useSectionHeading } from '../../hooks/useSectionHeading'
 
 const GoogleGlyph = (props) => (
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -41,8 +42,12 @@ function StarRating({ rating }) {
 }
 
 export function TestimonialsSection() {
-  const { market } = useMarketLocale()
+  const { market, isAfghanistan } = useMarketLocale()
   const { data } = useCmsQuery(['testimonials'], '/testimonials')
+  const heading = useSectionHeading('testimonials', {
+    title: 'Trusted by Fuel Station Owners Across Pakistan',
+    subtitle: 'Join thousands of satisfied customers from Karachi to Peshawar, Lahore to Quetta',
+  })
 
   const reviews =
     Array.isArray(data) && data.length
@@ -58,8 +63,16 @@ export function TestimonialsSection() {
         ? []
         : websiteContent.testimonials.reviews
 
-  const rating = websiteContent.testimonials.rating
-  const reviewCount = websiteContent.testimonials.reviewCount
+  const rating =
+    (Array.isArray(data) && data[0]?.aggregate_rating) ||
+    heading.raw?.rating ||
+    websiteContent.testimonials.rating
+  const reviewCount =
+    (Array.isArray(data) && data[0]?.review_count) ||
+    heading.raw?.review_count ||
+    websiteContent.testimonials.reviewCount
+  const googleReviewUrl =
+    heading.raw?.link_url || heading.ctaUrl || websiteContent.brand.googleReviewUrl
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [slidesPerView, setSlidesPerView] = useState(3)
@@ -124,33 +137,45 @@ export function TestimonialsSection() {
     <section className="bg-muted/30 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-3 rounded-full bg-card border border-border px-6 py-3 shadow-sm mb-6">
-            <GoogleGlyph className="h-8 w-8" />
-            <span className="text-lg font-semibold text-foreground">Google Reviews</span>
-          </div>
+          {!isAfghanistan ? (
+            <div className="inline-flex items-center gap-3 rounded-full bg-card border border-border px-6 py-3 shadow-sm mb-6">
+              <GoogleGlyph className="h-8 w-8" />
+              <span className="text-lg font-semibold text-foreground">Google Reviews</span>
+            </div>
+          ) : heading.eyebrow ? (
+            <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-primary">
+              {heading.eyebrow}
+            </p>
+          ) : null}
 
-          <div className="flex flex-col items-center gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-5xl font-bold text-foreground">{rating}</span>
-              <div className="flex flex-col items-start">
-                <div className="flex items-center gap-0.5">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
-                  ))}
+          {!isAfghanistan ? (
+            <div className="flex flex-col items-center gap-2">
+              <div className="flex items-center gap-2">
+                <span className="text-5xl font-bold text-foreground">{rating}</span>
+                <div className="flex flex-col items-start">
+                  <div className="flex items-center gap-0.5">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <span className="text-sm text-muted-foreground">
+                    Based on {reviewCount} reviews
+                  </span>
                 </div>
-                <span className="text-sm text-muted-foreground">
-                  Based on {reviewCount} reviews
-                </span>
               </div>
             </div>
-          </div>
+          ) : null}
 
-          <h2 className="mt-6 text-balance text-3xl font-bold text-foreground sm:text-4xl">
-            Trusted by Fuel Station Owners Across Pakistan
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-pretty text-lg text-muted-foreground">
-            Join thousands of satisfied customers from Karachi to Peshawar, Lahore to Quetta
-          </p>
+          {heading.title ? (
+            <h2 className="mt-6 text-balance text-3xl font-bold text-foreground sm:text-4xl">
+              {heading.title}
+            </h2>
+          ) : null}
+          {heading.subtitle ? (
+            <p className="mx-auto mt-4 max-w-2xl text-pretty text-lg text-muted-foreground">
+              {heading.subtitle}
+            </p>
+          ) : null}
         </div>
 
         <div className="relative flex items-center gap-6">
@@ -237,17 +262,19 @@ export function TestimonialsSection() {
           )}
         </div>
 
-        <div className="mt-12 text-center">
-          <a
-            href={websiteContent.brand.googleReviewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-muted transition-colors"
-          >
-            <GoogleGlyph className="h-5 w-5" />
-            View All Google Reviews
-          </a>
-        </div>
+        {!isAfghanistan && googleReviewUrl ? (
+          <div className="mt-12 text-center">
+            <a
+              href={googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-muted transition-colors"
+            >
+              <GoogleGlyph className="h-5 w-5" />
+              View All Google Reviews
+            </a>
+          </div>
+        ) : null}
       </div>
     </section>
   )

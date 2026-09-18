@@ -2,8 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-// Dev proxy target: Node CMS (3040) by default; set VITE_DEV_API_PROXY=http://127.0.0.1:8001 for Laravel
-const apiProxyTarget = process.env.VITE_DEV_API_PROXY || 'http://127.0.0.1:3040'
+// Dev proxy target: Next.js JSON CMS (:3000). Override with VITE_DEV_API_PROXY if needed.
+const apiProxyTarget = process.env.VITE_DEV_API_PROXY || 'http://127.0.0.1:3000'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],

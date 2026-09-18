@@ -18,13 +18,17 @@ const btnDanger =
 
 const EMPTY = {
   market_code: 'pk',
-  locale_code: 'en',
+  locale_code: 'en-PK',
   slug: '',
   title: '',
   excerpt: '',
   content: '',
   image_url: '',
   image_alt: '',
+  media_type: 'article',
+  video_url: '',
+  duration: '',
+  show_on_homepage: false,
   category_id: '',
   author: '',
   sort_order: 0,
@@ -80,13 +84,17 @@ export default function AdminBlogPage() {
     setEditingId(row.id)
     setForm({
       market_code: row.market_code || 'pk',
-      locale_code: row.locale_code || 'en',
+      locale_code: row.locale_code || 'en-PK',
       slug: row.slug || '',
       title: row.title || '',
       excerpt: row.excerpt || '',
       content: row.content || '',
       image_url: row.image_url || '',
       image_alt: row.image_alt || '',
+      media_type: row.media_type || (row.video_url ? 'video' : 'article'),
+      video_url: row.video_url || '',
+      duration: row.duration || '',
+      show_on_homepage: Boolean(row.show_on_homepage),
       category_id: row.category_id ?? '',
       author: row.author || '',
       sort_order: row.sort_order ?? 0,
@@ -113,6 +121,10 @@ export default function AdminBlogPage() {
         content: form.content || null,
         image_url: form.image_url || null,
         image_alt: form.image_alt || null,
+        media_type: form.media_type || 'article',
+        video_url: form.media_type === 'video' ? form.video_url || null : null,
+        duration: form.duration || null,
+        show_on_homepage: Boolean(form.show_on_homepage),
         category_id: form.category_id === '' ? null : Number(form.category_id),
         author: form.author || null,
         sort_order: Number(form.sort_order) || 0,
@@ -258,7 +270,18 @@ export default function AdminBlogPage() {
               </select>
             </label>
             <label className="block text-xs">
-              <span className="text-muted-foreground">Image URL</span>
+              <span className="text-muted-foreground">Type</span>
+              <select
+                className={fieldCls + ' mt-1'}
+                value={form.media_type}
+                onChange={(e) => setForm((f) => ({ ...f, media_type: e.target.value }))}
+              >
+                <option value="article">Article (image)</option>
+                <option value="video">Video</option>
+              </select>
+            </label>
+            <label className="block text-xs">
+              <span className="text-muted-foreground">Image URL (thumbnail / cover)</span>
               <input
                 className={fieldCls + ' mt-1'}
                 value={form.image_url}
@@ -272,6 +295,37 @@ export default function AdminBlogPage() {
                 value={form.image_alt}
                 onChange={(e) => setForm((f) => ({ ...f, image_alt: e.target.value }))}
               />
+            </label>
+            {form.media_type === 'video' ? (
+              <>
+                <label className="block text-xs sm:col-span-2">
+                  <span className="text-muted-foreground">Video URL (YouTube / MP4 / embed)</span>
+                  <input
+                    className={fieldCls + ' mt-1'}
+                    required
+                    value={form.video_url}
+                    onChange={(e) => setForm((f) => ({ ...f, video_url: e.target.value }))}
+                    placeholder="https://www.youtube.com/watch?v=... or /uploads/video.mp4"
+                  />
+                </label>
+                <label className="block text-xs">
+                  <span className="text-muted-foreground">Duration (optional)</span>
+                  <input
+                    className={fieldCls + ' mt-1'}
+                    value={form.duration}
+                    onChange={(e) => setForm((f) => ({ ...f, duration: e.target.value }))}
+                    placeholder="3:45"
+                  />
+                </label>
+              </>
+            ) : null}
+            <label className="flex items-center gap-2 text-xs mt-5">
+              <input
+                type="checkbox"
+                checked={form.show_on_homepage}
+                onChange={(e) => setForm((f) => ({ ...f, show_on_homepage: e.target.checked }))}
+              />
+              Show on homepage
             </label>
             <label className="block text-xs sm:col-span-2 lg:col-span-3">
               <span className="text-muted-foreground">Excerpt</span>

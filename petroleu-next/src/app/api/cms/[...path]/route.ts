@@ -13,13 +13,24 @@ import {
 } from '@/lib/auth/session'
 
 export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
+function withCmsCacheHeaders(res: NextResponse) {
+  // Public + admin CMS JSON must reflect Publish immediately (no Next/CDN stale HTML/JSON).
+  res.headers.set('Cache-Control', 'private, no-store, must-revalidate')
+  return res
+}
 
 function ok(data: unknown = null, message = 'OK', status = 200) {
-  return NextResponse.json({ success: true, message, data }, { status })
+  return withCmsCacheHeaders(
+    NextResponse.json({ success: true, message, data }, { status }),
+  )
 }
 
 function fail(message: string, status = 400, errors: unknown = null) {
-  return NextResponse.json({ success: false, message, errors, data: null }, { status })
+  return withCmsCacheHeaders(
+    NextResponse.json({ success: false, message, errors, data: null }, { status }),
+  )
 }
 
 type Section = {
@@ -372,12 +383,31 @@ export async function GET(
       if (l) rows = rows.filter((r) => r.locale_code === l)
       return ok(rows)
     }
+    if (resource === 'sections' && parts[2] && parts[3] === 'preview') {
+      const rows = await findAll<Section>('sections')
+      const row = rows.find((r) => String(r.id) === String(parts[2]))
+      if (!row) return fail('Not found', 404)
+      return ok({
+        ...row,
+        public_payload: sectionData(row),
+        note:
+          row.status === 'published' && row.is_enabled !== false
+            ? 'This row is live on the public API for its market/locale.'
+            : 'Draft / disabled — not served by the public API until published and enabled.',
+      })
+    }
     if (map[resource]) {
       let rows = (await findAll(map[resource])) as Record<string, unknown>[]
       const m = req.nextUrl.searchParams.get('market')
       const l = req.nextUrl.searchParams.get('locale')
       if (m) rows = rows.filter((r) => r.market_code === m)
       if (l) rows = rows.filter((r) => r.locale_code === l)
+      if (resource === 'sections') {
+        const page = req.nextUrl.searchParams.get('page')
+        const status = req.nextUrl.searchParams.get('status')
+        if (page) rows = rows.filter((r) => String(r.page_slug || '') === page)
+        if (status) rows = rows.filter((r) => String(r.status || '') === status)
+      }
       if (resource === 'users') {
         rows = rows.map((row) => {
           const { passwordHash, ...rest } = row
@@ -604,21 +634,54 @@ export async function POST(
     const row = await createRow(file, body as never)
     return ok(row, 'Created', 201)
   }
-  if (collectionMap[resource]) {
-    const row = await createRow(collectionMap[resource], body as never)
-    return ok(row, 'Created', 201)
-  }
 
-  // section publish helpers
+  // Section helpers MUST run before createRow — otherwise /sections/:id/publish creates junk rows.
+  if (resource === 'sections' && path[2] === 'reorder') {
+    const items = Array.isArray(body.items) ? (body.items as { id?: unknown; sort_order?: unknown }[]) : []
+    if (!items.length) return fail('items required', 422)
+    const rows = await findAll<Section>('sections')
+    const byId = new Map(rows.map((r) => [String(r.id), r]))
+    for (const item of items) {
+      const row = byId.get(String(item.id))
+      if (!row) continue
+      row.sort_order = Number(item.sort_order) || 0
+    }
+    await replaceAll('sections', rows)
+    return ok({ updated: items.length }, 'Reordered')
+  }
   if (resource === 'sections' && path[3] === 'publish') {
     const id = path[2]
-    const row = await updateRow('sections', id, { status: 'published', published_at: new Date().toISOString() })
-    return ok(row)
+    const row = await updateRow('sections', id, {
+      status: 'published',
+      published_at: new Date().toISOString(),
+    })
+    return row ? ok(row, 'Published successfully.') : fail('Not found', 404)
   }
   if (resource === 'sections' && path[3] === 'unpublish') {
     const id = path[2]
-    const row = await updateRow('sections', id, { status: 'draft' })
-    return ok(row)
+    const row = await updateRow('sections', id, { status: 'draft', published_at: null })
+    return row ? ok(row, 'Unpublished') : fail('Not found', 404)
+  }
+  if (resource === 'sections' && path[3] === 'duplicate') {
+    const id = path[2]
+    const rows = await findAll<Section>('sections')
+    const source = rows.find((r) => String(r.id) === String(id))
+    if (!source) return fail('Not found', 404)
+    const { id: _omit, ...rest } = source
+    void _omit
+    const row = await createRow('sections', {
+      ...rest,
+      title: source.title ? `${source.title} (copy)` : source.title,
+      status: 'draft',
+      published_at: null,
+    } as never)
+    return ok(row, 'Duplicated as draft', 201)
+  }
+
+  // Create only at collection root (e.g. POST /admin/sections) — never for /:id/* actions.
+  if (collectionMap[resource] && !path[2]) {
+    const row = await createRow(collectionMap[resource], body as never)
+    return ok(row, 'Created', 201)
   }
 
   return fail('Not found', 404)
@@ -678,7 +741,14 @@ export async function PUT(
     })
   }
   if (map[resource] && id) {
-    const row = await updateRow(map[resource], id, body)
+    const patch = { ...body }
+    if (patch.status === 'published' && !patch.published_at) {
+      patch.published_at = new Date().toISOString()
+    }
+    if (patch.status === 'draft' && patch.published_at === undefined) {
+      patch.published_at = null
+    }
+    const row = await updateRow(map[resource], id, patch)
     return row ? ok(row) : fail('Not found', 404)
   }
   return fail('Not found', 404)

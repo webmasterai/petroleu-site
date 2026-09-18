@@ -6,7 +6,10 @@
     "slug": "home",
     "title": "Home",
     "status": "published",
-    "is_enabled": true
+    "is_enabled": true,
+    "description": "Petroleu homepage",
+    "frontend_path": "/",
+    "translation_status": "ready"
   },
   {
     "id": 2,
@@ -15,7 +18,10 @@
     "slug": "pricing",
     "title": "Pricing",
     "status": "published",
-    "is_enabled": true
+    "is_enabled": true,
+    "description": "Petroleu pricing",
+    "frontend_path": "/pricing",
+    "translation_status": "ready"
   },
   {
     "id": 3,
@@ -484,5 +490,137 @@
     "status": "published",
     "is_enabled": true,
     "translation_status": "needs_review"
+  },
+  {
+    "id": 42,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "about",
+    "title": "About",
+    "description": "About Petroleu",
+    "frontend_path": "/about",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
+  },
+  {
+    "id": 43,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "analytics",
+    "title": "Analytics",
+    "description": "Analytics and reports",
+    "frontend_path": "/analytics",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
+  },
+  {
+    "id": 44,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "blog",
+    "title": "Blog",
+    "description": "Petroleu blog",
+    "frontend_path": "/blog",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
+  },
+  {
+    "id": 45,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "contact",
+    "title": "Contact",
+    "description": "Contact Petroleu",
+    "frontend_path": "/contact",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
+  },
+  {
+    "id": 46,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "developers",
+    "title": "Developers",
+    "description": "Developer docs and API",
+    "frontend_path": "/developers",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
+  },
+  {
+    "id": 47,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "docs",
+    "title": "Docs",
+    "description": "Documentation",
+    "frontend_path": "/docs",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
+  },
+  {
+    "id": 48,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "faq",
+    "title": "FAQ",
+    "description": "Frequently asked questions",
+    "frontend_path": "/faq",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
+  },
+  {
+    "id": 49,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "features",
+    "title": "Features",
+    "description": "Petroleu features",
+    "frontend_path": "/features",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
+  },
+  {
+    "id": 50,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "industries",
+    "title": "Industries",
+    "description": "Industries we serve",
+    "frontend_path": "/industries",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
+  },
+  {
+    "id": 51,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "legal",
+    "title": "Legal",
+    "description": "Privacy and legal",
+    "frontend_path": "/privacy",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
+  },
+  {
+    "id": 52,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "slug": "product-reports",
+    "title": "Product Reports",
+    "description": "Product reports",
+    "frontend_path": "/product/reports",
+    "status": "published",
+    "is_enabled": true,
+    "translation_status": "ready"
   }
 ]
