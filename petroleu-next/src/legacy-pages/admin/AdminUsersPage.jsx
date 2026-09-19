@@ -8,12 +8,9 @@ function asList(res) {
 }
 
 const ROLES = ['super_admin', 'administrator', 'editor', 'translator', 'viewer']
-const fieldCls =
-  'w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring'
-const btnPrimary =
-  'rounded-md bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50'
-const btnOutline =
-  'rounded-md border border-border bg-card px-2.5 py-1.5 text-xs hover:bg-muted disabled:opacity-50'
+const fieldCls = 'admin-input'
+const btnPrimary = 'admin-btn-primary text-xs'
+const btnOutline = 'admin-btn-secondary text-xs'
 
 const EMPTY = {
   name: '',
@@ -144,7 +141,7 @@ export default function AdminUsersPage() {
       {loading ? <p className="mt-4 text-sm text-muted-foreground">Loading…</p> : null}
 
       {!loading ? (
-        <div className="mt-4 overflow-x-auto rounded-lg border border-border">
+        <div className="mt-4 overflow-x-auto rounded-2xl border border-black/[0.06] bg-white shadow-[0_8px_24px_rgb(15_23_42/0.04)]">
           <table className="min-w-full text-sm">
             <thead className="bg-muted/50 text-left text-xs uppercase tracking-wide text-muted-foreground">
               <tr>

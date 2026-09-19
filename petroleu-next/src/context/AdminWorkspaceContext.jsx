@@ -137,12 +137,12 @@ export function AdminWorkspaceBar({ pagePath = '', sectionAnchor = '' }) {
   }
 
   return (
-    <div className="mb-4 flex min-w-0 flex-col gap-3 rounded-lg border border-border bg-muted/40 px-3 py-2 text-sm sm:flex-row sm:flex-wrap sm:items-center">
-      <span className="font-semibold text-foreground">{workspaceLabel}</span>
-      <label className="flex items-center gap-1.5">
-        <span className="text-muted-foreground">Market</span>
+    <div className="admin-toolbar mb-5">
+      <span className="text-sm font-semibold text-foreground">{workspaceLabel}</span>
+      <label className="flex min-w-0 items-center gap-2 text-sm">
+        <span className="shrink-0 text-muted-foreground">Market</span>
         <select
-          className="rounded-md border border-border bg-background px-2 py-1"
+          className="admin-input min-w-0 flex-1 sm:w-40"
           value={market}
           onChange={(e) => setMarket(e.target.value)}
         >
@@ -151,10 +151,10 @@ export function AdminWorkspaceBar({ pagePath = '', sectionAnchor = '' }) {
           <option value="shared">Shared</option>
         </select>
       </label>
-      <label className="flex items-center gap-1.5">
-        <span className="text-muted-foreground">Locale</span>
+      <label className="flex min-w-0 items-center gap-2 text-sm">
+        <span className="shrink-0 text-muted-foreground">Locale</span>
         <select
-          className="rounded-md border border-border bg-background px-2 py-1"
+          className="admin-input min-w-0 flex-1 sm:w-44"
           value={locale}
           onChange={(e) => setLocale(e.target.value)}
         >
@@ -165,17 +165,17 @@ export function AdminWorkspaceBar({ pagePath = '', sectionAnchor = '' }) {
           ))}
         </select>
       </label>
-      <label className="flex items-center gap-1.5 text-muted-foreground">
-        <input type="checkbox" checked={showAll} onChange={(e) => setShowAll(e.target.checked)} />
-        Show all markets/locales
+      <label className="flex items-center gap-2 text-sm text-muted-foreground">
+        <input
+          type="checkbox"
+          className="h-4 w-4 accent-primary"
+          checked={showAll}
+          onChange={(e) => setShowAll(e.target.checked)}
+        />
+        Show all
       </label>
-      <a
-        className="inline-flex items-center gap-1 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90"
-        href={href}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Preview Website ↗
+      <a className="admin-btn-primary ms-auto text-xs" href={href} target="_blank" rel="noreferrer">
+        Preview ↗
       </a>
     </div>
   )

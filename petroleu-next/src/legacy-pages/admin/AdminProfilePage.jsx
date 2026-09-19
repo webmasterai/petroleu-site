@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import { adminPost } from '../../services/cmsAdminApi'
 
-const fieldCls =
-  'w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring'
-const btnPrimary =
-  'rounded-md bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50'
+const fieldCls = 'admin-input'
+const btnPrimary = 'admin-btn-primary text-xs'
 
 export default function AdminProfilePage() {
   const [currentPassword, setCurrentPassword] = useState('')

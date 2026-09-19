@@ -8,14 +8,10 @@ function asList(res) {
   return []
 }
 
-const fieldCls =
-  'w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring'
-const btnPrimary =
-  'rounded-md bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50'
-const btnOutline =
-  'rounded-md border border-border bg-card px-2.5 py-1.5 text-xs hover:bg-muted disabled:opacity-50'
-const btnDanger =
-  'rounded-md border border-destructive/40 text-destructive px-2.5 py-1.5 text-xs hover:bg-destructive/10 disabled:opacity-50'
+const fieldCls = 'admin-input'
+const btnPrimary = 'admin-btn-primary text-xs'
+const btnOutline = 'admin-btn-secondary text-xs'
+const btnDanger = 'rounded-lg border border-destructive/30 px-3 py-1.5 text-xs font-semibold text-destructive hover:bg-destructive/5 disabled:opacity-50'
 
 export default function AdminMediaPage() {
   const { market } = useAdminWorkspace()

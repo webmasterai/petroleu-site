@@ -148,62 +148,62 @@ export default function AdminPricingPlansPage() {
   }
 
   return (
-    <div className="min-w-0">
+    <div className="min-w-0 space-y-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-lg font-semibold tracking-tight">Pricing plans</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Live website plans for this market/locale. Publish happens immediately.
+          <p className="max-w-xl text-sm text-muted-foreground">
+            Live website plans for this market/locale. Changes publish immediately.
           </p>
         </div>
-        <button
-          type="button"
-          onClick={openCreate}
-          className="rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground"
-        >
+        <button type="button" onClick={openCreate} className="admin-btn-primary">
           Add plan
         </button>
       </div>
 
-      {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
+      {error ? (
+        <p className="rounded-lg border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+          {error}
+        </p>
+      ) : null}
 
       {open ? (
         <form
           onSubmit={save}
-          className="mt-4 space-y-3 rounded-lg border border-border bg-card p-4"
+          className="space-y-4 rounded-2xl border border-black/[0.06] bg-white p-5 shadow-[0_8px_24px_rgb(15_23_42/0.04)]"
         >
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             <label className="block text-sm">
-              <span className="mb-1 block text-xs font-medium">Plan name</span>
+              <span className="mb-1.5 block text-sm font-medium">Plan name</span>
               <input
                 required
-                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                className="admin-input"
                 value={form.name}
                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               />
             </label>
             <label className="block text-sm">
-              <span className="mb-1 block text-xs font-medium">Monthly price</span>
+              <span className="mb-1.5 block text-sm font-medium">Monthly price</span>
               <input
                 required
-                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                className="admin-input"
                 value={form.price}
                 onChange={(e) => setForm((f) => ({ ...f, price: e.target.value }))}
                 placeholder="1999 or call for special prices"
               />
             </label>
             <label className="block text-sm">
-              <span className="mb-1 block text-xs font-medium">Yearly price</span>
+              <span className="mb-1.5 block text-sm font-medium">Yearly price</span>
               <input
-                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                className="admin-input"
                 value={form.price_yearly}
                 onChange={(e) => setForm((f) => ({ ...f, price_yearly: e.target.value }))}
                 placeholder="19990"
               />
             </label>
-            <label className="flex items-center gap-2 pt-6 text-sm">
+            <label className="flex items-center gap-2 pt-7 text-sm font-medium">
               <input
                 type="checkbox"
+                className="h-4 w-4 accent-primary"
                 checked={form.is_popular}
                 onChange={(e) => setForm((f) => ({ ...f, is_popular: e.target.checked }))}
               />
@@ -211,93 +211,85 @@ export default function AdminPricingPlansPage() {
             </label>
           </div>
           <label className="block text-sm">
-            <span className="mb-1 block text-xs font-medium">Description</span>
+            <span className="mb-1.5 block text-sm font-medium">Description</span>
             <textarea
-              className="min-h-20 w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+              className="admin-input min-h-24"
               value={form.description}
               onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
             />
           </label>
           <label className="block text-sm">
-            <span className="mb-1 block text-xs font-medium">Features (one per line, prefix with “- ” to exclude)</span>
+            <span className="mb-1.5 block text-sm font-medium">
+              Features (one per line, prefix with “- ” to exclude)
+            </span>
             <textarea
-              className="min-h-40 w-full rounded-md border border-border bg-background px-3 py-2 font-mono text-sm"
+              className="admin-input min-h-40 font-mono"
               value={form.featuresText}
               onChange={(e) => setForm((f) => ({ ...f, featuresText: e.target.value }))}
             />
           </label>
           <div className="flex flex-wrap gap-2">
-            <button
-              type="submit"
-              disabled={saving}
-              className="rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground disabled:opacity-50"
-            >
+            <button type="submit" disabled={saving} className="admin-btn-primary">
               {saving ? 'Saving…' : 'Save plan'}
             </button>
-            <button
-              type="button"
-              className="rounded-md border border-border px-3 py-2 text-sm"
-              onClick={() => setOpen(false)}
-            >
+            <button type="button" className="admin-btn-secondary" onClick={() => setOpen(false)}>
               Cancel
             </button>
           </div>
         </form>
       ) : null}
 
-      <div className="mt-4 overflow-x-auto rounded-lg border border-border">
+      <div className="overflow-x-auto rounded-2xl border border-black/[0.06] bg-white shadow-[0_8px_24px_rgb(15_23_42/0.04)]">
         <table className="w-full min-w-[640px] text-left text-sm">
-          <thead className="border-b border-border bg-muted/50">
+          <thead>
             <tr>
-              <th className="px-3 py-2 font-medium">Plan</th>
-              <th className="px-3 py-2 font-medium">Monthly</th>
-              <th className="px-3 py-2 font-medium">Yearly</th>
-              <th className="px-3 py-2 font-medium">Status</th>
-              <th className="px-3 py-2 font-medium">Actions</th>
+              <th>Plan</th>
+              <th>Monthly</th>
+              <th>Yearly</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={5} className="px-3 py-6 text-muted-foreground">
+                <td colSpan={5} className="text-muted-foreground">
                   Loading…
                 </td>
               </tr>
             ) : items.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-3 py-6 text-muted-foreground">
-                  No plans yet. Add the first plan from PMS data or create one.
+                <td colSpan={5} className="text-muted-foreground">
+                  No plans yet. Add the first plan.
                 </td>
               </tr>
             ) : (
               items.map((row) => {
                 const data = row.data || {}
                 return (
-                  <tr key={row.id} className="border-t border-border">
-                    <td className="px-3 py-2">
+                  <tr key={row.id} className="border-t border-black/[0.05]">
+                    <td>
                       <div className="font-medium">{data.name || row.title}</div>
                       <div className="max-w-xs truncate text-xs text-muted-foreground">
                         {row.description}
                       </div>
                     </td>
-                    <td className="whitespace-nowrap px-3 py-2">{data.price}</td>
-                    <td className="whitespace-nowrap px-3 py-2">{data.price_yearly || '—'}</td>
-                    <td className="px-3 py-2">
-                      {row.status === 'published' ? 'Published' : 'Draft'}
-                      {data.is_popular || data.popular ? ' · Popular' : ''}
+                    <td className="whitespace-nowrap font-medium">{data.price}</td>
+                    <td className="whitespace-nowrap">{data.price_yearly || '—'}</td>
+                    <td>
+                      <span className="admin-chip">
+                        {row.status === 'published' ? 'Published' : 'Draft'}
+                        {data.is_popular || data.popular ? ' · Popular' : ''}
+                      </span>
                     </td>
-                    <td className="px-3 py-2">
-                      <div className="flex flex-wrap gap-1">
-                        <button
-                          type="button"
-                          className="rounded-md border border-border px-2 py-1 text-xs"
-                          onClick={() => openEdit(row)}
-                        >
+                    <td>
+                      <div className="flex flex-wrap gap-2">
+                        <button type="button" className="admin-btn-secondary text-xs" onClick={() => openEdit(row)}>
                           Edit
                         </button>
                         <button
                           type="button"
-                          className="rounded-md border border-destructive/40 px-2 py-1 text-xs text-destructive"
+                          className="rounded-lg border border-destructive/30 px-3 py-1.5 text-xs font-semibold text-destructive hover:bg-destructive/5"
                           onClick={() => remove(row.id)}
                         >
                           Delete

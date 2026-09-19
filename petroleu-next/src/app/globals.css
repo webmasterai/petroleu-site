@@ -1858,3 +1858,135 @@ html[dir="rtl"] input.input-ltr {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 999px;
 }
+
+/* ── Admin CMS shell ────────────────────────────────────────────────────── */
+.admin-app {
+  min-height: 100vh;
+}
+
+.admin-app input:not([type='checkbox']):not([type='radio']),
+.admin-app select,
+.admin-app textarea {
+  min-height: 2.5rem;
+}
+
+.admin-input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(15 23 42 / 0.1);
+  background: #fff;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+}
+
+.admin-input:focus {
+  outline: none;
+  border-color: color-mix(in oklab, var(--primary) 55%, white);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 18%, transparent);
+}
+
+.admin-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.55rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgb(234 88 12 / 0.25);
+}
+
+.admin-btn-primary:hover {
+  filter: brightness(0.96);
+}
+
+.admin-btn-primary:disabled {
+  opacity: 0.55;
+}
+
+.admin-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(15 23 42 / 0.1);
+  background: #fff;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+}
+
+.admin-btn-secondary:hover {
+  background: rgb(15 23 42 / 0.03);
+}
+
+.admin-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgb(15 23 42 / 0.08);
+  background: #fff;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.admin-chip:hover {
+  border-color: color-mix(in oklab, var(--primary) 40%, white);
+}
+
+.admin-stat-card {
+  display: block;
+  border-radius: 0.9rem;
+  border: 1px solid rgb(15 23 42 / 0.06);
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgb(15 23 42 / 0.08);
+}
+
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgb(15 23 42 / 0.06);
+  background: #fff;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 0.04);
+}
+
+.admin-app table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.admin-app thead {
+  background: rgb(15 23 42 / 0.03);
+}
+
+.admin-app th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.admin-app td,
+.admin-app th {
+  padding: 0.7rem 0.85rem;
+}

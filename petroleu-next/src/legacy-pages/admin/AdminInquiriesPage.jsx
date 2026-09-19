@@ -7,10 +7,8 @@ function asList(res) {
   return []
 }
 
-const fieldCls =
-  'w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring'
-const btnOutline =
-  'rounded-md border border-border bg-card px-2.5 py-1.5 text-xs hover:bg-muted disabled:opacity-50'
+const fieldCls = 'admin-input'
+const btnOutline = 'admin-btn-secondary text-xs'
 
 const STATUSES = ['new', 'read', 'replied', 'closed', 'spam']
 
@@ -183,7 +181,7 @@ export default function AdminInquiriesPage() {
         </div>
       ) : null}
 
-      <div className="mt-4 overflow-x-auto rounded-lg border border-border">
+      <div className="mt-4 overflow-x-auto rounded-2xl border border-black/[0.06] bg-white shadow-[0_8px_24px_rgb(15_23_42/0.04)]">
         <table className="w-full text-left text-xs">
           <thead className="bg-muted/50 border-b border-border">
             <tr>
