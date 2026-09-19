@@ -60,10 +60,13 @@ export async function readJson<T>(name: string, fallback: T): Promise<T> {
   const target = filePath(name)
   try {
     const raw = await fs.readFile(target, 'utf8')
-    return JSON.parse(raw) as T
+    const trimmed = raw.trim()
+    if (!trimmed) return fallback
+    return JSON.parse(trimmed) as T
   } catch (err: unknown) {
     const code = (err as NodeJS.ErrnoException)?.code
     if (code === 'ENOENT') return fallback
+    if (err instanceof SyntaxError) return fallback
     throw err
   }
 }

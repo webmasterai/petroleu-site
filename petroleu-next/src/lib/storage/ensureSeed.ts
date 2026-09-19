@@ -8,17 +8,15 @@ async function copySeedFiles(seedRoot: string, dataRoot: string, overwrite: bool
   for (const file of seedFiles) {
     if (!file.endsWith('.json')) continue
     if (overwrite && file === 'users.json') continue
-    const dest = path.join(dataRoot, file)
-    if (!overwrite) {
-      await fs.copyFile(path.join(seedRoot, file), dest)
-      continue
-    }
-    await fs.copyFile(path.join(seedRoot, file), dest)
+    await fs.copyFile(path.join(seedRoot, file), path.join(dataRoot, file))
   }
 }
 
-/** Copy storage-seed → storage/data when empty, or when CMS_FORCE_RESEED=true (keeps users.json). */
-export async function ensureSeedData(): Promise<{
+function isProductionBuild() {
+  return process.env.NEXT_PHASE === 'phase-production-build'
+}
+
+async function ensureSeedDataInner(): Promise<{
   seeded: boolean
   reason: string
   admin?: { created: boolean; email?: string; reason: string }
@@ -35,7 +33,10 @@ export async function ensureSeedData(): Promise<{
     entries = []
   }
   const hasJson = entries.some((e) => e.endsWith('.json'))
-  const force = String(process.env.CMS_FORCE_RESEED || '').toLowerCase() === 'true'
+  // Coolify may inject CMS_FORCE_RESEED as a Docker build ARG. Never force-overwrite
+  // during `next build` — parallel prerender races corrupt JSON files.
+  const force =
+    !isProductionBuild() && String(process.env.CMS_FORCE_RESEED || '').toLowerCase() === 'true'
   let seeded = false
   let reason = 'existing data present'
 
@@ -56,4 +57,16 @@ export async function ensureSeedData(): Promise<{
 
   const admin = await ensureDefaultAdmin()
   return { seeded, reason, admin }
+}
+
+let seedLock: Promise<{
+  seeded: boolean
+  reason: string
+  admin?: { created: boolean; email?: string; reason: string }
+}> | null = null
+
+/** Copy storage-seed → storage/data when empty, or when CMS_FORCE_RESEED=true (keeps users.json). */
+export async function ensureSeedData() {
+  if (!seedLock) seedLock = ensureSeedDataInner()
+  return seedLock
 }
