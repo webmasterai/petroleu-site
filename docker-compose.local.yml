@@ -1,0 +1,10 @@
+# Local-only host port. Coolify must not use this file.
+# Usage: docker compose -f docker-compose.yml -f docker-compose.local.yml up -d --build
+
+services:
+  website:
+    ports:
+      - "${WEB_PORT:-8080}:3000"
+    environment:
+      CMS_COOKIE_SECURE: ${CMS_COOKIE_SECURE:-false}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:8080}

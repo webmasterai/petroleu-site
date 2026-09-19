@@ -1,5 +1,8 @@
-# Petroleu website: Next.js + JSON CMS.
-# No MySQL/Postgres. Pages, admin content, and uploads live in the cms_storage volume.
+# Petroleu website: Next.js + JSON CMS (Coolify + Docker Compose).
+# No MySQL/Postgres. Content and uploads live in the cms_storage volume.
+#
+# Coolify: do NOT publish a host port. Traefik proxies the domain to container :3000.
+# Local with a host port: docker compose -f docker-compose.yml -f docker-compose.local.yml up -d --build
 
 services:
   website:
@@ -7,21 +10,21 @@ services:
       context: ./petroleu-next
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:8080}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://petroleu.com}
         NEXT_PUBLIC_PMS_APP_URL: ${NEXT_PUBLIC_PMS_APP_URL:-}
         NEXT_PUBLIC_DOCUMENTATION_URL: ${NEXT_PUBLIC_DOCUMENTATION_URL:-}
-    ports:
-      - "${WEB_PORT:-8080}:3000"
+    expose:
+      - "3000"
     environment:
       NODE_ENV: production
       PORT: "3000"
       HOSTNAME: 0.0.0.0
       CMS_DATA_DIR: /app/storage/data
       CMS_UPLOAD_DIR: /app/storage/uploads
-      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:8080}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://petroleu.com}
       CMS_AUTH_SECRET: ${CMS_AUTH_SECRET:-change-me-to-a-long-random-secret}
-      # false on plain http (localhost). Set true when the site is served over https.
-      CMS_COOKIE_SECURE: ${CMS_COOKIE_SECURE:-false}
+      # true on https://petroleu.com; false only for plain http local
+      CMS_COOKIE_SECURE: ${CMS_COOKIE_SECURE:-true}
     volumes:
       - cms_storage:/app/storage
     restart: unless-stopped

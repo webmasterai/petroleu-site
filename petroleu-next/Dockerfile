@@ -27,8 +27,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV CMS_DATA_DIR=/app/storage/data
 ENV CMS_UPLOAD_DIR=/app/storage/uploads
 
-RUN mkdir -p /app/storage/data /app/storage/uploads \
-  && chmod +x /app/docker-entrypoint.sh || true
+RUN mkdir -p /app/storage/data /app/storage/uploads
 
 COPY --from=build /app/public ./public
 COPY --from=build /app/storage-seed ./storage-seed
