@@ -1,8 +1,13 @@
 # Petroleu Next.js — unified site + JSON CMS (Coolify one-container)
+#
+# Coolify often injects NODE_ENV=production as a build ARG/ENV into every stage.
+# That makes `npm ci` skip devDependencies (typescript, etc.), which breaks Next's
+# tsconfig path aliases (@/* → legacy-pages). Force a full install for the build.
 FROM node:22-bookworm-slim AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+# Always install devDependencies so `next build` can resolve @/ path aliases.
+RUN npm ci --include=dev
 
 FROM node:22-bookworm-slim AS build
 WORKDIR /app

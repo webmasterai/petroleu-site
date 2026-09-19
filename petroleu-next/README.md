@@ -19,3 +19,4 @@ Default admin (from seed): `admin@petroleu.local` / `PetroleuAdmin123!`
 - Port: `3000`
 - Persistent volume: `/app/storage`
 - Env: `NODE_ENV=production`, `PORT=3000`, `NEXT_PUBLIC_SITE_URL=https://your-domain`, `CMS_AUTH_SECRET=<long-random>`
+- Set `NODE_ENV=production` as **runtime only** (uncheck “Available at Buildtime”). Coolify injecting it during `npm ci` used to skip `typescript` and break `@/` imports; the Dockerfile now uses `npm ci --include=dev` as a safeguard.
