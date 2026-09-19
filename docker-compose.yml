@@ -1,0 +1,36 @@
+# Petroleu website: Next.js + JSON CMS.
+# No MySQL/Postgres. Pages, admin content, and uploads live in the cms_storage volume.
+
+services:
+  website:
+    build:
+      context: ./petroleu-next
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:8080}
+        NEXT_PUBLIC_PMS_APP_URL: ${NEXT_PUBLIC_PMS_APP_URL:-}
+        NEXT_PUBLIC_DOCUMENTATION_URL: ${NEXT_PUBLIC_DOCUMENTATION_URL:-}
+    ports:
+      - "${WEB_PORT:-8080}:3000"
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: 0.0.0.0
+      CMS_DATA_DIR: /app/storage/data
+      CMS_UPLOAD_DIR: /app/storage/uploads
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:8080}
+      CMS_AUTH_SECRET: ${CMS_AUTH_SECRET:-change-me-to-a-long-random-secret}
+      # false on plain http (localhost). Set true when the site is served over https.
+      CMS_COOKIE_SECURE: ${CMS_COOKIE_SECURE:-false}
+    volumes:
+      - cms_storage:/app/storage
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  cms_storage:
