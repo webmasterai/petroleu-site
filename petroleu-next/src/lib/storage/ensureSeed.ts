@@ -1,9 +1,14 @@
 import { promises as fs } from 'fs'
 import path from 'path'
+import { ensureDefaultAdmin } from '../auth/ensureAdmin'
 import { getDataRoot } from '../storage/jsonStore'
 
-/** Copy storage-seed → storage/data only when data dir is empty (no overwrite). */
-export async function ensureSeedData(): Promise<{ seeded: boolean; reason: string }> {
+/** Copy storage-seed → storage/data only when data dir is empty (never overwrite). */
+export async function ensureSeedData(): Promise<{
+  seeded: boolean
+  reason: string
+  admin?: { created: boolean; email?: string; reason: string }
+}> {
   const dataRoot = getDataRoot()
   const seedRoot = path.join(process.cwd(), 'storage-seed')
   await fs.mkdir(dataRoot, { recursive: true })
@@ -16,20 +21,25 @@ export async function ensureSeedData(): Promise<{ seeded: boolean; reason: strin
     entries = []
   }
   const hasJson = entries.some((e) => e.endsWith('.json'))
-  if (hasJson) {
-    return { seeded: false, reason: 'existing data present' }
+  let seeded = false
+  let reason = 'existing data present'
+
+  if (!hasJson) {
+    try {
+      await fs.access(seedRoot)
+      const seedFiles = await fs.readdir(seedRoot)
+      for (const file of seedFiles) {
+        if (!file.endsWith('.json')) continue
+        await fs.copyFile(path.join(seedRoot, file), path.join(dataRoot, file))
+      }
+      seeded = true
+      reason = 'copied from storage-seed'
+    } catch {
+      reason = 'no storage-seed folder'
+    }
   }
 
-  try {
-    await fs.access(seedRoot)
-  } catch {
-    return { seeded: false, reason: 'no storage-seed folder' }
-  }
-
-  const seedFiles = await fs.readdir(seedRoot)
-  for (const file of seedFiles) {
-    if (!file.endsWith('.json')) continue
-    await fs.copyFile(path.join(seedRoot, file), path.join(dataRoot, file))
-  }
-  return { seeded: true, reason: 'copied from storage-seed' }
+  // Always ensure at least one CMS admin exists (safe if users already present).
+  const admin = await ensureDefaultAdmin()
+  return { seeded, reason, admin }
 }
