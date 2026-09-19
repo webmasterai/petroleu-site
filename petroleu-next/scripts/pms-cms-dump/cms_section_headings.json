@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "page": "home",
+    "section": "features",
+    "heading": "Features",
+    "subheading": "Everything you need to run your fuel business efficiently.",
+    "created_at": "2026-06-12 22:25:30",
+    "updated_at": "2026-06-12 22:25:30"
+  },
+  {
+    "id": "2",
+    "page": "home",
+    "section": "testimonials",
+    "heading": "What Our Customers Say",
+    "subheading": "Hear from fuel station owners across Pakistan.",
+    "created_at": "2026-06-12 22:25:31",
+    "updated_at": "2026-06-12 22:25:31"
+  },
+  {
+    "id": "3",
+    "page": "home",
+    "section": "stats",
+    "heading": "Trusted at scale",
+    "subheading": null,
+    "created_at": "2026-06-12 22:25:32",
+    "updated_at": "2026-06-12 22:25:32"
+  },
+  {
+    "id": "4",
+    "page": "home",
+    "section": "how_it_works",
+    "heading": "How it works",
+    "subheading": "Three steps from signup to daily clarity.",
+    "created_at": "2026-06-12 22:25:33",
+    "updated_at": "2026-06-12 22:25:33"
+  },
+  {
+    "id": "5",
+    "page": "pricing",
+    "section": "plans",
+    "heading": "Choose Your Plan",
+    "subheading": "Compare features and find the right fit for your stations.",
+    "created_at": "2026-06-12 21:59:17",
+    "updated_at": "2026-06-12 21:59:17"
+  },
+  {
+    "id": "6",
+    "page": "home",
+    "section": "problem",
+    "heading": "Running blind without a single source of truth",
+    "subheading": "Three pain points we hear from station owners every week.",
+    "created_at": "2026-06-12 22:25:30",
+    "updated_at": "2026-06-12 22:25:30"
+  },
+  {
+    "id": "7",
+    "page": "home",
+    "section": "pricing",
+    "heading": "Simple, Transparent Pricing",
+    "subheading": "Choose the perfect plan for your fuel station business.",
+    "created_at": "2026-06-12 21:59:16",
+    "updated_at": "2026-06-12 21:59:16"
+  }
+]

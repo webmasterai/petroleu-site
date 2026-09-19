@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "node scripts/run-standalone.mjs",
     "lint": "next lint",
-    "cms:seed": "node scripts/generate-seed.mjs",
+    "cms:seed": "node scripts/seed-from-pms-lite.mjs",
     "cms:seed-af": "node scripts/seed-afghanistan.mjs",
     "cms:create-admin": "node scripts/create-admin.mjs",
     "postinstall": "node -e \"console.log('Ready. Run npm run cms:seed if storage-seed is empty.')\""

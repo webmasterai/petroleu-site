@@ -150,12 +150,12 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40">
       <ContactTopBar />
       <div className="border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
-      <div className="container mx-auto px-4 max-w-7xl flex h-16 items-center justify-between">
+      <div className="container mx-auto flex h-16 min-w-0 max-w-7xl items-center justify-between gap-2 px-3 sm:px-4">
         <Link to={marketPath('/', routePrefix)} className="flex items-center" aria-label="Petroleu">
           <img
             src="/petroleu-logo.png"
             alt="Petroleu"
-            className="h-8 w-auto object-contain"
+            className="h-7 w-auto max-w-[140px] object-contain sm:h-8 sm:max-w-none"
           />
         </Link>
 

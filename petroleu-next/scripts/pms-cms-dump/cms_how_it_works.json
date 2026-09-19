@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "step_number": "1",
+    "title": "Sign up",
+    "description": "Create your account with station details in minutes—no IT team required.",
+    "icon": "UserPlus",
+    "sort_order": "0",
+    "is_active": true,
+    "created_at": "2026-06-13 04:49:53",
+    "updated_at": "2026-06-13 04:49:53"
+  },
+  {
+    "id": "2",
+    "step_number": "2",
+    "title": "Configure",
+    "description": "Add tanks, nozzles, and products using the guided setup wizard.",
+    "icon": "Settings",
+    "sort_order": "1",
+    "is_active": true,
+    "created_at": "2026-06-13 04:49:54",
+    "updated_at": "2026-06-13 04:49:54"
+  },
+  {
+    "id": "3",
+    "step_number": "3",
+    "title": "Run & report",
+    "description": "Record shifts, nozzle readings, and credit sales; pull reports instantly.",
+    "icon": "LineChart",
+    "sort_order": "2",
+    "is_active": true,
+    "created_at": "2026-06-13 04:49:55",
+    "updated_at": "2026-06-13 04:49:55"
+  }
+]

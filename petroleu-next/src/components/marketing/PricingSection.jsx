@@ -11,8 +11,8 @@ import { PETROLEU_PRICING_PLANS, formatPlanPrice, planShowsPeriod } from '../../
 
 function PricingPlanCard({ plan, index, isYearly, whatsappUrl, labels }) {
   const cardClass = plan.popular
-    ? 'relative rounded-2xl border bg-card p-8 border-primary shadow-xl ring-2 ring-primary'
-    : 'relative rounded-2xl border border-border bg-card p-8'
+    ? 'relative min-w-0 h-full rounded-2xl border bg-card p-5 sm:p-8 border-primary shadow-xl ring-2 ring-primary'
+    : 'relative min-w-0 h-full rounded-2xl border border-border bg-card p-5 sm:p-8'
 
   const buttonVariant = plan.popular ? 'default' : 'secondary'
   const contactSales = labels.contact_sales || 'Contact Sales'
@@ -33,7 +33,9 @@ function PricingPlanCard({ plan, index, isYearly, whatsappUrl, labels }) {
         ) : null}
 
         <div className="mt-6">
-          <span className="text-4xl font-bold text-foreground">{formatPlanPrice(plan.price)}</span>
+          <span className="break-words text-2xl font-bold text-foreground sm:text-3xl lg:text-4xl">
+            {formatPlanPrice(plan.price)}
+          </span>
           {planShowsPeriod(plan.price) && (
             <span className="text-muted-foreground">/{isYearly ? 'year' : 'month'}</span>
           )}
@@ -46,7 +48,7 @@ function PricingPlanCard({ plan, index, isYearly, whatsappUrl, labels }) {
             <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
               <Check className="h-3 w-3 text-primary" />
             </div>
-            <span className="text-sm text-foreground">{feature}</span>
+            <span className="min-w-0 text-sm leading-snug text-foreground">{feature}</span>
           </li>
         ))}
       </ul>
@@ -162,7 +164,7 @@ export function PricingSection({ hideHeading = false, staticOnly = false, pricin
           </div>
         )}
 
-        <div className={`flex items-center justify-center gap-4 ${hideHeading ? 'mb-8' : 'mt-8'}`}>
+        <div className={`flex flex-wrap items-center justify-center gap-3 sm:gap-4 ${hideHeading ? 'mb-8' : 'mt-8'}`}>
           <span
             className={`text-sm ${!isYearly ? 'font-semibold text-foreground' : 'text-muted-foreground'}`}
           >
@@ -194,7 +196,7 @@ export function PricingSection({ hideHeading = false, staticOnly = false, pricin
           ) : null}
         </div>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {plans.map((plan, index) => (
             <PricingPlanCard
               key={`${plan.name}-${index}`}

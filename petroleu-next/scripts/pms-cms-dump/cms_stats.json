@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "value": "500+",
+    "label": "Stations Active",
+    "description": null,
+    "icon": "Fuel",
+    "sort_order": "1",
+    "is_active": true,
+    "created_at": "2026-06-13 05:52:14",
+    "updated_at": "2026-06-13 05:52:14"
+  },
+  {
+    "id": "2",
+    "value": "99.9%",
+    "label": "Uptime",
+    "description": null,
+    "icon": "Activity",
+    "sort_order": "2",
+    "is_active": true,
+    "created_at": "2026-06-13 05:52:14",
+    "updated_at": "2026-06-13 05:52:14"
+  },
+  {
+    "id": "3",
+    "value": "10M+",
+    "label": "Transactions Logged",
+    "description": null,
+    "icon": "Receipt",
+    "sort_order": "3",
+    "is_active": true,
+    "created_at": "2026-06-13 05:52:15",
+    "updated_at": "2026-06-13 05:52:15"
+  },
+  {
+    "id": "4",
+    "value": "24/7",
+    "label": "Support",
+    "description": null,
+    "icon": "Headphones",
+    "sort_order": "4",
+    "is_active": true,
+    "created_at": "2026-06-13 05:52:16",
+    "updated_at": "2026-06-13 05:52:16"
+  }
+]

@@ -5,7 +5,8 @@
     "locale_code": "en-PK",
     "key": "site_name",
     "value": "Petroleu",
-    "type": "string",
+    "type": "text",
+    "label": "Site Name",
     "grp": "general"
   },
   {
@@ -13,1088 +14,238 @@
     "market_code": "pk",
     "locale_code": "en-PK",
     "key": "site_tagline",
-    "value": "Petroleu",
-    "type": "string",
+    "value": "Modern fuel station management software.",
+    "type": "text",
+    "label": "Site Tagline",
     "grp": "general"
   },
   {
     "id": 3,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "site_name",
-    "value": "پترولیو",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "contact_email",
+    "value": "info@petroleu.com",
+    "type": "email",
+    "label": "Contact Email",
+    "grp": "contact"
   },
   {
     "id": 4,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "site_name",
-    "value": "Petroleu",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "contact_phone",
+    "value": "+92 325 786 5000",
+    "type": "text",
+    "label": "Contact Phone",
+    "grp": "contact"
   },
   {
     "id": 5,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "site_tagline",
-    "value": "Modern fuel station management software for Afghanistan.",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "contact_address",
+    "value": "Lahore, Karachi, Peshawar, Rawalpindi, Islamabad, Faisalabad, Abatabad, Quetta, Pakistan.",
+    "type": "text",
+    "label": "Contact Address",
+    "grp": "contact"
   },
   {
     "id": 6,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "footer_description",
-    "value": "Petroleu helps fuel station owners run nozzle sales, tank stock, credit, and reporting from one system.",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "social_facebook",
+    "value": "https://www.facebook.com/petroleu",
+    "type": "url",
+    "label": "Facebook URL",
+    "grp": "social"
   },
   {
     "id": 7,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "footer_credit",
-    "value": "Petroleu",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "social_twitter",
+    "value": "https://www.x.com/petroleu",
+    "type": "url",
+    "label": "Twitter URL",
+    "grp": "social"
   },
   {
     "id": 8,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "country_label",
-    "value": "Afghanistan",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "social_linkedin",
+    "value": "https://www.linkedin.com/petroleu",
+    "type": "url",
+    "label": "LinkedIn URL",
+    "grp": "social"
   },
   {
     "id": 9,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "currency",
-    "value": "AFN",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "sales_email",
+    "value": "sales@petroleu.com",
+    "type": "email",
+    "label": "Sales Email",
+    "grp": "contact"
   },
   {
     "id": 10,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "sales_email",
-    "value": "sales@petroleu.com",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "primary_email",
+    "value": "info@petroleu.com",
+    "type": "email",
+    "label": "Support Email",
+    "grp": "contact"
   },
   {
     "id": 11,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "primary_email",
-    "value": "support@petroleu.com",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "phone",
+    "value": "+92 325 7865000",
+    "type": "text",
+    "label": "Phone (PK)",
+    "grp": "contact"
   },
   {
     "id": 12,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "contact_email",
-    "value": "sales@petroleu.com",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "phone_uk",
+    "value": "+44 7446 448889",
+    "type": "text",
+    "label": "Phone (UK)",
+    "grp": "contact"
   },
   {
     "id": 13,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "phone",
-    "value": "",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "address_pk",
+    "value": "Karachi, Pakistan.",
+    "type": "text",
+    "label": "Address (Pakistan)",
+    "grp": "contact"
   },
   {
     "id": 14,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "phone_tel",
-    "value": "",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "address",
+    "value": "Punjab, Sindh, KPK, Bloshistan, Azad Kashmir, Gilgit Biltistan.",
+    "type": "text",
+    "label": "Address (UK)",
+    "grp": "contact"
   },
   {
     "id": 15,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "whatsapp",
-    "value": "",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "facebook_url",
+    "value": "https://www.facebook.com/petroleu",
+    "type": "url",
+    "label": "Facebook URL",
+    "grp": "social"
   },
   {
     "id": 16,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "address",
-    "value": "",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "twitter_url",
+    "value": "https://www.x.com/petroleu",
+    "type": "url",
+    "label": "Twitter URL",
+    "grp": "social"
   },
   {
     "id": 17,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "announcement_text",
-    "value": "Petroleu — Fuel station software for Afghanistan",
-    "type": "string",
-    "grp": "general"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "linkedin_url",
+    "value": "https://www.linkedin.com/petroleu",
+    "type": "url",
+    "label": "LinkedIn URL",
+    "grp": "social"
   },
   {
     "id": 18,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_see_demo",
-    "value": "See it in Action",
-    "type": "string",
-    "grp": "ui"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "youtube_url",
+    "value": "https://www.youtube.com/petroleu",
+    "type": "url",
+    "label": "YouTube URL",
+    "grp": "social"
   },
   {
     "id": 19,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_view_pricing",
-    "value": "View Pricing",
-    "type": "string",
-    "grp": "ui"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "demo_admin_emails",
+    "value": "shahid@digitalsofts.com,asimdigitals@gmail.com,sales@digitalsofts.com",
+    "type": "textarea",
+    "label": "Admin Notification Emails — Demo & Onboarding (comma-separated)",
+    "grp": "demo"
   },
   {
     "id": 20,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_resources",
-    "value": "Resources",
-    "type": "string",
-    "grp": "ui"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "demo_login_url",
+    "value": "https://www.petroleu.com/login",
+    "type": "url",
+    "label": "Demo Account Login URL",
+    "grp": "demo"
   },
   {
     "id": 21,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_product",
-    "value": "Product",
-    "type": "string",
-    "grp": "ui"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "app_marquee_enabled",
+    "value": "1",
+    "type": "select",
+    "label": "App header marquee — Enabled",
+    "grp": "announcement"
   },
   {
     "id": 22,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_company",
-    "value": "Company",
-    "type": "string",
-    "grp": "ui"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "app_marquee_text",
+    "value": "Due to critical maintaince app will be off till 12-Sep-2026 12:00:00 PM. We are sorry for trouble.",
+    "type": "textarea",
+    "label": "App header marquee — Message",
+    "grp": "announcement"
   },
   {
     "id": 23,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_legal",
-    "value": "Legal",
-    "type": "string",
-    "grp": "ui"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "app_marquee_from",
+    "value": "2026-09-11T00:00",
+    "type": "datetime-local",
+    "label": "App header marquee — Show from",
+    "grp": "announcement"
   },
   {
     "id": 24,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_login",
-    "value": "Login",
-    "type": "string",
-    "grp": "ui"
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "key": "app_marquee_until",
+    "value": "2026-09-12T12:00",
+    "type": "datetime-local",
+    "label": "App header marquee — Show until",
+    "grp": "announcement"
   },
   {
     "id": 25,
     "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_start_trial",
-    "value": "Start Free Trial",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 26,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_privacy_policy",
-    "value": "Privacy Policy",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 27,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_admin_login",
-    "value": "Admin Login",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 28,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_monthly",
-    "value": "Monthly",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 29,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_yearly",
-    "value": "Yearly",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 30,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_contact_sales",
-    "value": "Contact Sales",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 31,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_most_popular",
-    "value": "Most Popular",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 32,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_pricing_note",
-    "value": "Contact us for Afghanistan pricing.",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 33,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_mobile_platforms",
-    "value": "Available on both Android and iOS",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 34,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_ready_to_start",
-    "value": "Ready to start?",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 35,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_step",
-    "value": "STEP",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 36,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_about_us",
-    "value": "About",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 37,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_get_started",
-    "value": "Get Started",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 38,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_save_2_months",
-    "value": "Save 2 Months",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 39,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_explore_analytics",
-    "value": "Explore Analytics",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 40,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_unlock_insights",
-    "value": "Unlock powerful station insights today",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 41,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_contact_us",
-    "value": "Contact us",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 42,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_phone_label",
-    "value": "Phone",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 43,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "key": "ui_email_label",
-    "value": "Email",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 44,
-    "market_code": "af",
     "locale_code": "fa-AF",
-    "key": "site_tagline",
-    "value": "نرم‌افزار مدرن مدیریت پمپ تیل برای افغانستان.",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 45,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "footer_description",
-    "value": "Petroleu به مالکان پمپ تیل کمک می‌کند فروش نوزل، موجودی تانک، اعتبار و گزارش‌دهی را از یک سیستم اداره کنند.",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 46,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "footer_credit",
-    "value": "Petroleu",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 47,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "country_label",
-    "value": "افغانستان",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 48,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "currency",
-    "value": "AFN",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 49,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "sales_email",
-    "value": "sales@petroleu.com",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 50,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "primary_email",
-    "value": "support@petroleu.com",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 51,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "contact_email",
-    "value": "sales@petroleu.com",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 52,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "phone",
-    "value": "",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 53,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "phone_tel",
-    "value": "",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 54,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "whatsapp",
-    "value": "",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 55,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "address",
-    "value": "",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 56,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "announcement_text",
-    "value": "Petroleu — نرم‌افزار پمپ تیل برای افغانستان",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 57,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_see_demo",
-    "value": "در عمل ببینید",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 58,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_view_pricing",
-    "value": "دیدن قیمت‌ها",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 59,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_resources",
-    "value": "منابع",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 60,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_product",
-    "value": "محصول",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 61,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_company",
-    "value": "شرکت",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 62,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_legal",
-    "value": "حقوقی",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 63,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_login",
-    "value": "ورود",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 64,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_start_trial",
-    "value": "آغاز آزمایش رایگان",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 65,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_privacy_policy",
-    "value": "سیاست حریم خصوصی",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 66,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_admin_login",
-    "value": "ورود مدیر",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 67,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_monthly",
-    "value": "ماهانه",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 68,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_yearly",
-    "value": "سالانه",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 69,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_contact_sales",
-    "value": "تماس با فروش",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 70,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_most_popular",
-    "value": "محبوب‌ترین",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 71,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_pricing_note",
-    "value": "برای قیمت‌گذاری افغانستان با ما تماس بگیرید.",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 72,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_mobile_platforms",
-    "value": "موجود برای Android و iOS",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 73,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_ready_to_start",
-    "value": "آماده شروع هستید؟",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 74,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_step",
-    "value": "گام",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 75,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_about_us",
-    "value": "درباره ما",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 76,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_get_started",
-    "value": "شروع کنید",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 77,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_save_2_months",
-    "value": "۲ ماه صرفه‌جویی",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 78,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_explore_analytics",
-    "value": "کاوش تحلیل‌ها",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 79,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_unlock_insights",
-    "value": "امروز بینش قدرتمند ایستگاه را باز کنید",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 80,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_contact_us",
-    "value": "با ما تماس بگیرید",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 81,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_phone_label",
-    "value": "تلفن",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 82,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "key": "ui_email_label",
-    "value": "ایمیل",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 83,
-    "market_code": "af",
-    "locale_code": "ps-AF",
     "key": "site_name",
     "value": "پترولیو",
     "type": "string",
     "grp": "general"
-  },
-  {
-    "id": 84,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "site_tagline",
-    "value": "د افغانستان لپاره عصري د تیل پمپ مدیریت سافټویر.",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 85,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "footer_description",
-    "value": "Petroleu د تیل پمپ مالکانو سره مرسته کوي چې نوزل پلور، ټانک موجودي، اعتبار او راپورونه له یوه سیستم اداره کړي.",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 86,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "footer_credit",
-    "value": "Petroleu",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 87,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "country_label",
-    "value": "افغانستان",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 88,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "currency",
-    "value": "AFN",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 89,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "sales_email",
-    "value": "sales@petroleu.com",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 90,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "primary_email",
-    "value": "support@petroleu.com",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 91,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "contact_email",
-    "value": "sales@petroleu.com",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 92,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "phone",
-    "value": "",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 93,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "phone_tel",
-    "value": "",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 94,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "whatsapp",
-    "value": "",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 95,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "address",
-    "value": "",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 96,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "announcement_text",
-    "value": "Petroleu — د افغانستان لپاره د تیل پمپ سافټویر",
-    "type": "string",
-    "grp": "general"
-  },
-  {
-    "id": 97,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_see_demo",
-    "value": "په عمل کې وګورئ",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 98,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_view_pricing",
-    "value": "بیې وګورئ",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 99,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_resources",
-    "value": "سرچینې",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 100,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_product",
-    "value": "محصول",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 101,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_company",
-    "value": "شرکت",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 102,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_legal",
-    "value": "حقوقي",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 103,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_login",
-    "value": "ننوتل",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 104,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_start_trial",
-    "value": "وړیا ازموینه پیل کړئ",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 105,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_privacy_policy",
-    "value": "د محرمیت تګلاره",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 106,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_admin_login",
-    "value": "د مدیر ننوتل",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 107,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_monthly",
-    "value": "میاشتنی",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 108,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_yearly",
-    "value": "کلنی",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 109,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_contact_sales",
-    "value": "له پلور سره اړیکه",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 110,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_most_popular",
-    "value": "ډېر مشهور",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 111,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_pricing_note",
-    "value": "د افغانستان بیو لپاره له موږ سره اړیکه ونیسئ.",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 112,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_mobile_platforms",
-    "value": "په Android او iOS دواړو شته",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 113,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_ready_to_start",
-    "value": "چمتو یاست چې پیل کړئ؟",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 114,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_step",
-    "value": "ګام",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 115,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_about_us",
-    "value": "زموږ په اړه",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 116,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_get_started",
-    "value": "پیل وکړئ",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 117,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_save_2_months",
-    "value": "۲ میاشتې سپما",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 118,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_explore_analytics",
-    "value": "تحلیلونه وپلټئ",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 119,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_unlock_insights",
-    "value": "نن د سټیشن پیاوړي بصیرتونه خلاص کړئ",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 120,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_contact_us",
-    "value": "له موږ سره اړیکه",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 121,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_phone_label",
-    "value": "تلیفون",
-    "type": "string",
-    "grp": "ui"
-  },
-  {
-    "id": 122,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "key": "ui_email_label",
-    "value": "برېښنالیک",
-    "type": "string",
-    "grp": "ui"
   }
 ]

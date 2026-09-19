@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "page": "pricing",
+    "question": "How can i view the demo?",
+    "answer": "Yes. You can view the software demo by clicking on the see it in action button on the homepage of the website.",
+    "sort_order": "0",
+    "is_active": true,
+    "created_at": "2026-06-13 04:49:50",
+    "updated_at": "2026-06-22 19:02:50"
+  },
+  {
+    "id": "2",
+    "page": "pricing",
+    "question": "Can I upgrade or downgrade anytime?",
+    "answer": "Absolutely. You can change your plan at any time from your account settings.",
+    "sort_order": "1",
+    "is_active": true,
+    "created_at": "2026-06-13 04:49:50",
+    "updated_at": "2026-06-13 04:49:50"
+  },
+  {
+    "id": "3",
+    "page": "pricing",
+    "question": "Do I need to install any software?",
+    "answer": "You can use pertoleu online via browser or mobile app. However it can be installed on your computer and synched to the cloud.",
+    "sort_order": "2",
+    "is_active": true,
+    "created_at": "2026-06-13 04:49:51",
+    "updated_at": "2026-06-22 19:04:54"
+  },
+  {
+    "id": "4",
+    "page": "home",
+    "question": "How long does setup take?",
+    "answer": "Most stations are fully set up in under 30 minutes using our onboarding wizard.",
+    "sort_order": "3",
+    "is_active": true,
+    "created_at": "2026-06-13 04:49:52",
+    "updated_at": "2026-06-13 04:49:52"
+  },
+  {
+    "id": "5",
+    "page": "home",
+    "question": "Is my data secure?",
+    "answer": "Yes. We use industry-standard encryption and daily backups.",
+    "sort_order": "4",
+    "is_active": true,
+    "created_at": "2026-06-13 04:49:52",
+    "updated_at": "2026-06-13 04:49:52"
+  },
+  {
+    "id": "6",
+    "page": "pricing",
+    "question": "Will you provide the software training.",
+    "answer": "Yes. Our software includes complete software usage documentation and videos for your understang. We do offer live one on one training sessions in our professional version.",
+    "sort_order": "4",
+    "is_active": true,
+    "created_at": "2026-06-22 19:06:18",
+    "updated_at": "2026-06-22 19:06:18"
+  }
+]

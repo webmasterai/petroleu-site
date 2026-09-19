@@ -25,7 +25,7 @@ export function MarketLanguageSwitcher() {
   const pkHome = rest || '/'
 
   return (
-    <div className="fixed bottom-4 start-4 z-50 flex flex-wrap items-center gap-1 rounded-full border border-border bg-card/95 px-2 py-1 text-xs shadow-md backdrop-blur">
+    <div className="fixed bottom-4 start-4 z-50 flex max-w-[calc(100vw-2rem)] flex-wrap items-center gap-1 rounded-full border border-border bg-card/95 px-2 py-1 text-xs shadow-md backdrop-blur">
       <span className="px-1 font-medium text-muted-foreground" dir="ltr">
         Petroleu
       </span>

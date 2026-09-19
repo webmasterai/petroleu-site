@@ -1,0 +1,302 @@
+[
+  {
+    "id": "1",
+    "key": "site_name",
+    "value": "Petroleu",
+    "type": "text",
+    "label": "Site Name",
+    "grp": "general",
+    "created_at": "2026-06-13 05:51:57",
+    "updated_at": "2026-06-13 05:51:57"
+  },
+  {
+    "id": "2",
+    "key": "site_tagline",
+    "value": "Modern fuel station management software.",
+    "type": "text",
+    "label": "Site Tagline",
+    "grp": "general",
+    "created_at": "2026-06-13 05:51:58",
+    "updated_at": "2026-06-22 19:08:46"
+  },
+  {
+    "id": "3",
+    "key": "contact_email",
+    "value": "info@petroleu.com",
+    "type": "email",
+    "label": "Contact Email",
+    "grp": "contact",
+    "created_at": "2026-06-13 05:52:00",
+    "updated_at": "2026-06-18 23:44:21"
+  },
+  {
+    "id": "4",
+    "key": "contact_phone",
+    "value": "+92 325 786 5000",
+    "type": "text",
+    "label": "Contact Phone",
+    "grp": "contact",
+    "created_at": "2026-04-20 12:55:19",
+    "updated_at": "2026-06-18 23:44:21"
+  },
+  {
+    "id": "5",
+    "key": "contact_address",
+    "value": "Lahore, Karachi, Peshawar, Rawalpindi, Islamabad, Faisalabad, Abatabad, Quetta, Pakistan.",
+    "type": "text",
+    "label": "Contact Address",
+    "grp": "contact",
+    "created_at": "2026-04-20 12:55:20",
+    "updated_at": "2026-05-02 20:18:47"
+  },
+  {
+    "id": "6",
+    "key": "social_facebook",
+    "value": "https://www.facebook.com/petroleu",
+    "type": "url",
+    "label": "Facebook URL",
+    "grp": "social",
+    "created_at": "2026-04-20 12:55:20",
+    "updated_at": "2026-05-02 20:19:29"
+  },
+  {
+    "id": "7",
+    "key": "social_twitter",
+    "value": "https://www.x.com/petroleu",
+    "type": "url",
+    "label": "Twitter URL",
+    "grp": "social",
+    "created_at": "2026-04-20 12:55:20",
+    "updated_at": "2026-05-02 20:19:29"
+  },
+  {
+    "id": "8",
+    "key": "social_linkedin",
+    "value": "https://www.linkedin.com/petroleu",
+    "type": "url",
+    "label": "LinkedIn URL",
+    "grp": "social",
+    "created_at": "2026-04-20 12:55:20",
+    "updated_at": "2026-05-02 20:19:29"
+  },
+  {
+    "id": "9",
+    "key": "sales_email",
+    "value": "sales@petroleu.com",
+    "type": "email",
+    "label": "Sales Email",
+    "grp": "contact",
+    "created_at": "2026-06-13 05:51:59",
+    "updated_at": "2026-06-18 23:44:21"
+  },
+  {
+    "id": "10",
+    "key": "primary_email",
+    "value": "info@petroleu.com",
+    "type": "email",
+    "label": "Support Email",
+    "grp": "contact",
+    "created_at": "2026-06-13 05:51:59",
+    "updated_at": "2026-06-18 23:44:21"
+  },
+  {
+    "id": "11",
+    "key": "phone",
+    "value": "+92 325 7865000",
+    "type": "text",
+    "label": "Phone (PK)",
+    "grp": "contact",
+    "created_at": "2026-06-13 05:52:01",
+    "updated_at": "2026-06-18 23:32:39"
+  },
+  {
+    "id": "12",
+    "key": "phone_uk",
+    "value": "+44 7446 448889",
+    "type": "text",
+    "label": "Phone (UK)",
+    "grp": "contact",
+    "created_at": "2026-06-13 05:52:01",
+    "updated_at": "2026-06-13 05:52:01"
+  },
+  {
+    "id": "13",
+    "key": "address_pk",
+    "value": "Karachi, Pakistan.",
+    "type": "text",
+    "label": "Address (Pakistan)",
+    "grp": "contact",
+    "created_at": "2026-06-13 05:52:02",
+    "updated_at": "2026-06-18 23:44:21"
+  },
+  {
+    "id": "14",
+    "key": "address",
+    "value": "Punjab, Sindh, KPK, Bloshistan, Azad Kashmir, Gilgit Biltistan.",
+    "type": "text",
+    "label": "Address (UK)",
+    "grp": "contact",
+    "created_at": "2026-06-13 05:52:03",
+    "updated_at": "2026-06-18 23:32:39"
+  },
+  {
+    "id": "15",
+    "key": "facebook_url",
+    "value": "https://www.facebook.com/petroleu",
+    "type": "url",
+    "label": "Facebook URL",
+    "grp": "social",
+    "created_at": "2026-06-13 05:52:03",
+    "updated_at": "2026-06-22 19:09:22"
+  },
+  {
+    "id": "16",
+    "key": "twitter_url",
+    "value": "https://www.x.com/petroleu",
+    "type": "url",
+    "label": "Twitter URL",
+    "grp": "social",
+    "created_at": "2026-06-13 05:52:04",
+    "updated_at": "2026-06-22 19:09:22"
+  },
+  {
+    "id": "17",
+    "key": "linkedin_url",
+    "value": "https://www.linkedin.com/petroleu",
+    "type": "url",
+    "label": "LinkedIn URL",
+    "grp": "social",
+    "created_at": "2026-06-13 05:52:05",
+    "updated_at": "2026-06-22 19:09:22"
+  },
+  {
+    "id": "18",
+    "key": "youtube_url",
+    "value": "https://www.youtube.com/petroleu",
+    "type": "url",
+    "label": "YouTube URL",
+    "grp": "social",
+    "created_at": "2026-06-13 05:52:05",
+    "updated_at": "2026-06-22 19:09:22"
+  },
+  {
+    "id": "19",
+    "key": "demo_admin_emails",
+    "value": "shahid@digitalsofts.com,asimdigitals@gmail.com,sales@digitalsofts.com",
+    "type": "textarea",
+    "label": "Admin Notification Emails — Demo & Onboarding (comma-separated)",
+    "grp": "demo",
+    "created_at": "2026-06-12 21:11:59",
+    "updated_at": "2026-08-06 22:16:53"
+  },
+  {
+    "id": "20",
+    "key": "demo_login_url",
+    "value": "https://www.petroleu.com/login",
+    "type": "url",
+    "label": "Demo Account Login URL",
+    "grp": "demo",
+    "created_at": "2026-06-12 21:11:59",
+    "updated_at": "2026-09-08 16:01:37"
+  },
+  {
+    "id": "29",
+    "key": "smtp_host",
+    "value": "mail.petroleu.com",
+    "type": "text",
+    "label": "SMTP Host (e.g. mail.petroleu.com)",
+    "grp": "mail",
+    "created_at": "2026-07-15 14:47:58",
+    "updated_at": "2026-07-15 14:51:40"
+  },
+  {
+    "id": "30",
+    "key": "smtp_port",
+    "value": "465",
+    "type": "text",
+    "label": "SMTP Port (465 with SSL, 587 with TLS)",
+    "grp": "mail",
+    "created_at": "2026-07-15 14:47:58",
+    "updated_at": "2026-07-15 15:07:24"
+  },
+  {
+    "id": "32",
+    "key": "smtp_username",
+    "value": "no-reply@petroleu.com",
+    "type": "text",
+    "label": "SMTP Username (usually full email)",
+    "grp": "mail",
+    "created_at": "2026-07-15 14:47:58",
+    "updated_at": "2026-07-15 14:51:40"
+  },
+  {
+    "id": "34",
+    "key": "mail_from_address",
+    "value": "no-reply@petroleu.com",
+    "type": "email",
+    "label": "From Email Address",
+    "grp": "mail",
+    "created_at": "2026-07-15 14:47:58",
+    "updated_at": "2026-07-15 14:51:40"
+  },
+  {
+    "id": "35",
+    "key": "mail_from_name",
+    "value": "Petroleu",
+    "type": "text",
+    "label": "From Name",
+    "grp": "mail",
+    "created_at": "2026-07-15 14:47:58",
+    "updated_at": "2026-07-15 14:47:58"
+  },
+  {
+    "id": "36",
+    "key": "smtp_encryption",
+    "value": "ssl",
+    "type": "select",
+    "label": "Encryption (SSL / TLS / None)",
+    "grp": "mail",
+    "created_at": "2026-07-15 15:07:24",
+    "updated_at": "2026-07-15 15:07:24"
+  },
+  {
+    "id": "40",
+    "key": "app_marquee_enabled",
+    "value": "1",
+    "type": "select",
+    "label": "App header marquee — Enabled",
+    "grp": "announcement",
+    "created_at": "2026-09-11 12:21:07",
+    "updated_at": "2026-09-11 12:32:01"
+  },
+  {
+    "id": "41",
+    "key": "app_marquee_text",
+    "value": "Due to critical maintaince app will be off till 12-Sep-2026 12:00:00 PM. We are sorry for trouble.",
+    "type": "textarea",
+    "label": "App header marquee — Message",
+    "grp": "announcement",
+    "created_at": "2026-09-11 12:21:07",
+    "updated_at": "2026-09-11 12:32:01"
+  },
+  {
+    "id": "42",
+    "key": "app_marquee_from",
+    "value": "2026-09-11T00:00",
+    "type": "datetime-local",
+    "label": "App header marquee — Show from",
+    "grp": "announcement",
+    "created_at": "2026-09-11 12:21:07",
+    "updated_at": "2026-09-11 12:32:01"
+  },
+  {
+    "id": "43",
+    "key": "app_marquee_until",
+    "value": "2026-09-12T12:00",
+    "type": "datetime-local",
+    "label": "App header marquee — Show until",
+    "grp": "announcement",
+    "created_at": "2026-09-11 12:21:07",
+    "updated_at": "2026-09-11 12:32:01"
+  }
+]

@@ -1,0 +1,219 @@
+[
+  {
+    "id": "2035",
+    "plan_id": "240",
+    "feature_text": "For 1 user account.",
+    "is_included": true,
+    "sort_order": "0"
+  },
+  {
+    "id": "2036",
+    "plan_id": "240",
+    "feature_text": "Purchase  - Fuel and Lubricants",
+    "is_included": true,
+    "sort_order": "1"
+  },
+  {
+    "id": "2037",
+    "plan_id": "240",
+    "feature_text": "Sale          - Nozzle sale, bulk sale, credit sale, card sale",
+    "is_included": true,
+    "sort_order": "2"
+  },
+  {
+    "id": "2038",
+    "plan_id": "240",
+    "feature_text": "Inventory  - Tank Stock - Dip Gain/loss - Lube Stock",
+    "is_included": true,
+    "sort_order": "3"
+  },
+  {
+    "id": "2039",
+    "plan_id": "240",
+    "feature_text": "Accounts  - Ledgers, Cash Book,  Profit/loss, Balance Sheet",
+    "is_included": true,
+    "sort_order": "4"
+  },
+  {
+    "id": "2066",
+    "plan_id": "241",
+    "feature_text": "Up to 5 user accounts",
+    "is_included": true,
+    "sort_order": "0"
+  },
+  {
+    "id": "2067",
+    "plan_id": "241",
+    "feature_text": "Purchase  - Fuel and Lubricants",
+    "is_included": true,
+    "sort_order": "1"
+  },
+  {
+    "id": "2068",
+    "plan_id": "241",
+    "feature_text": "Sale          - Nozzle sale, bulk sale, credit sale, card sale",
+    "is_included": true,
+    "sort_order": "2"
+  },
+  {
+    "id": "2069",
+    "plan_id": "241",
+    "feature_text": "Inventory  - Tank Stock - Dip Gain/loss - Lube Stock",
+    "is_included": true,
+    "sort_order": "3"
+  },
+  {
+    "id": "2070",
+    "plan_id": "241",
+    "feature_text": "Accounts  - Ledgers, Cash Book,  Aging, Profit/loss, Balance Sheet",
+    "is_included": true,
+    "sort_order": "4"
+  },
+  {
+    "id": "2071",
+    "plan_id": "241",
+    "feature_text": "Payroll  - Attendance, Advance, Loan, Overtime, Salary sheet and Salary slip",
+    "is_included": true,
+    "sort_order": "5"
+  },
+  {
+    "id": "2072",
+    "plan_id": "241",
+    "feature_text": "WhatsApp messages sending.",
+    "is_included": true,
+    "sort_order": "6"
+  },
+  {
+    "id": "2073",
+    "plan_id": "241",
+    "feature_text": "AI Reporting and Business Analysis",
+    "is_included": true,
+    "sort_order": "7"
+  },
+  {
+    "id": "2104",
+    "plan_id": "242",
+    "feature_text": "Upto 5 user accounts.",
+    "is_included": true,
+    "sort_order": "0"
+  },
+  {
+    "id": "2105",
+    "plan_id": "242",
+    "feature_text": "------------------------------",
+    "is_included": true,
+    "sort_order": "1"
+  },
+  {
+    "id": "2106",
+    "plan_id": "242",
+    "feature_text": "Live Sale Monitoring with dispenser Nozzles Integration",
+    "is_included": true,
+    "sort_order": "2"
+  },
+  {
+    "id": "2107",
+    "plan_id": "242",
+    "feature_text": "Live Tank Stock Monitoring with ATG",
+    "is_included": true,
+    "sort_order": "3"
+  },
+  {
+    "id": "2108",
+    "plan_id": "242",
+    "feature_text": "----------------------------------",
+    "is_included": true,
+    "sort_order": "4"
+  },
+  {
+    "id": "2109",
+    "plan_id": "242",
+    "feature_text": "Purchase       - Fuel and Lubricants",
+    "is_included": true,
+    "sort_order": "5"
+  },
+  {
+    "id": "2110",
+    "plan_id": "242",
+    "feature_text": "Sale                - Nozzle sale, bulk sale, credit sale, card sale",
+    "is_included": true,
+    "sort_order": "6"
+  },
+  {
+    "id": "2111",
+    "plan_id": "242",
+    "feature_text": "Credit Billing  - Monthly credit sale bills printing and sending on WhatApps numbers.",
+    "is_included": true,
+    "sort_order": "7"
+  },
+  {
+    "id": "2112",
+    "plan_id": "242",
+    "feature_text": "Inventory        - Tank Stock - Dip Gain/loss - Lube Stock",
+    "is_included": true,
+    "sort_order": "8"
+  },
+  {
+    "id": "2113",
+    "plan_id": "242",
+    "feature_text": "Accounts        - Ledgers, Cash Book,  Aging, Profit/loss, Balance Sheet",
+    "is_included": true,
+    "sort_order": "9"
+  },
+  {
+    "id": "2114",
+    "plan_id": "242",
+    "feature_text": "Payroll             - Attendance, Advance, Loan, Overtime, Salary sheet and Salary slip",
+    "is_included": true,
+    "sort_order": "10"
+  },
+  {
+    "id": "2129",
+    "plan_id": "243",
+    "feature_text": "Purchase  - Fuel and Lubricants",
+    "is_included": true,
+    "sort_order": "0"
+  },
+  {
+    "id": "2130",
+    "plan_id": "243",
+    "feature_text": "Sale          - Nozzle sale, bulk sale, credit sale, card sale",
+    "is_included": true,
+    "sort_order": "1"
+  },
+  {
+    "id": "2131",
+    "plan_id": "243",
+    "feature_text": "Inventory  - Tank Stock - Dip Gain/loss - Lube Stock",
+    "is_included": true,
+    "sort_order": "2"
+  },
+  {
+    "id": "2132",
+    "plan_id": "243",
+    "feature_text": "Accounts  - Ledgers, Cash Book,  Aging, Profit/loss, Balance Sheet",
+    "is_included": true,
+    "sort_order": "3"
+  },
+  {
+    "id": "2133",
+    "plan_id": "243",
+    "feature_text": "Payroll  - Attendance, Advance, Loan, Overtime, Salary sheet and Salary slip",
+    "is_included": true,
+    "sort_order": "4"
+  },
+  {
+    "id": "2134",
+    "plan_id": "243",
+    "feature_text": "WhatsApp messages sending.",
+    "is_included": true,
+    "sort_order": "5"
+  },
+  {
+    "id": "2135",
+    "plan_id": "243",
+    "feature_text": "AI Reporting and Business Analysis",
+    "is_included": true,
+    "sort_order": "6"
+  }
+]

@@ -39,7 +39,7 @@ export function HeroSection() {
   const whatsappUrl = isAfghanistan ? afWhatsapp : pkWhatsapp
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-accent/5 py-20 lg:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-accent/5 py-12 sm:py-20 lg:py-28">
       <div className="absolute inset-0 -z-10">
         <div className="absolute start-1/4 top-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute bottom-0 end-1/4 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
@@ -55,7 +55,7 @@ export function HeroSection() {
               </MBadge>
             ) : null}
 
-            <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               {title}{' '}
               {titleHighlight ? <span className="text-primary">{titleHighlight}</span> : null}
             </h1>

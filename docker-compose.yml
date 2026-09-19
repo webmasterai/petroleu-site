@@ -25,6 +25,8 @@ services:
       CMS_AUTH_SECRET: ${CMS_AUTH_SECRET:-change-me-to-a-long-random-secret}
       # true on https://petroleu.com; false only for plain http local
       CMS_COOKIE_SECURE: ${CMS_COOKIE_SECURE:-true}
+      # One-shot: set true, redeploy, then set false so content is not overwritten every start
+      CMS_FORCE_RESEED: ${CMS_FORCE_RESEED:-false}
       # Bootstrap admin only when users.json is empty
       CMS_ADMIN_EMAIL: ${CMS_ADMIN_EMAIL:-admin@petroleu.local}
       CMS_ADMIN_PASSWORD: ${CMS_ADMIN_PASSWORD:-PetroleuAdmin123!}

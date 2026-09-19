@@ -57,6 +57,7 @@ writeFileSync(path.join(root, 'petrol-pump-software-[city]', 'page.tsx'), city)
 
 const adminMap = {
   '': 'AdminDashboardPage',
+  pricing: 'AdminPricingPlansPage',
   sections: 'AdminSectionsPage',
   pages: 'AdminPagesPage',
   navigation: 'AdminNavigationPage',

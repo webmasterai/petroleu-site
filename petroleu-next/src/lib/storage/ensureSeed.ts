@@ -3,7 +3,21 @@ import path from 'path'
 import { ensureDefaultAdmin } from '../auth/ensureAdmin'
 import { getDataRoot } from '../storage/jsonStore'
 
-/** Copy storage-seed → storage/data only when data dir is empty (never overwrite). */
+async function copySeedFiles(seedRoot: string, dataRoot: string, overwrite: boolean) {
+  const seedFiles = await fs.readdir(seedRoot)
+  for (const file of seedFiles) {
+    if (!file.endsWith('.json')) continue
+    if (overwrite && file === 'users.json') continue
+    const dest = path.join(dataRoot, file)
+    if (!overwrite) {
+      await fs.copyFile(path.join(seedRoot, file), dest)
+      continue
+    }
+    await fs.copyFile(path.join(seedRoot, file), dest)
+  }
+}
+
+/** Copy storage-seed → storage/data when empty, or when CMS_FORCE_RESEED=true (keeps users.json). */
 export async function ensureSeedData(): Promise<{
   seeded: boolean
   reason: string
@@ -21,25 +35,25 @@ export async function ensureSeedData(): Promise<{
     entries = []
   }
   const hasJson = entries.some((e) => e.endsWith('.json'))
+  const force = String(process.env.CMS_FORCE_RESEED || '').toLowerCase() === 'true'
   let seeded = false
   let reason = 'existing data present'
 
-  if (!hasJson) {
-    try {
-      await fs.access(seedRoot)
-      const seedFiles = await fs.readdir(seedRoot)
-      for (const file of seedFiles) {
-        if (!file.endsWith('.json')) continue
-        await fs.copyFile(path.join(seedRoot, file), path.join(dataRoot, file))
-      }
+  try {
+    await fs.access(seedRoot)
+    if (!hasJson) {
+      await copySeedFiles(seedRoot, dataRoot, false)
       seeded = true
       reason = 'copied from storage-seed'
-    } catch {
-      reason = 'no storage-seed folder'
+    } else if (force) {
+      await copySeedFiles(seedRoot, dataRoot, true)
+      seeded = true
+      reason = 'force reseed (users preserved)'
     }
+  } catch {
+    if (!hasJson) reason = 'no storage-seed folder'
   }
 
-  // Always ensure at least one CMS admin exists (safe if users already present).
   const admin = await ensureDefaultAdmin()
   return { seeded, reason, admin }
 }

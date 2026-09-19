@@ -137,7 +137,7 @@ export function AdminWorkspaceBar({ pagePath = '', sectionAnchor = '' }) {
   }
 
   return (
-    <div className="mb-4 flex flex-wrap items-center gap-3 rounded-lg border border-border bg-muted/40 px-3 py-2 text-sm">
+    <div className="mb-4 flex min-w-0 flex-col gap-3 rounded-lg border border-border bg-muted/40 px-3 py-2 text-sm sm:flex-row sm:flex-wrap sm:items-center">
       <span className="font-semibold text-foreground">{workspaceLabel}</span>
       <label className="flex items-center gap-1.5">
         <span className="text-muted-foreground">Market</span>

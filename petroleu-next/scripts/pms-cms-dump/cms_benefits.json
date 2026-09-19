@@ -1,0 +1,28 @@
+[
+  {
+    "id": "175",
+    "page": "home",
+    "heading": "Efficiency",
+    "description": null,
+    "image": "/fuel-inventory-tablet.png",
+    "bullet_points": "[\"Streamlined operations\",\"Reduced manual errors\",\"Faster service delivery\"]",
+    "image_position": "right",
+    "sort_order": "1",
+    "is_active": true,
+    "created_at": "2026-06-13 05:52:20",
+    "updated_at": "2026-06-13 05:52:20"
+  },
+  {
+    "id": "176",
+    "page": "home",
+    "heading": "Profitability",
+    "description": null,
+    "image": "/fuel-profit-analysis.png",
+    "bullet_points": "[\"Increased sales\",\"Higher customer retention\",\"Optimized pricing strategies\"]",
+    "image_position": "left",
+    "sort_order": "2",
+    "is_active": true,
+    "created_at": "2026-06-13 05:52:20",
+    "updated_at": "2026-06-13 05:52:20"
+  }
+]

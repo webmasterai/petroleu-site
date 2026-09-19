@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "page": "home",
+    "heading": "Ready to get started?",
+    "subheading": "Join the community of successful fuel station owners using Petroleu to grow their business.",
+    "btn1_text": "Request Demo",
+    "btn1_link": "#contact",
+    "btn2_text": "View Pricing",
+    "btn2_link": "#pricing",
+    "is_active": true,
+    "created_at": "2026-06-12 22:25:28",
+    "updated_at": "2026-06-12 22:25:28"
+  },
+  {
+    "id": "2",
+    "page": "features",
+    "heading": "Try all features free for 14 days",
+    "subheading": "No credit card required.",
+    "btn1_text": "Start Free Trial",
+    "btn1_link": "/get-started",
+    "btn2_text": null,
+    "btn2_link": null,
+    "is_active": true,
+    "created_at": "2026-06-12 22:25:28",
+    "updated_at": "2026-06-12 22:25:28"
+  },
+  {
+    "id": "3",
+    "page": "pricing",
+    "heading": "Still have questions?",
+    "subheading": "Our team is happy to help.",
+    "btn1_text": "Contact Us",
+    "btn1_link": "/contact",
+    "btn2_text": null,
+    "btn2_link": null,
+    "is_active": true,
+    "created_at": "2026-06-12 22:25:29",
+    "updated_at": "2026-06-12 22:25:29"
+  }
+]

@@ -12,7 +12,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   await ensureSeedData()
   return (
     <html lang="en-PK" suppressHydrationWarning>
-      <body className="bg-background text-foreground antialiased">
+      <body className="min-w-0 overflow-x-hidden bg-background text-foreground antialiased">
         <AppProviders>{children}</AppProviders>
       </body>
     </html>
