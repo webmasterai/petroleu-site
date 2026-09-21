@@ -93,9 +93,9 @@ export function PricingSection({ hideHeading = false, staticOnly = false, pricin
 
   const monthly = plansFromCms
     ? plansFromCms.map((p) => ({
-        name: p.name,
-        price: p.price,
-        description: p.description || '',
+        name: p.name || p.title || p.heading || '',
+        price: p.price ?? p.monthly_price ?? p.amount ?? '',
+        description: p.description || p.subheading || '',
         features: normalizeFeatures(p.features),
         popular: !!(p.is_popular ?? p.popular),
       }))
@@ -107,9 +107,9 @@ export function PricingSection({ hideHeading = false, staticOnly = false, pricin
 
   const yearly = plansFromCms
     ? plansFromCms.map((p) => ({
-        name: p.name,
-        price: p.price_yearly || p.priceYearly || p.price,
-        description: p.description || '',
+        name: p.name || p.title || p.heading || '',
+        price: p.price_yearly || p.priceYearly || p.yearly_price || p.price,
+        description: p.description || p.subheading || '',
         features: normalizeFeatures(p.features),
         popular: !!(p.is_popular ?? p.popular),
       }))

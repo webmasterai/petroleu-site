@@ -1,7 +1,8 @@
-import { useState, useEffect, useLayoutEffect, useRef } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef, useMemo } from 'react'
 import { Quote, Star, MapPin, ChevronLeft, ChevronRight } from 'lucide-react'
 import { websiteContent } from '../../content/websiteContent'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
+import { useSectionHeading } from '../../hooks/useSectionHeading'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
 
 const GoogleGlyph = (props) => (
@@ -41,25 +42,70 @@ function StarRating({ rating }) {
 }
 
 export function TestimonialsSection() {
-  const { market } = useMarketLocale()
+  const { isAfghanistan, locale } = useMarketLocale()
   const { data } = useCmsQuery(['testimonials'], '/testimonials')
+  const heading = useSectionHeading('testimonials', {
+    title: websiteContent.testimonials.title || 'Trusted by Fuel Station Owners Across Pakistan',
+    subtitle:
+      websiteContent.testimonials.subtitle ||
+      'Join thousands of satisfied customers from Karachi to Peshawar, Lahore to Quetta',
+  })
 
   const reviews =
     Array.isArray(data) && data.length
-      ? data.map((t) => ({
-          name: t.name || t.author_name,
-          role: t.role || t.author_role,
-          city: t.city || '',
-          rating: Number(t.rating) || 5,
-          date: t.review_date || t.date || '',
-          content: t.content || t.body,
-        }))
-      : market === 'af'
+      ? data
+          .map((t) => ({
+            name: String(t.name || t.author_name || t.title || '').trim(),
+            role: String(t.role || t.author_role || t.link_label || '').trim(),
+            city: String(t.city || '').trim(),
+            rating: Number(t.rating) || 5,
+            date: t.review_date || t.date || '',
+            content: String(t.content || t.quote || t.body || t.description || '').trim(),
+          }))
+          .filter((t) => t.name && t.content && t.content !== '""' && t.content !== '?')
+      : isAfghanistan
         ? []
         : websiteContent.testimonials.reviews
 
-  const rating = websiteContent.testimonials.rating
-  const reviewCount = websiteContent.testimonials.reviewCount
+  const rating = useMemo(() => {
+    if (reviews.length) {
+      const avg = reviews.reduce((sum, r) => sum + (Number(r.rating) || 5), 0) / reviews.length
+      return Math.round(avg * 10) / 10
+    }
+    return websiteContent.testimonials.rating
+  }, [reviews])
+
+  const reviewCount = isAfghanistan
+    ? Math.max(reviews.length, websiteContent.testimonials.reviewCount || reviews.length)
+    : websiteContent.testimonials.reviewCount
+
+  const sectionTitle =
+    heading.title ||
+    (isAfghanistan
+      ? 'Trusted by Fuel Station Owners Across Afghanistan'
+      : 'Trusted by Fuel Station Owners Across Pakistan')
+  const sectionSubtitle =
+    heading.subtitle ||
+    (isAfghanistan
+      ? 'Stations across Kabul, Herat, Mazar-e-Sharif, and beyond rely on Petroleu'
+      : 'Join thousands of satisfied customers from Karachi to Peshawar, Lahore to Quetta')
+
+  const googleReviewsLabel =
+    locale === 'fa-AF'
+      ? 'همه نظرات گوگل'
+      : locale === 'ps-AF'
+        ? 'ټول Google نظرات'
+        : 'View All Google Reviews'
+
+  const googleBadgeLabel =
+    locale === 'fa-AF' ? 'نظرات گوگل' : locale === 'ps-AF' ? 'Google نظرات' : 'Google Reviews'
+
+  const basedOnLabel =
+    locale === 'fa-AF'
+      ? `بر اساس ${reviewCount} نظر`
+      : locale === 'ps-AF'
+        ? `پر ${reviewCount} نظرونو ولاړ`
+        : `Based on ${reviewCount} reviews`
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [slidesPerView, setSlidesPerView] = useState(3)
@@ -95,7 +141,7 @@ export function TestimonialsSection() {
       observer.disconnect()
       window.removeEventListener('resize', measure)
     }
-  }, [slidesPerView])
+  }, [slidesPerView, reviews.length])
 
   const maxIndex = Math.max(0, reviews.length - slidesPerView)
 
@@ -120,13 +166,16 @@ export function TestimonialsSection() {
 
   if (!reviews.length) return null
 
+  const cardWidth =
+    slideWidth > 0 ? slideWidth : `calc((100% - ${(slidesPerView - 1) * gap}px) / ${slidesPerView})`
+
   return (
     <section className="bg-muted/30 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-3 rounded-full bg-card border border-border px-6 py-3 shadow-sm mb-6">
+        <div className="mb-12 text-center">
+          <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-border bg-card px-6 py-3 shadow-sm">
             <GoogleGlyph className="h-8 w-8" />
-            <span className="text-lg font-semibold text-foreground">Google Reviews</span>
+            <span className="text-lg font-semibold text-foreground">{googleBadgeLabel}</span>
           </div>
 
           <div className="flex flex-col items-center gap-2">
@@ -138,23 +187,21 @@ export function TestimonialsSection() {
                     <Star key={star} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <span className="text-sm text-muted-foreground">
-                  Based on {reviewCount} reviews
-                </span>
+                <span className="text-sm text-muted-foreground">{basedOnLabel}</span>
               </div>
             </div>
           </div>
 
           <h2 className="mt-6 text-balance text-3xl font-bold text-foreground sm:text-4xl">
-            Trusted by Fuel Station Owners Across Pakistan
+            {sectionTitle}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-lg text-muted-foreground">
-            Join thousands of satisfied customers from Karachi to Peshawar, Lahore to Quetta
+            {sectionSubtitle}
           </p>
         </div>
 
-        <div className="relative flex items-center gap-6">
-          {reviews.length > slidesPerView && (
+        <div className="relative flex items-center gap-3 sm:gap-6" dir="ltr">
+          {reviews.length > slidesPerView ? (
             <button
               type="button"
               onClick={goPrev}
@@ -164,7 +211,7 @@ export function TestimonialsSection() {
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
-          )}
+          ) : null}
 
           <div
             ref={viewportRef}
@@ -173,7 +220,7 @@ export function TestimonialsSection() {
             onTouchEnd={onTouchEnd}
           >
             <div
-              className="flex gap-8 transition-transform duration-300 ease-in-out"
+              className="flex gap-8 transition-transform duration-300 ease-in-out will-change-transform"
               style={{
                 transform:
                   slideWidth > 0
@@ -184,20 +231,23 @@ export function TestimonialsSection() {
               {reviews.map((review, index) => (
                 <div
                   key={`${review.name}-${index}`}
-                  className="flex-shrink-0"
-                  style={{ width: slideWidth > 0 ? slideWidth : undefined }}
+                  className="w-full max-w-full shrink-0"
+                  style={{ width: cardWidth, minWidth: 0 }}
                 >
-                  <div className="relative flex h-[270px] flex-col rounded-2xl border border-border bg-card p-6 transition-shadow duration-300 hover:shadow-lg">
-                    <div className="mb-3 flex shrink-0 items-center justify-between">
+                  <div
+                    className="relative flex h-[270px] flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow duration-300 hover:shadow-lg"
+                    dir={locale === 'fa-AF' || locale === 'ps-AF' ? 'rtl' : 'ltr'}
+                  >
+                    <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
                       <StarRating rating={review.rating} />
-                      {review.date && (
+                      {review.date ? (
                         <span className="text-xs text-muted-foreground">{review.date}</span>
-                      )}
+                      ) : null}
                     </div>
 
-                    <Quote className="absolute right-4 top-4 h-6 w-6 text-primary/10" />
+                    <Quote className="pointer-events-none absolute end-4 top-4 h-6 w-6 text-primary/10" />
 
-                    <p className="line-clamp-4 shrink-0 text-sm leading-relaxed text-foreground">
+                    <p className="line-clamp-4 shrink-0 pe-6 text-start text-sm leading-relaxed text-foreground">
                       &ldquo;{review.content}&rdquo;
                     </p>
 
@@ -207,16 +257,16 @@ export function TestimonialsSection() {
                           {(review.name || '?').charAt(0)}
                         </span>
                       </div>
-                      <div className="min-w-0 flex-1">
+                      <div className="min-w-0 flex-1 text-start">
                         <p className="truncate text-sm font-semibold text-foreground">{review.name}</p>
                         <p className="truncate text-xs text-muted-foreground">{review.role}</p>
                       </div>
-                      {review.city && (
+                      {review.city ? (
                         <div className="flex shrink-0 items-center gap-1 text-xs text-muted-foreground">
                           <MapPin className="h-3 w-3" />
                           <span>{review.city}</span>
                         </div>
-                      )}
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -224,7 +274,7 @@ export function TestimonialsSection() {
             </div>
           </div>
 
-          {reviews.length > slidesPerView && (
+          {reviews.length > slidesPerView ? (
             <button
               type="button"
               onClick={goNext}
@@ -234,7 +284,7 @@ export function TestimonialsSection() {
             >
               <ChevronRight className="h-5 w-5" />
             </button>
-          )}
+          ) : null}
         </div>
 
         <div className="mt-12 text-center">
@@ -242,10 +292,10 @@ export function TestimonialsSection() {
             href={websiteContent.brand.googleReviewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-muted transition-colors"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
           >
             <GoogleGlyph className="h-5 w-5" />
-            View All Google Reviews
+            {googleReviewsLabel}
           </a>
         </div>
       </div>

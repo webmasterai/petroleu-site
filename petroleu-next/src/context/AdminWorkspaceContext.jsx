@@ -43,6 +43,24 @@ function previewPathFor(market, locale) {
   return '/'
 }
 
+function readLs(key, fallback = '') {
+  if (typeof window === 'undefined') return fallback
+  try {
+    return localStorage.getItem(key) || fallback
+  } catch {
+    return fallback
+  }
+}
+
+function writeLs(key, value) {
+  if (typeof window === 'undefined') return
+  try {
+    localStorage.setItem(key, value)
+  } catch {
+    /* ignore quota / private mode */
+  }
+}
+
 const AdminWorkspaceContext = createContext({
   market: 'pk',
   locale: 'en-PK',
@@ -56,15 +74,6 @@ const AdminWorkspaceContext = createContext({
   localeOptions: LOCALES_BY_MARKET.pk,
 })
 
-function readLs(key, fallback = '') {
-  if (typeof window === 'undefined') return fallback
-  try {
-    return localStorage.getItem(key) || fallback
-  } catch {
-    return fallback
-  }
-}
-
 export function AdminWorkspaceProvider({ children }) {
   const [market, setMarketState] = useState(() => readLs('cms_ws_market', 'pk'))
   const [locale, setLocaleState] = useState(() => {
@@ -76,10 +85,8 @@ export function AdminWorkspaceProvider({ children }) {
 
   const setMarket = useCallback((m) => {
     const nextLocale = defaultLocaleFor(m)
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('cms_ws_market', m)
-      localStorage.setItem('cms_ws_locale', nextLocale)
-    }
+    writeLs('cms_ws_market', m)
+    writeLs('cms_ws_locale', nextLocale)
     setMarketState(m)
     setLocaleState(nextLocale)
   }, [])
@@ -87,14 +94,14 @@ export function AdminWorkspaceProvider({ children }) {
   const setLocale = useCallback(
     (l) => {
       if (!isLocaleAllowed(market, l)) return
-      if (typeof window !== 'undefined') localStorage.setItem('cms_ws_locale', l)
+      writeLs('cms_ws_locale', l)
       setLocaleState(l)
     },
     [market],
   )
 
   const setShowAll = useCallback((v) => {
-    if (typeof window !== 'undefined') localStorage.setItem('cms_ws_show_all', v ? '1' : '0')
+    writeLs('cms_ws_show_all', v ? '1' : '0')
     setShowAllState(Boolean(v))
   }, [])
 
@@ -148,12 +155,12 @@ export function AdminWorkspaceBar({ pagePath = '', sectionAnchor = '' }) {
   }
 
   return (
-    <div className="admin-toolbar mb-5">
-      <span className="text-sm font-semibold text-foreground">{workspaceLabel}</span>
-      <label className="flex min-w-0 items-center gap-2 text-sm">
-        <span className="shrink-0 text-muted-foreground">Market</span>
+    <div className="mb-4 flex flex-wrap items-center gap-3 rounded-lg border border-border bg-muted/40 px-3 py-2 text-sm">
+      <span className="font-semibold text-foreground">{workspaceLabel}</span>
+      <label className="flex items-center gap-1.5">
+        <span className="text-muted-foreground">Market</span>
         <select
-          className="admin-input min-w-0 flex-1 sm:w-40"
+          className="rounded-md border border-border bg-background px-2 py-1"
           value={market}
           onChange={(e) => setMarket(e.target.value)}
         >
@@ -162,10 +169,10 @@ export function AdminWorkspaceBar({ pagePath = '', sectionAnchor = '' }) {
           <option value="shared">Shared</option>
         </select>
       </label>
-      <label className="flex min-w-0 items-center gap-2 text-sm">
-        <span className="shrink-0 text-muted-foreground">Locale</span>
+      <label className="flex items-center gap-1.5">
+        <span className="text-muted-foreground">Locale</span>
         <select
-          className="admin-input min-w-0 flex-1 sm:w-44"
+          className="rounded-md border border-border bg-background px-2 py-1"
           value={locale}
           onChange={(e) => setLocale(e.target.value)}
         >
@@ -176,18 +183,20 @@ export function AdminWorkspaceBar({ pagePath = '', sectionAnchor = '' }) {
           ))}
         </select>
       </label>
-      <label className="flex items-center gap-2 text-sm text-muted-foreground">
-        <input
-          type="checkbox"
-          className="h-4 w-4 accent-primary"
-          checked={showAll}
-          onChange={(e) => setShowAll(e.target.checked)}
-        />
-        Show all
+      <label className="flex items-center gap-1.5 text-muted-foreground">
+        <input type="checkbox" checked={showAll} onChange={(e) => setShowAll(e.target.checked)} />
+        Show all markets/locales
       </label>
-      <a className="admin-btn-primary ms-auto text-xs" href={href} target="_blank" rel="noreferrer">
-        Preview ↗
+      <a
+        className="inline-flex items-center gap-1 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90"
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Preview Website ↗
       </a>
     </div>
   )
 }
+
+export { LOCALE_SHORT }

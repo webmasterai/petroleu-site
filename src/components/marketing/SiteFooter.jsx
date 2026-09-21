@@ -5,6 +5,7 @@ import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { websiteContent } from '../../content/websiteContent'
 import { PMS_APP_URL, pmsAppHref } from '../../config/pmsApp'
 import { marketPath } from '../../utils/marketPath'
+import { FooterLanguageSwitcher } from './FooterLanguageSwitcher'
 
 const FacebookIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -267,12 +268,15 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} {siteName}. All rights reserved.
-            </p>
-            {footerCredit ? <p className="text-sm text-muted-foreground">{footerCredit}</p> : null}
+        <div className="mt-12 overflow-visible border-t border-border pt-8">
+          <div className="flex flex-col items-stretch justify-between gap-6 sm:flex-row sm:items-end">
+            <div className="space-y-2">
+              <p className="text-sm text-muted-foreground">
+                &copy; {new Date().getFullYear()} {siteName}. All rights reserved.
+              </p>
+              {footerCredit ? <p className="text-sm text-muted-foreground">{footerCredit}</p> : null}
+            </div>
+            <FooterLanguageSwitcher />
           </div>
         </div>
       </div>

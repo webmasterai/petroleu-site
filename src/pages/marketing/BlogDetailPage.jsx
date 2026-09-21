@@ -11,16 +11,26 @@ import { getResourceBySlug, getRelatedResources } from '../../content/resources'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { mapCmsBlogPost } from '../../utils/cmsContent'
+import { marketPath } from '../../utils/marketPath'
 
 export default function BlogDetailPage() {
   const { slug } = useParams()
-  const { market } = useMarketLocale()
+  const { market, locale } = useMarketLocale()
   const { data: cmsPost, isLoading } = useCmsQuery(['blog', slug], `/blog/${slug}`, {
     enabled: !!slug,
   })
   const mapped = mapCmsBlogPost(cmsPost)
   const fallback = market === 'af' ? null : getResourceBySlug(slug)
   const resource = mapped || fallback
+
+  const notFoundCopy =
+    locale === 'fa-AF'
+      ? 'این مطلب برای افغانستان هنوز منتشر نشده است.'
+      : locale === 'ps-AF'
+        ? 'دا مطلب تر اوسه د افغانستان لپاره خپور شوی نه دی.'
+        : market === 'af'
+          ? 'This Afghanistan resource is not published yet.'
+          : 'This guide may have moved or is not available yet.'
 
   if (isLoading && !resource) {
     return (
@@ -42,14 +52,10 @@ export default function BlogDetailPage() {
         <main className="flex flex-1 items-center justify-center px-4 py-24">
           <div className="max-w-md text-center">
             <h1 className="text-2xl font-bold text-foreground">Resource not found</h1>
-            <p className="mt-3 text-muted-foreground">
-              {market === 'af'
-                ? 'This Afghanistan resource is not published yet.'
-                : 'This guide may have moved or is not available yet.'}
-            </p>
-            <Link to="/blog" className="mt-8 inline-block">
+            <p className="mt-3 text-muted-foreground">{notFoundCopy}</p>
+            <Link to={marketPath('/blog')} className="mt-8 inline-block">
               <MButton>
-                <ArrowLeft className="mr-2 h-4 w-4" />
+                <ArrowLeft className="me-2 h-4 w-4 rtl:rotate-180" />
                 Back to Resources
               </MButton>
             </Link>

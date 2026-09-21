@@ -38,13 +38,17 @@ export function CtaSection({
     description || subheading || cta?.subheading || cta?.description || fallback?.description || ''
   const finalPrimary =
     primaryButton ||
+    cta?.cta_text ||
+    cta?.link_label ||
     cta?.btn1_text ||
     cta?.primary_button ||
     cta?.primaryButton ||
+    copy.see_demo ||
     fallback?.primaryButton ||
     ''
   const finalSecondary =
     secondaryButton ||
+    cta?.cta2_text ||
     cta?.btn2_text ||
     cta?.secondary_button ||
     cta?.secondaryButton ||
@@ -56,7 +60,8 @@ export function CtaSection({
       ? afWhatsapp
       : `https://wa.me/${websiteContent.brand.whatsappNumber}?text=${encodeURIComponent(websiteContent.brand.whatsappMessage)}`
 
-  const primaryLink = primaryHref || cta?.btn1_link || cta?.primary_link || null
+  const primaryLink =
+    primaryHref || cta?.link_url || cta?.cta_link || cta?.btn1_link || cta?.primary_link || null
   const secondaryLink = secondaryHref || cta?.btn2_link || cta?.secondary_link || null
   const trialNote = isAfghanistan
     ? null

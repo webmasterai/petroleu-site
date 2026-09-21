@@ -7,7 +7,9 @@ import { marketPath } from '../utils/marketPath'
  */
 export function useUiCopy() {
   const { market, routePrefix, isAfghanistan, locale } = useMarketLocale()
-  const { data: settings = {} } = useCmsQuery(['settings', 'ui-copy'], '/settings')
+  const { data } = useCmsQuery(['settings', 'ui-copy'], '/settings')
+  // safeCmsGet returns null on failure — default `= {}` only covers undefined
+  const settings = data && typeof data === 'object' && !Array.isArray(data) ? data : {}
 
   const defaults = {
     see_demo: 'See it in Action',

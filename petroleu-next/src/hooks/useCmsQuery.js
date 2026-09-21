@@ -1,19 +1,29 @@
 import { useQuery } from '@tanstack/react-query'
-import { safeCmsGet } from '../services/cmsPublic'
+import { cmsGet } from '../services/cmsApi'
 import { useMarketLocale } from '../context/MarketLocaleContext'
 
 /** CMS query scoped to current market/locale. Never mixes markets in the query key. */
 export function useCmsQuery(keyParts, path, options = {}) {
   const marketLocale = useMarketLocale()
-  const { enabled = true, staleTime = 0, config = {}, ...rest } = options
+  const {
+    enabled = true,
+    staleTime = 0,
+    refetchOnWindowFocus = true,
+    config = {},
+    ...rest
+  } = options
 
   return useQuery({
     queryKey: ['cms', marketLocale.market, marketLocale.locale, ...keyParts],
-    queryFn: () => safeCmsGet(path, config, marketLocale),
+    queryFn: async () => {
+      // Throw on failure so React Query keeps previous data instead of caching null
+      // (safeCmsGet returned null and wiped menus after reload).
+      return cmsGet(path, config, marketLocale)
+    },
     enabled,
-    // Keep CMS-driven marketing fresh after Publish (API also sends Cache-Control: no-store).
     staleTime,
-    refetchOnMount: 'always',
+    refetchOnWindowFocus,
+    retry: 1,
     ...rest,
   })
 }

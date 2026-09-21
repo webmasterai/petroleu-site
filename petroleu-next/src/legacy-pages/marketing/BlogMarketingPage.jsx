@@ -10,11 +10,40 @@ import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { mapCmsBlogPost } from '../../utils/cmsContent'
 
 export default function BlogMarketingPage() {
-  const { market } = useMarketLocale()
+  const { market, locale, isAfghanistan } = useMarketLocale()
   const { data, isLoading } = useCmsQuery(['blog'], '/blog')
   const cmsPosts = Array.isArray(data) ? data.map(mapCmsBlogPost).filter(Boolean) : []
   const allResources =
     cmsPosts.length > 0 ? cmsPosts : market === 'af' ? [] : getPublishedResources()
+
+  const emptyMessage = (() => {
+    if (locale === 'fa-AF') return 'هنوز مطلب وبلاگ برای دری منتشر نشده است.'
+    if (locale === 'ps-AF') return 'تر اوسه د پښتو لپاره بلاګ مطالب خپاره شوي نه دي.'
+    if (isAfghanistan) return 'Afghanistan blog content is not published yet.'
+    return 'No published resources available.'
+  })()
+
+  const heading = (() => {
+    if (locale === 'fa-AF') {
+      return {
+        badge: 'ویدیو و راهنما',
+        title: 'منابع Petroleu',
+        subtitle: 'ویدیو، راهنما و منابع اتوماسیون برای مالکان پمپ تیل.',
+      }
+    }
+    if (locale === 'ps-AF') {
+      return {
+        badge: 'ویډیوګانې او لارښودونه',
+        title: 'د Petroleu سرچینې',
+        subtitle: 'د سون توکو پمپ خاوندانو لپاره ویډیوګانې، لارښودونه او اتوماتیک سرچینې.',
+      }
+    }
+    return {
+      badge: 'Videos & Guides',
+      title: 'Petroleu Resources',
+      subtitle: 'Videos, guides, and automation resources for petrol pump owners.',
+    }
+  })()
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -30,13 +59,13 @@ export default function BlogMarketingPage() {
         <section className="bg-gradient-to-br from-primary/5 via-background to-accent/5 py-20">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
             <MBadge variant="secondary" className="mb-4">
-              Videos & Guides
+              {heading.badge}
             </MBadge>
             <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Petroleu Resources
+              {heading.title}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground">
-              Videos, guides, and automation resources for petrol pump owners.
+              {heading.subtitle}
             </p>
           </div>
         </section>
@@ -47,11 +76,7 @@ export default function BlogMarketingPage() {
               <p className="text-center text-muted-foreground">Loading resources…</p>
             ) : null}
             {!isLoading && !allResources.length ? (
-              <p className="text-center text-muted-foreground">
-                {market === 'af'
-                  ? 'Afghanistan blog content is not published yet.'
-                  : 'No published resources available.'}
-              </p>
+              <p className="text-center text-muted-foreground">{emptyMessage}</p>
             ) : null}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {allResources.map((post) => (

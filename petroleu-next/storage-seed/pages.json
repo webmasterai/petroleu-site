@@ -30,7 +30,8 @@
     "frontend_path": "/about",
     "status": "published",
     "is_enabled": true,
-    "translation_status": "ready"
+    "translation_status": "ready",
+    "published_at": "2026-09-21T10:12:04.970Z"
   },
   {
     "id": 4,

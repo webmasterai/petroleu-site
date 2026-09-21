@@ -65,8 +65,12 @@ export function WhyChooseSection() {
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
                   <Icon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground">{reason.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{reason.description}</p>
+                <h3 className="text-lg font-semibold text-foreground">
+                  {reason.title || reason.heading}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {reason.description || reason.subheading || reason.content}
+                </p>
               </div>
             )
           })}

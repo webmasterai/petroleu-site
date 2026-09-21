@@ -1,106 +1,52 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import {
-  Menu,
-  X,
-  LogOut,
-  LayoutDashboard,
-  Tag,
-  Layers,
-  FileText,
-  Navigation,
-  Globe,
-  Languages,
-  Image as ImageIcon,
-  Newspaper,
-  Search,
-  Settings,
-  Inbox,
-  Users,
-  KeyRound,
-  ExternalLink,
-} from 'lucide-react'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { adminGet, adminLogout } from '../../services/cmsAdminApi'
 import { AdminWorkspaceBar, AdminWorkspaceProvider } from '../../context/AdminWorkspaceContext'
+import AdminErrorBoundary from './AdminErrorBoundary'
 
 const NAV_GROUPS = [
   {
-    title: 'Overview',
+    label: 'Overview',
     items: [
-      { to: '/admin', label: 'Dashboard', icon: LayoutDashboard, end: true },
-      { to: '/admin/inquiries', label: 'Inquiries', icon: Inbox },
-      { to: '/admin/settings', label: 'Settings', icon: Settings },
+      { to: '/admin', label: 'Dashboard', end: true },
+      { to: '/admin/inquiries', label: 'Inquiries' },
+      { to: '/admin/settings', label: 'Settings' },
     ],
   },
   {
-    title: 'Website',
+    label: 'Website',
     items: [
-      { to: '/admin/pricing', label: 'Pricing', icon: Tag },
-      { to: '/admin/sections', label: 'Sections', icon: Layers },
-      { to: '/admin/pages', label: 'Pages', icon: FileText },
-      { to: '/admin/navigation', label: 'Navigation', icon: Navigation },
-      { to: '/admin/blog', label: 'Blog', icon: Newspaper },
-      { to: '/admin/media', label: 'Media', icon: ImageIcon },
-      { to: '/admin/seo', label: 'SEO', icon: Search },
+      { to: '/admin/pages', label: 'Pages' },
+      { to: '/admin/navigation', label: 'Navigation' },
+      { to: '/admin/blog', label: 'Blog' },
+      { to: '/admin/media', label: 'Media' },
+      { to: '/admin/seo', label: 'SEO' },
     ],
   },
   {
-    title: 'Workspace',
+    label: 'Workspace',
     items: [
-      { to: '/admin/markets', label: 'Markets', icon: Globe },
-      { to: '/admin/locales', label: 'Locales', icon: Languages },
-      { to: '/admin/users', label: 'Users & roles', icon: Users },
-      { to: '/admin/profile', label: 'Password', icon: KeyRound },
+      { to: '/admin/markets', label: 'Markets' },
+      { to: '/admin/locales', label: 'Locales' },
+      { to: '/admin/users', label: 'Users & Roles' },
+      { to: '/admin/profile', label: 'Password' },
     ],
   },
 ]
 
-function SidebarNav({ onNavigate }) {
-  return (
-    <nav className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-4">
-      {NAV_GROUPS.map((group) => (
-        <div key={group.title} className="mb-6 last:mb-0">
-          <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/80">
-            {group.title}
-          </p>
-          <ul className="space-y-0.5">
-            {group.items.map((item) => {
-              const Icon = item.icon
-              return (
-                <li key={item.to}>
-                  <NavLink
-                    to={item.to}
-                    end={item.end}
-                    onClick={onNavigate}
-                    className={({ isActive }) =>
-                      [
-                        'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
-                        isActive
-                          ? 'bg-primary text-primary-foreground shadow-sm shadow-orange-500/20'
-                          : 'text-muted-foreground hover:bg-black/[0.04] hover:text-foreground',
-                      ].join(' ')
-                    }
-                  >
-                    <Icon className="h-4 w-4 shrink-0" />
-                    {item.label}
-                  </NavLink>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-      ))}
-    </nav>
-  )
-}
+const linkClass = ({ isActive }) =>
+  [
+    'block rounded-md px-3 py-2 text-sm transition-colors',
+    isActive
+      ? 'bg-[#ea580c] text-white font-medium shadow-sm'
+      : 'text-slate-700 hover:bg-slate-100',
+  ].join(' ')
 
 export default function AdminLayout({ children }) {
   const navigate = useNavigate()
-  const { pathname } = useLocation()
   const [ready, setReady] = useState(false)
+  const [bootError, setBootError] = useState('')
   const [user, setUser] = useState(null)
-  const [error, setError] = useState('')
-  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     let cancelled = false
@@ -110,11 +56,18 @@ export default function AdminLayout({ children }) {
         if (!cancelled) {
           setUser(me)
           setReady(true)
+          setBootError('')
         }
-      } catch {
+      } catch (err) {
         if (!cancelled) {
-          await adminLogout().catch(() => {})
-          navigate('/admin/login', { replace: true })
+          const status = err?.response?.status || err?.status
+          if (status === 401 || status === 403) {
+            await adminLogout().catch(() => {})
+            navigate('/admin/login', { replace: true })
+            return
+          }
+          setBootError(err?.response?.data?.message || err?.message || 'Unable to load admin session.')
+          setReady(true)
         }
       }
     }
@@ -123,10 +76,6 @@ export default function AdminLayout({ children }) {
       cancelled = true
     }
   }, [navigate])
-
-  useEffect(() => {
-    setMobileOpen(false)
-  }, [pathname])
 
   async function handleLogout() {
     try {
@@ -138,103 +87,121 @@ export default function AdminLayout({ children }) {
 
   if (!ready) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-[#F5F3F0] text-sm text-muted-foreground">
-        <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+      <div className="flex min-h-screen items-center justify-center bg-[#f7f6f3] text-sm text-slate-500">
         Checking session…
       </div>
     )
   }
 
-  const pageTitle =
-    NAV_GROUPS.flatMap((g) => g.items).find((i) =>
-      i.end ? pathname === i.to : pathname === i.to || pathname.startsWith(`${i.to}/`),
-    )?.label || 'Admin'
-
-  const sidebar = (
-    <div className="flex h-full min-h-0 flex-col">
-      <div className="flex h-16 shrink-0 items-center gap-3 border-b border-black/[0.06] px-5">
-        <img src="/petroleu-logo.png" alt="Petroleu" className="h-8 w-auto object-contain" />
-        <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-primary">
-          Admin
-        </span>
-      </div>
-      <SidebarNav onNavigate={() => setMobileOpen(false)} />
-      <div className="shrink-0 space-y-2 border-t border-black/[0.06] bg-white/80 p-4">
-        <div className="truncate px-1 text-xs text-muted-foreground" title={user?.email || ''}>
-          {user?.email}
+  if (bootError && !user) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-[#f7f6f3] px-4 text-center">
+        <p className="text-sm font-semibold text-slate-900">Unable to load this screen.</p>
+        <p className="max-w-md text-sm text-slate-600">{bootError}</p>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            className="rounded-md bg-[#ea580c] px-3 py-1.5 text-sm font-medium text-white"
+            onClick={() => window.location.reload()}
+          >
+            Retry
+          </button>
+          <button
+            type="button"
+            className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm"
+            onClick={() => navigate('/admin/login', { replace: true })}
+          >
+            Go to login
+          </button>
         </div>
-        <a
-          href="/"
-          target="_blank"
-          rel="noreferrer"
-          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-black/[0.04] hover:text-foreground"
-        >
-          <ExternalLink className="h-4 w-4" />
-          View website
-        </a>
-        <button
-          type="button"
-          onClick={handleLogout}
-          className="flex w-full items-center gap-2 rounded-lg border border-black/[0.08] bg-white px-3 py-2 text-sm font-medium text-foreground shadow-sm hover:bg-muted"
-        >
-          <LogOut className="h-4 w-4" />
-          Logout
-        </button>
       </div>
-    </div>
-  )
+    )
+  }
+
+  const isSuper = user?.role === 'super_admin' || user?.role === 'cms_admin'
 
   return (
-    <div className="admin-app min-h-screen bg-[#F5F3F0] text-foreground">
-      {mobileOpen ? (
-        <button
-          type="button"
-          className="fixed inset-0 z-40 bg-black/45 lg:hidden"
-          aria-label="Close menu"
-          onClick={() => setMobileOpen(false)}
-        />
-      ) : null}
+    <div className="flex min-h-screen bg-[#f7f6f3] text-slate-900">
+      <aside className="flex w-60 shrink-0 flex-col border-r border-slate-200 bg-white">
+        <div className="border-b border-slate-200 px-4 py-4">
+          <div className="flex items-center gap-2.5">
+            <img
+              src="/petroleu-logo.png"
+              alt="Petroleu"
+              className="h-8 w-auto max-w-[140px] object-contain object-left"
+              width={140}
+              height={32}
+            />
+            <div className="text-[10px] font-semibold uppercase tracking-wider text-[#ea580c]">
+              Admin
+            </div>
+          </div>
+        </div>
 
-      <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-64 max-w-[85vw] flex-col bg-white shadow-[4px_0_24px_rgb(15_23_42/0.06)] transition-transform duration-200 lg:translate-x-0 ${
-          mobileOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        {sidebar}
+        <nav className="flex-1 overflow-y-auto p-3">
+          {NAV_GROUPS.map((group) => (
+            <div key={group.label} className="mb-4">
+              <div className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                {group.label}
+              </div>
+              <div className="space-y-0.5">
+                {group.items.map((item) => (
+                  <NavLink key={item.to} to={item.to} end={item.end} className={linkClass}>
+                    {item.label}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          {isSuper ? (
+            <div className="mb-2">
+              <div className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                Developer tools
+              </div>
+              <NavLink to="/admin/sections" className={linkClass}>
+                Advanced Sections
+              </NavLink>
+            </div>
+          ) : null}
+        </nav>
+
+        <div className="space-y-2 border-t border-slate-200 p-3">
+          {user?.email ? (
+            <div className="truncate px-2 text-xs text-slate-500">{user.email}</div>
+          ) : null}
+          <a
+            href="/"
+            target="_blank"
+            rel="noreferrer"
+            className="block rounded-md px-3 py-2 text-sm text-slate-700 hover:bg-slate-100"
+          >
+            View website
+          </a>
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="w-full rounded-md px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-100"
+          >
+            Logout
+          </button>
+        </div>
       </aside>
 
-      <div className="lg:pl-64">
-        <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-3 border-b border-black/[0.06] bg-[#F5F3F0]/90 px-4 backdrop-blur-md sm:px-6">
-          <div className="flex min-w-0 items-center gap-3">
-            <button
-              type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-black/[0.08] bg-white shadow-sm lg:hidden"
-              onClick={() => setMobileOpen(true)}
-              aria-label="Open menu"
-            >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
-            <h1 className="truncate text-lg font-semibold tracking-tight">{pageTitle}</h1>
-          </div>
-          <div className="hidden items-center gap-2 text-sm text-muted-foreground sm:flex">
-            <span className="max-w-[220px] truncate">{user?.email}</span>
-          </div>
-        </header>
-
-        <main className="min-w-0 p-4 sm:p-6 lg:p-8">
-          <div className="mx-auto max-w-6xl">
-            <AdminWorkspaceProvider>
-              <AdminWorkspaceBar />
-              {error ? (
-                <p className="mb-4 rounded-lg border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive">
-                  {error}
-                </p>
-              ) : null}
-              {children}
-            </AdminWorkspaceProvider>
-          </div>
-        </main>
-      </div>
+      <main className="min-w-0 flex-1 overflow-auto">
+        <div className="mx-auto max-w-6xl p-4 md:p-6">
+          <AdminWorkspaceProvider>
+            <AdminWorkspaceBar />
+            <AdminErrorBoundary>
+              {/*
+                Next.js admin pages pass children explicitly.
+                Vite React Router nested routes need <Outlet />.
+              */}
+              {children ?? <Outlet />}
+            </AdminErrorBoundary>
+          </AdminWorkspaceProvider>
+        </div>
+      </main>
     </div>
   )
 }

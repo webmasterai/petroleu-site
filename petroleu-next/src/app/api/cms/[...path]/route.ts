@@ -69,24 +69,159 @@ function fallbackChain(market: string, locale: string) {
 }
 
 function sectionData(s: Section) {
-  const data = s.data || {}
+  const data = (s.data && typeof s.data === 'object' && !Array.isArray(s.data) ? s.data : {}) as Record<
+    string,
+    unknown
+  >
+  const primary =
+    (s.link_label && String(s.link_label)) ||
+    (typeof data.cta_text === 'string' && data.cta_text) ||
+    (typeof data.primary_button === 'string' && data.primary_button) ||
+    (typeof data.primaryButton === 'string' && data.primaryButton) ||
+    null
+  const secondary =
+    (typeof data.cta2_text === 'string' && data.cta2_text) ||
+    (typeof data.secondary_button === 'string' && data.secondary_button) ||
+    (typeof data.secondaryButton === 'string' && data.secondaryButton) ||
+    null
+  const imageUrl =
+    s.image_url ||
+    (typeof data.dashboard_image_url === 'string' ? data.dashboard_image_url : null) ||
+    (typeof data.dashboardImageUrl === 'string' ? data.dashboardImageUrl : null) ||
+    null
+
+  let title = s.title
+  let description = s.description
+  // Corrupted heading:pricing used FAQ/plan note as title — never surface that as section H2
+  if (s.section_key === 'heading:pricing' && typeof title === 'string') {
+    const looksLikePlanNote =
+      title.includes('Plans are available monthly and yearly') ||
+      title.includes('پلان‌ها ماهانه و سالانه') ||
+      title.includes('پلانونه میاشتني او کلني') ||
+      (description &&
+        typeof description === 'string' &&
+        title.trim() === description.trim() &&
+        (title.includes('monthly') ||
+          title.includes('سالانه') ||
+          title.includes('کلني') ||
+          title.includes('Contact sales') ||
+          title.includes('فروش') ||
+          title.includes('پلور')))
+    if (looksLikePlanNote) {
+      const locale = String(s.locale_code || '')
+      if (locale === 'fa-AF') {
+        title = 'قیمت‌گذاری ساده و شفاف'
+        description = 'پلانی را انتخاب کنید که با پمپ تیل شما سازگار باشد. همه پلان‌ها ۱۴ روز آزمایش رایگان دارند.'
+      } else if (locale === 'ps-AF') {
+        title = 'ساده او روڼ بیه‌ډول'
+        description = 'هغه پلان وټاکئ چې ستاسو د سون توکو پمپ سره سمون لري. ټول پلانونه ۱۴ ورځنی وړیا ازموینه لري.'
+      } else {
+        title = 'Simple, Transparent Pricing'
+        description =
+          'Choose the plan that fits your fuel station. All plans include a 14-day free trial.'
+      }
+    }
+  }
+
   return {
     id: s.id,
-    title: s.title,
-    heading: s.title,
-    description: s.description,
-    subheading: s.description,
+    title,
+    heading: title,
+    description,
+    subheading: description,
     content: s.content,
-    image_url: s.image_url,
-    dashboard_image_url: s.image_url,
+    image_url: imageUrl,
+    dashboard_image_url: imageUrl,
     image_alt: s.image_alt,
-    link_label: s.link_label,
-    link_url: s.link_url,
-    cta_text: s.link_label,
-    cta_link: s.link_url,
+    link_label: primary,
+    link_url: s.link_url || (typeof data.cta_link === 'string' ? data.cta_link : null) || null,
     sort_order: s.sort_order,
     ...data,
+    cta_text: primary,
+    cta_link: s.link_url || (typeof data.cta_link === 'string' ? data.cta_link : null) || null,
+    cta2_text: secondary,
+    primary_button: primary,
+    primaryButton: primary,
+    secondary_button: secondary,
+    secondaryButton: secondary,
   }
+}
+
+function isValidTestimonial(item: Record<string, unknown>) {
+  const name = String(item.name || item.author_name || item.title || '').trim()
+  const content = String(item.content || item.quote || item.body || item.description || '').trim()
+  if (!name || !content) return false
+  if (content === '""' || content === "''" || content === '?') return false
+  return true
+}
+
+function normalizeTestimonialItem(
+  item: Record<string, unknown>,
+  sectionId: number,
+  index: number,
+  sortBase: number,
+) {
+  return {
+    id: `${sectionId}-${index}`,
+    name: String(item.name || item.author_name || item.title || '').trim(),
+    role: String(item.role || item.author_role || item.link_label || '').trim(),
+    city: String(item.city || item.author_company || '').trim(),
+    rating: Number(item.rating) || 5,
+    date: String(item.date || item.review_date || '').trim(),
+    content: String(item.content || item.quote || item.body || item.description || '').trim(),
+    sort_order: sortBase * 100 + index,
+  }
+}
+
+/** Flatten testimonial sections: array-in-data OR single-card rows. Prefer array source. */
+async function listTestimonials(market: string, locale: string) {
+  const all = await findAll<Section>('sections')
+  const published = all.filter(
+    (s) =>
+      s.page_slug === 'home' &&
+      s.section_key === 'testimonial' &&
+      s.status === 'published' &&
+      s.is_enabled !== false,
+  )
+  for (const step of fallbackChain(market, locale)) {
+    if (market === 'af' && step.market !== 'af') continue
+    const batch = published
+      .filter((s) => s.market_code === step.market && s.locale_code === step.locale)
+      .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
+    if (!batch.length) continue
+
+    const fromArrays: ReturnType<typeof normalizeTestimonialItem>[] = []
+    const fromSingles: ReturnType<typeof normalizeTestimonialItem>[] = []
+
+    for (const s of batch) {
+      const sortBase = Number(s.sort_order) || 0
+      if (Array.isArray(s.data) && s.data.length) {
+        s.data.forEach((raw, i) => {
+          const item = (raw && typeof raw === 'object' ? raw : {}) as Record<string, unknown>
+          if (!isValidTestimonial(item)) return
+          fromArrays.push(normalizeTestimonialItem(item, s.id, i, sortBase))
+        })
+      } else {
+        const flat = {
+          ...((s.data && typeof s.data === 'object' && !Array.isArray(s.data) ? s.data : {}) as Record<
+            string,
+            unknown
+          >),
+          title: s.title,
+          description: s.description,
+          content: s.content,
+          link_label: s.link_label,
+        }
+        if (!isValidTestimonial(flat)) continue
+        fromSingles.push(normalizeTestimonialItem(flat, s.id, 0, sortBase))
+      }
+    }
+
+    // Prefer the bundled review list (real quotes) over sparse single-card rows
+    const list = fromArrays.length ? fromArrays : fromSingles
+    if (list.length) return list
+  }
+  return []
 }
 
 async function listSections(market: string, locale: string, pageSlug: string, sectionKey: string) {
@@ -104,6 +239,31 @@ async function listSections(market: string, locale: string, pageSlug: string, se
       .filter((s) => s.market_code === step.market && s.locale_code === step.locale)
       .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
     if (batch.length) return batch.map(sectionData)
+  }
+  return []
+}
+
+/** All published sections for a page (any section_key), ordered by sort_order. */
+async function listPageSections(market: string, locale: string, pageSlug: string) {
+  const all = await findAll<Section>('sections')
+  const published = all.filter(
+    (s) =>
+      s.page_slug === pageSlug &&
+      s.status === 'published' &&
+      s.is_enabled !== false,
+  )
+  for (const step of fallbackChain(market, locale)) {
+    if (market === 'af' && step.market !== 'af') continue
+    const batch = published
+      .filter((s) => s.market_code === step.market && s.locale_code === step.locale)
+      .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
+    if (batch.length) {
+      return batch.map((s) => ({
+        ...sectionData(s),
+        section_key: s.section_key,
+        page_slug: s.page_slug,
+      }))
+    }
   }
   return []
 }
@@ -140,7 +300,7 @@ export async function GET(
     return ok(await listSections(market, locale, page, `feature:${type}`))
   }
   if (join === 'logos') return ok(await listSections(market, locale, 'home', 'logo'))
-  if (join === 'testimonials') return ok(await listSections(market, locale, 'home', 'testimonial'))
+  if (join === 'testimonials') return ok(await listTestimonials(market, locale))
   if (join === 'pricing') return ok(await listSections(market, locale, 'pricing', 'plan'))
   if (join === 'faq' || join === 'faqs') {
     const page = req.nextUrl.searchParams.get('page') || 'home'
@@ -201,6 +361,55 @@ export async function GET(
     const list = await listSections(market, locale, 'legal', parts[1])
     return ok(list[0] || null)
   }
+  // Full page payload for CMS-driven pages (meta + all published sections).
+  if (parts[0] === 'page' && parts[1]) {
+    const slug = parts[1]
+    const pages = await findAll<{
+      id: number
+      market_code: string
+      locale_code: string
+      slug: string
+      title?: string
+      description?: string
+      frontend_path?: string
+      template?: string
+      status?: string
+      is_enabled?: boolean
+    }>('pages')
+    let pageMeta: (typeof pages)[0] | null = null
+    for (const step of fallbackChain(market, locale)) {
+      if (market === 'af' && step.market !== 'af') continue
+      const hit = pages.find(
+        (p) =>
+          p.slug === slug &&
+          p.market_code === step.market &&
+          p.locale_code === step.locale &&
+          p.status === 'published' &&
+          p.is_enabled !== false,
+      )
+      if (hit) {
+        pageMeta = hit
+        break
+      }
+    }
+    const sections = await listPageSections(market, locale, slug)
+    return ok({
+      page: pageMeta
+        ? {
+            id: pageMeta.id,
+            slug: pageMeta.slug,
+            title: pageMeta.title,
+            description: pageMeta.description,
+            frontend_path: pageMeta.frontend_path,
+            template: pageMeta.template || 'default',
+          }
+        : { slug, title: slug, description: null, frontend_path: `/${slug}`, template: 'default' },
+      sections,
+    })
+  }
+  if (parts[0] === 'page-sections' && parts[1]) {
+    return ok(await listPageSections(market, locale, parts[1]))
+  }
   if (join === 'navigation') {
     const location = req.nextUrl.searchParams.get('location') || 'header'
     const rows = await findAll<{
@@ -209,16 +418,19 @@ export async function GET(
       location: string
       status?: string
       is_enabled?: boolean
+      sort_order?: number
     }>('navigation')
     for (const step of fallbackChain(market, locale)) {
-      const batch = rows.filter(
-        (r) =>
-          r.market_code === step.market &&
-          r.locale_code === step.locale &&
-          r.location === location &&
-          r.status === 'published' &&
-          r.is_enabled !== false,
-      )
+      const batch = rows
+        .filter(
+          (r) =>
+            r.market_code === step.market &&
+            r.locale_code === step.locale &&
+            r.location === location &&
+            r.status === 'published' &&
+            r.is_enabled !== false,
+        )
+        .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
       if (batch.length) return ok(batch)
     }
     return ok([])
@@ -500,41 +712,51 @@ export async function POST(
   }
 
   if (join === 'admin/login') {
-    const email = String(body.email || '')
-    const password = String(body.password || '')
-    if (!email || !password) {
-      return NextResponse.json(
-        { message: 'The given data was invalid.', errors: { email: ['Email and password are required.'] } },
-        { status: 422 },
-      )
-    }
-    const user = await findUserByEmail(email)
-    const passOk = user ? await verifyPassword(password, user.passwordHash) : false
-    if (!user || !user.isActive || !isCmsUser(user.role) || !passOk) {
-      return NextResponse.json(
+    try {
+      const email = String(body.email || '').trim()
+      const password = String(body.password || '')
+      if (!email || !password) {
+        return fail('Email and password are required.', 400, {
+          email: ['Email and password are required.'],
+        })
+      }
+      const user = await findUserByEmail(email)
+      if (!user?.passwordHash) {
+        return fail('Unable to sign in. Please check your credentials.', 401, {
+          email: ['The provided credentials are incorrect.'],
+        })
+      }
+      const passOk = await verifyPassword(password, user.passwordHash)
+      if (!user.isActive || !isCmsUser(user.role) || !passOk) {
+        return fail('Unable to sign in. Please check your credentials.', 401, {
+          email: ['The provided credentials are incorrect.'],
+        })
+      }
+      const token = await createSessionToken(user)
+      try {
+        await setSessionCookie(token)
+      } catch (cookieErr) {
+        console.error('[cms] setSessionCookie failed', cookieErr)
+        // Token still returned for Bearer auth (admin client stores it)
+      }
+      return ok(
         {
-          message: 'The given data was invalid.',
-          errors: { email: ['The provided credentials are incorrect.'] },
+          token,
+          user: {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: normalizeRole(user.role),
+            assigned_markets: user.assignedMarkets ?? null,
+            assigned_locales: user.assignedLocales ?? null,
+          },
         },
-        { status: 422 },
+        'Logged in',
       )
+    } catch (err) {
+      console.error('[cms] admin/login failed', err)
+      return fail('Unable to sign in. Please try again.', 500)
     }
-    const token = await createSessionToken(user)
-    await setSessionCookie(token)
-    return ok(
-      {
-        token,
-        user: {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          role: normalizeRole(user.role),
-          assigned_markets: user.assignedMarkets ?? null,
-          assigned_locales: user.assignedLocales ?? null,
-        },
-      },
-      'Logged in',
-    )
   }
 
   if (join === 'admin/logout') {

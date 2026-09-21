@@ -43,6 +43,24 @@ function previewPathFor(market, locale) {
   return '/'
 }
 
+function readLs(key, fallback = '') {
+  if (typeof window === 'undefined') return fallback
+  try {
+    return localStorage.getItem(key) || fallback
+  } catch {
+    return fallback
+  }
+}
+
+function writeLs(key, value) {
+  if (typeof window === 'undefined') return
+  try {
+    localStorage.setItem(key, value)
+  } catch {
+    /* ignore quota / private mode */
+  }
+}
+
 const AdminWorkspaceContext = createContext({
   market: 'pk',
   locale: 'en-PK',
@@ -57,18 +75,18 @@ const AdminWorkspaceContext = createContext({
 })
 
 export function AdminWorkspaceProvider({ children }) {
-  const [market, setMarketState] = useState(() => localStorage.getItem('cms_ws_market') || 'pk')
+  const [market, setMarketState] = useState(() => readLs('cms_ws_market', 'pk'))
   const [locale, setLocaleState] = useState(() => {
-    const m = localStorage.getItem('cms_ws_market') || 'pk'
-    const l = localStorage.getItem('cms_ws_locale') || defaultLocaleFor(m)
+    const m = readLs('cms_ws_market', 'pk')
+    const l = readLs('cms_ws_locale', defaultLocaleFor(m))
     return isLocaleAllowed(m, l) ? l : defaultLocaleFor(m)
   })
-  const [showAll, setShowAllState] = useState(() => localStorage.getItem('cms_ws_show_all') === '1')
+  const [showAll, setShowAllState] = useState(() => readLs('cms_ws_show_all') === '1')
 
   const setMarket = useCallback((m) => {
     const nextLocale = defaultLocaleFor(m)
-    localStorage.setItem('cms_ws_market', m)
-    localStorage.setItem('cms_ws_locale', nextLocale)
+    writeLs('cms_ws_market', m)
+    writeLs('cms_ws_locale', nextLocale)
     setMarketState(m)
     setLocaleState(nextLocale)
   }, [])
@@ -76,14 +94,14 @@ export function AdminWorkspaceProvider({ children }) {
   const setLocale = useCallback(
     (l) => {
       if (!isLocaleAllowed(market, l)) return
-      localStorage.setItem('cms_ws_locale', l)
+      writeLs('cms_ws_locale', l)
       setLocaleState(l)
     },
     [market],
   )
 
   const setShowAll = useCallback((v) => {
-    localStorage.setItem('cms_ws_show_all', v ? '1' : '0')
+    writeLs('cms_ws_show_all', v ? '1' : '0')
     setShowAllState(Boolean(v))
   }, [])
 
@@ -180,3 +198,5 @@ export function AdminWorkspaceBar({ pagePath = '', sectionAnchor = '' }) {
     </div>
   )
 }
+
+export { LOCALE_SHORT }

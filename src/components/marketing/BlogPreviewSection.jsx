@@ -23,8 +23,9 @@ export function BlogPreviewSection() {
   })
 
   const cmsPosts = Array.isArray(data) ? data.map(mapCmsBlogPost).filter(Boolean) : []
-  const homepageResources =
+  const homepageResources = (
     cmsPosts.length > 0 ? cmsPosts : market === 'af' ? [] : getHomepageResources()
+  ).slice(0, 3)
 
   if (!homepageResources.length) return null
 

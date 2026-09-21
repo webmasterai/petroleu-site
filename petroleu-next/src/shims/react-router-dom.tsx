@@ -106,7 +106,9 @@ export function Navigate({ to, replace }: { to: To; replace?: boolean }) {
   return null
 }
 
-export function Outlet() {
+/** Placeholder for Next.js; Vite uses real react-router Outlet. */
+export function Outlet({ children }: { children?: ReactNode } = {}) {
+  if (children) return <>{children}</>
   return null
 }
 

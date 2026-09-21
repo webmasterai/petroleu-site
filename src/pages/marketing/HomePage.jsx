@@ -18,6 +18,7 @@ import { CtaSection } from '../../components/marketing/CtaSection'
 import { WhatsAppWidget } from '../../components/marketing/WhatsAppWidget'
 import { MarketingJsonLd, MarketingFaqJsonLd } from '../../components/marketing/MarketingJsonLd'
 import { MarketingSeo } from '../../components/marketing/MarketingSeo'
+import { CmsFlexibleSections } from '../../components/marketing/CmsContentBlocks'
 import { websiteContent } from '../../content/websiteContent'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
@@ -79,6 +80,7 @@ export default function HomePage() {
         <CtaSection slug="home-mid" />
         <PricingSection />
         <FaqSection />
+        <CmsFlexibleSections pageSlug="home" />
         <CtaSection slug="home-bottom" />
       </main>
       <SiteFooter />

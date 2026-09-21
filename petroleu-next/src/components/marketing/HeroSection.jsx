@@ -6,34 +6,49 @@ import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useUiCopy } from '../../hooks/useUiCopy'
 
 export function HeroSection() {
-  const { market, isAfghanistan, mp, copy, whatsappUrl: afWhatsapp } = useUiCopy()
+  const { isAfghanistan, mp, copy, whatsappUrl: afWhatsapp } = useUiCopy()
   const { data: cms } = useCmsQuery(['hero', 'home'], '/hero/home')
   const fallback = isAfghanistan ? null : websiteContent.hero
 
   if (isAfghanistan && !cms) return null
 
-  const badge = cms?.badge ?? fallback?.badge ?? ''
-  const title = cms?.heading ?? cms?.title ?? fallback?.title ?? (isAfghanistan ? '' : 'Petroleu')
-  const titleHighlight = cms?.title_highlight ?? cms?.titleHighlight ?? fallback?.titleHighlight ?? ''
-  const description = cms?.subheading ?? cms?.description ?? fallback?.description ?? ''
-  const secondaryButton =
-    cms?.cta2_text ??
-    cms?.secondary_button ??
-    cms?.secondaryButton ??
-    fallback?.secondaryButton ??
-    copy.view_pricing ??
-    ''
-  const primaryLabel =
-    cms?.cta_text ??
-    cms?.primary_button ??
-    cms?.primaryButton ??
-    cms?.link_label ??
-    copy.see_demo ??
-    ''
-  const dashboardImageUrl =
-    cms?.image_url ?? cms?.dashboard_image_url ?? cms?.dashboardImageUrl ?? fallback?.dashboardImageUrl
-  const dashboardUrl = cms?.dashboard_url ?? cms?.dashboardUrl ?? fallback?.dashboardUrl
-  const features = cms?.features && Array.isArray(cms.features) ? cms.features : fallback?.features || []
+  const pick = (...vals) => {
+    for (const v of vals) {
+      if (v == null) continue
+      const s = String(v).trim()
+      if (s) return s
+    }
+    return ''
+  }
+
+  const badge = pick(cms?.badge, fallback?.badge)
+  const title = pick(cms?.heading, cms?.title, fallback?.title, isAfghanistan ? '' : 'Petroleu')
+  const titleHighlight = pick(cms?.title_highlight, cms?.titleHighlight, fallback?.titleHighlight)
+  const description = pick(cms?.subheading, cms?.description, fallback?.description)
+  const secondaryButton = pick(
+    cms?.cta2_text,
+    cms?.secondary_button,
+    cms?.secondaryButton,
+    fallback?.secondaryButton,
+    copy.view_pricing,
+  )
+  const primaryLabel = pick(
+    cms?.cta_text,
+    cms?.primary_button,
+    cms?.primaryButton,
+    cms?.link_label,
+    copy.see_demo,
+  )
+  const dashboardImageUrl = pick(
+    cms?.image_url,
+    cms?.dashboard_image_url,
+    cms?.dashboardImageUrl,
+    fallback?.dashboardImageUrl,
+  )
+  const dashboardUrl = pick(cms?.dashboard_url, cms?.dashboardUrl, fallback?.dashboardUrl)
+  const features = Array.isArray(cms?.features)
+    ? cms.features.filter(Boolean)
+    : fallback?.features || []
 
   const pkWhatsapp = `https://wa.me/${websiteContent.brand.whatsappNumber}?text=${encodeURIComponent(websiteContent.brand.whatsappMessage)}`
   const whatsappUrl = isAfghanistan ? afWhatsapp : pkWhatsapp

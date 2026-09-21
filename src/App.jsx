@@ -19,10 +19,10 @@ import DocsMarketingPage from './pages/marketing/DocsMarketingPage'
 import DocsApiMarketingPage from './pages/marketing/DocsApiMarketingPage'
 import NotFoundPage from './pages/marketing/NotFoundPage'
 import CityLandingPage from './pages/marketing/CityLandingPage'
+import CmsMarketingPage from './pages/marketing/CmsMarketingPage'
 import { CITY_LANDING_PAGES, getCityPath } from './content/cityLandingContent'
 import { MarketLocaleProvider } from './context/MarketLocaleContext'
 import { DocumentLocaleEffect } from './components/DocumentLocaleEffect'
-import { MarketLanguageSwitcher } from './components/marketing/MarketLanguageSwitcher'
 
 import AdminLoginPage from './pages/admin/AdminLoginPage'
 import AdminLayout from './pages/admin/AdminLayout'
@@ -42,7 +42,11 @@ import AdminProfilePage from './pages/admin/AdminProfilePage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: { retry: 1, refetchOnWindowFocus: false },
+    queries: {
+      retry: 1,
+      staleTime: 0,
+      refetchOnWindowFocus: true,
+    },
   },
 })
 
@@ -67,6 +71,7 @@ function marketingPageRoutes() {
       <Route path="privacy" element={<PrivacyPolicyPage />} />
       <Route path="docs" element={<DocsMarketingPage />} />
       <Route path="docs/api" element={<DocsApiMarketingPage />} />
+      <Route path=":slug" element={<CmsMarketingPage />} />
     </>
   )
 }
@@ -115,7 +120,11 @@ function MarketingRoutes() {
         <Route path="inquiries" element={<AdminInquiriesPage />} />
         <Route path="users" element={<AdminUsersPage />} />
         <Route path="profile" element={<AdminProfilePage />} />
+        <Route path="password" element={<AdminProfilePage />} />
       </Route>
+
+      {/* CMS pages created in admin (single-segment paths) */}
+      <Route path="/:slug" element={<CmsMarketingPage />} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
@@ -128,7 +137,6 @@ export default function App() {
       <BrowserRouter>
         <MarketLocaleProvider>
           <DocumentLocaleEffect />
-          <MarketLanguageSwitcher />
           <MarketingRoutes />
           <Toaster position="top-right" />
         </MarketLocaleProvider>

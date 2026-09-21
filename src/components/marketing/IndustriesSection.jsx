@@ -43,8 +43,8 @@ export function IndustriesSection({ variant = 'home' }) {
     Array.isArray(data) && data.length
       ? data.map((it) => ({
           icon: it.icon,
-          title: it.title,
-          description: it.description,
+          title: it.title || it.heading || it.name || '',
+          description: it.description || it.subheading || it.content || '',
           colorClass: it.color_class || it.colorClass || 'bg-primary/10 text-primary',
         }))
       : fallback

@@ -15,6 +15,7 @@ import { MarketingPageJsonLd } from '../../components/marketing/MarketingJsonLd'
 import { StatsSection } from '../../components/marketing/StatsSection'
 import { CtaSection } from '../../components/marketing/CtaSection'
 import { MBadge } from '../../components/marketing/ui'
+import { CmsFlexibleSections } from '../../components/marketing/CmsContentBlocks'
 import { withBestPrefix } from '../../content/websiteContent'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
 
@@ -178,6 +179,8 @@ export default function AboutMarketingPage() {
             </div>
           </section>
         )}
+
+        <CmsFlexibleSections pageSlug="about" />
 
         <CtaSection
           heading={ctaData?.heading}

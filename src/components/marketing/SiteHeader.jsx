@@ -53,6 +53,43 @@ function NavItem({ to, className, onClick, children }) {
   )
 }
 
+/** Compare nav URLs ignoring trailing slash and hash (except keep # for mobile). */
+function navPathKey(href) {
+  if (!href) return '/'
+  if (/^(https?:|mailto:|tel:)/i.test(href)) return href
+  const [base, hash] = String(href).split('#')
+  const normalized = (base.replace(/\/+$/, '') || '/') + (hash != null && hash !== '' ? `#${hash}` : '')
+  return normalized
+}
+
+/**
+ * CMS items first (sorted), then default items whose paths are not already covered.
+ * Prevents PK CMS (4 header links) from permanently replacing the full fallback set.
+ */
+function mergeCmsNav(cmsRows, defaults, routePrefix, { withIcons = false } = {}) {
+  if (!Array.isArray(cmsRows) || !cmsRows.length) return defaults
+
+  const cmsItems = [...cmsRows]
+    .sort((a, b) => (Number(a.sort_order) || 0) - (Number(b.sort_order) || 0))
+    .map((n) => {
+      const name = String(n.label || n.title || n.name || '').trim()
+      const href = n.url?.startsWith('http') ? n.url : marketPath(n.url || '/', routePrefix)
+      const item = { name, href }
+      if (withIcons) {
+        item.icon = <FileText className="h-4 w-4" />
+        item.desc = n.children_data?.desc || n.description || ''
+      }
+      return item
+    })
+    .filter((n) => n.name)
+
+  if (!cmsItems.length) return defaults
+
+  const covered = new Set(cmsItems.map((i) => navPathKey(i.href)))
+  const extras = defaults.filter((d) => !covered.has(navPathKey(d.href)))
+  return [...cmsItems, ...extras]
+}
+
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [resourcesOpen, setResourcesOpen] = useState(false)
@@ -61,10 +98,10 @@ export function SiteHeader() {
   const { pathname } = useLocation()
   const { routePrefix, isAfghanistan } = useMarketLocale()
   const { copy, whatsappUrl } = useUiCopy()
-  const { data: headerNav } = useCmsQuery(['nav', 'header'], '/navigation', {
+  const { data: headerNav, isFetched: headerFetched } = useCmsQuery(['nav', 'header'], '/navigation', {
     config: { params: { location: 'header' } },
   })
-  const { data: megaNav } = useCmsQuery(['nav', 'mega'], '/navigation', {
+  const { data: megaNav, isFetched: megaFetched } = useCmsQuery(['nav', 'mega'], '/navigation', {
     config: { params: { location: 'mega' } },
   })
 
@@ -91,29 +128,8 @@ export function SiteHeader() {
     [routePrefix],
   )
 
-  const navItems = useMemo(() => {
-    if (Array.isArray(headerNav) && headerNav.length) {
-      return headerNav.map((n) => ({
-        name: n.label,
-        href: n.url?.startsWith('http') ? n.url : marketPath(n.url || '/', routePrefix),
-      }))
-    }
-    // Afghanistan: never silently fall back to English default nav
-    if (isAfghanistan) return []
-    return defaultNav
-  }, [headerNav, defaultNav, routePrefix, isAfghanistan])
-
-  const resourceItems = useMemo(() => {
-    if (Array.isArray(megaNav) && megaNav.length) {
-      return megaNav.map((n) => ({
-        name: n.label,
-        href: n.url?.startsWith('http') ? n.url : marketPath(n.url || '/', routePrefix),
-        icon: <FileText className="h-4 w-4" />,
-        desc: n.children_data?.desc || '',
-      }))
-    }
-    if (isAfghanistan) return []
-    return [
+  const defaultResources = useMemo(
+    () => [
       {
         name: 'Analytics',
         href: marketPath('/analytics', routePrefix),
@@ -138,13 +154,25 @@ export function SiteHeader() {
         icon: <FileText className="h-4 w-4" />,
         desc: 'Petroleu docs and public API notes',
       },
-    ]
-  }, [megaNav, routePrefix, isAfghanistan])
+    ],
+    [routePrefix],
+  )
 
-  const resourcesLabel = copy.resources || (isAfghanistan ? null : 'Resources')
-  const loginLabel = copy.login || (isAfghanistan ? null : 'Login')
-  const demoLabel = copy.see_demo || (isAfghanistan ? null : 'See it in Action')
-  const trialLabel = copy.start_trial || (isAfghanistan ? null : 'Start Free Trial')
+  const navItems = useMemo(() => {
+    // Stable first paint: keep defaults until CMS responds (avoids 7→4 flicker)
+    if (!headerFetched) return defaultNav
+    return mergeCmsNav(headerNav, defaultNav, routePrefix)
+  }, [headerNav, headerFetched, defaultNav, routePrefix])
+
+  const resourceItems = useMemo(() => {
+    if (!megaFetched) return defaultResources
+    return mergeCmsNav(megaNav, defaultResources, routePrefix, { withIcons: true })
+  }, [megaNav, megaFetched, defaultResources, routePrefix])
+
+  const resourcesLabel = copy.resources || 'Resources'
+  const loginLabel = copy.login || 'Login'
+  const demoLabel = copy.see_demo || 'See it in Action'
+  const trialLabel = copy.start_trial || 'Start Free Trial'
 
   return (
     <header className="sticky top-0 z-40">
@@ -173,7 +201,7 @@ export function SiteHeader() {
                 className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                   active
                     ? 'bg-muted text-foreground'
-                    : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                    : 'text-foreground/80 hover:bg-muted hover:text-foreground'
                 }`}
               >
                 {item.name}
@@ -186,7 +214,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setResourcesOpen((v) => !v)}
-              className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-muted hover:text-foreground transition-colors"
             >
               {resourcesLabel}
               <ChevronDown className={`h-3.5 w-3.5 transition-transform ${resourcesOpen ? 'rotate-180' : ''}`} />

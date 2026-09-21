@@ -32,7 +32,13 @@ export function isCmsUser(role?: string | null) {
 }
 
 export async function verifyPassword(plain: string, hash: string) {
-  return bcrypt.compare(plain, hash)
+  if (!plain || !hash || typeof hash !== 'string') return false
+  try {
+    return await bcrypt.compare(plain, hash)
+  } catch {
+    console.error('[cms] verifyPassword failed')
+    return false
+  }
 }
 
 export async function hashPassword(plain: string) {

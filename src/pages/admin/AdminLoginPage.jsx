@@ -17,16 +17,18 @@ export default function AdminLoginPage() {
       await adminLogin(email.trim(), password)
       navigate('/admin', { replace: true })
     } catch (err) {
+      const status = err?.response?.status
       const data = err?.response?.data
       const fieldErrors = data?.errors
       const firstField =
         fieldErrors &&
         (fieldErrors.email?.[0] || fieldErrors.password?.[0] || Object.values(fieldErrors).flat()?.[0])
-      const msg =
-        firstField ||
-        data?.message ||
-        err?.message ||
-        'Login failed. Check your credentials.'
+      let msg = firstField || data?.message
+      if (!msg || /axios|status code|request failed/i.test(String(msg))) {
+        if (status === 401 || status === 422) msg = 'Unable to sign in. Please check your credentials.'
+        else if (status === 400) msg = 'Please enter your email and password.'
+        else msg = 'Unable to sign in. Please try again.'
+      }
       setError(String(msg))
     } finally {
       setLoading(false)
