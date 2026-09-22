@@ -1,6 +1,35 @@
 import axios from 'axios'
 
-const normalizedBase = (import.meta.env.VITE_CMS_API_BASE_URL || '/api/cms').replace(/\/+$/, '')
+/**
+ * Resolve CMS API base for both Vite (import.meta.env) and Next.js (no Vite env).
+ * Next production bundles leave `import.meta.env` undefined — reading
+ * `.VITE_CMS_API_BASE_URL` directly throws and crashes the whole app.
+ */
+function resolveCmsApiBase() {
+  let fromVite
+  try {
+    const viteEnv = typeof import.meta !== 'undefined' ? import.meta.env : undefined
+    if (viteEnv && typeof viteEnv === 'object') {
+      fromVite = viteEnv.VITE_CMS_API_BASE_URL
+    }
+  } catch {
+    fromVite = undefined
+  }
+
+  let fromNext
+  try {
+    if (typeof process !== 'undefined' && process.env) {
+      fromNext = process.env.NEXT_PUBLIC_CMS_API_BASE_URL || process.env.VITE_CMS_API_BASE_URL
+    }
+  } catch {
+    fromNext = undefined
+  }
+
+  const raw = fromVite || fromNext || '/api/cms'
+  return String(raw).replace(/\/+$/, '')
+}
+
+const normalizedBase = resolveCmsApiBase()
 
 export const cmsApi = axios.create({
   baseURL: normalizedBase,
@@ -21,14 +50,20 @@ function withMarketParams(config = {}, marketLocale) {
 
 /** Public CMS GET (no admin token). Pass marketLocale to scope content. */
 export async function cmsGet(path, config = {}, marketLocale) {
-  const res = await cmsApi.get(path, withMarketParams({
-    ...config,
-    headers: {
-      'Cache-Control': 'no-cache',
-      Pragma: 'no-cache',
-      ...(config.headers || {}),
-    },
-  }, marketLocale))
+  const res = await cmsApi.get(
+    path,
+    withMarketParams(
+      {
+        ...config,
+        headers: {
+          'Cache-Control': 'no-cache',
+          Pragma: 'no-cache',
+          ...(config.headers || {}),
+        },
+      },
+      marketLocale,
+    ),
+  )
   const body = res.data
   if (body?.data !== undefined) return body.data
   return body

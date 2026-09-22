@@ -11,7 +11,18 @@ import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useUiCopy } from '../../hooks/useUiCopy'
 
 /** Absolute in production (VITE_CMS_API_BASE_URL); relative `/api/cms` for local Vite proxy. */
-const CMS_PUBLIC_BASE = (import.meta.env.VITE_CMS_API_BASE_URL || '/api/cms').replace(/\/+$/, '')
+function resolveCmsPublicBase() {
+  try {
+    const viteEnv = typeof import.meta !== 'undefined' ? import.meta.env : undefined
+    if (viteEnv && typeof viteEnv === 'object' && viteEnv.VITE_CMS_API_BASE_URL) {
+      return String(viteEnv.VITE_CMS_API_BASE_URL).replace(/\/+$/, '')
+    }
+  } catch {
+    /* ignore */
+  }
+  return '/api/cms'
+}
+const CMS_PUBLIC_BASE = resolveCmsPublicBase()
 const ICON_MAP = { BookOpen, Code2, Globe, FileText }
 
 export default function DevelopersMarketingPage() {

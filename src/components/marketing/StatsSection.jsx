@@ -6,6 +6,7 @@ import { useSectionHeading } from '../../hooks/useSectionHeading'
  * Home (and About) stats + trusted brands strip.
  * Source of truth: CMS home `stat`, `heading:logos`, and `logo` sections.
  * Never initialize from hardcoded marketing defaults — wait for CMS, then render.
+ * Tolerates older production shapes (brand-name logos without image_url, partial fields).
  */
 export function StatsSection() {
   const {
@@ -32,16 +33,20 @@ export function StatsSection() {
     return null
   }
 
-  const stats = fromCms
+  const stats = fromCms && Array.isArray(cmsStats)
     ? cmsStats.map((s) => ({
-        id: s.id,
-        value: s.value ?? s.title ?? s.stat_value ?? '',
-        label: s.label ?? s.description ?? s.stat_label ?? '',
+        id: s?.id,
+        value: s?.value ?? s?.title ?? s?.stat_value ?? '',
+        label: s?.label ?? s?.description ?? s?.stat_label ?? '',
       }))
     : []
 
   const logoRows = logosOk && Array.isArray(logosData) ? logosData : []
-  const primaryLogo = logoRows[0] || (logosData && !Array.isArray(logosData) ? logosData : null)
+  // Prefer a row that actually has an image (prod may return brand chips with null image_url)
+  const primaryLogo =
+    logoRows.find((r) => r && (r.image_url || r.imageUrl || r.dashboard_image_url)) ||
+    logoRows[0] ||
+    (logosData && !Array.isArray(logosData) ? logosData : null)
   const trustedLogosImage =
     primaryLogo?.image_url ||
     primaryLogo?.imageUrl ||

@@ -1,6 +1,18 @@
 import axios from 'axios'
 
-const base = (import.meta.env.VITE_CMS_API_BASE_URL || '/api/cms').replace(/\/+$/, '')
+function resolveCmsApiBase() {
+  try {
+    const viteEnv = typeof import.meta !== 'undefined' ? import.meta.env : undefined
+    if (viteEnv && typeof viteEnv === 'object' && viteEnv.VITE_CMS_API_BASE_URL) {
+      return String(viteEnv.VITE_CMS_API_BASE_URL).replace(/\/+$/, '')
+    }
+  } catch {
+    /* ignore */
+  }
+  return '/api/cms'
+}
+
+const base = resolveCmsApiBase()
 
 export const cmsAdminApi = axios.create({
   baseURL: `${base}/admin`,

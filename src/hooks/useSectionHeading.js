@@ -29,7 +29,7 @@ export function useSectionHeading(key, englishFallback = {}) {
   )
 
   if (isPending || !isFetched) {
-    return EMPTY
+    return { ...EMPTY }
   }
 
   if (isSuccess && data) {
