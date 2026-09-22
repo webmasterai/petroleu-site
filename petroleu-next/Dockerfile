@@ -38,6 +38,8 @@ COPY --from=build /app/public ./public
 COPY --from=build /app/storage-seed ./storage-seed
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
+RUN mkdir -p /app/scripts
+COPY --from=build /app/scripts/merge-seed-content-additive.mjs /app/scripts/merge-seed-content-additive.mjs
 COPY docker-entrypoint.sh /app/docker-entrypoint.sh
 RUN chmod +x /app/docker-entrypoint.sh
 

@@ -5,17 +5,7 @@
     "locale_code": "en-PK",
     "path": "/",
     "title": "Petroleu — Petrol Pump Software Pakistan",
-    "description": "Petrol pump management software for Pakistan. Sales, inventory, accounts, and WhatsApp from one system.",
-    "status": "published",
-    "noindex": false
-  },
-  {
-    "id": 2,
-    "market_code": "pk",
-    "locale_code": "en-PK",
-    "path": "/pricing",
-    "title": "Petroleu Pricing — Lite, Professional, Automation",
-    "description": "Petroleu plans from PKR 1,999/month. Lite, Professional, Automation Station, and Multi Station pricing.",
+    "description": "Petrol pump management software for Pakistan.",
     "status": "published",
     "noindex": false
   },
@@ -453,8 +443,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "en-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.319Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 24,
@@ -470,8 +460,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "en-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 25,
@@ -487,8 +477,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "en-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 26,
@@ -504,8 +494,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "en-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 27,
@@ -521,8 +511,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "en-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 28,
@@ -538,8 +528,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "en-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 29,
@@ -555,8 +545,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "fa-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 30,
@@ -572,8 +562,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "fa-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 31,
@@ -589,8 +579,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "fa-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 32,
@@ -606,8 +596,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "fa-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 33,
@@ -623,8 +613,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "fa-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 34,
@@ -640,8 +630,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "fa-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 35,
@@ -657,8 +647,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "ps-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 36,
@@ -674,8 +664,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "ps-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 37,
@@ -691,8 +681,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "ps-af",
-    "created_at": "2026-09-22T07:56:24.325Z",
-    "updated_at": "2026-09-22T07:56:24.325Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 38,
@@ -708,8 +698,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "ps-af",
-    "created_at": "2026-09-22T07:56:24.326Z",
-    "updated_at": "2026-09-22T07:56:24.326Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 39,
@@ -725,8 +715,8 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "ps-af",
-    "created_at": "2026-09-22T07:56:24.326Z",
-    "updated_at": "2026-09-22T07:56:24.326Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   },
   {
     "id": 40,
@@ -742,7 +732,7 @@
     "status": "published",
     "is_enabled": true,
     "hreflang": "ps-af",
-    "created_at": "2026-09-22T07:56:24.326Z",
-    "updated_at": "2026-09-22T07:56:24.326Z"
+    "created_at": "2026-09-22T07:56:24.321Z",
+    "updated_at": "2026-09-22T07:56:24.321Z"
   }
 ]

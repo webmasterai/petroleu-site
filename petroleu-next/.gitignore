@@ -43,5 +43,6 @@ next-env.d.ts
 # local CMS runtime data (seed lives in storage-seed/)
 /storage/data/
 /storage/uploads/
+/storage/_merge-sim/
 !/storage/data/.gitkeep
 !/storage/uploads/.gitkeep
