@@ -1,42 +1,41 @@
-import { websiteContent } from '../../content/websiteContent'
+import { useCmsList } from '../../hooks/useCmsList'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
-import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { useSectionHeading } from '../../hooks/useSectionHeading'
 
+/**
+ * Home (and About) stats + trusted brands strip.
+ * Source of truth: CMS home `stat`, `heading:logos`, and `logo` sections.
+ * Empty / disabled CMS items are not restored from hardcoded defaults.
+ */
 export function StatsSection() {
-  const { market, isAfghanistan } = useMarketLocale()
-  const { data } = useCmsQuery(['stats'], '/stats')
-  const logosHeading = useSectionHeading('logos', {
-    title: "Trusted by Pakistan's leading fuel networks",
-  })
+  const { items: cmsStats, fromCms } = useCmsList(['stats'], '/stats', { fallback: [] })
+  const logosHeading = useSectionHeading('logos', {})
+  const { data: logosData, isSuccess: logosOk } = useCmsQuery(['trusted-logos'], '/logos')
 
-  const stats = Array.isArray(data) && data.length
-    ? data.map((s) => ({
-        value: s.value ?? s.title,
-        label: s.label ?? s.description,
+  const stats = fromCms
+    ? cmsStats.map((s) => ({
+        id: s.id,
+        value: s.value ?? s.title ?? s.stat_value ?? '',
+        label: s.label ?? s.description ?? s.stat_label ?? '',
       }))
-    : market === 'af'
-      ? []
-      : websiteContent.stats
+    : []
 
-  const { data: logosData } = useCmsQuery(['trusted-logos'], '/logos')
-
-  const trustedLogosImage = isAfghanistan
-    ? logosData?.image_url ||
-      logosData?.imageUrl ||
-      (Array.isArray(logosData) && logosData[0]?.image_url) ||
-      null
-    : logosData?.image_url ||
-      logosData?.imageUrl ||
-      (Array.isArray(logosData) && logosData[0]?.image_url) ||
-      websiteContent.trustedLogosImage
-
-  const logosCaption =
+  const logoRows = logosOk && Array.isArray(logosData) ? logosData : []
+  const primaryLogo = logoRows[0] || (logosData && !Array.isArray(logosData) ? logosData : null)
+  const trustedLogosImage =
+    primaryLogo?.image_url ||
+    primaryLogo?.imageUrl ||
+    primaryLogo?.dashboard_image_url ||
+    null
+  const trustedLogosAlt =
+    primaryLogo?.image_alt ||
+    logosHeading.imageAlt ||
     logosHeading.title ||
-    logosHeading.subtitle ||
-    (isAfghanistan ? '' : "Trusted by Pakistan's leading fuel networks")
+    'Trusted brands'
 
-  if (isAfghanistan && stats.length === 0 && !trustedLogosImage) return null
+  const trustedHeading = logosHeading.title || ''
+
+  if (stats.length === 0 && !trustedLogosImage) return null
 
   return (
     <section className="border-y border-border bg-muted/30 py-12">
@@ -44,7 +43,7 @@ export function StatsSection() {
         {stats.length > 0 ? (
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             {stats.map((stat, i) => (
-              <div key={`${stat.label}-${i}`} className="text-center">
+              <div key={stat.id || `${stat.label}-${i}`} className="text-center">
                 <p className="text-3xl font-bold text-foreground sm:text-4xl">{stat.value}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
               </div>
@@ -54,16 +53,16 @@ export function StatsSection() {
 
         {trustedLogosImage ? (
           <div className={stats.length ? 'mt-12' : ''}>
-            {logosCaption ? (
+            {trustedHeading ? (
               <p className="text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                {logosCaption}
+                {trustedHeading}
               </p>
             ) : null}
-            <div className="mt-6 flex justify-center items-center px-4 sm:px-0">
+            <div className={`flex items-center justify-center px-4 sm:px-0 ${trustedHeading ? 'mt-6' : ''}`}>
               <div className="w-full max-w-3xl overflow-hidden rounded-xl border border-orange-100 bg-white shadow-sm">
                 <img
                   src={trustedLogosImage}
-                  alt={logosHeading.imageAlt || 'Petroleu'}
+                  alt={trustedLogosAlt}
                   className="h-auto w-full object-contain opacity-80"
                   loading="lazy"
                 />

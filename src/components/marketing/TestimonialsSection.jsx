@@ -1,9 +1,9 @@
 import { useState, useEffect, useLayoutEffect, useRef, useMemo } from 'react'
 import { Quote, Star, MapPin, ChevronLeft, ChevronRight } from 'lucide-react'
 import { websiteContent } from '../../content/websiteContent'
-import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useSectionHeading } from '../../hooks/useSectionHeading'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
+import { useCmsList } from '../../hooks/useCmsList'
 
 const GoogleGlyph = (props) => (
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -43,7 +43,9 @@ function StarRating({ rating }) {
 
 export function TestimonialsSection() {
   const { isAfghanistan, locale } = useMarketLocale()
-  const { data } = useCmsQuery(['testimonials'], '/testimonials')
+  const { items: data, fromCms, isError } = useCmsList(['testimonials'], '/testimonials', {
+    fallback: isAfghanistan ? [] : websiteContent.testimonials.reviews,
+  })
   const heading = useSectionHeading('testimonials', {
     title: websiteContent.testimonials.title || 'Trusted by Fuel Station Owners Across Pakistan',
     subtitle:
@@ -52,32 +54,34 @@ export function TestimonialsSection() {
   })
 
   const reviews =
-    Array.isArray(data) && data.length
-      ? data
-          .map((t) => ({
-            name: String(t.name || t.author_name || t.title || '').trim(),
-            role: String(t.role || t.author_role || t.link_label || '').trim(),
-            city: String(t.city || '').trim(),
-            rating: Number(t.rating) || 5,
-            date: t.review_date || t.date || '',
-            content: String(t.content || t.quote || t.body || t.description || '').trim(),
-          }))
-          .filter((t) => t.name && t.content && t.content !== '""' && t.content !== '?')
-      : isAfghanistan
-        ? []
-        : websiteContent.testimonials.reviews
+    fromCms || isError
+      ? (fromCms
+          ? data
+              .map((t) => ({
+                name: String(t.name || t.author_name || t.title || '').trim(),
+                role: String(t.role || t.author_role || t.link_label || '').trim(),
+                city: String(t.city || '').trim(),
+                rating: Number(t.rating) || 5,
+                date: t.review_date || t.date || '',
+                content: String(t.content || t.quote || t.body || t.description || '').trim(),
+              }))
+              .filter((t) => t.name && t.content && t.content !== '""' && t.content !== '?')
+          : data)
+      : []
 
   const rating = useMemo(() => {
     if (reviews.length) {
       const avg = reviews.reduce((sum, r) => sum + (Number(r.rating) || 5), 0) / reviews.length
       return Math.round(avg * 10) / 10
     }
-    return websiteContent.testimonials.rating
-  }, [reviews])
+    return isAfghanistan ? 0 : websiteContent.testimonials.rating
+  }, [reviews, isAfghanistan])
 
   const reviewCount = isAfghanistan
-    ? Math.max(reviews.length, websiteContent.testimonials.reviewCount || reviews.length)
-    : websiteContent.testimonials.reviewCount
+    ? reviews.length
+    : fromCms
+      ? reviews.length || websiteContent.testimonials.reviewCount
+      : websiteContent.testimonials.reviewCount
 
   const sectionTitle =
     heading.title ||

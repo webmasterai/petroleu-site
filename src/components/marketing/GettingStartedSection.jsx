@@ -6,11 +6,9 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { MButton } from './ui'
-import { websiteContent } from '../../content/websiteContent'
-import { useCmsQuery } from '../../hooks/useCmsQuery'
-import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { useSectionHeading } from '../../hooks/useSectionHeading'
 import { useUiCopy } from '../../hooks/useUiCopy'
+import { useCmsList } from '../../hooks/useCmsList'
 
 const ICON_MAP = {
   UserPlus,
@@ -19,9 +17,9 @@ const ICON_MAP = {
 }
 
 export function GettingStartedSection() {
-  const { market } = useMarketLocale()
   const { copy, mp } = useUiCopy()
-  const { data } = useCmsQuery(['how-it-works'], '/how-it-works')
+  // CMS only — empty/disabled steps are not restored from hardcoded defaults
+  const { items, fromCms } = useCmsList(['how-it-works'], '/how-it-works', { fallback: [] })
   const heading = useSectionHeading('getting-started', {
     eyebrow: 'Best Getting Started',
     title: 'Up & Running in Under 30 Minutes',
@@ -29,25 +27,23 @@ export function GettingStartedSection() {
     cta: 'Start Free Trial',
   })
 
-  const pkSteps = websiteContent.gettingStarted
-  const steps =
-    Array.isArray(data) && data.length
-      ? data.map((s, i) => ({
-          number: s.number || String(i + 1).padStart(2, '0'),
-          icon: s.icon || (market === 'af' ? undefined : pkSteps[i]?.icon),
-          title: s.title,
-          description: s.description,
-        }))
-      : market === 'af'
-        ? []
-        : pkSteps
+  const steps = fromCms
+    ? items.map((s, i) => ({
+        number: s.number || String(i + 1).padStart(2, '0'),
+        icon: s.icon || ['UserPlus', 'Settings', 'Rocket'][i] || 'UserPlus',
+        title: s.title,
+        description: s.description,
+      }))
+    : []
 
-  if (market === 'af' && steps.length === 0) return null
+  if (steps.length === 0) return null
 
   const stepLabel = copy.step || 'STEP'
   const ready = copy.ready_to_start || 'Ready to start?'
   const cta = heading.cta || copy.start_trial || 'Start Free Trial'
-  const ctaTo = heading.ctaUrl ? mp(heading.ctaUrl.replace(/^\/(af(\/ps|\/en)?)?/, '') || '/get-started') : mp('/get-started')
+  const ctaTo = heading.ctaUrl
+    ? mp(heading.ctaUrl.replace(/^\/(af(\/ps|\/en)?)?/, '') || '/get-started')
+    : mp('/get-started')
 
   return (
     <section className="bg-background py-20">
@@ -70,12 +66,12 @@ export function GettingStartedSection() {
           ) : null}
         </div>
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-3">
+        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {steps.map((step, idx) => {
             const Icon = ICON_MAP[step.icon] || UserPlus
             return (
               <div
-                key={step.number || idx}
+                key={`${step.title}-${step.number}-${idx}`}
                 className="relative rounded-2xl border border-border bg-card p-8 text-center shadow-sm transition-all hover:border-primary/50 hover:shadow-lg"
               >
                 <div className="absolute -top-4 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 rounded-full bg-primary px-4 py-1.5 text-xs font-bold tracking-widest text-primary-foreground">
@@ -87,9 +83,7 @@ export function GettingStartedSection() {
                 </div>
 
                 <h3 className="mt-6 text-xl font-semibold text-foreground">{step.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.description}</p>
               </div>
             )
           })}

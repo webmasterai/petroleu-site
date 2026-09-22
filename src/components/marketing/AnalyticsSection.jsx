@@ -10,10 +10,10 @@ import {
 import { Link } from 'react-router-dom'
 import { MButton } from './ui'
 import { websiteContent } from '../../content/websiteContent'
-import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { useSectionHeading } from '../../hooks/useSectionHeading'
 import { useUiCopy } from '../../hooks/useUiCopy'
+import { useCmsList } from '../../hooks/useCmsList'
 
 const ICON_MAP = {
   TrendingUp,
@@ -27,7 +27,9 @@ const ICON_MAP = {
 export function AnalyticsSection() {
   const { market } = useMarketLocale()
   const { copy, mp } = useUiCopy()
-  const { data } = useCmsQuery(['analytics-cards'], '/analytics-cards')
+  const { items, fromCms, isError } = useCmsList(['analytics-cards'], '/analytics-cards', {
+    fallback: market === 'pk' ? websiteContent.analyticsCards : [],
+  })
   const heading = useSectionHeading('analytics', {
     eyebrow: 'Best Advanced Analytics',
     title: 'Data-Driven Station Insights',
@@ -36,8 +38,8 @@ export function AnalyticsSection() {
   })
 
   const cards =
-    Array.isArray(data) && data.length
-      ? data.map((c) => ({
+    fromCms || isError
+      ? items.map((c) => ({
           icon: c.icon,
           title: c.title,
           value: c.value,
@@ -45,11 +47,9 @@ export function AnalyticsSection() {
           colorClass: c.color_class || c.colorClass || 'bg-primary/10 text-primary',
           description: c.description,
         }))
-      : market === 'af'
-        ? []
-        : websiteContent.analyticsCards
+      : []
 
-  if (market === 'af' && cards.length === 0) return null
+  if (cards.length === 0) return null
 
   const unlock = copy.unlock_insights
   const explore = copy.explore_analytics

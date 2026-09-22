@@ -39,3 +39,22 @@ export function sanitizeCmsText(value) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
 }
+
+/**
+ * Resolve a CMS list for rendering.
+ *
+ * - isSuccess + array (including []) → use CMS (empty means render nothing)
+ * - isError → optional resilience fallback
+ * - still loading → empty (never invent defaults while loading)
+ */
+export function resolveCmsArray(
+  data,
+  { isSuccess = false, isError = false, isFetched = false, fallback = [] } = {},
+) {
+  if (isSuccess && Array.isArray(data)) return data
+  if (isError) return fallback
+  // Legacy callers that only pass isFetched
+  if (isFetched && Array.isArray(data)) return data
+  if (isFetched && !Array.isArray(data)) return fallback
+  return []
+}

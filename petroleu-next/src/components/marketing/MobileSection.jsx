@@ -9,11 +9,9 @@ import {
   Droplets,
   Gauge,
 } from 'lucide-react'
-import { websiteContent } from '../../content/websiteContent'
-import { useCmsQuery } from '../../hooks/useCmsQuery'
-import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { useSectionHeading } from '../../hooks/useSectionHeading'
 import { useUiCopy } from '../../hooks/useUiCopy'
+import { useCmsList } from '../../hooks/useCmsList'
 
 const ICON_MAP = {
   Gauge,
@@ -28,24 +26,28 @@ const ICON_MAP = {
 }
 
 export function MobileSection() {
-  const { market } = useMarketLocale()
   const { copy } = useUiCopy()
-  const { data } = useCmsQuery(['mobile-features'], '/mobile-features')
+  // CMS only — disabled/removed cards are not restored from hardcoded defaults
+  const { items, fromCms } = useCmsList(['mobile-features'], '/mobile-features', {
+    fallback: [],
+  })
   const heading = useSectionHeading('mobile', {
-    eyebrow: 'Best Mobile First',
-    title: 'Manage Your Pump From Anywhere',
+    eyebrow: 'Mobile App',
+    title: 'Mobile Owner Dashboard',
     subtitle:
-      'Owners can check fuel sales, tank stock, cash/credit status, customer balances, and reports from mobile. This is useful for multi-station owners or anyone who cannot stay at the station all day.',
+      'Check sales, stock, cash, credit, and reports from mobile without staying at the station all day.',
   })
 
-  const features =
-    Array.isArray(data) && data.length
-      ? data
-      : market === 'af'
-        ? []
-        : websiteContent.mobileFeatures
+  const features = fromCms
+    ? items.map((feature) => ({
+        id: feature.id,
+        icon: feature.icon,
+        title: feature.title || feature.heading || '',
+        description: feature.description || feature.subheading || feature.content || '',
+      }))
+    : []
 
-  if (market === 'af' && features.length === 0) return null
+  if (features.length === 0) return null
 
   const platforms = copy.mobile_platforms || 'Available on both Android and iOS'
 
@@ -76,7 +78,7 @@ export function MobileSection() {
               const Icon = ICON_MAP[feature.icon] || Gauge
               return (
                 <div
-                  key={`${feature.title}-${index}`}
+                  key={feature.id || `${feature.title}-${index}`}
                   className="rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/50 hover:shadow-md"
                 >
                   <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">

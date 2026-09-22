@@ -173,99 +173,87 @@ function normalizeTestimonialItem(
   }
 }
 
-/** Flatten testimonial sections: array-in-data OR single-card rows. Prefer array source. */
+/** Exact market+locale only — never re-inject shared/other-locale rows after CMS deletes. */
 async function listTestimonials(market: string, locale: string) {
   const all = await findAll<Section>('sections')
-  const published = all.filter(
-    (s) =>
-      s.page_slug === 'home' &&
-      s.section_key === 'testimonial' &&
-      s.status === 'published' &&
-      s.is_enabled !== false,
-  )
-  for (const step of fallbackChain(market, locale)) {
-    if (market === 'af' && step.market !== 'af') continue
-    const batch = published
-      .filter((s) => s.market_code === step.market && s.locale_code === step.locale)
-      .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
-    if (!batch.length) continue
+  const batch = all
+    .filter(
+      (s) =>
+        s.page_slug === 'home' &&
+        s.section_key === 'testimonial' &&
+        s.market_code === market &&
+        s.locale_code === locale &&
+        s.status === 'published' &&
+        s.is_enabled !== false,
+    )
+    .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
 
-    const fromArrays: ReturnType<typeof normalizeTestimonialItem>[] = []
-    const fromSingles: ReturnType<typeof normalizeTestimonialItem>[] = []
+  if (!batch.length) return []
 
-    for (const s of batch) {
-      const sortBase = Number(s.sort_order) || 0
-      if (Array.isArray(s.data) && s.data.length) {
-        s.data.forEach((raw, i) => {
-          const item = (raw && typeof raw === 'object' ? raw : {}) as Record<string, unknown>
-          if (!isValidTestimonial(item)) return
-          fromArrays.push(normalizeTestimonialItem(item, s.id, i, sortBase))
-        })
-      } else {
-        const flat = {
-          ...((s.data && typeof s.data === 'object' && !Array.isArray(s.data) ? s.data : {}) as Record<
-            string,
-            unknown
-          >),
-          title: s.title,
-          description: s.description,
-          content: s.content,
-          link_label: s.link_label,
-        }
-        if (!isValidTestimonial(flat)) continue
-        fromSingles.push(normalizeTestimonialItem(flat, s.id, 0, sortBase))
+  const fromArrays: ReturnType<typeof normalizeTestimonialItem>[] = []
+  const fromSingles: ReturnType<typeof normalizeTestimonialItem>[] = []
+
+  for (const s of batch) {
+    const sortBase = Number(s.sort_order) || 0
+    if (Array.isArray(s.data) && s.data.length) {
+      s.data.forEach((raw, i) => {
+        const item = (raw && typeof raw === 'object' ? raw : {}) as Record<string, unknown>
+        if (!isValidTestimonial(item)) return
+        fromArrays.push(normalizeTestimonialItem(item, s.id, i, sortBase))
+      })
+    } else {
+      const flat = {
+        ...((s.data && typeof s.data === 'object' && !Array.isArray(s.data) ? s.data : {}) as Record<
+          string,
+          unknown
+        >),
+        title: s.title,
+        description: s.description,
+        content: s.content,
+        link_label: s.link_label,
       }
+      if (!isValidTestimonial(flat)) continue
+      fromSingles.push(normalizeTestimonialItem(flat, s.id, 0, sortBase))
     }
-
-    // Prefer the bundled review list (real quotes) over sparse single-card rows
-    const list = fromArrays.length ? fromArrays : fromSingles
-    if (list.length) return list
   }
-  return []
+
+  return fromArrays.length ? fromArrays : fromSingles
 }
 
 async function listSections(market: string, locale: string, pageSlug: string, sectionKey: string) {
   const all = await findAll<Section>('sections')
-  const published = all.filter(
-    (s) =>
-      s.page_slug === pageSlug &&
-      s.section_key === sectionKey &&
-      s.status === 'published' &&
-      s.is_enabled !== false,
-  )
-  for (const step of fallbackChain(market, locale)) {
-    if (market === 'af' && step.market !== 'af') continue
-    const batch = published
-      .filter((s) => s.market_code === step.market && s.locale_code === step.locale)
-      .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
-    if (batch.length) return batch.map(sectionData)
-  }
-  return []
+  const batch = all
+    .filter(
+      (s) =>
+        s.page_slug === pageSlug &&
+        s.section_key === sectionKey &&
+        s.market_code === market &&
+        s.locale_code === locale &&
+        s.status === 'published' &&
+        s.is_enabled !== false,
+    )
+    .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
+  return batch.map(sectionData)
 }
 
 /** All published sections for a page (any section_key), ordered by sort_order. */
 async function listPageSections(market: string, locale: string, pageSlug: string) {
   const all = await findAll<Section>('sections')
-  const published = all.filter(
-    (s) =>
-      s.page_slug === pageSlug &&
-      s.status === 'published' &&
-      s.is_enabled !== false,
-  )
-  for (const step of fallbackChain(market, locale)) {
-    if (market === 'af' && step.market !== 'af') continue
-    const batch = published
-      .filter((s) => s.market_code === step.market && s.locale_code === step.locale)
-      .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
-    if (batch.length) {
-      return batch.map((s) => ({
-        ...sectionData(s),
-        section_key: s.section_key,
-        page_slug: s.page_slug,
-      }))
-    }
-  }
-  return []
+  const batch = all
+    .filter(
+      (s) =>
+        s.page_slug === pageSlug &&
+        s.market_code === market &&
+        s.locale_code === locale &&
+        s.status === 'published' &&
+        s.is_enabled !== false,
+    )
+    .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
+  return batch.map((s) => ({
+    ...sectionData(s),
+    section_key: s.section_key,
+    page_slug: s.page_slug,
+  }))
 }
 
 async function requireAdmin(req?: NextRequest) {
@@ -420,20 +408,17 @@ export async function GET(
       is_enabled?: boolean
       sort_order?: number
     }>('navigation')
-    for (const step of fallbackChain(market, locale)) {
-      const batch = rows
-        .filter(
-          (r) =>
-            r.market_code === step.market &&
-            r.locale_code === step.locale &&
-            r.location === location &&
-            r.status === 'published' &&
-            r.is_enabled !== false,
-        )
-        .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
-      if (batch.length) return ok(batch)
-    }
-    return ok([])
+    const batch = rows
+      .filter(
+        (r) =>
+          r.market_code === market &&
+          r.locale_code === locale &&
+          r.location === location &&
+          r.status === 'published' &&
+          r.is_enabled !== false,
+      )
+      .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
+    return ok(batch)
   }
   if (join === 'seo') {
     const p = req.nextUrl.searchParams.get('path') || '/'

@@ -1,26 +1,23 @@
 import { MBadge } from './ui'
 import { FeatureMiniMockup, getFeatureMockupType } from './FeatureMiniMockup'
 import { websiteContent } from '../../content/websiteContent'
-import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { useSectionHeading } from '../../hooks/useSectionHeading'
+import { useCmsList } from '../../hooks/useCmsList'
 
 export function FeaturesSection({ titleOverride, subtitleOverride } = {}) {
   const { market } = useMarketLocale()
-  const { data } = useCmsQuery(['features'], '/features')
+  const { items: features, fromCms, isError } = useCmsList(['features'], '/features', {
+    fallback: market === 'pk' ? websiteContent.features : [],
+  })
   const heading = useSectionHeading('features', {
     eyebrow: 'Best Features',
     title: 'Everything You Need to Run Your Pump',
     subtitle: 'Core features for petrol pump daily operations — from nozzle readings to daily closing.',
   })
 
-  const features = Array.isArray(data) && data.length
-    ? data
-    : market === 'af'
-      ? []
-      : websiteContent.features
-
-  if (market === 'af' && features.length === 0) return null
+  const list = fromCms ? features : isError ? features : []
+  if (list.length === 0) return null
 
   const title = titleOverride || heading.title
   const subtitle = subtitleOverride || heading.subtitle
@@ -44,10 +41,10 @@ export function FeaturesSection({ titleOverride, subtitleOverride } = {}) {
         </div>
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => {
+          {list.map((feature, index) => {
             return (
               <div
-                key={feature.id || feature.title}
+                key={feature.id || feature.title || index}
                 className="group rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/50 hover:shadow-lg"
               >
                 <div className="mb-4 flex items-start justify-between gap-3">

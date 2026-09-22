@@ -1,9 +1,9 @@
 import { Cloud, Globe, Droplets, Shield } from 'lucide-react'
 import { MBadge } from './ui'
 import { websiteContent } from '../../content/websiteContent'
-import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { useSectionHeading } from '../../hooks/useSectionHeading'
+import { useCmsList } from '../../hooks/useCmsList'
 
 const ICON_MAP = {
   Cloud,
@@ -14,8 +14,20 @@ const ICON_MAP = {
 
 export function WhyChooseSection() {
   const { market, isAfghanistan } = useMarketLocale()
-  const { data: reasonsData } = useCmsQuery(['why-choose-reasons'], '/why-choose-reasons')
-  const { data: brandsData } = useCmsQuery(['supported-brands'], '/supported-brands')
+  const {
+    items: reasons,
+    fromCms: reasonsFromCms,
+    isError: reasonsErr,
+  } = useCmsList(['why-choose-reasons'], '/why-choose-reasons', {
+    fallback: market === 'pk' ? websiteContent.whyChoose.reasons : [],
+  })
+  const {
+    items: brandsRaw,
+    fromCms: brandsFromCms,
+    isError: brandsErr,
+  } = useCmsList(['supported-brands'], '/supported-brands', {
+    fallback: market === 'pk' ? websiteContent.whyChoose.brands.map((b) => ({ name: b })) : [],
+  })
   const heading = useSectionHeading('why-choose', {
     eyebrow: '',
     title: 'Why Choose Petroleu for Your Fuel Station?',
@@ -23,20 +35,16 @@ export function WhyChooseSection() {
       'Petroleu is petrol pump management software for fuel stations in Pakistan. It brings nozzle readings, tank dipping, credit customers, daily closing, and accounts into one system your team can use every shift.',
   })
 
-  const reasons =
-    Array.isArray(reasonsData) && reasonsData.length
-      ? reasonsData
-      : market === 'af'
-        ? []
-        : websiteContent.whyChoose.reasons
+  const list =
+    reasonsFromCms || reasonsErr
+      ? reasons
+      : []
   const brands =
-    Array.isArray(brandsData) && brandsData.length
-      ? brandsData.map((b) => b.name || b.title || b)
-      : market === 'af'
-        ? []
-        : websiteContent.whyChoose.brands
+    brandsFromCms || brandsErr
+      ? brandsRaw.map((b) => (typeof b === 'string' ? b : b.name || b.title || b))
+      : []
 
-  if (isAfghanistan && reasons.length === 0) return null
+  if (list.length === 0) return null
 
   return (
     <section className="bg-background py-20">
@@ -57,8 +65,12 @@ export function WhyChooseSection() {
           ) : null}
         </div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {reasons.map((reason, index) => {
+        <div
+          className={`mt-16 grid gap-8 md:grid-cols-2 ${
+            isAfghanistan ? 'lg:grid-cols-3' : 'lg:grid-cols-4'
+          }`}
+        >
+          {list.map((reason, index) => {
             const Icon = ICON_MAP[reason.icon] || Cloud
             return (
               <div key={`${reason.title}-${index}`} className="text-center">

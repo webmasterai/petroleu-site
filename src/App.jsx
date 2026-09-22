@@ -39,6 +39,7 @@ import AdminSettingsPage from './pages/admin/AdminSettingsPage'
 import AdminInquiriesPage from './pages/admin/AdminInquiriesPage'
 import AdminUsersPage from './pages/admin/AdminUsersPage'
 import AdminProfilePage from './pages/admin/AdminProfilePage'
+import AdminPricingPlansPage from './pages/admin/AdminPricingPlansPage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -110,6 +111,7 @@ function MarketingRoutes() {
         <Route index element={<AdminDashboardPage />} />
         <Route path="sections" element={<AdminSectionsPage />} />
         <Route path="pages" element={<AdminPagesPage />} />
+        <Route path="pricing" element={<AdminPricingPlansPage />} />
         <Route path="navigation" element={<AdminNavigationPage />} />
         <Route path="markets" element={<AdminMarketsPage />} />
         <Route path="locales" element={<AdminLocalesPage />} />

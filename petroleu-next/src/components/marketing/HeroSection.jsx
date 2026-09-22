@@ -23,7 +23,10 @@ export function HeroSection() {
 
   const badge = pick(cms?.badge, fallback?.badge)
   const title = pick(cms?.heading, cms?.title, fallback?.title, isAfghanistan ? '' : 'Petroleu')
-  const titleHighlight = pick(cms?.title_highlight, cms?.titleHighlight, fallback?.titleHighlight)
+  // When CMS answered, do not restore hardcoded titleHighlight (empty = hide)
+  const titleHighlight = cms
+    ? pick(cms.title_highlight, cms.titleHighlight)
+    : pick(fallback?.titleHighlight)
   const description = pick(cms?.subheading, cms?.description, fallback?.description)
   const secondaryButton = pick(
     cms?.cta2_text,
@@ -54,7 +57,7 @@ export function HeroSection() {
   const whatsappUrl = isAfghanistan ? afWhatsapp : pkWhatsapp
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-accent/5 py-12 sm:py-20 lg:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-accent/5 py-20 lg:py-28">
       <div className="absolute inset-0 -z-10">
         <div className="absolute start-1/4 top-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute bottom-0 end-1/4 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
@@ -70,7 +73,7 @@ export function HeroSection() {
               </MBadge>
             ) : null}
 
-            <h1 className="mt-6 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               {title}{' '}
               {titleHighlight ? <span className="text-primary">{titleHighlight}</span> : null}
             </h1>

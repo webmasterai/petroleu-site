@@ -27,16 +27,17 @@ import { useUiCopy } from '../../hooks/useUiCopy'
 export default function HomePage() {
   const { isAfghanistan } = useMarketLocale()
   const { settings } = useUiCopy()
-  const { data: faqData } = useCmsQuery(['faqs', 'jsonld'], '/faq')
+  const { data: faqData, isSuccess: faqOk, isError: faqErr } = useCmsQuery(['faqs', 'jsonld'], '/faq')
 
-  const faqs = Array.isArray(faqData) && faqData.length
-    ? faqData.map((f) => ({
-        question: f.question ?? f.title,
-        answer: f.answer ?? f.description ?? f.content,
-      }))
-    : isAfghanistan
-      ? []
-      : websiteContent.faq
+  const faqs =
+    faqOk && Array.isArray(faqData)
+      ? faqData.map((f) => ({
+          question: f.question ?? f.title,
+          answer: f.answer ?? f.description ?? f.content,
+        }))
+      : faqErr && !isAfghanistan
+        ? websiteContent.faq
+        : []
 
   const sameAs = isAfghanistan
     ? []

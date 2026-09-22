@@ -14,9 +14,12 @@ function asList(res) {
   return []
 }
 
-const fieldCls = 'admin-input'
-const btnPrimary = 'admin-btn-primary text-xs'
-const btnOutline = 'admin-btn-secondary text-xs'
+const fieldCls =
+  'w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring'
+const btnPrimary =
+  'rounded-md bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50'
+const btnOutline =
+  'rounded-md border border-border bg-card px-2.5 py-1.5 text-xs hover:bg-muted disabled:opacity-50'
 
 const STATUS_BADGE = {
   published: 'bg-emerald-100 text-emerald-800',
@@ -33,11 +36,56 @@ function badge(label, tone = 'missing') {
   )
 }
 
+const SECTION_FRIENDLY = {
+  hero: 'Hero / Intro',
+  content: 'Content block',
+  cta: 'Call to action',
+  faq: 'FAQ item',
+  'feature:card': 'Feature card',
+  stat: 'Business Stat',
+  logo: 'Trusted logo strip',
+  'heading:logos': 'Trusted networks heading',
+  'heading:industries': 'Industries heading',
+  industry: 'Industry card',
+  'industry-card': 'Industry page card',
+  'how-it-works': 'Getting started step',
+  'heading:getting-started': 'Getting started heading',
+  'heading:mobile': 'Mobile dashboard heading',
+  'mobile-feature': 'Mobile feature card',
+  testimonial: 'Testimonial',
+  'page-card': 'Page card',
+  mission: 'Mission value',
+  story: 'Company story',
+  team: 'Team member',
+}
+
 function sectionLabel(section) {
   const key = section.section_key || 'section'
+  const friendly = SECTION_FRIENDLY[key] || key.replace(/:/g, ' · ')
   const title = section.title ? ` — ${section.title}` : ''
-  return `${key}${title}`
+  return `${friendly}${title}`
 }
+
+const SECTION_PRESETS = [
+  { key: 'hero', label: 'Hero / Intro' },
+  { key: 'stat', label: 'Business Stat' },
+  { key: 'heading:logos', label: 'Trusted networks heading' },
+  { key: 'logo', label: 'Trusted logo strip' },
+  { key: 'heading:industries', label: 'Industries heading' },
+  { key: 'industry', label: 'Industry card' },
+  { key: 'heading:getting-started', label: 'Getting started heading' },
+  { key: 'how-it-works', label: 'Getting started step' },
+  { key: 'heading:mobile', label: 'Mobile dashboard heading' },
+  { key: 'mobile-feature', label: 'Mobile feature card' },
+  { key: 'content', label: 'Content block' },
+  { key: 'cta', label: 'Call to action' },
+  { key: 'faq', label: 'FAQ item' },
+  { key: 'feature:card', label: 'Feature card' },
+  { key: 'testimonial', label: 'Testimonial' },
+  { key: 'page-card', label: 'Page card' },
+  { key: 'mission', label: 'Mission value' },
+  { key: 'story', label: 'Company story' },
+]
 
 /** Split section.data into friendly editors (no raw JSON shown). */
 function parseDataForEditor(data) {
@@ -138,17 +186,6 @@ function relatedPageSlugs(slug) {
   if (slug === 'home') return ['home', 'home-mid', 'home-bottom']
   return [slug]
 }
-
-const SECTION_PRESETS = [
-  { key: 'hero', label: 'Hero' },
-  { key: 'content', label: 'Content block' },
-  { key: 'cta', label: 'Call to action' },
-  { key: 'faq', label: 'FAQ item' },
-  { key: 'feature:card', label: 'Feature card' },
-  { key: 'stat', label: 'Stat' },
-  { key: 'testimonial', label: 'Testimonial' },
-  { key: 'page-card', label: 'Page card' },
-]
 
 function emptyBlock(overrides = {}) {
   return {
@@ -336,8 +373,42 @@ export default function AdminPagesPage() {
           adminGet('/sections', { params: { market: m, locale: loc, page: pageSlug } }),
         ),
       )
-      const sections = sectionLists.flatMap((res) => asList(res))
-      sections.sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0))
+      let sections = sectionLists.flatMap((res) => asList(res))
+
+      // About page renders Home stats + trusted logos — surface those in About editor too
+      if (slug === 'about') {
+        const homeRes = await adminGet('/sections', {
+          params: { market: m, locale: loc, page: 'home' },
+        })
+        const homeShared = asList(homeRes).filter((s) =>
+          ['stat', 'heading:logos', 'logo'].includes(s.section_key),
+        )
+        const seen = new Set(sections.map((s) => s.id).filter(Boolean))
+        for (const row of homeShared) {
+          if (row.id && seen.has(row.id)) continue
+          sections.push(row)
+        }
+      }
+
+      const editorRank = (key) => {
+        if (key === 'hero') return 0
+        if (key === 'stat') return 1
+        if (key === 'heading:logos') return 2
+        if (key === 'logo') return 3
+        if (key === 'heading:industries') return 4
+        if (key === 'industry') return 5
+        if (key === 'heading:getting-started') return 6
+        if (key === 'how-it-works') return 7
+        if (key === 'heading:mobile') return 8
+        if (key === 'mobile-feature') return 9
+        return 50
+      }
+      sections.sort((a, b) => {
+        const ra = editorRank(a.section_key)
+        const rb = editorRank(b.section_key)
+        if (ra !== rb) return ra - rb
+        return (a.sort_order ?? 0) - (b.sort_order ?? 0)
+      })
 
       setEditor({
         translationId: translation.id,
@@ -805,7 +876,7 @@ export default function AdminPagesPage() {
                   </div>
                 </div>
 
-                <div className="mb-3 grid gap-3 sm:grid-cols-3">
+                <div className="mb-3 grid gap-3 sm:grid-cols-2">
                   <label className="block text-xs">
                     <span className="text-muted-foreground">Section type</span>
                     <select
@@ -819,20 +890,14 @@ export default function AdminPagesPage() {
                         </option>
                       ))}
                       {!SECTION_PRESETS.some((p) => p.key === block.section_key) ? (
-                        <option value={block.section_key}>{block.section_key}</option>
+                        <option value={block.section_key}>
+                          {SECTION_FRIENDLY[block.section_key] || block.section_key}
+                        </option>
                       ) : null}
                     </select>
                   </label>
                   <label className="block text-xs">
-                    <span className="text-muted-foreground">Page slug</span>
-                    <input
-                      className={fieldCls + ' mt-1'}
-                      value={block.page_slug}
-                      onChange={(e) => updateBlock(index, { page_slug: e.target.value })}
-                    />
-                  </label>
-                  <label className="block text-xs">
-                    <span className="text-muted-foreground">Sort order</span>
+                    <span className="text-muted-foreground">Display order</span>
                     <input
                       type="number"
                       className={fieldCls + ' mt-1'}
@@ -844,7 +909,13 @@ export default function AdminPagesPage() {
 
                 <div className="grid gap-3 sm:grid-cols-2">
                   <label className="block text-xs sm:col-span-2">
-                    <span className="text-muted-foreground">Title / heading</span>
+                    <span className="text-muted-foreground">
+                      {block.section_key === 'stat'
+                        ? 'Value (e.g. 500+)'
+                        : block.section_key === 'logo'
+                          ? 'Logo name'
+                          : 'Title / heading'}
+                    </span>
                     <input
                       className={fieldCls + ' mt-1'}
                       value={block.title}
@@ -852,7 +923,13 @@ export default function AdminPagesPage() {
                     />
                   </label>
                   <label className="block text-xs sm:col-span-2">
-                    <span className="text-muted-foreground">Description</span>
+                    <span className="text-muted-foreground">
+                      {block.section_key === 'stat'
+                        ? 'Label (e.g. Stations Active)'
+                        : block.section_key === 'logo'
+                          ? 'Caption (optional)'
+                          : 'Description'}
+                    </span>
                     <textarea
                       className={fieldCls + ' mt-1 min-h-[60px]'}
                       value={block.description}
@@ -868,7 +945,9 @@ export default function AdminPagesPage() {
                     />
                   </label>
                   <label className="block text-xs">
-                    <span className="text-muted-foreground">Image URL</span>
+                    <span className="text-muted-foreground">
+                      {block.section_key === 'logo' ? 'Logo image URL' : 'Image URL'}
+                    </span>
                     <input
                       className={fieldCls + ' mt-1'}
                       value={block.image_url}
@@ -877,12 +956,23 @@ export default function AdminPagesPage() {
                     />
                   </label>
                   <label className="block text-xs">
-                    <span className="text-muted-foreground">Image alt text</span>
+                    <span className="text-muted-foreground">
+                      {block.section_key === 'logo' ? 'Logo alt text' : 'Image alt text'}
+                    </span>
                     <input
                       className={fieldCls + ' mt-1'}
                       value={block.image_alt}
                       onChange={(e) => updateBlock(index, { image_alt: e.target.value })}
                     />
+                  </label>
+                  <label className="flex items-center gap-2 text-xs sm:col-span-2 pt-1">
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 accent-primary"
+                      checked={block.is_enabled !== false}
+                      onChange={(e) => updateBlock(index, { is_enabled: e.target.checked })}
+                    />
+                    <span className="text-muted-foreground">Enabled on website</span>
                   </label>
                   {block.image_url ? (
                     <div className="sm:col-span-2">
@@ -1098,7 +1188,7 @@ export default function AdminPagesPage() {
       {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
       {message ? <p className="mt-3 text-sm">{message}</p> : null}
 
-      <div className="mt-4 overflow-x-auto rounded-2xl border border-black/[0.06] bg-white shadow-[0_8px_24px_rgb(15_23_42/0.04)]">
+      <div className="mt-4 overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-left text-xs">
           <thead className="bg-muted/50 border-b border-border">
             <tr>

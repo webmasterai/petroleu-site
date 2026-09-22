@@ -15,6 +15,7 @@ import { MarketingPageJsonLd } from '../../components/marketing/MarketingJsonLd'
 import { StatsSection } from '../../components/marketing/StatsSection'
 import { CtaSection } from '../../components/marketing/CtaSection'
 import { MBadge } from '../../components/marketing/ui'
+import { CmsFlexibleSections } from '../../components/marketing/CmsContentBlocks'
 import { withBestPrefix } from '../../content/websiteContent'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
 
@@ -30,13 +31,11 @@ const iconMap = {
 
 export default function AboutMarketingPage() {
   const { data: heroData } = useCmsQuery(['hero', 'about'], '/hero/about')
-  const { data: statsRaw } = useCmsQuery(['stats'], '/stats')
   const { data: missionRaw } = useCmsQuery(['mission'], '/mission-values')
   const { data: storyPayload } = useCmsQuery(['company-story'], '/company-story')
   const { data: teamRaw } = useCmsQuery(['team'], '/team')
   const { data: ctaData } = useCmsQuery(['cta', 'about'], '/cta/about')
 
-  const statsData = Array.isArray(statsRaw) ? statsRaw : []
   const missionData = Array.isArray(missionRaw) ? missionRaw : []
   const story = storyPayload || {}
   const storyData = Array.isArray(story.story) ? story.story : []
@@ -57,24 +56,18 @@ export default function AboutMarketingPage() {
               </MBadge>
             )}
             <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              {heroData?.heading || 'About Us'}
+              {heroData?.heading || heroData?.title || 'About Us'}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground">
               {heroData?.subheading ||
+                heroData?.description ||
                 'Building modern operating systems for fuel stations across the region.'}
             </p>
           </div>
         </section>
 
-        {statsData.length > 0 && (
-          <StatsSection
-            items={statsData.map((s) => ({
-              id: s.id,
-              value: s.value || s.stat_value,
-              label: s.label || s.stat_label,
-            }))}
-          />
-        )}
+        {/* Same CMS home stats + trusted logos strip as homepage */}
+        <StatsSection />
 
         {missionData.length > 0 && (
           <section className="bg-background py-20">
@@ -178,6 +171,8 @@ export default function AboutMarketingPage() {
             </div>
           </section>
         )}
+
+        <CmsFlexibleSections pageSlug="about" />
 
         <CtaSection
           heading={ctaData?.heading}

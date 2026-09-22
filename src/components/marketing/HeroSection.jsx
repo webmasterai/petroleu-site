@@ -23,7 +23,10 @@ export function HeroSection() {
 
   const badge = pick(cms?.badge, fallback?.badge)
   const title = pick(cms?.heading, cms?.title, fallback?.title, isAfghanistan ? '' : 'Petroleu')
-  const titleHighlight = pick(cms?.title_highlight, cms?.titleHighlight, fallback?.titleHighlight)
+  // When CMS answered, do not restore hardcoded titleHighlight (empty = hide)
+  const titleHighlight = cms
+    ? pick(cms.title_highlight, cms.titleHighlight)
+    : pick(fallback?.titleHighlight)
   const description = pick(cms?.subheading, cms?.description, fallback?.description)
   const secondaryButton = pick(
     cms?.cta2_text,

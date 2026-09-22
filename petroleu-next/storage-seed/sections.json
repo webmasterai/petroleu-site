@@ -9,11 +9,11 @@
     "sort_order": 0,
     "page_slug": "home",
     "section_key": "hero",
-    "title": "Petrol Pump Software",
+    "title": "Manage your petrol pump without being present there Pakistan",
     "description": "Run your fuel station smarter with Petroleu. Manage nozzle readings, tank stock, credit customers, daily closing, accounts, reports, and mobile monitoring from one system.",
     "data": {
       "badge": "Best Petrol Pump Management Software",
-      "titleHighlight": "Pakistan",
+      "titleHighlight": "",
       "primaryButton": "See it in Action",
       "secondaryButton": "View Pricing",
       "features": [
@@ -25,14 +25,16 @@
         "Mobile owner dashboard"
       ],
       "dashboard_image_url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PetroleuDashboard-45o0LNfASWEDxtDgDI6KSRExrYyMNC.png",
-      "dashboard_url": "app.petroleu.com/dashboard"
+      "dashboard_url": "app.petroleu.com/dashboard",
+      "title_highlight": ""
     },
     "image_url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PetroleuDashboard-45o0LNfASWEDxtDgDI6KSRExrYyMNC.png",
     "content": null,
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "published_at": "2026-09-21T12:26:45.797Z"
+    "published_at": "2026-09-21T12:26:45.797Z",
+    "updated_at": "2026-09-22T09:45:35.328Z"
   },
   {
     "id": 2,
@@ -44,8 +46,13 @@
     "sort_order": 0,
     "page_slug": "home",
     "section_key": "stat",
-    "title": "1350+",
-    "description": "Petrol Pumps"
+    "title": "500+",
+    "description": "Stations Active",
+    "data": {
+      "value": "500+",
+      "label": "Stations Active"
+    },
+    "updated_at": "2026-09-22T09:21:48.606Z"
   },
   {
     "id": 3,
@@ -57,8 +64,13 @@
     "sort_order": 1,
     "page_slug": "home",
     "section_key": "stat",
-    "title": "20+",
-    "description": "Years of Excellence"
+    "title": "99.9%",
+    "description": "Uptime",
+    "data": {
+      "value": "99.9%",
+      "label": "Uptime"
+    },
+    "updated_at": "2026-09-22T09:21:48.606Z"
   },
   {
     "id": 4,
@@ -70,8 +82,13 @@
     "sort_order": 2,
     "page_slug": "home",
     "section_key": "stat",
-    "title": "4.8",
-    "description": "Google Reviews"
+    "title": "10M+",
+    "description": "Transactions Logged",
+    "data": {
+      "value": "10M+",
+      "label": "Transactions Logged"
+    },
+    "updated_at": "2026-09-22T09:21:48.606Z"
   },
   {
     "id": 5,
@@ -84,7 +101,12 @@
     "page_slug": "home",
     "section_key": "stat",
     "title": "24/7",
-    "description": "Support"
+    "description": "Support",
+    "data": {
+      "value": "24/7",
+      "label": "Support"
+    },
+    "updated_at": "2026-09-22T09:21:48.606Z"
   },
   {
     "id": 6,
@@ -993,11 +1015,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 0,
-    "title": "Share your station details",
-    "description": "Tell us about your pumps, tanks, and current workflow.",
+    "title": "Sign up",
+    "description": "Create your account with station details in minutes — no IT team required.",
     "content": null,
     "data": {
-      "step_number": 1
+      "step_number": 1,
+      "icon": "UserPlus",
+      "number": "01"
     },
     "image_url": null,
     "image_alt": null,
@@ -1007,7 +1031,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.729Z"
+    "published_at": "2026-09-15T10:15:45.729Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 51,
@@ -1016,10 +1041,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 0,
-    "title": "Retail Petrol Pumps",
-    "description": "Daily nozzle, stock, and credit tools for retail forecourts.",
+    "title": "Petrol Pumps",
+    "description": "PSO, Shell, Total, Attock and independent fuel stations",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Fuel",
+      "color_class": "bg-primary/10 text-primary",
+      "colorClass": "bg-primary/10 text-primary"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -1028,7 +1057,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.729Z"
+    "published_at": "2026-09-15T10:15:45.729Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 52,
@@ -1043,7 +1073,7 @@
     "data": {
       "name": "Trusted brands strip"
     },
-    "image_url": null,
+    "image_url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-04-25%20at%2010.54.14%E2%80%AFPM-tCsoz7x0MUzpqAy3VGnkK5P2cKj1bN.png",
     "image_alt": "Trusted oil marketing companies",
     "link_label": null,
     "link_url": null,
@@ -1051,7 +1081,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.729Z"
+    "published_at": "2026-09-15T10:15:45.729Z",
+    "updated_at": "2026-09-22T09:12:03.441Z"
   },
   {
     "id": 53,
@@ -1060,10 +1091,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 0,
-    "title": "Live sales snapshot",
-    "description": "See cash and credit sales without waiting for paper reports.",
+    "title": "Live Sales Overview",
+    "description": "See today's nozzle sales, cash totals, and credit charges from your phone.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "BarChart3"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -1072,7 +1105,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.730Z"
+    "published_at": "2026-09-15T10:15:45.730Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 54,
@@ -1246,11 +1280,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 1,
-    "title": "We configure Petroleu",
-    "description": "Our team sets up products, tanks, users, and reporting for your site.",
+    "title": "Configure",
+    "description": "Add tanks, nozzles, and products using the guided setup wizard.",
     "content": null,
     "data": {
-      "step_number": 2
+      "step_number": 2,
+      "icon": "Settings",
+      "number": "02"
     },
     "image_url": null,
     "image_alt": null,
@@ -1260,7 +1296,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.730Z"
+    "published_at": "2026-09-15T10:15:45.730Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 62,
@@ -1269,10 +1306,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 1,
-    "title": "Dealer Networks",
-    "description": "Multi-station visibility for dealers and distributors.",
+    "title": "CNG Stations",
+    "description": "Compressed natural gas filling stations and hybrid pumps",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Droplets",
+      "color_class": "bg-accent/10 text-accent",
+      "colorClass": "bg-accent/10 text-accent"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -1281,7 +1322,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.730Z"
+    "published_at": "2026-09-15T10:15:45.730Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 63,
@@ -1290,10 +1332,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 1,
-    "title": "Stock alerts",
-    "description": "Spot low tanks before you run out.",
+    "title": "Tank Stock Status",
+    "description": "Check petrol, diesel, and HOBC stock levels without calling the forecourt.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Droplets"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -1302,7 +1346,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.730Z"
+    "published_at": "2026-09-15T10:15:45.730Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 64,
@@ -1477,11 +1522,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 2,
-    "title": "Train your staff",
-    "description": "Attendants and managers learn daily closing, dipping, and credit billing.",
+    "title": "Run & report",
+    "description": "Record shifts, nozzle readings, and credit sales; pull reports instantly.",
     "content": null,
     "data": {
-      "step_number": 3
+      "step_number": 3,
+      "icon": "Rocket",
+      "number": "03"
     },
     "image_url": null,
     "image_alt": null,
@@ -1491,7 +1538,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.730Z"
+    "published_at": "2026-09-15T10:15:45.730Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 72,
@@ -1500,10 +1548,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 2,
-    "title": "Fleet & Credit Customers",
-    "description": "Vehicle-wise billing and receivables tracking.",
+    "title": "Fleet Fueling",
+    "description": "Transport companies with in-house fueling facilities",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Truck",
+      "color_class": "bg-chart-5/10 text-chart-5",
+      "colorClass": "bg-chart-5/10 text-chart-5"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -1512,7 +1564,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.730Z"
+    "published_at": "2026-09-15T10:15:45.730Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 73,
@@ -1521,10 +1574,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 2,
-    "title": "Shift status",
-    "description": "Review attendant closing figures on the go.",
+    "title": "Cash and Credit Summary",
+    "description": "Review how much was collected in cash versus charged to credit accounts.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Wallet"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -1533,7 +1588,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.730Z"
+    "published_at": "2026-09-15T10:15:45.730Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 74,
@@ -1696,11 +1752,12 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "status": "published",
-    "is_enabled": true,
+    "status": "draft",
+    "is_enabled": false,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.730Z"
+    "published_at": "2026-09-15T10:15:45.730Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 81,
@@ -1967,12 +2024,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 0,
-    "title": "Retail Petrol Pumps",
-    "description": "Daily nozzle, stock, and credit tools for retail forecourts.",
+    "title": "Petrol Pumps",
+    "description": "PSO, Shell, Total, Attock and independent fuel stations",
     "content": null,
     "data": {
       "title": "Retail Petrol Pumps",
-      "description": "Daily nozzle, stock, and credit tools for retail forecourts."
+      "description": "Daily nozzle, stock, and credit tools for retail forecourts.",
+      "icon": "Fuel",
+      "color_class": "bg-primary/10 text-primary",
+      "colorClass": "bg-primary/10 text-primary"
     },
     "image_url": null,
     "image_alt": null,
@@ -1982,7 +2042,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.731Z"
+    "published_at": "2026-09-15T10:15:45.731Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 93,
@@ -1991,12 +2052,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 1,
-    "title": "Dealer Networks",
-    "description": "Multi-station visibility for dealers and distributors.",
+    "title": "CNG Stations",
+    "description": "Compressed natural gas filling stations and hybrid pumps",
     "content": null,
     "data": {
       "title": "Dealer Networks",
-      "description": "Multi-station visibility for dealers and distributors."
+      "description": "Multi-station visibility for dealers and distributors.",
+      "icon": "Droplets",
+      "color_class": "bg-accent/10 text-accent",
+      "colorClass": "bg-accent/10 text-accent"
     },
     "image_url": null,
     "image_alt": null,
@@ -2006,7 +2070,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.731Z"
+    "published_at": "2026-09-15T10:15:45.731Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 94,
@@ -2015,12 +2080,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 2,
-    "title": "Fleet & Credit Customers",
-    "description": "Vehicle-wise billing and receivables tracking.",
+    "title": "Fleet Fueling",
+    "description": "Transport companies with in-house fueling facilities",
     "content": null,
     "data": {
       "title": "Fleet & Credit Customers",
-      "description": "Vehicle-wise billing and receivables tracking."
+      "description": "Vehicle-wise billing and receivables tracking.",
+      "icon": "Truck",
+      "color_class": "bg-chart-5/10 text-chart-5",
+      "colorClass": "bg-chart-5/10 text-chart-5"
     },
     "image_url": null,
     "image_alt": null,
@@ -2030,7 +2098,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.731Z"
+    "published_at": "2026-09-15T10:15:45.731Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 95,
@@ -2050,11 +2119,12 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "status": "published",
-    "is_enabled": true,
+    "status": "draft",
+    "is_enabled": false,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.731Z"
+    "published_at": "2026-09-15T10:15:45.731Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 96,
@@ -2840,11 +2910,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 0,
-    "title": "جزئیات پمپ خود را بفرستید",
-    "description": "درباره پمپ‌ها، تانک‌ها و روند کاری فعلی‌تان بگویید.",
+    "title": "ثبت‌نام",
+    "description": "حساب خود را با جزئیات پمپ در چند دقیقه بسازید — بدون نیاز به تیم IT.",
     "content": null,
     "data": {
-      "step_number": 1
+      "step_number": 1,
+      "icon": "UserPlus",
+      "number": "01"
     },
     "image_url": null,
     "image_alt": null,
@@ -2854,7 +2926,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.769Z"
+    "published_at": "2026-09-15T10:15:45.769Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 127,
@@ -2863,10 +2936,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 0,
-    "title": "پمپ‌های خرده‌فروشی",
-    "description": "ابزار روزانه نوزل، موجودی و اعتبار برای پمپ‌های خرده‌فروشی.",
+    "title": "پمپ‌های تیل",
+    "description": "PSO، Shell، Total، Attock و پمپ‌های مستقل",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Fuel",
+      "color_class": "bg-primary/10 text-primary",
+      "colorClass": "bg-primary/10 text-primary"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -2875,7 +2952,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.770Z"
+    "published_at": "2026-09-15T10:15:45.770Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 128,
@@ -2890,7 +2968,7 @@
     "data": {
       "name": "نوار برندهای معتبر"
     },
-    "image_url": null,
+    "image_url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-04-25%20at%2010.54.14%E2%80%AFPM-tCsoz7x0MUzpqAy3VGnkK5P2cKj1bN.png",
     "image_alt": "شرکت‌های معتبر بازاریابی تیل",
     "link_label": null,
     "link_url": null,
@@ -2898,7 +2976,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.770Z"
+    "published_at": "2026-09-15T10:15:45.770Z",
+    "updated_at": "2026-09-22T09:12:03.441Z"
   },
   {
     "id": 129,
@@ -2907,10 +2986,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 0,
-    "title": "نمای زنده فروش",
-    "description": "فروش نقدی و اعتباری را بدون انتظار گزارش کاغذی ببینید.",
+    "title": "نمای کلی فروش زنده",
+    "description": "فروش نازل، جمع نقدی و شارژ اعتباری امروز را از موبایل ببینید.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "BarChart3"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -2919,7 +3000,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.770Z"
+    "published_at": "2026-09-15T10:15:45.770Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 130,
@@ -3093,11 +3175,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 1,
-    "title": "ما Petroleu را تنظیم می‌کنیم",
-    "description": "تیم ما محصولات، تانک‌ها، کاربران و گزارش‌دهی را برای سایت شما تنظیم می‌کند.",
+    "title": "پیکربندی",
+    "description": "تانک‌ها، نوزل‌ها و محصولات را با ویزارد راهنما اضافه کنید.",
     "content": null,
     "data": {
-      "step_number": 2
+      "step_number": 2,
+      "icon": "Settings",
+      "number": "02"
     },
     "image_url": null,
     "image_alt": null,
@@ -3107,7 +3191,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.774Z"
+    "published_at": "2026-09-15T10:15:45.774Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 138,
@@ -3116,10 +3201,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 1,
-    "title": "شبکه‌های نمایندگی",
-    "description": "دید چندپمپی برای نمایندگان و توزیع‌کنندگان.",
+    "title": "ایستگاه‌های CNG",
+    "description": "جایگاه‌های گاز طبیعی فشرده و پمپ‌های ترکیبی",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Droplets",
+      "color_class": "bg-accent/10 text-accent",
+      "colorClass": "bg-accent/10 text-accent"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -3128,7 +3217,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.775Z"
+    "published_at": "2026-09-15T10:15:45.775Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 139,
@@ -3137,10 +3227,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 1,
-    "title": "هشدار موجودی",
-    "description": "قبل از تمام شدن، تانک‌های کم را تشخیص دهید.",
+    "title": "وضعیت موجودی تانک",
+    "description": "سطح موجودی پترول، دیزل و HOBC را بدون تماس با پیشخوان چک کنید.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Droplets"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -3149,7 +3241,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.775Z"
+    "published_at": "2026-09-15T10:15:45.775Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 140,
@@ -3324,11 +3417,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 2,
-    "title": "کارکنان خود را آموزش دهید",
-    "description": "متصدیان و مدیران بستن روزانه، دیپ‌گیری و بل اعتباری را یاد می‌گیرند.",
+    "title": "اجرا و گزارش",
+    "description": "شیفت‌ها، قرائت نوزل و فروش اعتباری را ثبت کنید؛ گزارش فوری بگیرید.",
     "content": null,
     "data": {
-      "step_number": 3
+      "step_number": 3,
+      "icon": "Rocket",
+      "number": "03"
     },
     "image_url": null,
     "image_alt": null,
@@ -3338,7 +3433,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.779Z"
+    "published_at": "2026-09-15T10:15:45.779Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 148,
@@ -3347,10 +3443,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 2,
-    "title": "مشتریان ناوگان و اعتباری",
-    "description": "بل موتروار و پیگیری مطالبات.",
+    "title": "سوخت‌گیری ناوگان",
+    "description": "شرکت‌های ترانسپورت با تأسیسات سوخت‌گیری داخلی",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Truck",
+      "color_class": "bg-chart-5/10 text-chart-5",
+      "colorClass": "bg-chart-5/10 text-chart-5"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -3359,7 +3459,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.779Z"
+    "published_at": "2026-09-15T10:15:45.779Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 149,
@@ -3368,10 +3469,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 2,
-    "title": "وضعیت شیفت",
-    "description": "ارقام بستن متصدی را در حرکت بررسی کنید.",
+    "title": "خلاصه نقد و اعتبار",
+    "description": "ببینید چقدر نقد جمع شده و چقدر به حساب‌های اعتباری شارژ شده است.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Wallet"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -3380,7 +3483,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.780Z"
+    "published_at": "2026-09-15T10:15:45.780Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 150,
@@ -3543,11 +3647,12 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "status": "published",
-    "is_enabled": true,
+    "status": "draft",
+    "is_enabled": false,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.783Z"
+    "published_at": "2026-09-15T10:15:45.783Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 157,
@@ -3814,12 +3919,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 0,
-    "title": "پمپ‌های خرده‌فروشی",
-    "description": "ابزار روزانه نوزل، موجودی و اعتبار برای پمپ‌های خرده‌فروشی.",
+    "title": "پمپ‌های تیل",
+    "description": "PSO، Shell، Total، Attock و پمپ‌های مستقل",
     "content": null,
     "data": {
       "title": "پمپ‌های خرده‌فروشی",
-      "description": "ابزار روزانه نوزل، موجودی و اعتبار برای پمپ‌های خرده‌فروشی."
+      "description": "ابزار روزانه نوزل، موجودی و اعتبار برای پمپ‌های خرده‌فروشی.",
+      "icon": "Fuel",
+      "color_class": "bg-primary/10 text-primary",
+      "colorClass": "bg-primary/10 text-primary"
     },
     "image_url": null,
     "image_alt": null,
@@ -3829,7 +3937,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.789Z"
+    "published_at": "2026-09-15T10:15:45.789Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 169,
@@ -3838,12 +3947,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 1,
-    "title": "شبکه‌های نمایندگی",
-    "description": "دید چندپمپی برای نمایندگان و توزیع‌کنندگان.",
+    "title": "ایستگاه‌های CNG",
+    "description": "جایگاه‌های گاز طبیعی فشرده و پمپ‌های ترکیبی",
     "content": null,
     "data": {
       "title": "شبکه‌های نمایندگی",
-      "description": "دید چندپمپی برای نمایندگان و توزیع‌کنندگان."
+      "description": "دید چندپمپی برای نمایندگان و توزیع‌کنندگان.",
+      "icon": "Droplets",
+      "color_class": "bg-accent/10 text-accent",
+      "colorClass": "bg-accent/10 text-accent"
     },
     "image_url": null,
     "image_alt": null,
@@ -3853,7 +3965,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.790Z"
+    "published_at": "2026-09-15T10:15:45.790Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 170,
@@ -3862,12 +3975,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 2,
-    "title": "مشتریان ناوگان و اعتباری",
-    "description": "بل موتروار و پیگیری مطالبات.",
+    "title": "سوخت‌گیری ناوگان",
+    "description": "شرکت‌های ترانسپورت با تأسیسات سوخت‌گیری داخلی",
     "content": null,
     "data": {
       "title": "مشتریان ناوگان و اعتباری",
-      "description": "بل موتروار و پیگیری مطالبات."
+      "description": "بل موتروار و پیگیری مطالبات.",
+      "icon": "Truck",
+      "color_class": "bg-chart-5/10 text-chart-5",
+      "colorClass": "bg-chart-5/10 text-chart-5"
     },
     "image_url": null,
     "image_alt": null,
@@ -3877,7 +3993,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.790Z"
+    "published_at": "2026-09-15T10:15:45.790Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 171,
@@ -3897,11 +4014,12 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "status": "published",
-    "is_enabled": true,
+    "status": "draft",
+    "is_enabled": false,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.791Z"
+    "published_at": "2026-09-15T10:15:45.791Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 172,
@@ -4065,8 +4183,8 @@
     "page_slug": "home",
     "section_key": "cta",
     "sort_order": 0,
-    "title": "Ready to modernize your fuel station?",
-    "description": "Talk to Petroleu about افغانستان deployments.",
+    "title": "همین امروز پمپ خود را دیجیتالی کنید",
+    "description": "آزمایش رایگان ۱۴ روزه — بدون نیاز به کارت بانکی.",
     "data": {
       "btn1_text": "تماس",
       "btn1_link": "/af/contact"
@@ -4076,7 +4194,8 @@
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
-    "published_at": "2026-09-15T10:15:45.811Z"
+    "published_at": "2026-09-15T10:15:45.811Z",
+    "updated_at": "2026-09-22T07:56:24.340Z"
   },
   {
     "id": 178,
@@ -4085,8 +4204,8 @@
     "page_slug": "home",
     "section_key": "cta",
     "sort_order": 1,
-    "title": "See Petroleu in action",
-    "description": "Book a walkthrough for your افغانستان fuel stations.",
+    "title": "آماده‌اید پترولیو را ببینید؟",
+    "description": "دمو بگیرید یا با فروش صحبت کنید.",
     "data": {
       "btn1_text": "شروع کنید",
       "btn1_link": "/af/get-started"
@@ -4096,7 +4215,8 @@
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
-    "published_at": "2026-09-15T10:15:45.812Z"
+    "published_at": "2026-09-15T10:15:45.812Z",
+    "updated_at": "2026-09-22T07:56:24.340Z"
   },
   {
     "id": 179,
@@ -4686,11 +4806,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 0,
-    "title": "د خپل پمپ جزئیات شریک کړئ",
-    "description": "د خپلو پمپونو، ټانکونو او اوسني کاري جریان په اړه ووایاست.",
+    "title": "نوملیکنه",
+    "description": "خپل حساب د پمپ جزئیاتو سره په څو دقیقو کې جوړ کړئ — د IT ټیم ته اړتیا نشته.",
     "content": null,
     "data": {
-      "step_number": 1
+      "step_number": 1,
+      "icon": "UserPlus",
+      "number": "01"
     },
     "image_url": null,
     "image_alt": null,
@@ -4700,7 +4822,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.836Z"
+    "published_at": "2026-09-15T10:15:45.836Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 203,
@@ -4709,10 +4832,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 0,
-    "title": "پرچون تیل پمپونه",
-    "description": "د پرچون پمپونو لپاره ورځني نوزل، موجودي او اعتبار وسایل.",
+    "title": "تیل پمپونه",
+    "description": "PSO، Shell، Total، Attock او خپلواک تیل پمپونه",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Fuel",
+      "color_class": "bg-primary/10 text-primary",
+      "colorClass": "bg-primary/10 text-primary"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -4721,7 +4848,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.836Z"
+    "published_at": "2026-09-15T10:15:45.836Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 204,
@@ -4736,7 +4864,7 @@
     "data": {
       "name": "د باوري برانډونو پټه"
     },
-    "image_url": null,
+    "image_url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-04-25%20at%2010.54.14%E2%80%AFPM-tCsoz7x0MUzpqAy3VGnkK5P2cKj1bN.png",
     "image_alt": "باوري تیل بازارموندنې شرکتونه",
     "link_label": null,
     "link_url": null,
@@ -4744,7 +4872,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.837Z"
+    "published_at": "2026-09-15T10:15:45.837Z",
+    "updated_at": "2026-09-22T09:12:03.441Z"
   },
   {
     "id": 205,
@@ -4753,10 +4882,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 0,
-    "title": "د ژوندي پلور انځور",
-    "description": "نغدي او اعتباري پلور پرته له کاغذ راپور وګورئ.",
+    "title": "د ژوندي پلور لنډیز",
+    "description": "د نن ورځې نوزل پلور، نغدي ټولګه او کریډیټ چارجونه له موبایل وګورئ.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "BarChart3"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -4765,7 +4896,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.837Z"
+    "published_at": "2026-09-15T10:15:45.837Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 206,
@@ -4939,11 +5071,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 1,
-    "title": "موږ Petroleu تنظیموو",
-    "description": "زموږ ټیم ستاسو د سایټ لپاره محصولات، ټانکونه، کارنان او راپورونه تنظیموي.",
+    "title": "ترتیب",
+    "description": "د لارښود ویزارډ سره ټانکونه، نوزلونه او محصولات اضافه کړئ.",
     "content": null,
     "data": {
-      "step_number": 2
+      "step_number": 2,
+      "icon": "Settings",
+      "number": "02"
     },
     "image_url": null,
     "image_alt": null,
@@ -4953,7 +5087,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.842Z"
+    "published_at": "2026-09-15T10:15:45.842Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 214,
@@ -4962,10 +5097,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 1,
-    "title": "د نمایندګۍ شبکې",
-    "description": "د نمایندګانو او ویشونکو لپاره څو پمپي لید.",
+    "title": "CNG سټیشنونه",
+    "description": "د فشار شوي طبیعي ګاز ډکولو سټیشنونه او هایبرډ پمپونه",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Droplets",
+      "color_class": "bg-accent/10 text-accent",
+      "colorClass": "bg-accent/10 text-accent"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -4974,7 +5113,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.842Z"
+    "published_at": "2026-09-15T10:15:45.842Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 215,
@@ -4983,10 +5123,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 1,
-    "title": "د موجودي خبرتیاوې",
-    "description": "مخکې له ختمېدو ټیټ ټانکونه وپیژنئ.",
+    "title": "د ټانک ذخیره حالت",
+    "description": "د پټرول، ډیزل او HOBC ذخیره پرته له مخکینۍ برخې ته زنګ وهلو وګورئ.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Droplets"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -4995,7 +5137,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.842Z"
+    "published_at": "2026-09-15T10:15:45.842Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 216,
@@ -5170,11 +5313,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 2,
-    "title": "خپل کارکوونکي وروزلئ",
-    "description": "متصدیان او مدیران ورځنی بندښت، ډیپ او اعتباري بل زده کوي.",
+    "title": "چلول او راپور",
+    "description": "شفټونه، نوزل لوستل او اعتباري خرڅلاو ثبت کړئ؛ سمدستي راپور واخلئ.",
     "content": null,
     "data": {
-      "step_number": 3
+      "step_number": 3,
+      "icon": "Rocket",
+      "number": "03"
     },
     "image_url": null,
     "image_alt": null,
@@ -5184,7 +5329,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.847Z"
+    "published_at": "2026-09-15T10:15:45.847Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 224,
@@ -5193,10 +5339,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 2,
-    "title": "د بیړۍ او اعتباري پیرودونکي",
-    "description": "د موټر بل او د مطالباتو تعقیب.",
+    "title": "د بیړۍ سون",
+    "description": "د ترانسپورت شرکتونه د کور دننه سون تاسیساتو سره",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Truck",
+      "color_class": "bg-chart-5/10 text-chart-5",
+      "colorClass": "bg-chart-5/10 text-chart-5"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -5205,7 +5355,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.847Z"
+    "published_at": "2026-09-15T10:15:45.847Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 225,
@@ -5214,10 +5365,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 2,
-    "title": "د شفټ حالت",
-    "description": "د متصدي بندښت شمېرې په تګ کې وګورئ.",
+    "title": "نغدي او کریډیټ لنډیز",
+    "description": "وګورئ څومره نغدي راټول شوي او څومره کریډیټ حسابونو ته چارج شوي.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Wallet"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -5226,7 +5379,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.847Z"
+    "published_at": "2026-09-15T10:15:45.847Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 226,
@@ -5389,11 +5543,12 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "status": "published",
-    "is_enabled": true,
+    "status": "draft",
+    "is_enabled": false,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.851Z"
+    "published_at": "2026-09-15T10:15:45.851Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 233,
@@ -5660,12 +5815,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 0,
-    "title": "پرچون تیل پمپونه",
-    "description": "د پرچون پمپونو لپاره ورځني نوزل، موجودي او اعتبار وسایل.",
+    "title": "تیل پمپونه",
+    "description": "PSO، Shell، Total، Attock او خپلواک تیل پمپونه",
     "content": null,
     "data": {
       "title": "پرچون تیل پمپونه",
-      "description": "د پرچون پمپونو لپاره ورځني نوزل، موجودي او اعتبار وسایل."
+      "description": "د پرچون پمپونو لپاره ورځني نوزل، موجودي او اعتبار وسایل.",
+      "icon": "Fuel",
+      "color_class": "bg-primary/10 text-primary",
+      "colorClass": "bg-primary/10 text-primary"
     },
     "image_url": null,
     "image_alt": null,
@@ -5675,7 +5833,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.856Z"
+    "published_at": "2026-09-15T10:15:45.856Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 245,
@@ -5684,12 +5843,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 1,
-    "title": "د نمایندګۍ شبکې",
-    "description": "د نمایندګانو او ویشونکو لپاره څو پمپي لید.",
+    "title": "CNG سټیشنونه",
+    "description": "د فشار شوي طبیعي ګاز ډکولو سټیشنونه او هایبرډ پمپونه",
     "content": null,
     "data": {
       "title": "د نمایندګۍ شبکې",
-      "description": "د نمایندګانو او ویشونکو لپاره څو پمپي لید."
+      "description": "د نمایندګانو او ویشونکو لپاره څو پمپي لید.",
+      "icon": "Droplets",
+      "color_class": "bg-accent/10 text-accent",
+      "colorClass": "bg-accent/10 text-accent"
     },
     "image_url": null,
     "image_alt": null,
@@ -5699,7 +5861,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.857Z"
+    "published_at": "2026-09-15T10:15:45.857Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 246,
@@ -5708,12 +5871,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 2,
-    "title": "د بیړۍ او اعتباري پیرودونکي",
-    "description": "د موټر بل او د مطالباتو تعقیب.",
+    "title": "د بیړۍ سون",
+    "description": "د ترانسپورت شرکتونه د کور دننه سون تاسیساتو سره",
     "content": null,
     "data": {
       "title": "د بیړۍ او اعتباري پیرودونکي",
-      "description": "د موټر بل او د مطالباتو تعقیب."
+      "description": "د موټر بل او د مطالباتو تعقیب.",
+      "icon": "Truck",
+      "color_class": "bg-chart-5/10 text-chart-5",
+      "colorClass": "bg-chart-5/10 text-chart-5"
     },
     "image_url": null,
     "image_alt": null,
@@ -5723,7 +5889,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.858Z"
+    "published_at": "2026-09-15T10:15:45.858Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 247,
@@ -5743,11 +5910,12 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "status": "published",
-    "is_enabled": true,
+    "status": "draft",
+    "is_enabled": false,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.858Z"
+    "published_at": "2026-09-15T10:15:45.858Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 248,
@@ -5911,8 +6079,8 @@
     "page_slug": "home",
     "section_key": "cta",
     "sort_order": 0,
-    "title": "Ready to modernize your fuel station?",
-    "description": "Talk to Petroleu about افغانستان deployments.",
+    "title": "نن خپل پمپ ډیجیټل کړئ",
+    "description": "۱۴ ورځنی وړیا ازموینه — بانکي کارت ته اړتیا نشته.",
     "data": {
       "btn1_text": "اړیکه",
       "btn1_link": "/af/ps/contact"
@@ -5922,7 +6090,8 @@
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
-    "published_at": "2026-09-15T10:15:45.883Z"
+    "published_at": "2026-09-15T10:15:45.883Z",
+    "updated_at": "2026-09-22T07:56:24.341Z"
   },
   {
     "id": 254,
@@ -5931,8 +6100,8 @@
     "page_slug": "home",
     "section_key": "cta",
     "sort_order": 1,
-    "title": "See Petroleu in action",
-    "description": "Book a walkthrough for your افغانستان fuel stations.",
+    "title": "چمتو یاست چې پټرولیو وګورئ؟",
+    "description": "ډیمو واخلئ یا له پلور سره خبرې وکړئ.",
     "data": {
       "btn1_text": "پیل وکړئ",
       "btn1_link": "/af/ps/get-started"
@@ -5942,7 +6111,8 @@
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
-    "published_at": "2026-09-15T10:15:45.883Z"
+    "published_at": "2026-09-15T10:15:45.883Z",
+    "updated_at": "2026-09-22T07:56:24.341Z"
   },
   {
     "id": 255,
@@ -5972,19 +6142,20 @@
     "page_slug": "home",
     "section_key": "heading:getting-started",
     "sort_order": 0,
-    "title": "Supported onboarding",
-    "description": "Training and setup help your team start with confidence.",
+    "title": "Up & Running in Under 30 Minutes",
+    "description": "Three simple steps to digitize your fuel station — no IT team required.",
     "data": {
-      "badge": "Getting Started",
-      "eyebrow": "Getting Started"
+      "badge": "Best Getting Started",
+      "eyebrow": "Best Getting Started"
     },
-    "link_label": "Get Started",
+    "link_label": "Start Free Trial",
     "link_url": "/af/en/get-started",
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.734Z"
+    "published_at": "2026-09-15T10:15:45.734Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 257,
@@ -5993,11 +6164,11 @@
     "page_slug": "home",
     "section_key": "heading:industries",
     "sort_order": 0,
-    "title": "Built for fuel businesses",
-    "description": "Independent pumps, dealer networks, and multi-station operators who need reliable daily closing and stock control.",
+    "title": "Built for Fuel Businesses",
+    "description": "Tailored features for different fuel station types",
     "data": {
-      "badge": "Industries",
-      "eyebrow": "Industries"
+      "badge": "Best Industries",
+      "eyebrow": "Best Industries"
     },
     "link_label": null,
     "link_url": null,
@@ -6005,7 +6176,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.734Z"
+    "published_at": "2026-09-15T10:15:45.734Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 258,
@@ -6026,7 +6198,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.734Z"
+    "published_at": "2026-09-15T10:15:45.734Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 259,
@@ -6205,7 +6378,7 @@
     "page_slug": "home",
     "section_key": "heading:logos",
     "sort_order": 0,
-    "title": "Trusted oil marketing companies",
+    "title": "Trusted by Afghanistan's leading fuel networks",
     "description": "Trusted brands strip",
     "data": {
       "badge": "Partners",
@@ -6217,7 +6390,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.734Z"
+    "published_at": "2026-09-15T10:15:45.734Z",
+    "updated_at": "2026-09-22T09:12:03.441Z"
   },
   {
     "id": 268,
@@ -6247,19 +6421,20 @@
     "page_slug": "home",
     "section_key": "heading:getting-started",
     "sort_order": 0,
-    "title": "راه‌اندازی با پشتیبانی",
-    "description": "آموزش و تنظیم به تیم شما کمک می‌کند با اطمینان شروع کند.",
+    "title": "در کمتر از ۳۰ دقیقه آماده شوید",
+    "description": "سه گام ساده برای دیجیتالی کردن پمپ تیل — بدون نیاز به تیم IT.",
     "data": {
-      "badge": "Getting Started",
-      "eyebrow": "Getting Started"
+      "badge": "شروع سریع",
+      "eyebrow": "شروع سریع"
     },
-    "link_label": "شروع کنید",
+    "link_label": "شروع آزمایش رایگان",
     "link_url": "/af/get-started",
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.800Z"
+    "published_at": "2026-09-15T10:15:45.800Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 270,
@@ -6268,8 +6443,8 @@
     "page_slug": "home",
     "section_key": "heading:industries",
     "sort_order": 0,
-    "title": "Built for fuel businesses",
-    "description": "پمپ‌های مستقل، شبکه‌های نمایندگی و اپراتورهای چندپمپی که به بستن روزانه و کنترل موجودی مطمئن نیاز دارند.",
+    "title": "ساخته‌شده برای کسب‌وکارهای سوخت",
+    "description": "ویژگی‌های متناسب با انواع پمپ تیل",
     "data": {
       "badge": "صنایع",
       "eyebrow": "صنایع"
@@ -6280,7 +6455,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.800Z"
+    "published_at": "2026-09-15T10:15:45.800Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 271,
@@ -6292,8 +6468,8 @@
     "title": "داشبورد موبایل مالک",
     "description": "فروش، موجودی، نقد، اعتبار و گزارش‌ها را از موبایل ببینید — بدون ماندن تمام‌روز در پمپ.",
     "data": {
-      "badge": "اپلیکیشن موبایل",
-      "eyebrow": "اپلیکیشن موبایل"
+      "badge": "اپ موبایل",
+      "eyebrow": "اپ موبایل"
     },
     "link_label": null,
     "link_url": null,
@@ -6301,7 +6477,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.800Z"
+    "published_at": "2026-09-15T10:15:45.800Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 272,
@@ -6522,19 +6699,20 @@
     "page_slug": "home",
     "section_key": "heading:getting-started",
     "sort_order": 0,
-    "title": "د ملاتړ سره پیل",
-    "description": "روزنه او تنظیم ستاسو ټیم سره مرسته کوي چې په باور سره پیل وکړي.",
+    "title": "په ۳۰ دقیقو کې چمتو شئ",
+    "description": "د سون توکو پمپ ډیجیټل کولو لپاره درې ساده ګامونه — د IT ټیم ته اړتیا نشته.",
     "data": {
-      "badge": "Getting Started",
-      "eyebrow": "Getting Started"
+      "badge": "چټک پیل",
+      "eyebrow": "چټک پیل"
     },
-    "link_label": "پیل وکړئ",
+    "link_label": "وړیا ازموینه پیل کړئ",
     "link_url": "/af/ps/get-started",
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.868Z"
+    "published_at": "2026-09-15T10:15:45.868Z",
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "id": 283,
@@ -6543,8 +6721,8 @@
     "page_slug": "home",
     "section_key": "heading:industries",
     "sort_order": 0,
-    "title": "Built for fuel businesses",
-    "description": "خپلواک پمپونه، د نمایندګۍ شبکې او څو پمپي چلوونکي چې باوري ورځني بندښت او موجودي کنټرول ته اړتیا لري.",
+    "title": "د سون توکو سوداګریو لپاره جوړ شوی",
+    "description": "د بېلابېلو سون توکو پمپ ډولونو لپاره ځانګړي ځانګړتیاوې",
     "data": {
       "badge": "صنایع",
       "eyebrow": "صنایع"
@@ -6555,7 +6733,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.868Z"
+    "published_at": "2026-09-15T10:15:45.868Z",
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "id": 284,
@@ -6565,10 +6744,10 @@
     "section_key": "heading:mobile",
     "sort_order": 0,
     "title": "د مالک موبایل ډشبورډ",
-    "description": "پلور، موجودي، نغدي، اعتبار او راپورونه له موبایل وګورئ — پرته له دې چې ټوله ورځ په پمپ کې اوسئ.",
+    "description": "پلور، ذخیره، نغدي، کریډیټ او راپورونه له موبایل وګورئ — پرته له دې چې ټوله ورځ سټیشن کې پاتې شئ.",
     "data": {
-      "badge": "موبایل اپلیکیشن",
-      "eyebrow": "موبایل اپلیکیشن"
+      "badge": "موبایل اپ",
+      "eyebrow": "موبایل اپ"
     },
     "link_label": null,
     "link_url": null,
@@ -6576,7 +6755,8 @@
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.869Z"
+    "published_at": "2026-09-15T10:15:45.869Z",
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "id": 285,
@@ -7204,7 +7384,7 @@
     "section_key": "hero",
     "sort_order": 0,
     "title": "About Petroleu",
-    "description": "Digital Softs builds Petroleu for petrol pump owners and managers.",
+    "description": "We are building the future of fuel station management in Pakistan.",
     "content": null,
     "data": {
       "badge": "Petroleu",
@@ -7225,7 +7405,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-21T10:12:06.162Z",
-    "id": 301
+    "id": 301,
+    "updated_at": "2026-09-22T09:21:48.606Z"
   },
   {
     "market_code": "pk",
@@ -7671,11 +7852,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 0,
-    "title": "Share your station details",
-    "description": "Tell us about your pumps, tanks, and current workflow.",
+    "title": "Sign up",
+    "description": "Create your account with station details in minutes — no IT team required.",
     "content": null,
     "data": {
-      "step_number": 1
+      "step_number": 1,
+      "icon": "UserPlus",
+      "number": "01"
     },
     "image_url": null,
     "image_alt": null,
@@ -7686,7 +7869,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.729Z",
-    "id": 320
+    "id": 320,
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "market_code": "pk",
@@ -7694,10 +7878,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 0,
-    "title": "Retail Petrol Pumps",
-    "description": "Daily nozzle, stock, and credit tools for retail forecourts.",
+    "title": "Petrol Pumps",
+    "description": "PSO, Shell, Total, Attock and independent fuel stations",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Fuel",
+      "color_class": "bg-primary/10 text-primary",
+      "colorClass": "bg-primary/10 text-primary"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -7707,7 +7895,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.729Z",
-    "id": 321
+    "id": 321,
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "market_code": "pk",
@@ -7721,7 +7910,7 @@
     "data": {
       "name": "Trusted brands strip"
     },
-    "image_url": null,
+    "image_url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-04-25%20at%2010.54.14%E2%80%AFPM-tCsoz7x0MUzpqAy3VGnkK5P2cKj1bN.png",
     "image_alt": "Trusted oil marketing companies",
     "link_label": null,
     "link_url": null,
@@ -7730,7 +7919,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.729Z",
-    "id": 322
+    "id": 322,
+    "updated_at": "2026-09-22T09:12:03.441Z"
   },
   {
     "market_code": "pk",
@@ -7738,10 +7928,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 0,
-    "title": "Live sales snapshot",
-    "description": "See cash and credit sales without waiting for paper reports.",
+    "title": "Live Sales Overview",
+    "description": "See today's nozzle sales, cash totals, and credit charges from your phone.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "BarChart3"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -7751,7 +7943,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.730Z",
-    "id": 323
+    "id": 323,
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "market_code": "pk",
@@ -7852,11 +8045,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 1,
-    "title": "We configure Petroleu",
-    "description": "Our team sets up products, tanks, users, and reporting for your site.",
+    "title": "Configure",
+    "description": "Add tanks, nozzles, and products using the guided setup wizard.",
     "content": null,
     "data": {
-      "step_number": 2
+      "step_number": 2,
+      "icon": "Settings",
+      "number": "02"
     },
     "image_url": null,
     "image_alt": null,
@@ -7867,7 +8062,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.730Z",
-    "id": 328
+    "id": 328,
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "market_code": "pk",
@@ -7875,10 +8071,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 1,
-    "title": "Dealer Networks",
-    "description": "Multi-station visibility for dealers and distributors.",
+    "title": "CNG Stations",
+    "description": "Compressed natural gas filling stations and hybrid pumps",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Droplets",
+      "color_class": "bg-accent/10 text-accent",
+      "colorClass": "bg-accent/10 text-accent"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -7888,7 +8088,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.730Z",
-    "id": 329
+    "id": 329,
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "market_code": "pk",
@@ -7896,10 +8097,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 1,
-    "title": "Stock alerts",
-    "description": "Spot low tanks before you run out.",
+    "title": "Tank Stock Status",
+    "description": "Check petrol, diesel, and HOBC stock levels without calling the forecourt.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Droplets"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -7909,7 +8112,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.730Z",
-    "id": 330
+    "id": 330,
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "market_code": "pk",
@@ -8010,11 +8214,13 @@
     "page_slug": "home",
     "section_key": "how-it-works",
     "sort_order": 2,
-    "title": "Train your staff",
-    "description": "Attendants and managers learn daily closing, dipping, and credit billing.",
+    "title": "Run & report",
+    "description": "Record shifts, nozzle readings, and credit sales; pull reports instantly.",
     "content": null,
     "data": {
-      "step_number": 3
+      "step_number": 3,
+      "icon": "Rocket",
+      "number": "03"
     },
     "image_url": null,
     "image_alt": null,
@@ -8025,7 +8231,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.730Z",
-    "id": 335
+    "id": 335,
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "market_code": "pk",
@@ -8033,10 +8240,14 @@
     "page_slug": "home",
     "section_key": "industry",
     "sort_order": 2,
-    "title": "Fleet & Credit Customers",
-    "description": "Vehicle-wise billing and receivables tracking.",
+    "title": "Fleet Fueling",
+    "description": "Transport companies with in-house fueling facilities",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Truck",
+      "color_class": "bg-chart-5/10 text-chart-5",
+      "colorClass": "bg-chart-5/10 text-chart-5"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -8046,7 +8257,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.730Z",
-    "id": 336
+    "id": 336,
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "market_code": "pk",
@@ -8054,10 +8266,12 @@
     "page_slug": "home",
     "section_key": "mobile-feature",
     "sort_order": 2,
-    "title": "Shift status",
-    "description": "Review attendant closing figures on the go.",
+    "title": "Cash and Credit Summary",
+    "description": "Review how much was collected in cash versus charged to credit accounts.",
     "content": null,
-    "data": {},
+    "data": {
+      "icon": "Wallet"
+    },
     "image_url": null,
     "image_alt": null,
     "link_label": null,
@@ -8067,7 +8281,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.730Z",
-    "id": 337
+    "id": 337,
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "market_code": "pk",
@@ -8129,12 +8344,13 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "status": "published",
-    "is_enabled": true,
+    "status": "draft",
+    "is_enabled": false,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.730Z",
-    "id": 340
+    "id": 340,
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "market_code": "pk",
@@ -8261,12 +8477,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 0,
-    "title": "Retail Petrol Pumps",
-    "description": "Daily nozzle, stock, and credit tools for retail forecourts.",
+    "title": "Petrol Pumps",
+    "description": "PSO, Shell, Total, Attock and independent fuel stations",
     "content": null,
     "data": {
       "title": "Retail Petrol Pumps",
-      "description": "Daily nozzle, stock, and credit tools for retail forecourts."
+      "description": "Daily nozzle, stock, and credit tools for retail forecourts.",
+      "icon": "Fuel",
+      "color_class": "bg-primary/10 text-primary",
+      "colorClass": "bg-primary/10 text-primary"
     },
     "image_url": null,
     "image_alt": null,
@@ -8277,7 +8496,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.731Z",
-    "id": 346
+    "id": 346,
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "market_code": "pk",
@@ -8285,12 +8505,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 1,
-    "title": "Dealer Networks",
-    "description": "Multi-station visibility for dealers and distributors.",
+    "title": "CNG Stations",
+    "description": "Compressed natural gas filling stations and hybrid pumps",
     "content": null,
     "data": {
       "title": "Dealer Networks",
-      "description": "Multi-station visibility for dealers and distributors."
+      "description": "Multi-station visibility for dealers and distributors.",
+      "icon": "Droplets",
+      "color_class": "bg-accent/10 text-accent",
+      "colorClass": "bg-accent/10 text-accent"
     },
     "image_url": null,
     "image_alt": null,
@@ -8301,7 +8524,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.731Z",
-    "id": 347
+    "id": 347,
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "market_code": "pk",
@@ -8309,12 +8533,15 @@
     "page_slug": "industries",
     "section_key": "industry-card",
     "sort_order": 2,
-    "title": "Fleet & Credit Customers",
-    "description": "Vehicle-wise billing and receivables tracking.",
+    "title": "Fleet Fueling",
+    "description": "Transport companies with in-house fueling facilities",
     "content": null,
     "data": {
       "title": "Fleet & Credit Customers",
-      "description": "Vehicle-wise billing and receivables tracking."
+      "description": "Vehicle-wise billing and receivables tracking.",
+      "icon": "Truck",
+      "color_class": "bg-chart-5/10 text-chart-5",
+      "colorClass": "bg-chart-5/10 text-chart-5"
     },
     "image_url": null,
     "image_alt": null,
@@ -8325,7 +8552,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.731Z",
-    "id": 348
+    "id": 348,
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "market_code": "pk",
@@ -8344,12 +8572,13 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "status": "published",
-    "is_enabled": true,
+    "status": "draft",
+    "is_enabled": false,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.731Z",
-    "id": 349
+    "id": 349,
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "market_code": "pk",
@@ -8408,68 +8637,56 @@
     "locale_code": "en-PK",
     "page_slug": "pricing",
     "section_key": "plan",
-    "sort_order": 0,
-    "title": "Starter",
-    "description": "Perfect for single station owners",
+    "sort_order": 1,
+    "title": "Lite Version",
+    "description": "Perfect for single-location stations",
     "content": null,
     "data": {
-      "price": "4,999",
-      "price_yearly": "49,999",
+      "price": "1999",
+      "price_yearly": "19990",
       "period": "month",
       "is_popular": false,
       "features": [
-        "1 Fuel Station",
-        "Up to 4 Nozzles",
-        "Basic Reports",
-        "Email Support",
-        "Mobile App Access"
-      ]
+        {
+          "feature_text": "For 1 user account.",
+          "is_included": true
+        },
+        {
+          "feature_text": "Purchase - Fuel and Lubricants",
+          "is_included": true
+        },
+        {
+          "feature_text": "Sale - Nozzle sale, bulk sale, credit sale, card sale",
+          "is_included": true
+        },
+        {
+          "feature_text": "Inventory - Tank Stock - Dip Gain/loss - Lube Stock",
+          "is_included": true
+        },
+        {
+          "feature_text": "Accounts - Ledgers, Cash Book, Profit/loss, Balance Sheet",
+          "is_included": true
+        }
+      ],
+      "name": "Lite Version",
+      "price_suffix": "/month",
+      "popular": false,
+      "badge": "",
+      "currency": "PKR",
+      "cta_text": "Contact Sales",
+      "cta_link": "/contact"
     },
     "image_url": null,
     "image_alt": null,
-    "link_label": "Get Started",
-    "link_url": null,
+    "link_label": "Contact Sales",
+    "link_url": "/contact",
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.733Z",
-    "id": 352
-  },
-  {
-    "market_code": "pk",
-    "locale_code": "en-PK",
-    "page_slug": "pricing",
-    "section_key": "plan",
-    "sort_order": 1,
-    "title": "Professional",
-    "description": "For growing fuel businesses",
-    "content": null,
-    "data": {
-      "price": "9,999",
-      "price_yearly": "99,999",
-      "period": "month",
-      "is_popular": true,
-      "features": [
-        "Up to 3 Stations",
-        "Unlimited Nozzles",
-        "Advanced Reports",
-        "Priority Support",
-        "WhatsApp Integration",
-        "Credit Management",
-        "Multi-user Access"
-      ]
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": "Get Started",
-    "link_url": null,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.733Z",
-    "id": 353
+    "id": 353,
+    "updated_at": "2026-09-22T07:51:48.890Z"
   },
   {
     "market_code": "pk",
@@ -8477,34 +8694,67 @@
     "page_slug": "pricing",
     "section_key": "plan",
     "sort_order": 2,
-    "title": "Enterprise",
-    "description": "For large fuel networks",
+    "title": "Professional Version",
+    "description": "Professional version is developed for professional accountants and finance managers to gain maximum control and information of the petrol station operation.",
     "content": null,
     "data": {
-      "price": "Custom",
-      "price_yearly": "Custom",
+      "price": "3999",
+      "price_yearly": "39990",
       "period": "month",
-      "is_popular": false,
+      "is_popular": true,
       "features": [
-        "Unlimited Stations",
-        "Dedicated Account Manager",
-        "Custom Integrations",
-        "On-site Training",
-        "SLA Guarantee",
-        "API Access",
-        "White-label Option"
-      ]
+        {
+          "feature_text": "Up to 5 user accounts",
+          "is_included": true
+        },
+        {
+          "feature_text": "Purchase - Fuel and Lubricants",
+          "is_included": true
+        },
+        {
+          "feature_text": "Sale - Nozzle sale, bulk sale, credit sale, card sale",
+          "is_included": true
+        },
+        {
+          "feature_text": "Inventory - Tank Stock - Dip Gain/loss - Lube Stock",
+          "is_included": true
+        },
+        {
+          "feature_text": "Accounts - Ledgers, Cash Book, Aging, Profit/loss, Balance Sheet",
+          "is_included": true
+        },
+        {
+          "feature_text": "Payroll - Attendance, Advance, Loan, Overtime, Salary sheet and Salary slip",
+          "is_included": true
+        },
+        {
+          "feature_text": "WhatsApp messages sending.",
+          "is_included": true
+        },
+        {
+          "feature_text": "AI Reporting and Business Analysis",
+          "is_included": true
+        }
+      ],
+      "name": "Professional Version",
+      "price_suffix": "/month",
+      "popular": true,
+      "badge": "Most Popular",
+      "currency": "PKR",
+      "cta_text": "Contact Sales",
+      "cta_link": "/contact"
     },
     "image_url": null,
     "image_alt": null,
-    "link_label": "Get Started",
-    "link_url": null,
+    "link_label": "Contact Sales",
+    "link_url": "/contact",
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.733Z",
-    "id": 354
+    "id": 354,
+    "updated_at": "2026-09-22T07:51:48.890Z"
   },
   {
     "market_code": "pk",
@@ -8575,20 +8825,21 @@
     "page_slug": "home",
     "section_key": "heading:getting-started",
     "sort_order": 0,
-    "title": "Supported onboarding",
-    "description": "Training and setup help your team start with confidence.",
+    "title": "Up & Running in Under 30 Minutes",
+    "description": "Three simple steps to digitize your fuel station — no IT team required.",
     "data": {
-      "badge": "Getting Started",
-      "eyebrow": "Getting Started"
+      "badge": "Best Getting Started",
+      "eyebrow": "Best Getting Started"
     },
-    "link_label": "Get Started",
+    "link_label": "Start Free Trial",
     "link_url": "/get-started",
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.734Z",
-    "id": 358
+    "id": 358,
+    "updated_at": "2026-09-22T09:28:55.519Z"
   },
   {
     "market_code": "pk",
@@ -8596,11 +8847,11 @@
     "page_slug": "home",
     "section_key": "heading:industries",
     "sort_order": 0,
-    "title": "Built for fuel businesses",
-    "description": "Independent pumps, dealer networks, and multi-station operators who need reliable daily closing and stock control.",
+    "title": "Built for Fuel Businesses",
+    "description": "Tailored features for different fuel station types",
     "data": {
-      "badge": "Industries",
-      "eyebrow": "Industries"
+      "badge": "Best Industries",
+      "eyebrow": "Best Industries"
     },
     "link_label": null,
     "link_url": null,
@@ -8609,7 +8860,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.734Z",
-    "id": 359
+    "id": 359,
+    "updated_at": "2026-09-22T09:31:38.143Z"
   },
   {
     "market_code": "pk",
@@ -8630,7 +8882,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.734Z",
-    "id": 360
+    "id": 360,
+    "updated_at": "2026-09-22T09:37:00.783Z"
   },
   {
     "market_code": "pk",
@@ -8808,7 +9061,7 @@
     "page_slug": "home",
     "section_key": "heading:logos",
     "sort_order": 0,
-    "title": "Trusted oil marketing companies",
+    "title": "Trusted by Pakistan's leading fuel networks",
     "description": "Trusted brands strip",
     "data": {
       "badge": "Partners",
@@ -8821,7 +9074,8 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.734Z",
-    "id": 369
+    "id": 369,
+    "updated_at": "2026-09-22T09:12:03.441Z"
   },
   {
     "market_code": "pk",
@@ -10009,5 +10263,431 @@
     ],
     "created_at": "2026-09-21T12:49:33.452Z",
     "updated_at": "2026-09-21T12:49:33.452Z"
+  },
+  {
+    "id": 411,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "created_at": "2026-09-22T07:51:48.890Z",
+    "title": "Automation Station Version",
+    "description": "",
+    "link_label": "Contact Sales",
+    "link_url": "/contact",
+    "status": "published",
+    "is_enabled": true,
+    "sort_order": 3,
+    "page_slug": "pricing",
+    "section_key": "plan",
+    "updated_at": "2026-09-22T07:51:48.890Z",
+    "data": {
+      "name": "Automation Station Version",
+      "price": "6999",
+      "price_yearly": "69990",
+      "period": "month",
+      "price_suffix": "/month",
+      "is_popular": false,
+      "popular": false,
+      "badge": "",
+      "currency": "PKR",
+      "features": [
+        {
+          "feature_text": "Upto 5 user accounts.",
+          "is_included": true
+        },
+        {
+          "feature_text": "Live Sale Monitoring with dispenser Nozzles Integration",
+          "is_included": true
+        },
+        {
+          "feature_text": "Live Tank Stock Monitoring with ATG",
+          "is_included": true
+        },
+        {
+          "feature_text": "Purchase - Fuel and Lubricants",
+          "is_included": true
+        },
+        {
+          "feature_text": "Sale - Nozzle sale, bulk sale, credit sale, card sale",
+          "is_included": true
+        },
+        {
+          "feature_text": "Credit Billing - Monthly credit sale bills printing and sending on WhatsApp numbers.",
+          "is_included": true
+        },
+        {
+          "feature_text": "Inventory - Tank Stock - Dip Gain/loss - Lube Stock",
+          "is_included": true
+        },
+        {
+          "feature_text": "Accounts - Ledgers, Cash Book, Aging, Profit/loss, Balance Sheet",
+          "is_included": true
+        },
+        {
+          "feature_text": "Payroll - Attendance, Advance, Loan, Overtime, Salary sheet and Salary slip",
+          "is_included": true
+        }
+      ],
+      "cta_text": "Contact Sales",
+      "cta_link": "/contact"
+    }
+  },
+  {
+    "id": 412,
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "created_at": "2026-09-22T07:51:48.890Z",
+    "title": "Multi Station Sites",
+    "description": "",
+    "link_label": "Contact Sales",
+    "link_url": "/contact",
+    "status": "published",
+    "is_enabled": true,
+    "sort_order": 4,
+    "page_slug": "pricing",
+    "section_key": "plan",
+    "updated_at": "2026-09-22T07:51:48.890Z",
+    "data": {
+      "name": "Multi Station Sites",
+      "price": "call for special prices",
+      "price_yearly": "call for special prices",
+      "period": "month",
+      "price_suffix": "/month",
+      "is_popular": false,
+      "popular": false,
+      "badge": "",
+      "currency": "PKR",
+      "features": [
+        {
+          "feature_text": "Purchase - Fuel and Lubricants",
+          "is_included": true
+        },
+        {
+          "feature_text": "Sale - Nozzle sale, bulk sale, credit sale, card sale",
+          "is_included": true
+        },
+        {
+          "feature_text": "Inventory - Tank Stock - Dip Gain/loss - Lube Stock",
+          "is_included": true
+        },
+        {
+          "feature_text": "Accounts - Ledgers, Cash Book, Aging, Profit/loss, Balance Sheet",
+          "is_included": true
+        },
+        {
+          "feature_text": "Payroll - Attendance, Advance, Loan, Overtime, Salary sheet and Salary slip",
+          "is_included": true
+        },
+        {
+          "feature_text": "WhatsApp messages sending.",
+          "is_included": true
+        },
+        {
+          "feature_text": "AI Reporting and Business Analysis",
+          "is_included": true
+        }
+      ],
+      "cta_text": "Contact Sales",
+      "cta_link": "/contact"
+    }
+  },
+  {
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 3,
+    "title": "Customer Outstanding Balances",
+    "description": "See which credit customers owe money before month-end collection.",
+    "content": null,
+    "data": {
+      "icon": "Fuel"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "ready",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "id": 413,
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 4,
+    "title": "Daily Closing Reports",
+    "description": "Open shift and day-end closing figures from the mobile owner dashboard.",
+    "content": null,
+    "data": {
+      "icon": "FileText"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "ready",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "id": 414,
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "market_code": "pk",
+    "locale_code": "en-PK",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 5,
+    "title": "Mobile-Friendly Dashboard",
+    "description": "Built for quick checks while travelling or managing more than one station.",
+    "content": null,
+    "data": {
+      "icon": "Activity"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "ready",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "id": 415,
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "id": 416,
+    "market_code": "af",
+    "locale_code": "en-AF",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 3,
+    "title": "Customer Outstanding Balances",
+    "description": "See which credit customers owe money before month-end collection.",
+    "content": null,
+    "data": {
+      "icon": "Fuel"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "ready",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "id": 417,
+    "market_code": "af",
+    "locale_code": "en-AF",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 4,
+    "title": "Daily Closing Reports",
+    "description": "Open shift and day-end closing figures from the mobile owner dashboard.",
+    "content": null,
+    "data": {
+      "icon": "FileText"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "ready",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "id": 418,
+    "market_code": "af",
+    "locale_code": "en-AF",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 5,
+    "title": "Mobile-Friendly Dashboard",
+    "description": "Built for quick checks while travelling or managing more than one station.",
+    "content": null,
+    "data": {
+      "icon": "Activity"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "ready",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "id": 419,
+    "market_code": "af",
+    "locale_code": "fa-AF",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 3,
+    "title": "مانده بدهی مشتریان",
+    "description": "قبل از وصول پایان ماه ببینید کدام مشتریان اعتباری بدهکارند.",
+    "content": null,
+    "data": {
+      "icon": "Fuel"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "needs_review",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "id": 420,
+    "market_code": "af",
+    "locale_code": "fa-AF",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 4,
+    "title": "گزارش‌های بستن روزانه",
+    "description": "ارقام بستن شیفت و روز را از داشبورد موبایل مالک باز کنید.",
+    "content": null,
+    "data": {
+      "icon": "FileText"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "needs_review",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "id": 421,
+    "market_code": "af",
+    "locale_code": "fa-AF",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 5,
+    "title": "داشبورد سازگار با موبایل",
+    "description": "برای بررسی سریع هنگام سفر یا مدیریت چند پمپ طراحی شده است.",
+    "content": null,
+    "data": {
+      "icon": "Activity"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "needs_review",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "id": 422,
+    "market_code": "af",
+    "locale_code": "ps-AF",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 3,
+    "title": "د پیرودونکو پاتې پور",
+    "description": "د میاشتې پای راټولولو دمخه وګورئ کوم کریډیټ پیرودونکي پور لري.",
+    "content": null,
+    "data": {
+      "icon": "Fuel"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "needs_review",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "id": 423,
+    "market_code": "af",
+    "locale_code": "ps-AF",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 4,
+    "title": "ورځني بند راپورونه",
+    "description": "د شفټ او ورځې پای بند شمیرې د مالک موبایل ډشبورډ څخه پرانیزئ.",
+    "content": null,
+    "data": {
+      "icon": "FileText"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "needs_review",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
+  },
+  {
+    "id": 424,
+    "market_code": "af",
+    "locale_code": "ps-AF",
+    "page_slug": "home",
+    "section_key": "mobile-feature",
+    "sort_order": 5,
+    "title": "موبایل دوستانه ډشبورډ",
+    "description": "د سفر پر مهال یا د څو سټیشنونو مدیریت لپاره چټک چک جوړ شوی.",
+    "content": null,
+    "data": {
+      "icon": "Activity"
+    },
+    "image_url": null,
+    "image_alt": null,
+    "link_label": null,
+    "link_url": null,
+    "status": "published",
+    "is_enabled": true,
+    "is_shared": false,
+    "translation_status": "needs_review",
+    "published_at": "2026-09-22T09:37:00.783Z",
+    "updated_at": "2026-09-22T09:37:00.783Z",
+    "created_at": "2026-09-22T09:37:00.783Z"
   }
 ]

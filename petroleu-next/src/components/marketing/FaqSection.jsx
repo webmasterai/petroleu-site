@@ -5,49 +5,35 @@ import {
   MAccordionContent,
 } from './ui'
 import { websiteContent } from '../../content/websiteContent'
-import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { useSectionHeading } from '../../hooks/useSectionHeading'
-
-const HOMEPAGE_FAQ_APPEND = websiteContent.faq.slice(-2)
+import { useCmsList } from '../../hooks/useCmsList'
 
 export function FaqSection({ staticOnly = false } = {}) {
   const { market } = useMarketLocale()
-  const { data } = useCmsQuery(['faqs'], '/faq', { enabled: !staticOnly })
+  const { items, fromCms, isError } = useCmsList(['faqs'], '/faq', {
+    enabled: !staticOnly,
+    fallback: market === 'pk' ? websiteContent.faq : [],
+  })
   const heading = useSectionHeading('faq', {
     eyebrow: 'Best FAQ',
     title: 'Common Questions',
     subtitle: `Everything you need to know about ${websiteContent.brand.name}`,
   })
 
-  const normalized = Array.isArray(data)
-    ? data.map((f) => ({
-        id: f.id,
-        question: f.question ?? f.title,
-        answer: f.answer ?? f.description ?? f.content,
-      }))
-    : null
-
-  const baseFaqs = staticOnly
+  const faqs = staticOnly
     ? websiteContent.faq
-    : normalized && normalized.length
-      ? normalized
-      : market === 'af'
-        ? []
-        : websiteContent.faq
-  // When CMS FAQs exist, do not append hardcoded extras (one source of truth).
-  const faqs =
-    !staticOnly && market !== 'af' && !(normalized && normalized.length)
-      ? (() => {
-          const next = [...baseFaqs]
-          for (const faq of HOMEPAGE_FAQ_APPEND) {
-            if (!next.some((item) => item.question === faq.question)) next.push(faq)
-          }
-          return next
-        })()
-      : baseFaqs
+    : fromCms
+      ? items.map((f) => ({
+          id: f.id,
+          question: f.question ?? f.title,
+          answer: f.answer ?? f.description ?? f.content,
+        }))
+      : isError
+        ? items
+        : []
 
-  if (market === 'af' && faqs.length === 0) return null
+  if (faqs.length === 0) return null
 
   return (
     <section id="faq" className="bg-background py-20">

@@ -17,6 +17,7 @@ const NAV_GROUPS = [
     label: 'Website',
     items: [
       { to: '/admin/pages', label: 'Pages' },
+      { to: '/admin/pricing', label: 'Pricing Plans' },
       { to: '/admin/navigation', label: 'Navigation' },
       { to: '/admin/blog', label: 'Blog' },
       { to: '/admin/media', label: 'Media' },

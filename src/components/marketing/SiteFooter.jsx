@@ -34,12 +34,20 @@ const YoutubeIcon = (props) => (
 export function SiteFooter() {
   const { routePrefix, isAfghanistan } = useMarketLocale()
   const { data: s = {} } = useCmsQuery(['settings', 'footer'], '/settings')
-  const { data: headerNav } = useCmsQuery(['nav', 'header', 'footer-reuse'], '/navigation', {
-    config: { params: { location: 'header' } },
-  })
-  const { data: megaNav } = useCmsQuery(['nav', 'mega', 'footer-reuse'], '/navigation', {
-    config: { params: { location: 'mega' } },
-  })
+  const { data: headerNav, isFetched: headerFetched } = useCmsQuery(
+    ['nav', 'header', 'footer-reuse'],
+    '/navigation',
+    {
+      config: { params: { location: 'header' } },
+    },
+  )
+  const { data: megaNav, isFetched: megaFetched } = useCmsQuery(
+    ['nav', 'mega', 'footer-reuse'],
+    '/navigation',
+    {
+      config: { params: { location: 'mega' } },
+    },
+  )
   const brand = websiteContent.brand
   const fb = websiteContent.footer
   const mp = (path) => marketPath(path, routePrefix)
@@ -63,35 +71,42 @@ export function SiteFooter() {
     ? s.footer_credit || null
     : s.footer_credit || 'Made with care in Pakistan'
 
-  const cmsHeaderLinks =
-    Array.isArray(headerNav) && headerNav.length
-      ? headerNav.map((n) => ({ label: n.label, to: n.url?.startsWith('http') ? n.url : mp(n.url || '/') }))
-      : null
-  const cmsMegaLinks =
-    Array.isArray(megaNav) && megaNav.length
-      ? megaNav.map((n) => ({ label: n.label, to: n.url?.startsWith('http') ? n.url : mp(n.url || '/') }))
+  const mapNavLinks = (rows) =>
+    Array.isArray(rows)
+      ? rows.map((n) => ({
+          label: n.label,
+          to: n.url?.startsWith('http') ? n.url : mp(n.url || '/'),
+        }))
       : null
 
+  const cmsHeaderLinks =
+    headerFetched && Array.isArray(headerNav) ? mapNavLinks(headerNav) : null
+  const cmsMegaLinks = megaFetched && Array.isArray(megaNav) ? mapNavLinks(megaNav) : null
+
+  const defaultProductLinks = [
+    { label: 'Features', to: mp('/features') },
+    { label: 'Pricing', to: mp('/pricing') },
+    { label: 'Mobile App', to: mp('/#mobile') },
+  ]
+  const defaultResourceLinks = [
+    { label: 'Developer Resources', to: mp('/developers') },
+    { label: 'Documentation', to: mp('/docs') },
+    { label: 'API Docs', to: mp('/docs/api') },
+    { label: 'Analytics', to: mp('/analytics') },
+    { label: 'Reports', to: mp('/product/reports') },
+    { label: 'FAQs', to: mp('/faq') },
+  ]
+
+  // After CMS responds, use CMS only (empty = nothing). Before that / on error, PK defaults.
   const productLinks =
-    isAfghanistan && cmsHeaderLinks
-      ? cmsHeaderLinks.slice(0, 4)
-      : [
-          { label: 'Features', to: mp('/features') },
-          { label: 'Pricing', to: mp('/pricing') },
-          { label: 'Mobile App', to: mp('/#mobile') },
-        ]
+    cmsHeaderLinks !== null
+      ? cmsHeaderLinks.slice(0, 6)
+      : isAfghanistan
+        ? []
+        : defaultProductLinks
 
   const resourceLinks =
-    isAfghanistan && cmsMegaLinks
-      ? cmsMegaLinks
-      : [
-          { label: 'Developer Resources', to: mp('/developers') },
-          { label: 'Documentation', to: mp('/docs') },
-          { label: 'API Docs', to: mp('/docs/api') },
-          { label: 'Analytics', to: mp('/analytics') },
-          { label: 'Reports', to: mp('/product/reports') },
-          { label: 'FAQs', to: mp('/faq') },
-        ]
+    cmsMegaLinks !== null ? cmsMegaLinks : isAfghanistan ? [] : defaultResourceLinks
 
   const companyLinks = [
     {
@@ -101,13 +116,24 @@ export function SiteFooter() {
       to: mp('/about'),
     },
     {
-      label: cmsHeaderLinks?.find((l) => l.to?.includes('contact'))?.label || (isAfghanistan ? s.ui_contact || null : 'Contact'),
+      label:
+        cmsHeaderLinks?.find((l) => l.to?.includes('contact'))?.label ||
+        (isAfghanistan ? s.ui_contact || null : 'Contact'),
       to: mp('/contact'),
     },
     ...(PMS_APP_URL
-      ? [{ label: s.ui_login || (isAfghanistan ? null : 'Login'), external: true, href: pmsAppHref('/login') }]
+      ? [
+          {
+            label: s.ui_login || (isAfghanistan ? null : 'Login'),
+            external: true,
+            href: pmsAppHref('/login'),
+          },
+        ]
       : [{ label: s.ui_login || (isAfghanistan ? null : 'Login'), to: mp('/contact') }]),
-    { label: s.ui_start_trial || s.ui_get_started || (isAfghanistan ? null : 'Get Started'), to: mp('/get-started') },
+    {
+      label: s.ui_start_trial || s.ui_get_started || (isAfghanistan ? null : 'Get Started'),
+      to: mp('/get-started'),
+    },
   ].filter((l) => l.label)
 
   const legalLinks = [
