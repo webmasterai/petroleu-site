@@ -5,12 +5,32 @@ import { useSectionHeading } from '../../hooks/useSectionHeading'
 /**
  * Home (and About) stats + trusted brands strip.
  * Source of truth: CMS home `stat`, `heading:logos`, and `logo` sections.
- * Empty / disabled CMS items are not restored from hardcoded defaults.
+ * Never initialize from hardcoded marketing defaults — wait for CMS, then render.
  */
 export function StatsSection() {
-  const { items: cmsStats, fromCms } = useCmsList(['stats'], '/stats', { fallback: [] })
+  const {
+    items: cmsStats,
+    fromCms,
+    isPending: statsPending,
+    isFetched: statsFetched,
+  } = useCmsList(['stats'], '/stats', {
+    fallback: [],
+    config: { headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } },
+  })
   const logosHeading = useSectionHeading('logos', {})
-  const { data: logosData, isSuccess: logosOk } = useCmsQuery(['trusted-logos'], '/logos')
+  const {
+    data: logosData,
+    isSuccess: logosOk,
+    isPending: logosPending,
+    isFetched: logosFetched,
+  } = useCmsQuery(['trusted-logos'], '/logos', {
+    config: { headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } },
+  })
+
+  // Do not paint partial/stale marketing chrome while CMS is still loading
+  if (statsPending || logosPending || !logosHeading.loaded || !statsFetched || !logosFetched) {
+    return null
+  }
 
   const stats = fromCms
     ? cmsStats.map((s) => ({
@@ -37,11 +57,19 @@ export function StatsSection() {
 
   if (stats.length === 0 && !trustedLogosImage) return null
 
+  // 7 stats: 2 cols mobile, 4 tablet, 7 desktop when enough items
+  const gridClass =
+    stats.length >= 7
+      ? 'grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-7'
+      : stats.length >= 5
+        ? 'grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5'
+        : 'grid grid-cols-2 gap-8 sm:grid-cols-4'
+
   return (
     <section className="border-y border-border bg-muted/30 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {stats.length > 0 ? (
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <div className={gridClass}>
             {stats.map((stat, i) => (
               <div key={stat.id || `${stat.label}-${i}`} className="text-center">
                 <p className="text-3xl font-bold text-foreground sm:text-4xl">{stat.value}</p>
@@ -64,7 +92,8 @@ export function StatsSection() {
                   src={trustedLogosImage}
                   alt={trustedLogosAlt}
                   className="h-auto w-full object-contain opacity-80"
-                  loading="lazy"
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
             </div>

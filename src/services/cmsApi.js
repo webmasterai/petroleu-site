@@ -21,7 +21,14 @@ function withMarketParams(config = {}, marketLocale) {
 
 /** Public CMS GET (no admin token). Pass marketLocale to scope content. */
 export async function cmsGet(path, config = {}, marketLocale) {
-  const res = await cmsApi.get(path, withMarketParams(config, marketLocale))
+  const res = await cmsApi.get(path, withMarketParams({
+    ...config,
+    headers: {
+      'Cache-Control': 'no-cache',
+      Pragma: 'no-cache',
+      ...(config.headers || {}),
+    },
+  }, marketLocale))
   const body = res.data
   if (body?.data !== undefined) return body.data
   return body
