@@ -40,6 +40,8 @@ COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
 RUN mkdir -p /app/scripts
 COPY --from=build /app/scripts/merge-seed-content-additive.mjs /app/scripts/merge-seed-content-additive.mjs
+COPY --from=build /app/scripts/cleanup-pk-home-stats-4.mjs /app/scripts/cleanup-pk-home-stats-4.mjs
+COPY --from=build /app/scripts/cleanup-pk-header-nav.mjs /app/scripts/cleanup-pk-header-nav.mjs
 COPY docker-entrypoint.sh /app/docker-entrypoint.sh
 RUN chmod +x /app/docker-entrypoint.sh
 

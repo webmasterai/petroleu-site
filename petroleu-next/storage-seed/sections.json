@@ -37,7 +37,7 @@
     "updated_at": "2026-09-22T09:45:35.306Z"
   },
   {
-    "id": 2,
+    "id": 3,
     "market_code": "pk",
     "locale_code": "en-PK",
     "status": "published",
@@ -46,37 +46,13 @@
     "sort_order": 0,
     "page_slug": "home",
     "section_key": "stat",
-    "title": "1350+",
-    "description": "Petrol Pumps",
-    "data": {
-      "value": "1350+",
-      "label": "Petrol Pumps"
-    },
-    "updated_at": "2026-09-22T11:28:16.160Z",
-    "content": null,
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "published_at": "2026-09-22T09:41:59.271Z"
-  },
-  {
-    "id": 3,
-    "market_code": "pk",
-    "locale_code": "en-PK",
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "sort_order": 1,
-    "page_slug": "home",
-    "section_key": "stat",
     "title": "500+",
     "description": "Stations Active",
     "data": {
       "value": "500+",
       "label": "Stations Active"
     },
-    "updated_at": "2026-09-22T11:28:16.160Z",
+    "updated_at": "2026-09-23T07:19:47.310Z",
     "content": null,
     "image_url": null,
     "image_alt": null,
@@ -85,37 +61,13 @@
     "published_at": "2026-09-22T09:41:59.354Z"
   },
   {
-    "id": 4,
-    "market_code": "pk",
-    "locale_code": "en-PK",
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "sort_order": 2,
-    "page_slug": "home",
-    "section_key": "stat",
-    "title": "20+",
-    "description": "Years of Excellence",
-    "data": {
-      "value": "20+",
-      "label": "Years of Excellence"
-    },
-    "updated_at": "2026-09-22T11:28:16.160Z",
-    "content": null,
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "published_at": "2026-09-22T09:41:59.438Z"
-  },
-  {
     "id": 5,
     "market_code": "pk",
     "locale_code": "en-PK",
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
-    "sort_order": 3,
+    "sort_order": 1,
     "page_slug": "home",
     "section_key": "stat",
     "title": "99.9%",
@@ -124,7 +76,7 @@
       "value": "99.9%",
       "label": "Uptime"
     },
-    "updated_at": "2026-09-22T11:28:16.160Z",
+    "updated_at": "2026-09-23T07:19:47.310Z",
     "content": null,
     "image_url": null,
     "image_alt": null,
@@ -1243,31 +1195,6 @@
     "updated_at": "2026-09-22T09:37:00.755Z"
   },
   {
-    "id": 54,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "page_slug": "home",
-    "section_key": "stat",
-    "sort_order": 0,
-    "title": "1350+",
-    "description": "Petrol Pumps",
-    "content": null,
-    "data": {
-      "value": "1350+",
-      "label": "Petrol Pumps"
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.730Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
-  },
-  {
     "id": 55,
     "market_code": "af",
     "locale_code": "en-AF",
@@ -1490,7 +1417,7 @@
     "locale_code": "en-AF",
     "page_slug": "home",
     "section_key": "stat",
-    "sort_order": 1,
+    "sort_order": 0,
     "title": "500+",
     "description": "Stations Active",
     "content": null,
@@ -1507,7 +1434,7 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.730Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 65,
@@ -1728,31 +1655,6 @@
     "updated_at": "2026-09-22T09:37:00.755Z"
   },
   {
-    "id": 74,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "page_slug": "home",
-    "section_key": "stat",
-    "sort_order": 2,
-    "title": "20+",
-    "description": "Years of Excellence",
-    "content": null,
-    "data": {
-      "value": "20+",
-      "label": "Years of Excellence"
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "ready",
-    "published_at": "2026-09-15T10:15:45.730Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
-  },
-  {
     "id": 75,
     "market_code": "af",
     "locale_code": "en-AF",
@@ -1902,7 +1804,7 @@
     "locale_code": "en-AF",
     "page_slug": "home",
     "section_key": "stat",
-    "sort_order": 3,
+    "sort_order": 1,
     "title": "99.9%",
     "description": "Uptime",
     "content": null,
@@ -1919,7 +1821,7 @@
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-15T10:15:45.730Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 82,
@@ -3142,31 +3044,6 @@
     "updated_at": "2026-09-22T09:37:00.755Z"
   },
   {
-    "id": 130,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "page_slug": "home",
-    "section_key": "stat",
-    "sort_order": 0,
-    "title": "1350+",
-    "description": "پمپ‌های تیل",
-    "content": null,
-    "data": {
-      "value": "1350+",
-      "label": "پمپ‌های تیل"
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.771Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
-  },
-  {
     "id": 131,
     "market_code": "af",
     "locale_code": "fa-AF",
@@ -3389,7 +3266,7 @@
     "locale_code": "fa-AF",
     "page_slug": "home",
     "section_key": "stat",
-    "sort_order": 1,
+    "sort_order": 0,
     "title": "500+",
     "description": "ایستگاه‌های فعال",
     "content": null,
@@ -3406,7 +3283,7 @@
     "is_shared": false,
     "translation_status": "needs_review",
     "published_at": "2026-09-15T10:15:45.775Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 141,
@@ -3627,31 +3504,6 @@
     "updated_at": "2026-09-22T09:37:00.755Z"
   },
   {
-    "id": 150,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "page_slug": "home",
-    "section_key": "stat",
-    "sort_order": 2,
-    "title": "20+",
-    "description": "سال‌ها تجربه",
-    "content": null,
-    "data": {
-      "value": "20+",
-      "label": "سال‌ها تجربه"
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.780Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
-  },
-  {
     "id": 151,
     "market_code": "af",
     "locale_code": "fa-AF",
@@ -3801,7 +3653,7 @@
     "locale_code": "fa-AF",
     "page_slug": "home",
     "section_key": "stat",
-    "sort_order": 3,
+    "sort_order": 1,
     "title": "99.9%",
     "description": "آپ‌تایم",
     "content": null,
@@ -3818,7 +3670,7 @@
     "is_shared": false,
     "translation_status": "needs_review",
     "published_at": "2026-09-15T10:15:45.784Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 158,
@@ -5042,31 +4894,6 @@
     "updated_at": "2026-09-22T09:37:00.755Z"
   },
   {
-    "id": 206,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "page_slug": "home",
-    "section_key": "stat",
-    "sort_order": 0,
-    "title": "1350+",
-    "description": "تیل پمپونه",
-    "content": null,
-    "data": {
-      "value": "1350+",
-      "label": "تیل پمپونه"
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.838Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
-  },
-  {
     "id": 207,
     "market_code": "af",
     "locale_code": "ps-AF",
@@ -5289,7 +5116,7 @@
     "locale_code": "ps-AF",
     "page_slug": "home",
     "section_key": "stat",
-    "sort_order": 1,
+    "sort_order": 0,
     "title": "500+",
     "description": "فعال سټیشنونه",
     "content": null,
@@ -5306,7 +5133,7 @@
     "is_shared": false,
     "translation_status": "needs_review",
     "published_at": "2026-09-15T10:15:45.843Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 217,
@@ -5527,31 +5354,6 @@
     "updated_at": "2026-09-22T09:37:00.755Z"
   },
   {
-    "id": 226,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "page_slug": "home",
-    "section_key": "stat",
-    "sort_order": 2,
-    "title": "20+",
-    "description": "کلونه تجربه",
-    "content": null,
-    "data": {
-      "value": "20+",
-      "label": "کلونه تجربه"
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "needs_review",
-    "published_at": "2026-09-15T10:15:45.848Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
-  },
-  {
     "id": 227,
     "market_code": "af",
     "locale_code": "ps-AF",
@@ -5701,7 +5503,7 @@
     "locale_code": "ps-AF",
     "page_slug": "home",
     "section_key": "stat",
-    "sort_order": 3,
+    "sort_order": 1,
     "title": "99.9%",
     "description": "اپ‌ټایم",
     "content": null,
@@ -5718,7 +5520,7 @@
     "is_shared": false,
     "translation_status": "needs_review",
     "published_at": "2026-09-15T10:15:45.851Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 234,
@@ -10909,31 +10711,6 @@
     "created_at": "2026-09-22T09:37:00.755Z"
   },
   {
-    "id": 426,
-    "market_code": "pk",
-    "locale_code": "en-PK",
-    "page_slug": "home",
-    "section_key": "stat",
-    "title": "4.8",
-    "description": "Google Reviews",
-    "content": null,
-    "data": {
-      "value": "4.8",
-      "label": "Google Reviews"
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "sort_order": 4,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "ready",
-    "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
-  },
-  {
     "id": 427,
     "market_code": "pk",
     "locale_code": "en-PK",
@@ -10950,13 +10727,13 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "sort_order": 5,
+    "sort_order": 2,
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 428,
@@ -10975,38 +10752,13 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "sort_order": 6,
+    "sort_order": 3,
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
-  },
-  {
-    "id": 429,
-    "market_code": "af",
-    "locale_code": "en-AF",
-    "page_slug": "home",
-    "section_key": "stat",
-    "title": "4.8",
-    "description": "Google Reviews",
-    "content": null,
-    "data": {
-      "value": "4.8",
-      "label": "Google Reviews"
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "sort_order": 4,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "ready",
-    "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 430,
@@ -11025,13 +10777,13 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "sort_order": 5,
+    "sort_order": 2,
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 431,
@@ -11050,38 +10802,13 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "sort_order": 6,
+    "sort_order": 3,
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
-  },
-  {
-    "id": 432,
-    "market_code": "af",
-    "locale_code": "fa-AF",
-    "page_slug": "home",
-    "section_key": "stat",
-    "title": "4.8",
-    "description": "Google Reviews",
-    "content": null,
-    "data": {
-      "value": "4.8",
-      "label": "Google Reviews"
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "sort_order": 4,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "ready",
-    "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 433,
@@ -11100,13 +10827,13 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "sort_order": 5,
+    "sort_order": 2,
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 434,
@@ -11125,38 +10852,13 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "sort_order": 6,
+    "sort_order": 3,
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
-  },
-  {
-    "id": 435,
-    "market_code": "af",
-    "locale_code": "ps-AF",
-    "page_slug": "home",
-    "section_key": "stat",
-    "title": "4.8",
-    "description": "Google Reviews",
-    "content": null,
-    "data": {
-      "value": "4.8",
-      "label": "Google Reviews"
-    },
-    "image_url": null,
-    "image_alt": null,
-    "link_label": null,
-    "link_url": null,
-    "sort_order": 4,
-    "status": "published",
-    "is_enabled": true,
-    "is_shared": false,
-    "translation_status": "ready",
-    "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 436,
@@ -11175,13 +10877,13 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "sort_order": 5,
+    "sort_order": 2,
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   },
   {
     "id": 437,
@@ -11200,12 +10902,12 @@
     "image_alt": null,
     "link_label": null,
     "link_url": null,
-    "sort_order": 6,
+    "sort_order": 3,
     "status": "published",
     "is_enabled": true,
     "is_shared": false,
     "translation_status": "ready",
     "published_at": "2026-09-22T11:28:10.115Z",
-    "updated_at": "2026-09-22T11:28:16.160Z"
+    "updated_at": "2026-09-23T07:19:47.310Z"
   }
 ]

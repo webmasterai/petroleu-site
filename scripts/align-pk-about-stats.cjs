@@ -1,6 +1,7 @@
 /**
- * Align en-PK About hero + Home stats — canonical 7 stats (field updates only).
- * Prefer scripts/sync-pk-stats-7.cjs for full insert/disable handling.
+ * Align en-PK About hero + Home stats — canonical 4 stats (field updates only).
+ * Prefer scripts/sync-pk-stats-4.cjs for full insert/remove handling.
+ * Prefer petroleu-next/scripts/cleanup-pk-home-stats-4.mjs for production-scoped cleanup.
  */
 const fs = require('fs')
 const path = require('path')
@@ -12,14 +13,15 @@ const files = [
 ]
 
 const PK_STATS = [
-  { title: '1350+', description: 'Petrol Pumps', sort_order: 0 },
-  { title: '500+', description: 'Stations Active', sort_order: 1 },
-  { title: '20+', description: 'Years of Excellence', sort_order: 2 },
-  { title: '99.9%', description: 'Uptime', sort_order: 3 },
-  { title: '4.8', description: 'Google Reviews', sort_order: 4 },
-  { title: '10M+', description: 'Transactions Logged', sort_order: 5 },
-  { title: '24/7', description: 'Support', sort_order: 6 },
+  { title: '500+', description: 'Stations Active', sort_order: 0 },
+  { title: '99.9%', description: 'Uptime', sort_order: 1 },
+  { title: '10M+', description: 'Transactions Logged', sort_order: 2 },
+  { title: '24/7', description: 'Support', sort_order: 3 },
 ]
+
+function rowValue(row) {
+  return String(row?.data?.value || row?.title || '').trim()
+}
 
 function patch(file) {
   if (!fs.existsSync(file)) {
@@ -47,19 +49,17 @@ function patch(file) {
     n++
   }
 
-  const list = rows
-    .filter(
-      (s) =>
-        s.market_code === 'pk' &&
-        s.locale_code === 'en-PK' &&
-        s.page_slug === 'home' &&
-        s.section_key === 'stat',
-    )
-    .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
+  const list = rows.filter(
+    (s) =>
+      s.market_code === 'pk' &&
+      s.locale_code === 'en-PK' &&
+      s.page_slug === 'home' &&
+      s.section_key === 'stat',
+  )
 
-  for (let i = 0; i < Math.min(list.length, PK_STATS.length); i++) {
-    const plan = PK_STATS[i]
-    const row = list[i]
+  for (const plan of PK_STATS) {
+    const row = list.find((r) => rowValue(r) === plan.title)
+    if (!row) continue
     row.title = plan.title
     row.description = plan.description
     row.sort_order = plan.sort_order
@@ -79,4 +79,4 @@ function patch(file) {
 }
 
 for (const f of files) patch(f)
-console.log('Note: run node scripts/sync-pk-stats-7.cjs to insert missing stats beyond existing rows.')
+console.log('Note: run node scripts/sync-pk-stats-4.cjs to insert/remove so exactly 4 public stats remain.')

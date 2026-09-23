@@ -32,6 +32,11 @@ Override in production with:
   - Never touches `users.json`, `inquiries.json`, or uploads
   - Writes marker `/app/storage/backups/.merge-seed-additive-done` so it does not re-run
   - Then **unset** `CMS_MERGE_SEED_ADDITIVE` (or set false). To re-run later: set `CMS_MERGE_SEED_ADDITIVE_FORCE=true` once (or delete the marker).
+- **Targeted cleanups (safe, one-shot)** — use when additive merge left duplicates (cannot remove obsolete rows):
+  - `CMS_CLEANUP_PK_STATS_4=true` → `scripts/cleanup-pk-home-stats-4.mjs` (only `pk/en-PK/home/stat` → exactly 4 stats; backs up first)
+  - `CMS_CLEANUP_PK_HEADER_NAV=true` → `scripts/cleanup-pk-header-nav.mjs` (only `pk/en-PK` header; disables outdated/duplicate About/Contact; backs up first)
+  - Markers under `/app/storage/backups/` prevent re-run; unset env after deploy
+  - Local: `node scripts/cleanup-pk-home-stats-4.mjs` / `node scripts/cleanup-pk-header-nav.mjs` (supports `DRY_RUN=true`)
 - Set `CMS_FORCE_RESEED` as **runtime only** (uncheck Coolify “Available at Buildtime”). If it is on during `next build`, parallel page generation can corrupt JSON.
 - Set `CMS_COOKIE_SECURE=true` on HTTPS
 - Set `NODE_ENV=production` as **runtime only** (uncheck “Available at Buildtime”). Coolify injecting it during `npm ci` used to skip `typescript` and break `@/` imports; the Dockerfile now uses `npm ci --include=dev` as a safeguard.

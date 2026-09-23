@@ -47,4 +47,36 @@ if [ "${CMS_MERGE_SEED_ADDITIVE}" = "true" ]; then
   fi
 fi
 
+# Targeted pk/en-PK home stats cleanup (exactly 4) — does not overwrite whole storage.
+STATS_MARKER="$BACKUP_ROOT/.cleanup-pk-home-stats-4-done"
+if [ "${CMS_CLEANUP_PK_STATS_4}" = "true" ]; then
+  if [ -f "$STATS_MARKER" ] && [ "${CMS_CLEANUP_PK_STATS_4_FORCE}" != "true" ]; then
+    echo "PK stats-4 cleanup already applied ($STATS_MARKER) — skip"
+  elif [ -f /app/scripts/cleanup-pk-home-stats-4.mjs ]; then
+    echo "Running targeted pk/en-PK home stats cleanup → exactly 4"
+    CMS_DATA_DIR="$DATA_DIR" CMS_BACKUP_ROOT="$BACKUP_ROOT" \
+      node /app/scripts/cleanup-pk-home-stats-4.mjs
+    date -u +"%Y-%m-%dT%H:%M:%SZ" > "$STATS_MARKER"
+    echo "PK stats-4 cleanup complete; unset CMS_CLEANUP_PK_STATS_4 after this deploy"
+  else
+    echo "WARNING: cleanup-pk-home-stats-4.mjs missing"
+  fi
+fi
+
+# Targeted pk/en-PK header nav cleanup (dedupe About/Contact etc.)
+NAV_MARKER="$BACKUP_ROOT/.cleanup-pk-header-nav-done"
+if [ "${CMS_CLEANUP_PK_HEADER_NAV}" = "true" ]; then
+  if [ -f "$NAV_MARKER" ] && [ "${CMS_CLEANUP_PK_HEADER_NAV_FORCE}" != "true" ]; then
+    echo "PK header-nav cleanup already applied ($NAV_MARKER) — skip"
+  elif [ -f /app/scripts/cleanup-pk-header-nav.mjs ]; then
+    echo "Running targeted pk/en-PK header navigation cleanup"
+    CMS_DATA_DIR="$DATA_DIR" CMS_BACKUP_ROOT="$BACKUP_ROOT" \
+      node /app/scripts/cleanup-pk-header-nav.mjs
+    date -u +"%Y-%m-%dT%H:%M:%SZ" > "$NAV_MARKER"
+    echo "PK header-nav cleanup complete; unset CMS_CLEANUP_PK_HEADER_NAV after this deploy"
+  else
+    echo "WARNING: cleanup-pk-header-nav.mjs missing"
+  fi
+fi
+
 exec "$@"

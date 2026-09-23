@@ -62,7 +62,7 @@ export function StatsSection() {
 
   if (stats.length === 0 && !trustedLogosImage) return null
 
-  // 7 stats: 2 cols mobile, 4 tablet, 7 desktop when enough items
+  // Canonical CMS set is 4 stats: 2 cols mobile, 4 evenly spaced on desktop
   const gridClass =
     stats.length >= 7
       ? 'grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-7'

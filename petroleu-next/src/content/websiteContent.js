@@ -55,11 +55,8 @@ export const websiteContent = {
 
   // Deprecated static mirror — StatsSection is CMS-only (`/stats`). Kept in sync for docs only.
   stats: [
-    { value: '1350+', label: 'Petrol Pumps' },
     { value: '500+', label: 'Stations Active' },
-    { value: '20+', label: 'Years of Excellence' },
     { value: '99.9%', label: 'Uptime' },
-    { value: '4.8', label: 'Google Reviews' },
     { value: '10M+', label: 'Transactions Logged' },
     { value: '24/7', label: 'Support' },
   ],

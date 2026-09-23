@@ -173,9 +173,9 @@ class CmsPakistanContentSeeder extends Seeder
         ]);
 
         $stats = [
-            ['1350+', 'Petrol Pumps'],
-            ['20+', 'Years of Excellence'],
-            ['4.8', 'Google Reviews'],
+            ['500+', 'Stations Active'],
+            ['99.9%', 'Uptime'],
+            ['10M+', 'Transactions Logged'],
             ['24/7', 'Support'],
         ];
         foreach ($stats as $i => [$value, $label]) {

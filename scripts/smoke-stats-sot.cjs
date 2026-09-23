@@ -47,14 +47,13 @@ function heading() {
 }
 
 const expected = [
-  '1350+|Petrol Pumps',
   '500+|Stations Active',
-  '20+|Years of Excellence',
   '99.9%|Uptime',
-  '4.8|Google Reviews',
   '10M+|Transactions Logged',
   '24/7|Support',
 ]
+
+const banned = ['1350+', '20+', '4.8', 'Petrol Pumps', 'Years of Excellence', 'Google Reviews']
 
 let failed = 0
 function assert(cond, msg) {
@@ -67,11 +66,16 @@ function assert(cond, msg) {
 }
 
 const stats = publicStats()
-assert(stats.length === 7, `stats count === 7 (got ${stats.length})`)
+assert(stats.length === 4, `stats count === 4 (got ${stats.length})`)
 assert(
   stats.map((s) => `${s.title}|${s.description}`).join(';;') === expected.join(';;'),
-  'stats match canonical 7',
+  'stats match canonical 4',
 )
+
+const blob = stats.map((s) => `${s.title} ${s.description}`).join(' ')
+for (const b of banned) {
+  assert(!blob.includes(b), `no obsolete token "${b}"`)
+}
 
 const h = heading()
 assert(!!h, 'heading:logos published')
@@ -84,23 +88,23 @@ const logos = publicLogos()
 assert(logos.length >= 1 && !!logos[0].image_url, 'trusted logo image_url present')
 
 // Edit test
-const target = stats[1]
+const target = stats[0]
 const originalDesc = target.description
 target.description = 'Stations Active EDITED'
 target.data = { ...(target.data || {}), label: 'Stations Active EDITED' }
-assert(publicStats()[1].description === 'Stations Active EDITED', 'edit visible in public list')
+assert(publicStats()[0].description === 'Stations Active EDITED', 'edit visible in public list')
 target.description = originalDesc
 target.data = { ...(target.data || {}), label: originalDesc }
-assert(publicStats()[1].description === originalDesc, 'edit restored')
+assert(publicStats()[0].description === originalDesc, 'edit restored')
 
 // Disable test
-const sample = publicStats()[3]
+const sample = publicStats()[1]
 const before = sample.is_enabled
 sample.is_enabled = false
-assert(publicStats().length === 6, 'disable removes from public list (no fallback)')
+assert(publicStats().length === 3, 'disable removes from public list (no fallback)')
 assert(!publicStats().some((s) => s.id === sample.id), 'disabled id absent')
 sample.is_enabled = before
-assert(publicStats().length === 7, 're-enable restores')
+assert(publicStats().length === 4, 're-enable restores')
 
 // Logo disable
 const logo = logos[0]
@@ -109,10 +113,6 @@ logo.is_enabled = false
 assert(publicLogos().length === 0, 'logo disable → empty public logos')
 logo.is_enabled = logoBefore
 assert(publicLogos().length >= 1, 'logo re-enabled')
-
-// Ensure old 4-only set is not the only published set
-const titles = publicStats().map((s) => s.title)
-assert(titles.includes('1350+') && titles.includes('4.8'), 'not old 4-stat-only set')
 
 if (failed) {
   console.error(`\n${failed} assertion(s) failed`)
