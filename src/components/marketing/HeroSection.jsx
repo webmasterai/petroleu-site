@@ -4,6 +4,7 @@ import { MButton, MBadge } from './ui'
 import { websiteContent } from '../../content/websiteContent'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useUiCopy } from '../../hooks/useUiCopy'
+import { pmsAppHref } from '../../config/pmsApp'
 
 export function HeroSection() {
   const { isAfghanistan, mp, copy, whatsappUrl: afWhatsapp } = useUiCopy()
@@ -55,6 +56,9 @@ export function HeroSection() {
 
   const pkWhatsapp = `https://wa.me/${websiteContent.brand.whatsappNumber}?text=${encodeURIComponent(websiteContent.brand.whatsappMessage)}`
   const whatsappUrl = isAfghanistan ? afWhatsapp : pkWhatsapp
+  // Prospectus demo account flow lives on the PMS app after the site split.
+  const primaryHref = isAfghanistan && whatsappUrl ? whatsappUrl : pmsAppHref('/demo')
+  const primaryIsExternal = primaryHref.startsWith('http')
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-accent/5 py-20 lg:py-28">
@@ -83,10 +87,10 @@ export function HeroSection() {
             ) : null}
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              {whatsappUrl && primaryLabel ? (
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                  <MButton size="lg" variant="whatsapp" className="gap-2 w-full sm:w-auto">
-                    <MessageCircle className="h-5 w-5" />
+              {primaryLabel && primaryIsExternal ? (
+                <a href={primaryHref} target={isAfghanistan ? '_blank' : undefined} rel={isAfghanistan ? 'noopener noreferrer' : undefined}>
+                  <MButton size="lg" variant={isAfghanistan ? 'whatsapp' : 'default'} className="gap-2 w-full sm:w-auto">
+                    {isAfghanistan ? <MessageCircle className="h-5 w-5" /> : null}
                     {primaryLabel}
                   </MButton>
                 </a>

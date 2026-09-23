@@ -20,12 +20,13 @@ function readEnv(name) {
 
 /** Base URL for the PMS application (login / app handoff). */
 export const PMS_APP_URL = String(
-  readEnv('VITE_PMS_APP_URL') || readEnv('NEXT_PUBLIC_PMS_APP_URL') || '',
+  readEnv('VITE_PMS_APP_URL') ||
+    readEnv('NEXT_PUBLIC_PMS_APP_URL') ||
+    'https://app.petroleu.com',
 ).replace(/\/+$/, '')
 
-/** Link into the PMS app, or `/contact` when PMS app URL is unset. */
+/** Link into the PMS app. */
 export function pmsAppHref(path = '/') {
   const normalized = path.startsWith('/') ? path : `/${path}`
-  if (PMS_APP_URL) return `${PMS_APP_URL}${normalized}`
-  return '/contact'
+  return `${PMS_APP_URL}${normalized}`
 }

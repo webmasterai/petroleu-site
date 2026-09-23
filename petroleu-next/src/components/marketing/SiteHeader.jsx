@@ -2,7 +2,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, LayoutDashboard, ChevronDown, FileText, PlayCircle } from 'lucide-react'
 import { useState, useRef, useEffect, useMemo } from 'react'
 import { MButton } from './ui'
-import { DemoRequestModal } from './DemoRequestModal'
 import { ContactTopBar } from './ContactTopBar'
 import { pmsAppHref } from '../../config/pmsApp'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
@@ -78,11 +77,10 @@ function mapCmsNav(cmsRows, routePrefix, { withIcons = false } = {}) {
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [resourcesOpen, setResourcesOpen] = useState(false)
-  const [demoModalOpen, setDemoModalOpen] = useState(false)
   const resourcesRef = useRef(null)
   const { pathname } = useLocation()
-  const { routePrefix, isAfghanistan } = useMarketLocale()
-  const { copy, whatsappUrl } = useUiCopy()
+  const { routePrefix } = useMarketLocale()
+  const { copy } = useUiCopy()
   const { data: headerNav, isSuccess: headerOk } = useCmsQuery(['nav', 'header'], '/navigation', {
     config: { params: { location: 'header' } },
   })
@@ -201,18 +199,15 @@ export function SiteHeader() {
                 {loginLabel}
               </a>
             ) : null}
-            {demoLabel && (whatsappUrl || !isAfghanistan) ? (
-              <button
-                type="button"
-                onClick={() => setDemoModalOpen(true)}
+            {demoLabel ? (
+              <a
+                href={pmsAppHref('/demo')}
                 className="hidden items-center gap-1.5 rounded-md bg-[#25D366] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1ebe5d] md:inline-flex"
               >
                 <PlayCircle className="h-4 w-4" />
                 {demoLabel}
-              </button>
+              </a>
             ) : null}
-
-            <DemoRequestModal open={demoModalOpen} onClose={() => setDemoModalOpen(false)} />
 
             <button
               type="button"
@@ -267,6 +262,16 @@ export function SiteHeader() {
                   >
                     <LayoutDashboard className="h-4 w-4" />
                     {loginLabel}
+                  </a>
+                ) : null}
+                {demoLabel ? (
+                  <a
+                    href={pmsAppHref('/demo')}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex w-full items-center justify-center gap-1.5 rounded-md bg-[#25D366] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1ebe5d]"
+                  >
+                    <PlayCircle className="h-4 w-4" />
+                    {demoLabel}
                   </a>
                 ) : null}
                 {trialLabel ? (
