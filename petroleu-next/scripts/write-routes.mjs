@@ -51,9 +51,8 @@ for (const p of ['blog/[slug]', 'af/blog/[slug]', 'af/ps/blog/[slug]', 'af/en/bl
   writeFileSync(path.join(root, p, 'page.tsx'), blogSlug)
 }
 
-const city = `'use client'\n\nimport Page from '@/legacy-pages/marketing/CityLandingPage'\n\nexport default function RoutePage() {\n  return <Page />\n}\n`
-mkdirSync(path.join(root, 'petrol-pump-software-[city]'), { recursive: true })
-writeFileSync(path.join(root, 'petrol-pump-software-[city]', 'page.tsx'), city)
+// City landings (/petrol-pump-software-{city}) are handled by app/[slug]/page.tsx
+// via isCityLandingSlug — do NOT create petrol-pump-software-[city] (broken App Router matcher).
 
 const adminMap = {
   '': 'AdminDashboardPage',

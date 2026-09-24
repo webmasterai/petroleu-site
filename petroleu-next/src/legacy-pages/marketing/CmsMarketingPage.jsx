@@ -36,8 +36,13 @@ export default function CmsMarketingPage({ slug: slugProp } = {}) {
     )
   }
 
-  // No published content yet
-  if (isError || (!sections.length && !page?.title)) {
+  // No published page meta and no sections → not found (never show raw slug as H1)
+  if (isError || !page || (!sections.length && !page?.title)) {
+    return <NotFoundPage />
+  }
+
+  // Guard: never render title that is only the URL slug with empty content
+  if (!sections.length && page?.title === slug) {
     return <NotFoundPage />
   }
 

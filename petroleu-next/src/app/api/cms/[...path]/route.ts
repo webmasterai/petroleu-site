@@ -381,6 +381,8 @@ export async function GET(
       }
     }
     const sections = await listPageSections(market, locale, slug)
+    // No stub title=slug: missing pages return page:null so clients can 404
+    // instead of rendering the raw slug as an H1.
     return ok({
       page: pageMeta
         ? {
@@ -391,7 +393,7 @@ export async function GET(
             frontend_path: pageMeta.frontend_path,
             template: pageMeta.template || 'default',
           }
-        : { slug, title: slug, description: null, frontend_path: `/${slug}`, template: 'default' },
+        : null,
       sections,
     })
   }

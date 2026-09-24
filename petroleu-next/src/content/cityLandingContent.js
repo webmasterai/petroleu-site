@@ -212,6 +212,9 @@ const cityBySlug = Object.fromEntries(CITY_LANDING_PAGES.map((c) => [c.slug, c])
 
 export const CITY_PAGE_PREFIX = 'petrol-pump-software-'
 
+export const CITY_DASHBOARD_IMAGE =
+  'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PetroleuDashboard-45o0LNfASWEDxtDgDI6KSRExrYyMNC.png'
+
 export function getCityBySlug(slug) {
   if (!slug) return null
   return cityBySlug[slug] || null
@@ -219,6 +222,23 @@ export function getCityBySlug(slug) {
 
 export function getCityPath(slug) {
   return `/${CITY_PAGE_PREFIX}${slug}`
+}
+
+export function getCityPageSlug(citySlug) {
+  return `${CITY_PAGE_PREFIX}${citySlug}`
+}
+
+/** True when URL slug is a known city landing page (e.g. petrol-pump-software-rawalpindi). */
+export function isCityLandingSlug(fullSlug) {
+  if (!fullSlug || typeof fullSlug !== 'string') return false
+  if (!fullSlug.startsWith(CITY_PAGE_PREFIX)) return false
+  const citySlug = fullSlug.slice(CITY_PAGE_PREFIX.length)
+  return Boolean(getCityBySlug(citySlug))
+}
+
+export function getCitySlugFromPageSlug(fullSlug) {
+  if (!fullSlug?.startsWith(CITY_PAGE_PREFIX)) return null
+  return fullSlug.slice(CITY_PAGE_PREFIX.length) || null
 }
 
 /** Resolve city from full pathname, e.g. /petrol-pump-software-lahore */
@@ -236,67 +256,118 @@ export const FAQ_CITIES = CITY_LANDING_PAGES.map((c) => ({
   slug: c.slug,
 }))
 
+export function getCityHeroDescription(city) {
+  return `Manage fuel sales, nozzle readings, tank stock, credit customers, accounts and daily operations with Petroleu petrol pump management software for fuel stations in ${city.name}.`
+}
+
+export function getCitySeoTitle(city) {
+  return `Petrol Pump Software in ${city.name} | Petroleu`
+}
+
+export function getCitySeoDescription(city) {
+  return `Petrol pump management software for fuel stations in ${city.name}. Manage sales, tank stock, credit customers, accounts, reports and daily operations with Petroleu.`
+}
+
+export function getCityBenefits(city) {
+  const { name } = city
+  return [
+    `Run nozzle sales, bulk, credit and card sales with clear shift records for ${name} petrol stations`,
+    `Track tank stock and dip readings so physical and book figures stay aligned in ${name}`,
+    `Manage fuel purchases, customer ledgers and vehicle-wise billing from one place`,
+    `Close the day with cash, credit, expenses and accounts tied to forecourt activity`,
+    `Monitor sales, stock and reports remotely with cloud access and the mobile owner dashboard`,
+    `Use WhatsApp-friendly support and reporting workflows already available in Petroleu`,
+  ]
+}
+
 export function getCityFaqs(city) {
-  const { name, province, highlight } = city
+  const { name } = city
   return [
     {
-      question: `What is the best petrol pump software in ${name}?`,
+      question: 'Can Petroleu manage multiple petrol stations?',
       answer:
-        `For ${highlight}, Petroleu is a practical petrol pump software in ${name} choice. It unifies nozzle readings, tank dipping, credit billing, daily closing, and mobile monitoring — purpose-built for fuel station management in ${province}, not generic retail accounting.`,
+        `Yes. Petroleu supports multi-station operations so owners can review nozzle sales, tank stock, credit customers and daily closing across sites — useful when you run more than one fuel station in or around ${name}.`,
     },
     {
-      question: `How much does petrol pump software cost in ${name}?`,
+      question: 'Can owners monitor sales remotely?',
       answer:
-        `Petrol pump software pricing in ${name} depends on your pump count, staff users, and modules required. Petroleu offers transparent monthly plans sized for independent and growing stations — contact our team for a quote aligned with your ${name} setup.`,
+        `Yes. Petroleu is cloud-based with a mobile owner dashboard, so you can check sales, stock, cash summary and credit outstanding while away from the ${name} forecourt.`,
     },
     {
-      question: `Can Petroleu manage nozzle and tank dipping records for petrol pumps in ${name}?`,
+      question: 'Does Petroleu support tank stock and dip management?',
       answer:
-        `Yes. Petroleu records nozzle opening and closing readings plus tank dip entries for stations in ${name}. Sales calculate automatically from meter readings, while dipping compares physical stock to system figures so variance is visible shift by shift.`,
+        `Yes. Petroleu tracks tank stock with dip readings, compares physical levels to system stock, and highlights gain or loss across petrol, diesel and HOBC for stations in ${name}.`,
     },
     {
-      question: `Can I manage credit customers and vehicle-wise billing in ${name}?`,
+      question: 'Can credit customers and vehicle-wise sales be tracked?',
       answer:
-        `Yes. Petroleu supports credit customers, vehicle-wise billing, outstanding balances, and monthly statements for ${name} fuel stations. Fleet and corporate buyers get clear records instead of informal notebooks, improving collection and dispute handling.`,
+        `Yes. Petroleu supports credit customers, vehicle-wise billing, outstanding balances and monthly statements — so fleet and corporate buyers at ${name} stations get clear ledgers instead of informal notebooks.`,
     },
     {
-      question: `How can I get a demo of Petroleu in ${name}?`,
+      question: `How do I get started with Petroleu in ${name}?`,
       answer:
-        `Book a demo via our contact page or WhatsApp. We walk through nozzle readings, dipping, credit, daily closing, and reports using examples relevant to ${name} stations in ${province}, then outline setup steps for your forecourt.`,
+        `Use See it in Action / contact our team for a walkthrough of nozzle readings, tank stock, credit, accounts, daily closing and reports. We outline setup steps for your ${name} fuel station without requiring separate registers.`,
     },
   ]
 }
 
 export const CITY_FEATURE_CARDS = [
   {
-    title: 'Nozzle Reading Management',
+    title: 'Nozzle Sales',
     description:
       'Record opening and closing meter readings per nozzle, calculate sales automatically, and review variance before each shift closes.',
   },
   {
-    title: 'Tank Dipping & Stock Control',
+    title: 'Bulk, Credit & Card Sales',
+    description:
+      'Track cash, credit, bulk and card sales in one system so daily totals stay clear across every shift.',
+  },
+  {
+    title: 'Tank Stock & Dip',
     description:
       'Track tank stock with dip readings, compare physical levels to system stock, and spot gain or loss across petrol, diesel, and HOBC.',
   },
   {
-    title: 'Credit Customer Billing',
+    title: 'Fuel Purchases & Stock',
+    description:
+      'Record supplier fuel purchases alongside sales so opening, purchase, sale and closing stock stay connected.',
+  },
+  {
+    title: 'Customer Ledgers & Vehicle Billing',
     description:
       'Manage credit limits, vehicle-wise fills, outstanding balances, and monthly bills for fleet and corporate fuel buyers.',
   },
   {
-    title: 'Daily Closing Reports',
+    title: 'Accounts, Closing & Reports',
     description:
-      'Compile nozzle sales, cash, credit, POS, and expenses into shift and daily closing reports owners can review and archive.',
+      'Connect forecourt activity to accounts, daily closing, analytics and mobile monitoring owners can review from anywhere.',
+  },
+]
+
+export const CITY_MODULES = [
+  {
+    title: 'Nozzle & Shift Sales',
+    description: 'Meter readings, shift handover and variance checks before the day is locked.',
   },
   {
-    title: 'Accounts & Ledgers',
-    description:
-      'Connect forecourt activity to cash, bank, supplier, and customer ledgers with expense vouchers and financial statements.',
+    title: 'Tank & Inventory',
+    description: 'Dip management, stock movement and product rates for petrol, diesel and HOBC.',
   },
   {
-    title: 'Mobile Owner Dashboard',
-    description:
-      'Check sales, stock, cash summary, and credit outstanding from the Petroleu mobile app while away from the station.',
+    title: 'Credit & Vehicles',
+    description: 'Customer ledgers, vehicle-wise billing and outstanding balance tracking.',
+  },
+  {
+    title: 'Accounts & Expenses',
+    description: 'Cash, bank, supplier and expense vouchers linked to daily pump operations.',
+  },
+  {
+    title: 'Daily Closing',
+    description: 'Cash, credit, POS and expense totals compiled into shift and day reports.',
+  },
+  {
+    title: 'Mobile & Analytics',
+    description: 'Owner dashboards, reports and remote monitoring for multi-shift stations.',
   },
 ]
 
