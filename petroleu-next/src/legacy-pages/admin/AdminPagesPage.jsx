@@ -379,6 +379,7 @@ export default function AdminPagesPage() {
     setError('')
     setMessage('')
     setPendingPage(null)
+    setEditor(null)
     setEditorLoading(true)
     try {
       const m = translation.market_code || row.market_code || market
@@ -393,6 +394,9 @@ export default function AdminPagesPage() {
       )
       let sections = sectionLists.flatMap((res) => asList(res))
 
+      // Keep only this page's sections (never mix FAQ into Features, etc.)
+      sections = sections.filter((s) => s.page_slug === slug || slugs.includes(s.page_slug))
+
       // About page renders Home stats + trusted logos — surface those in About editor too
       if (slug === 'about') {
         const homeRes = await adminGet('/sections', {
@@ -402,24 +406,47 @@ export default function AdminPagesPage() {
           ['stat', 'heading:logos', 'logo'].includes(s.section_key),
         )
         const seen = new Set(sections.map((s) => s.id).filter(Boolean))
-        for (const row of homeShared) {
-          if (row.id && seen.has(row.id)) continue
-          sections.push(row)
+        for (const homeRow of homeShared) {
+          if (homeRow.id && seen.has(homeRow.id)) continue
+          sections.push(homeRow)
         }
       }
 
       const editorRank = (key) => {
-        if (key === 'hero') return 0
-        if (key === 'stat') return 1
-        if (key === 'heading:logos') return 2
-        if (key === 'logo') return 3
-        if (key === 'heading:industries') return 4
-        if (key === 'industry') return 5
-        if (key === 'heading:getting-started') return 6
-        if (key === 'how-it-works') return 7
-        if (key === 'heading:mobile') return 8
-        if (key === 'mobile-feature') return 9
-        return 50
+        const order = {
+          hero: 0,
+          intro: 1,
+          content: 2,
+          stat: 3,
+          'heading:features': 10,
+          'feature:card': 11,
+          'feature:detailed': 12,
+          'feature:benefit_bar': 13,
+          'heading:benefits': 14,
+          benefit: 15,
+          visual: 16,
+          'heading:modules': 17,
+          'module-card': 18,
+          'heading:why': 19,
+          'why-choose': 20,
+          'heading:logos': 21,
+          logo: 22,
+          'heading:industries': 23,
+          industry: 24,
+          'industry-card': 25,
+          'heading:getting-started': 26,
+          'how-it-works': 27,
+          'heading:mobile': 28,
+          'mobile-feature': 29,
+          'heading:faq': 40,
+          faq: 41,
+          plan: 42,
+          mission: 43,
+          story: 44,
+          team: 45,
+          cta: 90,
+        }
+        return order[key] ?? 50
       }
       sections.sort((a, b) => {
         const ra = editorRank(a.section_key)
@@ -428,11 +455,17 @@ export default function AdminPagesPage() {
         return (a.sort_order ?? 0) - (b.sort_order ?? 0)
       })
 
+      const frontendPath =
+        translation.frontend_path ||
+        row.frontend_path ||
+        (slug === 'home' ? '/' : `/${slug}`)
+
       setEditor({
         translationId: translation.id,
         market_code: m,
         locale_code: loc,
         slug,
+        frontend_path: frontendPath,
         title: translation.title || row.title || slug,
         description: translation.description || '',
         status: translation.status || 'draft',
@@ -731,7 +764,7 @@ export default function AdminPagesPage() {
 
   const editorSummary = useMemo(() => {
     if (!editor) return ''
-    return `${editor.slug} · ${editor.market_code} · ${editor.locale_code}`
+    return `${editor.title || editor.slug} · slug:${editor.slug} · ${editor.market_code} · ${editor.locale_code}`
   }, [editor])
 
   if (editorLoading) {
@@ -784,9 +817,14 @@ export default function AdminPagesPage() {
               <button type="button" className={btnOutline} onClick={() => setEditor(null)}>
                 ← Back to pages
               </button>
-              <h1 className="mt-3 text-lg font-semibold tracking-tight text-slate-900">Edit page</h1>
+              <h1 className="mt-3 text-lg font-semibold tracking-tight text-slate-900">
+                Edit page: {editor.title || editor.slug}
+              </h1>
               <p className="text-sm text-slate-500">
                 {editorSummary} — edit all content and images here. No JSON.
+              </p>
+              <p className="mt-1 font-mono text-xs text-slate-400">
+                page_slug={editor.slug} · path={editor.frontend_path || `/${editor.slug}`}
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -795,7 +833,10 @@ export default function AdminPagesPage() {
               </button>
               <a
                 className={btnOutline}
-                href={editor.slug === 'home' ? '/' : `/${editor.slug}`}
+                href={
+                  editor.frontend_path ||
+                  (editor.slug === 'home' ? '/' : `/${editor.slug}`)
+                }
                 target="_blank"
                 rel="noreferrer"
               >

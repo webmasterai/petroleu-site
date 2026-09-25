@@ -17,6 +17,7 @@ import { PRICING_FAQS } from '../../content/pricingFaqs'
 import { websiteContent } from '../../content/websiteContent'
 import { usePageHero } from '../../hooks/usePageHero'
 import { useUiCopy } from '../../hooks/useUiCopy'
+import { useCmsQuery } from '../../hooks/useCmsQuery'
 
 export default function PricingMarketingPage() {
   const { isAfghanistan, mp, whatsappUrl: afWhatsapp, copy } = useUiCopy()
@@ -26,6 +27,18 @@ export default function PricingMarketingPage() {
     subtitle:
       'Choose the right Petroleu plan for nozzle sales, tank stock, credit billing, reports, automation, and mobile monitoring.',
   })
+  const { data: cmsPricingFaqs } = useCmsQuery(['faq', 'pricing'], '/faq', {
+    config: { params: { page: 'pricing' } },
+  })
+  const pricingFaqs =
+    Array.isArray(cmsPricingFaqs) && cmsPricingFaqs.length
+      ? cmsPricingFaqs.map((f) => ({
+          question: f.question || f.title,
+          answer: f.answer || f.description || f.content,
+        }))
+      : isAfghanistan
+        ? []
+        : PRICING_FAQS
 
   const whatsappUrl = isAfghanistan
     ? afWhatsapp
@@ -59,7 +72,7 @@ export default function PricingMarketingPage() {
 
         <PricingSection hideHeading pricingPageLayout />
 
-        {!isAfghanistan ? (
+        {!isAfghanistan && pricingFaqs.length > 0 ? (
           <section className="bg-background py-20">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
               <div className="text-center">
@@ -71,7 +84,7 @@ export default function PricingMarketingPage() {
 
               <div className="mt-12 rounded-2xl border border-border bg-card px-6">
                 <MAccordion>
-                  {PRICING_FAQS.map((faq, i) => (
+                  {pricingFaqs.map((faq, i) => (
                     <MAccordionItem key={faq.question} value={`pricing-faq-${i}`}>
                       <MAccordionTrigger>{faq.question}</MAccordionTrigger>
                       <MAccordionContent>{faq.answer}</MAccordionContent>

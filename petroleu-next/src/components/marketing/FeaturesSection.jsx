@@ -5,29 +5,62 @@ import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { useSectionHeading } from '../../hooks/useSectionHeading'
 import { useCmsList } from '../../hooks/useCmsList'
 
-export function FeaturesSection({ titleOverride, subtitleOverride } = {}) {
+/**
+ * Feature cards grid.
+ * - Home: pageSlug="home" (default), optional PK hardcoded fallback only on request error
+ * - Features page: pageSlug="features", no hardcoded restore when CMS is empty
+ * - Caller may pass `items` to render a preloaded list (skips fetch)
+ */
+export function FeaturesSection({
+  titleOverride,
+  subtitleOverride,
+  heading: headingProp,
+  subheading,
+  items: itemsProp,
+  pageSlug = 'home',
+  allowHardcodedFallback = pageSlug === 'home',
+} = {}) {
   const { market } = useMarketLocale()
-  const { items: features, fromCms, isError } = useCmsList(['features'], '/features', {
-    fallback: market === 'pk' ? websiteContent.features : [],
-  })
+  const shouldFetch = itemsProp === undefined
+  const { items: cmsFeatures, fromCms, isError } = useCmsList(
+    ['features', pageSlug, 'card'],
+    '/features',
+    {
+      enabled: shouldFetch,
+      fallback:
+        allowHardcodedFallback && market === 'pk' ? websiteContent.features : [],
+      config: { params: { page: pageSlug, type: 'card' } },
+    },
+  )
   const heading = useSectionHeading('features', {
     eyebrow: 'Best Features',
     title: 'Everything You Need to Run Your Pump',
-    subtitle: 'Core features for petrol pump daily operations — from nozzle readings to daily closing.',
+    subtitle:
+      'Core features for petrol pump daily operations — from nozzle readings to daily closing.',
   })
 
-  const list = fromCms ? features : isError ? features : []
+  const list =
+    itemsProp !== undefined
+      ? Array.isArray(itemsProp)
+        ? itemsProp
+        : []
+      : fromCms
+        ? cmsFeatures
+        : isError
+          ? cmsFeatures
+          : []
+
   if (list.length === 0) return null
 
-  const title = titleOverride || heading.title
-  const subtitle = subtitleOverride || heading.subtitle
+  const title = titleOverride || headingProp || heading.title
+  const subtitle = subtitleOverride || subheading || heading.subtitle
   if (market === 'af' && !title) return null
 
   return (
     <section id="features" className="bg-muted/30 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          {heading.eyebrow ? (
+          {heading.eyebrow && pageSlug === 'home' ? (
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">{heading.eyebrow}</p>
           ) : null}
           <h2 className="mt-2 text-balance text-3xl font-bold text-foreground sm:text-4xl">

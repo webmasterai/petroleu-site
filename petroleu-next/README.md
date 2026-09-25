@@ -33,6 +33,7 @@ Override in production with:
   - Writes marker `/app/storage/backups/.merge-seed-additive-done` so it does not re-run
   - Then **unset** `CMS_MERGE_SEED_ADDITIVE` (or set false). To re-run later: set `CMS_MERGE_SEED_ADDITIVE_FORCE=true` once (or delete the marker).
   - City landings: run `npm run cms:sync-cities` locally to add missing `petrol-pump-software-*` pages/sections/seo into `storage-seed`, then use additive merge above for production.
+  - Features page cards: run `npm run cms:sync-features-page` to copy missing `home` → `features` feature cards/heading (additive; keeps home cards).
 - **Targeted cleanups (safe, one-shot)** — use when additive merge left duplicates (cannot remove obsolete rows):
   - `CMS_CLEANUP_PK_STATS_4=true` → `scripts/cleanup-pk-home-stats-4.mjs` (only `pk/en-PK/home/stat` → exactly 4 stats; backs up first)
   - `CMS_CLEANUP_PK_HEADER_NAV=true` → `scripts/cleanup-pk-header-nav.mjs` (only `pk/en-PK` header; disables outdated/duplicate About/Contact; backs up first)

@@ -13,8 +13,13 @@ export function useCmsQuery(keyParts, path, options = {}) {
     ...rest
   } = options
 
+  const paramsKey =
+    config?.params && typeof config.params === 'object'
+      ? JSON.stringify(config.params)
+      : ''
+
   return useQuery({
-    queryKey: ['cms', marketLocale.market, marketLocale.locale, ...keyParts],
+    queryKey: ['cms', marketLocale.market, marketLocale.locale, ...keyParts, paramsKey],
     queryFn: async () => {
       // Throw on failure so React Query keeps previous data instead of caching null
       // (safeCmsGet returned null and wiped menus after reload).

@@ -62,37 +62,40 @@ export default function FaqMarketingPage() {
     categoryId: 'cms',
   }))
 
+  const usingCmsOnly = normalizedCms.length > 0
+
   const allFaqs = useMemo(() => {
-    const staticFaqs =
-      market === 'af'
-        ? []
-        : FAQ_CATEGORIES.flatMap((category) =>
-            category.faqs.map((faq) => ({
-              ...faq,
-              category: category.label,
-              categoryId: category.id,
-            })),
-          )
-    return [...normalizedCms, ...staticFaqs]
+    // CMS is source of truth when the FAQ page has published items
+    if (normalizedCms.length > 0) {
+      return normalizedCms
+    }
+    if (market === 'af') return []
+    return FAQ_CATEGORIES.flatMap((category) =>
+      category.faqs.map((faq) => ({
+        ...faq,
+        category: category.label,
+        categoryId: category.id,
+      })),
+    )
   }, [normalizedCms, market])
 
   const activeCategoryLabel = useMemo(
     () =>
-      activeCategory === 'cms'
+      usingCmsOnly
         ? hero.badge || 'FAQ'
         : FAQ_CATEGORIES.find((category) => category.id === activeCategory)?.label ?? 'General',
-    [activeCategory, hero.badge],
+    [activeCategory, hero.badge, usingCmsOnly],
   )
 
   const filteredFaqs = useMemo(() => {
-    if (isAfghanistan) {
+    if (isAfghanistan || usingCmsOnly) {
       return allFaqs.filter((faq) => matchesSearch(faq, search))
     }
     if (search.trim()) {
       return allFaqs.filter((faq) => matchesSearch(faq, search))
     }
     return allFaqs.filter((faq) => faq.categoryId === activeCategory)
-  }, [search, activeCategory, allFaqs, isAfghanistan])
+  }, [search, activeCategory, allFaqs, isAfghanistan, usingCmsOnly])
 
   const listHeading = search.trim() ? (isAfghanistan ? null : 'Search results') : (isAfghanistan ? null : activeCategoryLabel)
 
@@ -142,20 +145,26 @@ export default function FaqMarketingPage() {
               </div>
 
               <div className="mt-5 flex flex-wrap gap-2">
-                {FAQ_CATEGORIES.map((category) => (
-                  <button
-                    key={category.id}
-                    type="button"
-                    onClick={() => setActiveCategory(category.id)}
-                    className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
-                      activeCategory === category.id
-                        ? 'border-primary bg-primary/10 text-primary'
-                        : 'border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground'
-                    }`}
-                  >
-                    {category.label}
-                  </button>
-                ))}
+                {usingCmsOnly ? (
+                  <span className="rounded-full border border-primary bg-primary/10 px-3.5 py-1.5 text-xs font-semibold text-primary">
+                    FAQ
+                  </span>
+                ) : (
+                  FAQ_CATEGORIES.map((category) => (
+                    <button
+                      key={category.id}
+                      type="button"
+                      onClick={() => setActiveCategory(category.id)}
+                      className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                        activeCategory === category.id
+                          ? 'border-primary bg-primary/10 text-primary'
+                          : 'border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground'
+                      }`}
+                    >
+                      {category.label}
+                    </button>
+                  ))
+                )}
               </div>
             </div>
           </section>
