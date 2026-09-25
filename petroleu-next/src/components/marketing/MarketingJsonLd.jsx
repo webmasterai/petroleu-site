@@ -2,7 +2,7 @@
  * JSON-LD: Organization + SoftwareApplication + WebSite (+ optional WebPage + FAQ).
  * Helps brand and product discovery (Google rich results / knowledge panel signals).
  */
-import { SITE_ORIGIN, absoluteUrl, marketingPagesSeo } from '../../config/siteSeo'
+import { SITE_ORIGIN, absoluteUrl, marketingPagesSeo, OG_IMAGE_PATH } from '../../config/siteSeo'
 import { websiteContent } from '../../content/websiteContent'
 
 export function MarketingJsonLd({
@@ -174,3 +174,47 @@ export function MarketingFaqJsonLd({ faqs = [] }) {
     />
   )
 }
+
+/** BlogPosting JSON-LD for published CMS / resource articles. */
+export function MarketingBlogPostingJsonLd({
+  title,
+  description,
+  url,
+  image,
+  datePublished,
+  dateModified,
+  authorName = 'Petroleu',
+}) {
+  if (!title || !url) return null
+  const payload = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: description || undefined,
+    mainEntityOfPage: absoluteUrl(url),
+    image: image ? absoluteUrl(image) : absoluteUrl(OG_IMAGE_PATH),
+    datePublished: datePublished || undefined,
+    dateModified: dateModified || datePublished || undefined,
+    author: {
+      '@type': 'Organization',
+      name: authorName,
+      url: SITE_ORIGIN,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Petroleu',
+      url: SITE_ORIGIN,
+      logo: {
+        '@type': 'ImageObject',
+        url: absoluteUrl('/icons/icon-512.png'),
+      },
+    },
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(payload) }}
+    />
+  )
+}
+

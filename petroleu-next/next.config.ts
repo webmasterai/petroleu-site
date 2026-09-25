@@ -6,6 +6,17 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // Prefer non-www canonical host for indexing.
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.petroleu.com' }],
+        destination: 'https://petroleu.com/:path*',
+        permanent: true,
+      },
+    ]
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,

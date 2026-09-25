@@ -78,6 +78,17 @@ export default function AdminLayout({ children }) {
     }
   }, [navigate])
 
+  useEffect(() => {
+    document.title = 'Petroleu CMS'
+    let robots = document.head.querySelector('meta[name="robots"]')
+    if (!robots) {
+      robots = document.createElement('meta')
+      robots.setAttribute('name', 'robots')
+      document.head.appendChild(robots)
+    }
+    robots.setAttribute('content', 'noindex, nofollow')
+  }, [])
+
   async function handleLogout() {
     try {
       await adminLogout()

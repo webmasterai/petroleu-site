@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react'
 import { SiteHeader } from '../../components/marketing/SiteHeader'
 import { SiteFooter } from '../../components/marketing/SiteFooter'
 import { MarketingSeo } from '../../components/marketing/MarketingSeo'
+import { MarketingBlogPostingJsonLd } from '../../components/marketing/MarketingJsonLd'
 import { ResourceThumbnail } from '../../components/marketing/ResourceThumbnail'
 import { getYouTubeEmbedUrl, isLocalVideoUrl } from '../../utils/videoUtils'
 import { BlogCard } from '../../components/marketing/BlogCard'
@@ -80,6 +81,15 @@ export default function BlogDetailPage() {
         path={`/blog/${resource.slug}`}
         title={resource.seoTitle || `${resource.title} — Petroleu Resources`}
         description={resource.seoDescription || resource.description}
+      />
+      <MarketingBlogPostingJsonLd
+        title={resource.title}
+        description={resource.seoDescription || resource.description}
+        url={`/blog/${resource.slug}`}
+        image={resource.image || resource.coverImage || resource.thumbnail}
+        datePublished={resource.publishedAt || resource.date}
+        dateModified={resource.updatedAt || resource.publishedAt || resource.date}
+        authorName={resource.author || 'Petroleu'}
       />
       <SiteHeader />
       <main className="flex-1">

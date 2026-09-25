@@ -8,6 +8,19 @@ export const OG_IMAGE_PATH = '/og-image.png'
 
 export function absoluteUrl(path = '') {
   if (!path || path === '/') return SITE_ORIGIN
+  if (/^https?:\/\//i.test(path)) {
+    try {
+      const u = new URL(path)
+      // Normalize known Petroleu hosts to canonical origin; keep external CDN as-is
+      if (u.hostname === 'petroleu.com' || u.hostname === 'www.petroleu.com') {
+        const p = u.pathname.replace(/\/+$/, '') || '/'
+        return p === '/' ? SITE_ORIGIN : `${SITE_ORIGIN}${p}`
+      }
+      return path
+    } catch {
+      return path
+    }
+  }
   const p = path.startsWith('/') ? path : `/${path}`
   return `${SITE_ORIGIN}${p}`
 }

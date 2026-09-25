@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom'
 import { SiteHeader } from '../../components/marketing/SiteHeader'
 import { SiteFooter } from '../../components/marketing/SiteFooter'
+import { MarketingSeo } from '../../components/marketing/MarketingSeo'
 import { MButton } from '../../components/marketing/ui'
 
 export default function NotFoundPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      <MarketingSeo
+        title="Page Not Found — Petroleu"
+        description="This Petroleu page could not be found."
+        noindex
+      />
       <SiteHeader />
       <main className="flex flex-1 flex-col items-center justify-center px-4 py-20 text-center">
         <p className="text-sm font-medium uppercase tracking-wider text-primary">404</p>
