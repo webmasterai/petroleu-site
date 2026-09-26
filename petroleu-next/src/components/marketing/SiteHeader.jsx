@@ -114,6 +114,13 @@ export function SiteHeader() {
   const demoLabel = copy.see_demo || 'See it in Action'
   const trialLabel = copy.start_trial || 'Start Free Trial'
 
+  const { data: layoutHeader } = useCmsQuery(['layout', 'header'], '/layout/header')
+  const logoUrl = layoutHeader?.image_url || '/petroleu-logo.png'
+  const logoAlt =
+    layoutHeader?.image_alt || layoutHeader?.title || layoutHeader?.data?.brand_name || 'Petroleu'
+  const brandAria =
+    layoutHeader?.title || layoutHeader?.data?.brand_name || 'Petroleu'
+
   return (
     <header className="sticky top-0 z-40">
       <ContactTopBar />
@@ -123,9 +130,9 @@ export function SiteHeader() {
           <Link
             to={marketPath('/', routePrefix)}
             className="flex shrink-0 items-center"
-            aria-label="Petroleu"
+            aria-label={brandAria}
           >
-            <img src="/petroleu-logo.png" alt="Petroleu" className="h-8 w-auto object-contain" />
+            <img src={logoUrl} alt={logoAlt} className="h-8 w-auto object-contain" />
           </Link>
 
           {/* Desktop nav: no overflow-hidden / overflow-x-auto — all CMS items stay visible */}

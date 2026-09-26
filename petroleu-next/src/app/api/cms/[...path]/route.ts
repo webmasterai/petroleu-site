@@ -11,6 +11,11 @@ import {
   isCmsUser,
   normalizeRole,
 } from '@/lib/auth/session'
+import { normalizeInquiryInput, normalizeInquiryRead } from '@/lib/inquiries/normalize'
+import {
+  isEditorialPlaceholderText,
+  scrubEditorialPlaceholders,
+} from '@/lib/cms/editorialPlaceholders'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -123,20 +128,29 @@ function sectionData(s: Section) {
     }
   }
 
-  return {
+  // Never expose editorial translation placeholders on the public API
+  if (isEditorialPlaceholderText(title) || data.translation_required === true) {
+    title = undefined
+  }
+  if (isEditorialPlaceholderText(description) || data.translation_required === true) {
+    description = undefined
+  }
+
+  return scrubEditorialPlaceholders({
     id: s.id,
-    title,
-    heading: title,
-    description,
-    subheading: description,
-    content: s.content,
+    ...data,
+    title: title ?? null,
+    heading: title ?? null,
+    description: description ?? null,
+    subheading: description ?? null,
+    content: isEditorialPlaceholderText(s.content) ? null : s.content,
     image_url: imageUrl,
     dashboard_image_url: imageUrl,
     image_alt: s.image_alt,
     link_label: primary,
     link_url: s.link_url || (typeof data.cta_link === 'string' ? data.cta_link : null) || null,
     sort_order: s.sort_order,
-    ...data,
+    translation_required: false,
     cta_text: primary,
     cta_link: s.link_url || (typeof data.cta_link === 'string' ? data.cta_link : null) || null,
     cta2_text: secondary,
@@ -144,7 +158,7 @@ function sectionData(s: Section) {
     primaryButton: primary,
     secondary_button: secondary,
     secondaryButton: secondary,
-  }
+  })
 }
 
 function isValidTestimonial(item: Record<string, unknown>) {
@@ -280,7 +294,10 @@ export async function GET(
   }
   if (parts[0] === 'hero' && parts[1]) {
     const list = await listSections(market, locale, parts[1], 'hero')
-    return ok(list[0] || null)
+    const hero = list[0] || null
+    // Scrubbed editorial placeholders leave empty title — treat as missing for public
+    if (hero && !hero.title && !hero.heading) return ok(null)
+    return ok(hero)
   }
   if (join === 'features') {
     const page = req.nextUrl.searchParams.get('page') || 'home'
@@ -336,6 +353,11 @@ export async function GET(
   if (parts[0] === 'section-heading' && parts[1]) {
     const page = req.nextUrl.searchParams.get('page') || 'home'
     const list = await listSections(market, locale, page, `heading:${parts[1]}`)
+    return ok(list[0] || null)
+  }
+  // Site chrome: Header / Footer (page_slug=layout)
+  if (parts[0] === 'layout' && (parts[1] === 'header' || parts[1] === 'footer')) {
+    const list = await listSections(market, locale, 'layout', parts[1])
     return ok(list[0] || null)
   }
   if (parts[0] === 'demo-block' && parts[1]) {
@@ -443,12 +465,16 @@ export async function GET(
       locale_code: string
       status?: string
       show_on_homepage?: boolean
+      show_on_resources?: boolean
     }>('blog-posts')
     let list = rows.filter(
       (r) => r.market_code === market && r.locale_code === locale && r.status === 'published',
     )
     if (req.nextUrl.searchParams.get('homepage') === 'true' || req.nextUrl.searchParams.get('homepage') === '1') {
       list = list.filter((r) => r.show_on_homepage)
+    } else {
+      // Resources/blog index: only posts flagged for the resources grid (default 6)
+      list = list.filter((r) => r.show_on_resources !== false)
     }
     return ok(list)
   }
@@ -597,6 +623,27 @@ export async function GET(
     }
     if (map[resource]) {
       let rows = (await findAll(map[resource])) as Record<string, unknown>[]
+
+      // Single-resource GET: /admin/{resource}/:id
+      if (parts[2] && !parts[3]) {
+        const row = rows.find((r) => String(r.id) === String(parts[2]))
+        if (!row) return fail('Not found', 404)
+        if (resource === 'inquiries') {
+          return ok(normalizeInquiryRead(row))
+        }
+        if (resource === 'users') {
+          const { passwordHash, ...rest } = row
+          void passwordHash
+          return ok({
+            ...rest,
+            is_active: Boolean(row.isActive ?? row.is_active),
+            assigned_markets: row.assignedMarkets ?? row.assigned_markets ?? null,
+            assigned_locales: row.assignedLocales ?? row.assigned_locales ?? null,
+          })
+        }
+        return ok(row)
+      }
+
       const m = req.nextUrl.searchParams.get('market')
       const l = req.nextUrl.searchParams.get('locale')
       if (m) rows = rows.filter((r) => r.market_code === m)
@@ -606,6 +653,15 @@ export async function GET(
         const status = req.nextUrl.searchParams.get('status')
         if (page) rows = rows.filter((r) => String(r.page_slug || '') === page)
         if (status) rows = rows.filter((r) => String(r.status || '') === status)
+      }
+      if (resource === 'inquiries') {
+        const status = req.nextUrl.searchParams.get('status')
+        const type = req.nextUrl.searchParams.get('type')
+        if (status) rows = rows.filter((r) => String(r.status || '') === status)
+        if (type) rows = rows.filter((r) => String(r.type || '') === type)
+        rows = rows
+          .map((r) => normalizeInquiryRead(r) as Record<string, unknown>)
+          .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')))
       }
       if (resource === 'users') {
         rows = rows.map((row) => {
@@ -682,20 +738,17 @@ export async function POST(
   }
 
   if (join === 'contact' || join === 'demo-request') {
-    const row = await createRow('inquiries', {
+    const email = String(body.email || '').trim()
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return fail('A valid email is required.', 422, { email: ['A valid email is required.'] })
+    }
+    const normalized = normalizeInquiryInput(body, {
       type: join === 'contact' ? 'contact' : 'demo',
-      market_code: body.market || 'pk',
-      locale_code: body.locale || 'en-PK',
-      full_name: body.full_name || body.name || 'Unknown',
-      email: body.email || '',
-      phone: body.phone || null,
-      company: body.company || null,
-      message: body.message || null,
-      source: body.source || 'website',
-      status: 'new',
-      created_at: new Date().toISOString(),
-    } as never)
-    return ok(row, 'Submitted', 201)
+    })
+    // Keep phone as a string (Pakistan formats: 0325..., +92...); never coerce to number.
+    if (normalized.phone != null) normalized.phone = String(normalized.phone)
+    const row = await createRow('inquiries', normalized as never)
+    return ok(normalizeInquiryRead(row as Record<string, unknown>), 'Submitted', 201)
   }
 
   if (join === 'admin/login') {
@@ -957,8 +1010,17 @@ export async function PUT(
     if (patch.status === 'draft' && patch.published_at === undefined) {
       patch.published_at = null
     }
+    if (resource === 'inquiries') {
+      patch.updated_at = new Date().toISOString()
+      // Do not let admin status updates wipe public message via notes alias confusion
+      if ('notes' in patch && !('admin_notes' in patch) && !('message' in patch)) {
+        delete patch.notes
+      }
+    }
     const row = await updateRow(map[resource], id, patch)
-    return row ? ok(row) : fail('Not found', 404)
+    if (!row) return fail('Not found', 404)
+    if (resource === 'inquiries') return ok(normalizeInquiryRead(row as Record<string, unknown>))
+    return ok(row)
   }
   return fail('Not found', 404)
 }

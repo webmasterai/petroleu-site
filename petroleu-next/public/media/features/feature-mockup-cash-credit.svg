@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="230" height="150" viewBox="0 0 230 150">
+<rect width="230" height="150" fill="#faf6f1"/>
+<rect x="12" y="12" width="66" height="42" rx="4" fill="#ffffff" stroke="#e2e8f0"/><text x="45" y="30" text-anchor="middle" font-size="9" fill="#64748b">Cash</text><text x="45" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#047857">1.9M</text>
+<rect x="86" y="12" width="66" height="42" rx="4" fill="#ffffff" stroke="#e2e8f0"/><text x="119" y="30" text-anchor="middle" font-size="9" fill="#64748b">Credit</text><text x="119" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">890K</text>
+<rect x="160" y="12" width="58" height="42" rx="4" fill="#ffffff" stroke="#e2e8f0"/><text x="189" y="30" text-anchor="middle" font-size="9" fill="#64748b">Due</text><text x="189" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#C4511A">248K</text>
+<rect x="12" y="64" width="206" height="74" rx="4" fill="#ffffff" stroke="#e2e8f0"/><rect x="12" y="64" width="206" height="22" fill="#e2e8f0"/><text x="24" y="79" font-size="10" font-weight="600" fill="#64748b">Ledger</text><text x="24" y="100" font-size="10" fill="#1e293b">Shift A</text><text x="200" y="100" text-anchor="end" font-size="10" font-weight="600" fill="#C4511A">PKR 45K</text><text x="24" y="120" font-size="10" fill="#1e293b">Credit</text><text x="200" y="120" text-anchor="end" font-size="10" font-weight="600" fill="#C4511A">PKR 12K</text>
+</svg>

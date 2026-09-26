@@ -12,9 +12,18 @@ import { mapCmsBlogPost } from '../../utils/cmsContent'
 export default function BlogMarketingPage() {
   const { market, locale, isAfghanistan } = useMarketLocale()
   const { data, isLoading } = useCmsQuery(['blog'], '/blog')
-  const cmsPosts = Array.isArray(data) ? data.map(mapCmsBlogPost).filter(Boolean) : []
+  const cmsPosts = Array.isArray(data)
+    ? data
+        .map(mapCmsBlogPost)
+        .filter((p) => p && p.showOnResources !== false)
+        .slice(0, 6)
+    : []
   const allResources =
-    cmsPosts.length > 0 ? cmsPosts : market === 'af' ? [] : getPublishedResources()
+    cmsPosts.length > 0
+      ? cmsPosts
+      : market === 'af'
+        ? []
+        : getPublishedResources().slice(0, 6)
 
   const emptyMessage = (() => {
     if (locale === 'fa-AF') return 'هنوز مطلب وبلاگ برای دری منتشر نشده است.'

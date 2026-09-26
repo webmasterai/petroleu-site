@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Play } from 'lucide-react'
 
 const FALLBACK_GRADIENTS = {
   video: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 45%, #7c2d12 100%)',
@@ -9,14 +8,9 @@ const FALLBACK_GRADIENTS = {
 }
 
 function getThemeKey(post) {
-  if (post.type === 'video') return 'video'
   if (post.type === 'service') return 'service'
   if (post.thumbnailType === 'cloud') return 'cloud'
   return 'blog'
-}
-
-function getPlayButtonClass(post) {
-  return post.type === 'service' ? 'bg-emerald-600' : 'bg-[#C4511A]'
 }
 
 function FallbackPoster({ post }) {
@@ -57,64 +51,24 @@ function FallbackPoster({ post }) {
   )
 }
 
-export function ResourceThumbnail({ post, className = '', onVideoClick }) {
+/** Featured image thumbnail for blog/resource cards — no play icon or duration. */
+export function ResourceThumbnail({ post, className = '' }) {
   const [imgFailed, setImgFailed] = useState(false)
   const showImage = Boolean(post.thumbnailUrl) && !imgFailed
-  const playBg = getPlayButtonClass(post)
-  const showVideoUi = Boolean(onVideoClick)
-  const duration = post.duration || '2:00'
-
-  const mediaArea = (
-    <>
-      {showImage ? (
-        <img
-          src={post.thumbnailUrl}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-          onError={() => setImgFailed(true)}
-        />
-      ) : (
-        <FallbackPoster post={post} />
-      )}
-
-      {post.category && (
-        <span className="absolute left-3 top-3 z-10 rounded-full border border-orange-200 bg-white/95 px-2.5 py-0.5 text-xs font-semibold text-orange-700 shadow-sm">
-          {post.category}
-        </span>
-      )}
-
-      {showVideoUi && (
-        <>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span
-              className={`flex h-14 w-14 items-center justify-center rounded-full text-white shadow-lg ring-4 ring-white/90 ${playBg}`}
-            >
-              <Play className="ml-0.5 h-6 w-6 fill-current" />
-            </span>
-          </div>
-          <span className="absolute bottom-3 right-3 z-10 rounded-md bg-black/70 px-2 py-0.5 text-xs font-medium text-white">
-            {duration}
-          </span>
-        </>
-      )}
-    </>
-  )
 
   return (
     <div
       className={`relative aspect-video h-[200px] w-full shrink-0 overflow-hidden rounded-t-2xl ${className}`}
     >
-      {showVideoUi ? (
-        <button
-          type="button"
-          onClick={onVideoClick}
-          className="relative h-full w-full cursor-pointer border-0 bg-transparent p-0 text-left"
-          aria-label={`Play video: ${post.title}`}
-        >
-          {mediaArea}
-        </button>
+      {showImage ? (
+        <img
+          src={post.thumbnailUrl}
+          alt={post.imageAlt || post.title || ''}
+          className="absolute inset-0 h-full w-full object-cover"
+          onError={() => setImgFailed(true)}
+        />
       ) : (
-        mediaArea
+        <FallbackPoster post={post} />
       )}
     </div>
   )

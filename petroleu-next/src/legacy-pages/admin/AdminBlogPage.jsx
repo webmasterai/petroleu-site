@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { adminDelete, adminGet, adminPost, adminPut } from '../../services/cmsAdminApi'
+import MediaImageField from './MediaImageField'
 
 function asList(res) {
   if (Array.isArray(res)) return res
@@ -117,9 +118,6 @@ export default function AdminBlogPage() {
         content: form.content || null,
         image_url: form.image_url || null,
         image_alt: form.image_alt || null,
-        media_type: form.media_type || 'article',
-        video_url: form.media_type === 'video' ? form.video_url || null : null,
-        duration: form.duration || null,
         show_on_homepage: Boolean(form.show_on_homepage),
         category_id: form.category_id === '' ? null : Number(form.category_id),
         author: form.author || null,
@@ -130,11 +128,17 @@ export default function AdminBlogPage() {
         noindex: Boolean(form.noindex),
       }
       if (editingId) {
+        // Preserve legacy media_type / video_url / duration on disk — normal editor does not expose them
         const { market_code, locale_code, slug, ...updatePayload } = payload
         await adminPut(`/blog/posts/${editingId}`, updatePayload)
         setMessage('Post updated')
       } else {
-        await adminPost('/blog/posts', payload)
+        await adminPost('/blog/posts', {
+          ...payload,
+          media_type: 'article',
+          video_url: null,
+          duration: null,
+        })
         setMessage('Post created')
       }
       setShowForm(false)
@@ -265,56 +269,14 @@ export default function AdminBlogPage() {
                 ))}
               </select>
             </label>
-            <label className="block text-xs">
-              <span className="text-muted-foreground">Type</span>
-              <select
-                className={fieldCls + ' mt-1'}
-                value={form.media_type}
-                onChange={(e) => setForm((f) => ({ ...f, media_type: e.target.value }))}
-              >
-                <option value="article">Article (image)</option>
-                <option value="video">Video</option>
-              </select>
-            </label>
-            <label className="block text-xs">
-              <span className="text-muted-foreground">Image URL (thumbnail / cover)</span>
-              <input
-                className={fieldCls + ' mt-1'}
-                value={form.image_url}
-                onChange={(e) => setForm((f) => ({ ...f, image_url: e.target.value }))}
-              />
-            </label>
-            <label className="block text-xs">
-              <span className="text-muted-foreground">Image alt</span>
-              <input
-                className={fieldCls + ' mt-1'}
-                value={form.image_alt}
-                onChange={(e) => setForm((f) => ({ ...f, image_alt: e.target.value }))}
-              />
-            </label>
-            {form.media_type === 'video' ? (
-              <>
-                <label className="block text-xs sm:col-span-2">
-                  <span className="text-muted-foreground">Video URL (YouTube / MP4 / embed)</span>
-                  <input
-                    className={fieldCls + ' mt-1'}
-                    required
-                    value={form.video_url}
-                    onChange={(e) => setForm((f) => ({ ...f, video_url: e.target.value }))}
-                    placeholder="https://www.youtube.com/watch?v=... or /uploads/video.mp4"
-                  />
-                </label>
-                <label className="block text-xs">
-                  <span className="text-muted-foreground">Duration (optional)</span>
-                  <input
-                    className={fieldCls + ' mt-1'}
-                    value={form.duration}
-                    onChange={(e) => setForm((f) => ({ ...f, duration: e.target.value }))}
-                    placeholder="3:45"
-                  />
-                </label>
-              </>
-            ) : null}
+            <MediaImageField
+              label="Featured image"
+              url={form.image_url}
+              alt={form.image_alt}
+              onChangeUrl={(v) => setForm((f) => ({ ...f, image_url: v }))}
+              onChangeAlt={(v) => setForm((f) => ({ ...f, image_alt: v }))}
+            />
+            {/* video_url / duration / media_type preserved in storage if present; not shown in normal editor */}
             <label className="flex items-center gap-2 text-xs mt-5">
               <input
                 type="checkbox"

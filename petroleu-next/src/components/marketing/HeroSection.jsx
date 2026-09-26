@@ -43,12 +43,9 @@ export function HeroSection() {
     cms?.link_label,
     copy.see_demo,
   )
-  const dashboardImageUrl = pick(
-    cms?.image_url,
-    cms?.dashboard_image_url,
-    cms?.dashboardImageUrl,
-    fallback?.dashboardImageUrl,
-  )
+  const dashboardImageUrl = cms
+    ? pick(cms?.image_url, cms?.dashboard_image_url, cms?.dashboardImageUrl)
+    : pick(fallback?.dashboardImageUrl)
   const dashboardUrl = pick(cms?.dashboard_url, cms?.dashboardUrl, fallback?.dashboardUrl)
   const features = Array.isArray(cms?.features)
     ? cms.features.filter(Boolean)

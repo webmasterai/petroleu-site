@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { adminGet, adminPost, adminPut } from '../../services/cmsAdminApi'
 import { LOCALE_SHORT, useAdminWorkspace } from '../../context/AdminWorkspaceContext'
+import MediaImageField from './MediaImageField'
 
 function englishLocaleFor(market) {
   if (market === 'af') return 'en-AF'
@@ -256,7 +257,18 @@ export default function AdminPagesPage() {
       if (q) params.q = q
       if (status) params.status = status
       const res = await adminGet('/pages', { params })
-      setItems(asList(res))
+      const all = asList(res)
+      // Pages inventory: Home + Pakistan city landings only (other routes stay live; edit via Sections)
+      const inventory = all.filter((row) => {
+        const slug = String(row.slug || '')
+        return slug === 'home' || slug.startsWith('petrol-pump-software-')
+      })
+      inventory.sort((a, b) => {
+        if (a.slug === 'home') return -1
+        if (b.slug === 'home') return 1
+        return String(a.title || a.slug).localeCompare(String(b.title || b.slug))
+      })
+      setItems(inventory)
     } catch (err) {
       setError(err?.response?.data?.message || err?.message || 'Failed to load pages')
     } finally {
@@ -1003,27 +1015,13 @@ export default function AdminPagesPage() {
                       onChange={(e) => updateBlock(index, { content: e.target.value })}
                     />
                   </label>
-                  <label className="block text-xs">
-                    <span className="text-muted-foreground">
-                      {block.section_key === 'logo' ? 'Logo image URL' : 'Image URL'}
-                    </span>
-                    <input
-                      className={fieldCls + ' mt-1'}
-                      value={block.image_url}
-                      onChange={(e) => updateBlock(index, { image_url: e.target.value })}
-                      placeholder="/uploads/... or https://..."
-                    />
-                  </label>
-                  <label className="block text-xs">
-                    <span className="text-muted-foreground">
-                      {block.section_key === 'logo' ? 'Logo alt text' : 'Image alt text'}
-                    </span>
-                    <input
-                      className={fieldCls + ' mt-1'}
-                      value={block.image_alt}
-                      onChange={(e) => updateBlock(index, { image_alt: e.target.value })}
-                    />
-                  </label>
+                  <MediaImageField
+                    label={block.section_key === 'logo' ? 'Logo image' : 'Image'}
+                    url={block.image_url}
+                    alt={block.image_alt}
+                    onChangeUrl={(v) => updateBlock(index, { image_url: v })}
+                    onChangeAlt={(v) => updateBlock(index, { image_alt: v })}
+                  />
                   <label className="flex items-center gap-2 text-xs sm:col-span-2 pt-1">
                     <input
                       type="checkbox"
@@ -1033,16 +1031,6 @@ export default function AdminPagesPage() {
                     />
                     <span className="text-muted-foreground">Enabled on website</span>
                   </label>
-                  {block.image_url ? (
-                    <div className="sm:col-span-2">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={block.image_url}
-                        alt={block.image_alt || block.title || 'Preview'}
-                        className="max-h-40 rounded-md border border-border object-contain bg-muted/30"
-                      />
-                    </div>
-                  ) : null}
                   <label className="block text-xs">
                     <span className="text-muted-foreground">Button / link label</span>
                     <input
@@ -1149,8 +1137,8 @@ export default function AdminPagesPage() {
         <div>
           <h1 className="text-lg font-semibold tracking-tight">Pages</h1>
           <p className="text-sm text-muted-foreground">
-            Click a page to open the full editor — change content and images in one place, then Save
-            &amp; Publish.
+            Home and Pakistan city landing pages. Features, FAQ, About, and other marketing sections
+            are edited under Website → Sections.
           </p>
         </div>
         <button type="button" className={btnPrimary} onClick={openCreatePage}>

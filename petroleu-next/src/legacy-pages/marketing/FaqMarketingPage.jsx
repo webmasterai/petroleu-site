@@ -21,19 +21,22 @@ import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { usePageHero } from '../../hooks/usePageHero'
 import { useUiCopy } from '../../hooks/useUiCopy'
 
-const DEFAULT_CATEGORY = 'general'
-
 function matchesSearch(faq, query) {
   const q = query.trim().toLowerCase()
   if (!q) return true
   return (
-    faq.question.toLowerCase().includes(q) || faq.answer.toLowerCase().includes(q)
+    String(faq.question || '')
+      .toLowerCase()
+      .includes(q) ||
+    String(faq.answer || '')
+      .toLowerCase()
+      .includes(q)
   )
 }
 
 export default function FaqMarketingPage() {
   const [search, setSearch] = useState('')
-  const [activeCategory, setActiveCategory] = useState(DEFAULT_CATEGORY)
+  const [activeCategory, setActiveCategory] = useState('all')
   const { market, isAfghanistan } = useMarketLocale()
   const { mp, whatsappUrl: afWhatsapp, copy } = useUiCopy()
   const hero = usePageHero('faq', {
@@ -55,20 +58,28 @@ export default function FaqMarketingPage() {
       ? homeFaqs
       : []
 
-  const normalizedCms = cmsMapped.map((f) => ({
-    question: f.question || f.title,
-    answer: f.answer || f.description || f.content,
-    category: 'CMS',
-    categoryId: 'cms',
-  }))
+  const normalizedCms = cmsMapped
+    .map((f) => {
+      const categoryId = f.category || f.category_id || 'general'
+      const categoryLabel =
+        f.category_label ||
+        FAQ_CATEGORIES.find((c) => c.id === categoryId)?.label ||
+        'General'
+      return {
+        id: f.id,
+        question: f.question || f.title,
+        answer: f.answer || f.description || f.content,
+        category: categoryLabel,
+        categoryId: String(categoryId),
+        enabled: f.is_enabled !== false,
+      }
+    })
+    .filter((f) => f.question && f.answer && f.enabled !== false)
 
-  const usingCmsOnly = normalizedCms.length > 0
+  const usingCms = normalizedCms.length > 0
 
   const allFaqs = useMemo(() => {
-    // CMS is source of truth when the FAQ page has published items
-    if (normalizedCms.length > 0) {
-      return normalizedCms
-    }
+    if (usingCms) return normalizedCms
     if (market === 'af') return []
     return FAQ_CATEGORIES.flatMap((category) =>
       category.faqs.map((faq) => ({
@@ -77,37 +88,55 @@ export default function FaqMarketingPage() {
         categoryId: category.id,
       })),
     )
-  }, [normalizedCms, market])
+  }, [normalizedCms, usingCms, market])
+
+  const categories = useMemo(() => {
+    if (usingCms) {
+      const map = new Map()
+      for (const faq of allFaqs) {
+        if (!map.has(faq.categoryId)) {
+          map.set(faq.categoryId, faq.category || faq.categoryId)
+        }
+      }
+      return [{ id: 'all', label: 'All' }, ...[...map.entries()].map(([id, label]) => ({ id, label }))]
+    }
+    return [{ id: 'all', label: 'All' }, ...FAQ_CATEGORIES.map((c) => ({ id: c.id, label: c.label }))]
+  }, [allFaqs, usingCms])
 
   const activeCategoryLabel = useMemo(
-    () =>
-      usingCmsOnly
-        ? hero.badge || 'FAQ'
-        : FAQ_CATEGORIES.find((category) => category.id === activeCategory)?.label ?? 'General',
-    [activeCategory, hero.badge, usingCmsOnly],
+    () => categories.find((c) => c.id === activeCategory)?.label || 'All',
+    [categories, activeCategory],
   )
 
   const filteredFaqs = useMemo(() => {
-    if (isAfghanistan || usingCmsOnly) {
-      return allFaqs.filter((faq) => matchesSearch(faq, search))
+    let list = allFaqs
+    if (activeCategory !== 'all') {
+      list = list.filter((faq) => faq.categoryId === activeCategory)
     }
-    if (search.trim()) {
-      return allFaqs.filter((faq) => matchesSearch(faq, search))
-    }
-    return allFaqs.filter((faq) => faq.categoryId === activeCategory)
-  }, [search, activeCategory, allFaqs, isAfghanistan, usingCmsOnly])
+    return list.filter((faq) => matchesSearch(faq, search))
+  }, [search, activeCategory, allFaqs])
 
-  const listHeading = search.trim() ? (isAfghanistan ? null : 'Search results') : (isAfghanistan ? null : activeCategoryLabel)
+  const listHeading = search.trim()
+    ? isAfghanistan
+      ? null
+      : 'Search results'
+    : isAfghanistan
+      ? null
+      : activeCategoryLabel
 
   const whatsappUrl = isAfghanistan
     ? afWhatsapp
     : `https://wa.me/${websiteContent.brand.whatsappNumber}?text=${encodeURIComponent(websiteContent.brand.whatsappMessage)}`
 
+  // JSON-LD: published FAQs currently visible (search/category filtered view uses filtered list;
+  // schema should reflect all published CMS FAQs for the page when not searching)
+  const jsonLdFaqs = search.trim() || activeCategory !== 'all' ? filteredFaqs : allFaqs
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <MarketingSeo path="/faq" />
       <MarketingPageJsonLd path="/faq" />
-      {filteredFaqs.length > 0 ? <MarketingFaqJsonLd faqs={filteredFaqs} /> : null}
+      {jsonLdFaqs.length > 0 ? <MarketingFaqJsonLd faqs={jsonLdFaqs} /> : null}
       <SiteHeader />
       <main className="flex-1">
         <section className="bg-gradient-to-br from-primary/5 via-background to-accent/5 py-20">
@@ -144,13 +173,9 @@ export default function FaqMarketingPage() {
                 />
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                {usingCmsOnly ? (
-                  <span className="rounded-full border border-primary bg-primary/10 px-3.5 py-1.5 text-xs font-semibold text-primary">
-                    FAQ
-                  </span>
-                ) : (
-                  FAQ_CATEGORIES.map((category) => (
+              {categories.length > 1 ? (
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {categories.map((category) => (
                     <button
                       key={category.id}
                       type="button"
@@ -163,20 +188,33 @@ export default function FaqMarketingPage() {
                     >
                       {category.label}
                     </button>
-                  ))
-                )}
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </section>
+        ) : (
+          <section className="border-b border-border bg-card/50 py-6">
+            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+              <div className="relative">
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search…"
+                  className="w-full rounded-xl border border-border bg-card py-3 pl-11 pr-4 text-sm text-foreground shadow-sm outline-none"
+                />
               </div>
             </div>
           </section>
-        ) : null}
+        )}
 
         <section className="py-16">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             {filteredFaqs.length === 0 ? (
               <div className="rounded-2xl border border-border bg-card px-6 py-12 text-center shadow-sm">
-                {!isAfghanistan ? (
-                  <p className="text-muted-foreground">No matching questions found.</p>
-                ) : null}
+                <p className="text-muted-foreground">No matching questions found.</p>
               </div>
             ) : (
               <div>
@@ -186,7 +224,10 @@ export default function FaqMarketingPage() {
                 <div className="rounded-2xl border border-border bg-card px-6 shadow-sm">
                   <MAccordion>
                     {filteredFaqs.map((faq, i) => (
-                      <MAccordionItem key={`${faq.categoryId}-${faq.question}`} value={`${faq.categoryId}-${i}`}>
+                      <MAccordionItem
+                        key={`${faq.id || faq.categoryId}-${faq.question}-${i}`}
+                        value={`${faq.categoryId}-${i}`}
+                      >
                         <MAccordionTrigger>{faq.question}</MAccordionTrigger>
                         <MAccordionContent>{faq.answer}</MAccordionContent>
                       </MAccordionItem>
@@ -239,7 +280,9 @@ export default function FaqMarketingPage() {
                 </p>
               </>
             ) : null}
-            <div className={`flex flex-col items-center justify-center gap-4 sm:flex-row ${isAfghanistan ? '' : 'mt-8'}`}>
+            <div
+              className={`flex flex-col items-center justify-center gap-4 sm:flex-row ${isAfghanistan ? '' : 'mt-8'}`}
+            >
               {whatsappUrl ? (
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <MButton

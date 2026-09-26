@@ -24,6 +24,7 @@ export function mapCmsBlogPost(post) {
     category: Array.isArray(post.tags) && post.tags[0] ? post.tags[0] : 'Guide',
     author: post.author || 'Petroleu',
     showOnHomepage: !!post.show_on_homepage,
+    showOnResources: post.show_on_resources !== false,
     published: post.status === 'published',
     seoTitle: post.seo_title,
     seoDescription: post.seo_description,

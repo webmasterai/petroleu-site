@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "node scripts/run-standalone.mjs",
     "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "cms:seed": "node scripts/seed-from-pms-lite.mjs",
     "cms:seed-af": "node scripts/seed-afghanistan.mjs",
     "cms:sync-cities": "node scripts/sync-city-landing-pages.mjs",

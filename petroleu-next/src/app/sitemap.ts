@@ -16,6 +16,9 @@ const BLOCKED_PATHS = new Set([
   '/dashboard',
   '/onboard',
   '/services', // draft / empty frontend_path="/" in CMS
+  '/docs',
+  '/docs/api',
+  '/openapi.json',
 ])
 
 function normalizePath(raw?: string | null, fallbackSlug?: string): string | null {
@@ -51,6 +54,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const push = (path: string | null, lastMod?: string | Date | null) => {
     if (!path) return
+    // Never index documentation routes (including AF locale prefixes)
+    if (
+      path === '/docs' ||
+      path === '/docs/api' ||
+      path === '/openapi.json' ||
+      /\/docs(\/|$)/.test(path) ||
+      path.endsWith('/openapi.json')
+    ) {
+      return
+    }
     const entry = toEntry(path, lastMod)
     if (seen.has(entry.url)) return
     seen.add(entry.url)
@@ -69,8 +82,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/industries',
     '/analytics',
     '/developers',
-    '/docs',
-    '/docs/api',
     '/product/reports',
     '/get-started',
     '/privacy-policy',

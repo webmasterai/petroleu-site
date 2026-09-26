@@ -5,7 +5,6 @@ import { SiteFooter } from '../../components/marketing/SiteFooter'
 import { MarketingSeo } from '../../components/marketing/MarketingSeo'
 import { MarketingBlogPostingJsonLd } from '../../components/marketing/MarketingJsonLd'
 import { ResourceThumbnail } from '../../components/marketing/ResourceThumbnail'
-import { getYouTubeEmbedUrl, isLocalVideoUrl } from '../../utils/videoUtils'
 import { BlogCard } from '../../components/marketing/BlogCard'
 import { MButton, MBadge } from '../../components/marketing/ui'
 import { getResourceBySlug, getRelatedResources } from '../../content/resources'
@@ -72,8 +71,6 @@ export default function BlogDetailPage() {
         .map((s) => null)
         .filter(Boolean)
     : getRelatedResources(resource)
-  const videoEmbedUrl = getYouTubeEmbedUrl(resource.videoUrl)
-  const showLocalVideo = !videoEmbedUrl && isLocalVideoUrl(resource.videoUrl)
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -117,26 +114,7 @@ export default function BlogDetailPage() {
 
         <section className="py-8">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            {videoEmbedUrl ? (
-              <div className="aspect-video overflow-hidden rounded-2xl border border-border bg-black">
-                <iframe
-                  src={videoEmbedUrl}
-                  title={resource.title}
-                  className="h-full w-full"
-                  allowFullScreen
-                />
-              </div>
-            ) : showLocalVideo ? (
-              <video
-                controls
-                className="w-full rounded-2xl border border-border"
-                src={resource.videoUrl}
-              >
-                <track kind="captions" />
-              </video>
-            ) : (
-              <ResourceThumbnail post={resource} />
-            )}
+            <ResourceThumbnail post={resource} className="rounded-2xl" />
 
             <div className="prose prose-neutral mt-10 max-w-none whitespace-pre-wrap text-foreground">
               {resource.content}

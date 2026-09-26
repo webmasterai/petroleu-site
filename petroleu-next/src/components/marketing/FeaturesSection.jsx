@@ -1,5 +1,4 @@
 import { MBadge } from './ui'
-import { FeatureMiniMockup, getFeatureMockupType } from './FeatureMiniMockup'
 import { websiteContent } from '../../content/websiteContent'
 import { useMarketLocale } from '../../context/MarketLocaleContext'
 import { useSectionHeading } from '../../hooks/useSectionHeading'
@@ -32,12 +31,16 @@ export function FeaturesSection({
       config: { params: { page: pageSlug, type: 'card' } },
     },
   )
-  const heading = useSectionHeading('features', {
-    eyebrow: 'Best Features',
-    title: 'Everything You Need to Run Your Pump',
-    subtitle:
-      'Core features for petrol pump daily operations — from nozzle readings to daily closing.',
-  })
+  const heading = useSectionHeading(
+    'features',
+    {
+      eyebrow: 'Best Features',
+      title: 'Everything You Need to Run Your Pump',
+      subtitle:
+        'Core features for petrol pump daily operations — from nozzle readings to daily closing.',
+    },
+    { page: pageSlug },
+  )
 
   const list =
     itemsProp !== undefined
@@ -57,7 +60,10 @@ export function FeaturesSection({
   if (market === 'af' && !title) return null
 
   return (
-    <section id="features" className="bg-muted/30 py-20">
+    <section
+      id="features"
+      className={`bg-muted/30 pb-20 ${pageSlug === 'features' ? 'pt-12' : 'pt-20'}`}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           {heading.eyebrow && pageSlug === 'home' ? (
@@ -81,14 +87,23 @@ export function FeaturesSection({
                 className="group rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/50 hover:shadow-lg"
               >
                 <div className="mb-4 flex items-start justify-between gap-3">
-                  <FeatureMiniMockup
-                    type={getFeatureMockupType(feature.title, index)}
-                    title={feature.title}
-                    index={index}
-                  />
-                  {feature.badge && (
+                  {feature.image_url || feature.imageUrl ? (
+                    <img
+                      src={feature.image_url || feature.imageUrl}
+                      alt={feature.image_alt || feature.imageAlt || feature.title || ''}
+                      className="h-[75px] w-[115px] shrink-0 rounded-lg object-cover border border-border bg-[#faf6f1]"
+                    />
+                  ) : (
+                    <div
+                      className="flex h-[75px] w-[115px] shrink-0 items-center justify-center rounded-lg border border-dashed border-border bg-muted/40 text-[10px] text-muted-foreground"
+                      aria-hidden="true"
+                    >
+                      No image
+                    </div>
+                  )}
+                  {(feature.badge || feature.data?.badge) && (
                     <MBadge variant="secondary" className="text-xs">
-                      {feature.badge}
+                      {feature.badge || feature.data?.badge}
                     </MBadge>
                   )}
                 </div>

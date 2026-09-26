@@ -96,6 +96,8 @@ export function useParams<T extends Record<string, string>>() {
   return useNextParams() as T
 }
 
+export { useSearchParams }
+
 export function Navigate({ to, replace }: { to: To; replace?: boolean }) {
   const router = useRouter()
   const href = toHref(to)

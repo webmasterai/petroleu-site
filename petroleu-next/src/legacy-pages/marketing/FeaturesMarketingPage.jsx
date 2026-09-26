@@ -18,8 +18,6 @@ import { MarketingSeo } from '../../components/marketing/MarketingSeo'
 import { MarketingPageJsonLd } from '../../components/marketing/MarketingJsonLd'
 import { FeaturesSection } from '../../components/marketing/FeaturesSection'
 import { CtaSection } from '../../components/marketing/CtaSection'
-import { MBadge } from '../../components/marketing/ui'
-import { withBestPrefix } from '../../content/websiteContent'
 import { useCmsQuery } from '../../hooks/useCmsQuery'
 import { useCmsList } from '../../hooks/useCmsList'
 
@@ -40,14 +38,9 @@ const iconMap = {
 
 /**
  * /features — CMS source of truth for page_slug=features
- * (hero, feature:card, feature:detailed, feature:benefit_bar, cta)
+ * Heading lives in FeaturesSection (heading:features); no duplicate top hero.
  */
 export default function FeaturesMarketingPage() {
-  const { data: heroData } = useCmsQuery(['hero', 'features'], '/hero/features')
-  const { items: coreFeatures } = useCmsList(['features', 'features', 'card'], '/features', {
-    fallback: [],
-    config: { params: { page: 'features', type: 'card' } },
-  })
   const { items: detailedFeatures } = useCmsList(
     ['features', 'features', 'detailed'],
     '/features',
@@ -65,14 +58,6 @@ export default function FeaturesMarketingPage() {
     },
   )
   const { data: ctaData } = useCmsQuery(['cta', 'features'], '/cta/features')
-  const { data: featuresHeading } = useCmsQuery(
-    ['section-heading', 'features', 'page-features'],
-    '/section-heading/features',
-    {
-      config: { params: { page: 'features' } },
-      retry: 0,
-    },
-  )
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -80,36 +65,7 @@ export default function FeaturesMarketingPage() {
       <MarketingPageJsonLd path="/features" />
       <SiteHeader />
       <main className="flex-1">
-        <section className="bg-gradient-to-br from-primary/5 via-background to-accent/5 py-20">
-          <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-            {(heroData?.badge || heroData?.data?.badge) && (
-              <MBadge variant="secondary" className="mb-4">
-                {withBestPrefix(heroData.badge || heroData.data?.badge)}
-              </MBadge>
-            )}
-            <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              {heroData?.heading || heroData?.title || 'Powerful Features'}
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground">
-              {heroData?.subheading ||
-                heroData?.description ||
-                'Everything you need to run a modern fuel station — built for clarity, control, and growth.'}
-            </p>
-          </div>
-        </section>
-
-        <FeaturesSection
-          pageSlug="features"
-          allowHardcodedFallback={false}
-          titleOverride={
-            featuresHeading?.title || featuresHeading?.heading || 'Core capabilities'
-          }
-          subtitleOverride={
-            featuresHeading?.description ||
-            featuresHeading?.subheading ||
-            'Each module works on its own and even better together'
-          }
-        />
+        <FeaturesSection pageSlug="features" allowHardcodedFallback={false} />
 
         {detailedFeatures.length > 0 && (
           <section className="bg-muted/30 py-20">

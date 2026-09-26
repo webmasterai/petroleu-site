@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="230" height="150" viewBox="0 0 230 150">
+<rect width="230" height="150" fill="#faf6f1"/>
+<rect x="12" y="12" width="78" height="38" rx="4" fill="#ffffff" stroke="#e2e8f0"/><text x="22" y="30" font-size="9" fill="#64748b">Sales</text><text x="22" y="44" font-size="13" font-weight="700" fill="#1e293b">2.8M</text>
+<rect x="12" y="56" width="78" height="38" rx="4" fill="#ffffff" stroke="#e2e8f0"/><text x="22" y="74" font-size="9" fill="#64748b">Profit</text><text x="22" y="88" font-size="13" font-weight="700" fill="#1e293b">420K</text>
+<rect x="12" y="100" width="78" height="38" rx="4" fill="#ffffff" stroke="#e2e8f0"/><text x="22" y="118" font-size="9" fill="#64748b">Stock</text><text x="22" y="132" font-size="13" font-weight="700" fill="#1e293b">9.8K</text>
+<rect x="100" y="12" width="118" height="126" rx="4" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="112" y="32" font-size="10" fill="#64748b">Report</text>
+<rect x="112" y="110" width="12" height="20" rx="2" fill="#1e293bd9"/>
+<rect x="128" y="95" width="12" height="35" rx="2" fill="#1e293bd9"/>
+<rect x="144" y="100" width="12" height="30" rx="2" fill="#1e293bd9"/>
+<rect x="160" y="82" width="12" height="48" rx="2" fill="#1e293bd9"/>
+<rect x="176" y="90" width="12" height="40" rx="2" fill="#1e293bd9"/>
+<rect x="192" y="85" width="12" height="45" rx="2" fill="#1e293bd9"/>
+</svg>

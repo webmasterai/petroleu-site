@@ -7,6 +7,39 @@ function asList(res) {
   return []
 }
 
+/** Prefer canonical fields; fall back to legacy aliases if API did not normalize. */
+function displayName(row) {
+  if (!row) return ''
+  return String(row.name || row.full_name || row.fullName || row.contact_name || '').trim()
+}
+
+function displayPhone(row) {
+  if (!row) return ''
+  return String(row.phone || row.phoneNumber || row.mobile || row.contactNumber || '').trim()
+}
+
+function displayMessage(row) {
+  if (!row) return ''
+  return String(row.message || row.messageText || row.body || row.comments || '').trim()
+}
+
+function displayMarket(row) {
+  if (!row) return ''
+  return String(row.market_code || row.market || '').trim()
+}
+
+function displayDate(row) {
+  const raw = row?.created_at || row?.createdAt
+  if (!raw) return ''
+  try {
+    const d = new Date(raw)
+    if (Number.isNaN(d.getTime())) return String(raw)
+    return d.toLocaleString()
+  } catch {
+    return String(raw)
+  }
+}
+
 const fieldCls = 'admin-input'
 const btnOutline = 'admin-btn-secondary text-xs'
 
@@ -82,8 +115,14 @@ export default function AdminInquiriesPage() {
     setError('')
     try {
       const full = await adminGet(`/inquiries/${row.id}`)
-      setSelected(full)
-      setNotes(full?.admin_notes ?? '')
+      // Guard: list endpoint used to be returned for /:id — never treat an array as a detail row
+      if (full && !Array.isArray(full) && full.id != null) {
+        setSelected(full)
+        setNotes(full?.admin_notes ?? '')
+        return
+      }
+      setSelected(row)
+      setNotes(row.admin_notes ?? '')
     } catch {
       setSelected(row)
       setNotes(row.admin_notes ?? '')
@@ -140,20 +179,45 @@ export default function AdminInquiriesPage() {
             </button>
           </div>
           <p>
-            <span className="text-muted-foreground">From: </span>
-            {selected.name || '—'} ({selected.email || '—'})
+            <span className="text-muted-foreground">Name: </span>
+            {displayName(selected) || '—'}
+          </p>
+          <p>
+            <span className="text-muted-foreground">Email: </span>
+            {selected.email || '—'}
           </p>
           <p>
             <span className="text-muted-foreground">Phone: </span>
-            {selected.phone || '—'}
+            {displayPhone(selected) || '—'}
           </p>
+          {selected.company ? (
+            <p>
+              <span className="text-muted-foreground">Company: </span>
+              {selected.company}
+            </p>
+          ) : null}
           <p>
             <span className="text-muted-foreground">Type / market: </span>
-            {selected.type || '—'} / {selected.market_code || '—'}
+            {selected.type || '—'} / {displayMarket(selected) || '—'}
           </p>
-          <p className="whitespace-pre-wrap border border-border rounded-md p-2 bg-background text-xs">
-            {selected.message || selected.notes || '—'}
+          <p>
+            <span className="text-muted-foreground">Locale: </span>
+            {selected.locale_code || selected.locale || '—'}
           </p>
+          <p>
+            <span className="text-muted-foreground">Source / page: </span>
+            {selected.source || selected.page || '—'}
+          </p>
+          <p>
+            <span className="text-muted-foreground">Submitted: </span>
+            {displayDate(selected) || '—'}
+          </p>
+          <div>
+            <span className="text-muted-foreground text-xs">Message</span>
+            <p className="mt-1 whitespace-pre-wrap border border-border rounded-md p-2 bg-background text-xs">
+              {displayMessage(selected) || '—'}
+            </p>
+          </div>
           <label className="block text-xs">
             <span className="text-muted-foreground">Admin notes</span>
             <textarea
@@ -188,22 +252,24 @@ export default function AdminInquiriesPage() {
               <th className="px-2 py-2 font-medium">ID</th>
               <th className="px-2 py-2 font-medium">Name</th>
               <th className="px-2 py-2 font-medium">Email</th>
+              <th className="px-2 py-2 font-medium">Phone</th>
               <th className="px-2 py-2 font-medium">Type</th>
               <th className="px-2 py-2 font-medium">Market</th>
               <th className="px-2 py-2 font-medium">Status</th>
+              <th className="px-2 py-2 font-medium">Date</th>
               <th className="px-2 py-2 font-medium">Actions</th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={7} className="px-2 py-4 text-muted-foreground">
+                <td colSpan={9} className="px-2 py-4 text-muted-foreground">
                   Loading…
                 </td>
               </tr>
             ) : items.length === 0 ? (
               <tr>
-                <td colSpan={7} className="px-2 py-4 text-muted-foreground">
+                <td colSpan={9} className="px-2 py-4 text-muted-foreground">
                   No inquiries
                 </td>
               </tr>
@@ -211,10 +277,11 @@ export default function AdminInquiriesPage() {
               items.map((row) => (
                 <tr key={row.id} className="border-t border-border">
                   <td className="px-2 py-1.5">{row.id}</td>
-                  <td className="px-2 py-1.5">{row.name || '—'}</td>
+                  <td className="px-2 py-1.5">{displayName(row) || '—'}</td>
                   <td className="px-2 py-1.5">{row.email || '—'}</td>
+                  <td className="px-2 py-1.5">{displayPhone(row) || '—'}</td>
                   <td className="px-2 py-1.5">{row.type || '—'}</td>
-                  <td className="px-2 py-1.5">{row.market_code || '—'}</td>
+                  <td className="px-2 py-1.5">{displayMarket(row) || '—'}</td>
                   <td className="px-2 py-1.5">
                     <select
                       className={fieldCls + ' w-auto'}
@@ -228,6 +295,7 @@ export default function AdminInquiriesPage() {
                       ))}
                     </select>
                   </td>
+                  <td className="px-2 py-1.5 whitespace-nowrap">{displayDate(row) || '—'}</td>
                   <td className="px-2 py-1.5">
                     <button type="button" className={btnOutline} onClick={() => openDetail(row)}>
                       View

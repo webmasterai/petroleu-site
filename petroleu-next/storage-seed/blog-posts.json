@@ -15,7 +15,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": true,
-    "published_at": "March 18, 2026"
+    "published_at": "March 18, 2026",
+    "show_on_resources": true
   },
   {
     "id": 2,
@@ -33,7 +34,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": true,
-    "published_at": "March 16, 2026"
+    "published_at": "March 16, 2026",
+    "show_on_resources": true
   },
   {
     "id": 3,
@@ -51,7 +53,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": true,
-    "published_at": "March 14, 2026"
+    "published_at": "March 14, 2026",
+    "show_on_resources": true
   },
   {
     "id": 4,
@@ -69,7 +72,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "March 15, 2026"
+    "published_at": "March 15, 2026",
+    "show_on_resources": true
   },
   {
     "id": 5,
@@ -87,7 +91,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": true,
-    "published_at": "March 10, 2026"
+    "published_at": "March 10, 2026",
+    "show_on_resources": true
   },
   {
     "id": 6,
@@ -105,7 +110,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "March 5, 2026"
+    "published_at": "March 5, 2026",
+    "show_on_resources": true
   },
   {
     "id": 7,
@@ -123,7 +129,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "March 15, 2026"
+    "published_at": "March 15, 2026",
+    "show_on_resources": false
   },
   {
     "id": 8,
@@ -141,7 +148,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "March 10, 2026"
+    "published_at": "March 10, 2026",
+    "show_on_resources": false
   },
   {
     "id": 9,
@@ -159,7 +167,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "March 5, 2026"
+    "published_at": "March 5, 2026",
+    "show_on_resources": false
   },
   {
     "id": 10,
@@ -177,7 +186,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "February 25, 2026"
+    "published_at": "February 25, 2026",
+    "show_on_resources": false
   },
   {
     "id": 11,
@@ -195,7 +205,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "February 18, 2026"
+    "published_at": "February 18, 2026",
+    "show_on_resources": false
   },
   {
     "id": 12,
@@ -213,7 +224,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "February 12, 2026"
+    "published_at": "February 12, 2026",
+    "show_on_resources": false
   },
   {
     "id": 13,
@@ -231,7 +243,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "February 6, 2026"
+    "published_at": "February 6, 2026",
+    "show_on_resources": false
   },
   {
     "id": 14,
@@ -249,7 +262,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "January 30, 2026"
+    "published_at": "January 30, 2026",
+    "show_on_resources": false
   },
   {
     "id": 15,
@@ -267,7 +281,8 @@
     "status": "published",
     "is_enabled": true,
     "show_on_homepage": false,
-    "published_at": "January 22, 2026"
+    "published_at": "January 22, 2026",
+    "show_on_resources": false
   },
   {
     "market_code": "pk",
@@ -285,7 +300,8 @@
     "status": "draft",
     "is_shared": false,
     "noindex": false,
-    "id": 16
+    "id": 16,
+    "show_on_resources": false
   },
   {
     "id": 17,
@@ -308,7 +324,8 @@
     "seo_title": "Petroleu Dashboard Overview",
     "seo_description": "See today’s sales, cash, credit, stock, and key pump metrics from the Petroleu dashboard.",
     "created_at": "2026-09-21T12:36:14.657Z",
-    "updated_at": "2026-09-21T12:36:14.658Z"
+    "updated_at": "2026-09-21T12:36:14.658Z",
+    "show_on_resources": true
   },
   {
     "id": 18,
@@ -331,7 +348,8 @@
     "seo_title": "نمای کلی داشبورد Petroleu",
     "seo_description": "فروش امروز، نقد، اعتبار، موجودی و شاخص‌های کلیدی پمپ را از داشبورد Petroleu ببینید.",
     "created_at": "2026-09-21T12:36:14.658Z",
-    "updated_at": "2026-09-21T12:36:14.658Z"
+    "updated_at": "2026-09-21T12:36:14.658Z",
+    "show_on_resources": true
   },
   {
     "id": 19,
@@ -354,7 +372,8 @@
     "seo_title": "د Petroleu ډشبورډ کتنه",
     "seo_description": "د نن ورځې پلور، نغدي، اعتبار، موجودي او د پمپ مهم شاخصونه د Petroleu ډشبورډ څخه وګورئ.",
     "created_at": "2026-09-21T12:36:14.658Z",
-    "updated_at": "2026-09-21T12:36:14.658Z"
+    "updated_at": "2026-09-21T12:36:14.658Z",
+    "show_on_resources": true
   },
   {
     "id": 20,
@@ -377,7 +396,8 @@
     "seo_title": "Sales Summary in Petroleu",
     "seo_description": "Review petrol, diesel, and other fuel sales totals with shift-wise and day-wise figures in one summary.",
     "created_at": "2026-09-21T12:36:14.658Z",
-    "updated_at": "2026-09-21T12:36:14.658Z"
+    "updated_at": "2026-09-21T12:36:14.658Z",
+    "show_on_resources": true
   },
   {
     "id": 21,
@@ -400,7 +420,8 @@
     "seo_title": "خلاصه فروش در Petroleu",
     "seo_description": "جمع فروش پطرول، دیزل و دیگر سوخت‌ها را با ارقام شیفتی و روزانه در یک خلاصه ببینید.",
     "created_at": "2026-09-21T12:36:14.658Z",
-    "updated_at": "2026-09-21T12:36:14.658Z"
+    "updated_at": "2026-09-21T12:36:14.658Z",
+    "show_on_resources": true
   },
   {
     "id": 22,
@@ -423,7 +444,8 @@
     "seo_title": "په Petroleu کې د پلور لنډیز",
     "seo_description": "د پټرول، ډیزل او نورو سون توکو د پلور ټولټالونه په یوه لنډیز کې د شفټ او ورځې په ارقامو سره وګورئ.",
     "created_at": "2026-09-21T12:36:14.658Z",
-    "updated_at": "2026-09-21T12:36:14.658Z"
+    "updated_at": "2026-09-21T12:36:14.658Z",
+    "show_on_resources": true
   },
   {
     "id": 23,
@@ -446,7 +468,8 @@
     "seo_title": "Cash & Receivables Overview",
     "seo_description": "Track cash in hand, credit outstanding, and customer receivables from the same daily view.",
     "created_at": "2026-09-21T12:36:14.658Z",
-    "updated_at": "2026-09-21T12:36:14.658Z"
+    "updated_at": "2026-09-21T12:36:14.658Z",
+    "show_on_resources": true
   },
   {
     "id": 24,
@@ -469,7 +492,8 @@
     "seo_title": "نمای کلی نقد و مطالبات",
     "seo_description": "نقد در دست، اعتبار باقی‌مانده و مطالبات مشتریان را از همان نمای روزانه دنبال کنید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 25,
@@ -492,7 +516,8 @@
     "seo_title": "د نغدي او پورونو کتنه",
     "seo_description": "په لاس کې نغدي، پاتې اعتبار او د پیرودونکو پورونه له همدې ورځني کتنې څخه تعقیب کړئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 26,
@@ -515,7 +540,8 @@
     "seo_title": "Stock Summary Report",
     "seo_description": "Check opening stock, purchases, nozzle sales, and closing stock for each fuel product.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 27,
@@ -538,7 +564,8 @@
     "seo_title": "گزارش خلاصه موجودی",
     "seo_description": "موجودی آغاز، خریدها، فروش نوزل و موجودی پایان را برای هر محصول سوخت بررسی کنید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 28,
@@ -561,7 +588,8 @@
     "seo_title": "د موجودي لنډیز راپور",
     "seo_description": "د هر سون محصول لپاره پرانیستونکې موجودي، پیرود، د نوزل پلور او بندونکې موجودي وګورئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 29,
@@ -584,7 +612,8 @@
     "seo_title": "Tank Stock Levels",
     "seo_description": "View live petrol, diesel, and other fuel tank levels alongside dip readings and stock variance.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 30,
@@ -607,7 +636,8 @@
     "seo_title": "سطح موجودی تانک‌ها",
     "seo_description": "سطح زنده تانک پطرول، دیزل و دیگر سوخت‌ها را همراه با اندازه‌گیری و اختلاف موجودی ببینید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 31,
@@ -630,7 +660,8 @@
     "seo_title": "د ټانک موجودي کچې",
     "seo_description": "د پټرول، ډیزل او نورو سون توکو ژوندۍ ټانک کچې د اندازه‌ګیرۍ او موجودي توپیر سره وګورئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 32,
@@ -653,7 +684,8 @@
     "seo_title": "Daily Pump Performance",
     "seo_description": "Review daily station performance including sales trends, cash position, and stock movement.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 33,
@@ -676,7 +708,8 @@
     "seo_title": "عملکرد روزانه پمپ",
     "seo_description": "عملکرد روزانه ایستگاه شامل روند فروش، وضعیت نقد و حرکت موجودی را بررسی کنید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 34,
@@ -699,7 +732,8 @@
     "seo_title": "د پمپ ورځنی فعالیت",
     "seo_description": "د سټیشن ورځنی فعالیت د پلور بهیر، نغدي وضعیت او موجودي حرکت سره وګورئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": true
   },
   {
     "id": 35,
@@ -722,7 +756,8 @@
     "seo_title": "Fuel Station Automation with Dispenser Integration",
     "seo_description": "See how dispenser integration reduces manual nozzle entry and speeds up daily operations.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 36,
@@ -745,7 +780,8 @@
     "seo_title": "اتوماسیون پمپ با اتصال دیسپنسر",
     "seo_description": "ببینید اتصال دیسپنسر چگونه ثبت دستی نوزل را کم و عملیات روزانه را سریع‌تر می‌کند.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 37,
@@ -768,7 +804,8 @@
     "seo_title": "د دیسپنسر یوځای کولو سره د پمپ اتوماتیک کول",
     "seo_description": "وګورئ چې د دیسپنسر یوځای کول څنګه د نوزل لاسي ثبت کموي او ورځني عملیات چټکوي.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 38,
@@ -791,7 +828,8 @@
     "seo_title": "ATG Tank Monitoring for Fuel Stations",
     "seo_description": "Monitor tank levels automatically and reduce stock surprises with ATG-ready workflows.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 39,
@@ -814,7 +852,8 @@
     "seo_title": "نظارت تانک ATG برای پمپ‌های تیل",
     "seo_description": "سطح تانک را خودکار پایش کنید و با گردش‌کارهای آماده ATG غافلگیری موجودی را کم کنید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 40,
@@ -837,7 +876,8 @@
     "seo_title": "د سون توکو پمپونو لپاره د ATG ټانک څارنه",
     "seo_description": "د ټانک کچې په اتوماتیک ډول وڅارئ او د ATG چمتو بهیر سره د موجودي ناڅاپي کم کړئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 41,
@@ -860,7 +900,8 @@
     "seo_title": "AI Reporting & Business Analysis for Fuel Stations",
     "seo_description": "Use AI-assisted reporting to understand station trends and make faster ownership decisions.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 42,
@@ -883,7 +924,8 @@
     "seo_title": "گزارش‌گیری هوش مصنوعی و تحلیل کسب‌وکار برای پمپ‌ها",
     "seo_description": "با گزارش‌های مبتنی بر هوش مصنوعی روند پمپ را بفهمید و سریع‌تر تصمیم بگیرید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 43,
@@ -906,7 +948,8 @@
     "seo_title": "د سون توکو پمپونو لپاره د AI راپورونه او سوداګریز تحلیل",
     "seo_description": "د AI مرسته‌ییزو راپورونو سره د سټیشن بهیر وپوهېږئ او چټکې پرېکړې وکړئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 44,
@@ -929,7 +972,8 @@
     "seo_title": "WhatsApp Invoices and Payment Reminders",
     "seo_description": "Send credit invoices and payment reminders to customers on WhatsApp after fills.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 45,
@@ -952,7 +996,8 @@
     "seo_title": "فاکتور و یادآوری پرداخت واتساپ",
     "seo_description": "پس از سوخت‌گیری، فاکتور اعتباری و یادآوری پرداخت را در واتساپ برای مشتریان بفرستید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 46,
@@ -975,7 +1020,8 @@
     "seo_title": "د WhatsApp رسیدونه او د تادیې یادونې",
     "seo_description": "د تیل ډکولو وروسته اعتباري پیرودونکو ته په WhatsApp رسیدونه او د تادیې یادونې ولېږئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 47,
@@ -998,7 +1044,8 @@
     "seo_title": "Multi-Station Fuel Network Management",
     "seo_description": "Manage multiple fuel stations from one account with shared visibility on sales and stock.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 48,
@@ -1021,7 +1068,8 @@
     "seo_title": "مدیریت شبکه چندپمپی",
     "seo_description": "چند پمپ تیل را از یک حساب با دید مشترک بر فروش و موجودی مدیریت کنید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 49,
@@ -1044,7 +1092,8 @@
     "seo_title": "د څو پمپونو د شبکې مدیریت",
     "seo_description": "له یوه حساب څخه څو سون توکو پمپونه د پلور او موجودي ګډ لید سره مدیریت کړئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 50,
@@ -1067,7 +1116,8 @@
     "seo_title": "Daily Closing and Shift Management",
     "seo_description": "Close shifts with clear sales, cash, credit, and stock checks in one guided flow.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 51,
@@ -1090,7 +1140,8 @@
     "seo_title": "بستن روزانه و مدیریت شیفت",
     "seo_description": "شیفت را با بررسی واضح فروش، نقد، اعتبار و موجودی در یک جریان هدایت‌شده ببندید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 52,
@@ -1113,7 +1164,8 @@
     "seo_title": "ورځنی بندښت او د شفټ مدیریت",
     "seo_description": "شفټ د پلور، نغدي، اعتبار او موجودي روښانه چک سره په یوه لارښود بهیر کې بند کړئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 53,
@@ -1136,7 +1188,8 @@
     "seo_title": "Credit Customer and Vehicle-Wise Billing",
     "seo_description": "Bill credit customers by vehicle and keep receivable history organized.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 54,
@@ -1159,7 +1212,8 @@
     "seo_title": "صورتحساب اعتباری و بر اساس وسیله",
     "seo_description": "مشتریان اعتباری را بر اساس وسیله صورتحساب کنید و سابقه مطالبات را منظم نگه دارید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 55,
@@ -1182,7 +1236,8 @@
     "seo_title": "اعتباري پیرودونکی او د موټر له مخې بیلینګ",
     "seo_description": "اعتباري پیرودونکي د موټر له مخې بیل کړئ او د پور تاریخچه منظم وساتئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 56,
@@ -1205,7 +1260,8 @@
     "seo_title": "Tank Dipping and Stock Gain/Loss Reports",
     "seo_description": "Compare dips with book stock and review gain/loss clearly after each period.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 57,
@@ -1228,7 +1284,8 @@
     "seo_title": "اندازه‌گیری تانک و گزارش سود/زیان موجودی",
     "seo_description": "اندازه‌گیری را با موجودی دفتری مقایسه کنید و سود/زیان را پس از هر دوره واضح ببینید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 58,
@@ -1251,7 +1308,8 @@
     "seo_title": "د ټانک اندازه‌ګیري او د موجودي ګټې/زیان راپورونه",
     "seo_description": "اندازه‌ګیرۍ د دفتری موجودي سره پرتله کړئ او د هرې دورې وروسته ګټه/زیان روښانه وګورئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 59,
@@ -1274,7 +1332,8 @@
     "seo_title": "Cloud-Based Fuel Station Management",
     "seo_description": "Access Petroleu from anywhere with secure cloud workflows for owners and managers.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 60,
@@ -1297,7 +1356,8 @@
     "seo_title": "مدیریت ابری پمپ تیل",
     "seo_description": "با گردش‌کار امن ابری از هر جا به Petroleu برای مالکان و مدیران دسترسی داشته باشید.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   },
   {
     "id": 61,
@@ -1320,6 +1380,7 @@
     "seo_title": "د کلاوډ پر بنسټ د سون توکو پمپ مدیریت",
     "seo_description": "د خاوندانو او مدیرانو لپاره د خوندي کلاوډ بهیر سره له هرځای څخه Petroleu ته لاسرسی ومومئ.",
     "created_at": "2026-09-21T12:36:14.659Z",
-    "updated_at": "2026-09-21T12:36:14.659Z"
+    "updated_at": "2026-09-21T12:36:14.659Z",
+    "show_on_resources": false
   }
 ]

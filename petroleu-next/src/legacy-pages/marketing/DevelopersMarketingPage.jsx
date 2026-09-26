@@ -34,22 +34,6 @@ export default function DevelopersMarketingPage() {
 
   const pkResources = [
     {
-      icon: 'BookOpen',
-      title: 'Petroleu docs',
-      description:
-        'Petroleu documentation index — product overview, public API notes, and operator guide links.',
-      href: '/docs',
-      external: false,
-    },
-    {
-      icon: 'Code2',
-      title: 'Petroleu API docs',
-      description:
-        'Truthful public website API notes and the OpenAPI 3.1 specification. Tenant ERP routes stay private.',
-      href: '/docs/api',
-      external: false,
-    },
-    {
       icon: 'Globe',
       title: 'Public marketing content API',
       description:
@@ -59,15 +43,14 @@ export default function DevelopersMarketingPage() {
     },
     {
       icon: 'FileText',
-      title: 'OpenAPI, LLMs & sitemap',
-      description:
-        'Machine-readable files: /openapi.json, /llms.txt, and /sitemap.xml for agents and integrators.',
-      href: '/openapi.json',
+      title: 'Sitemap & LLMs index',
+      description: 'Public machine-readable files for agents: /llms.txt and /sitemap.xml.',
+      href: '/llms.txt',
       external: false,
     },
   ]
 
-  const resources =
+  const resources = (
     Array.isArray(cardsCms) && cardsCms.length
       ? cardsCms.map((c) => ({
           icon: c.icon || 'BookOpen',
@@ -80,6 +63,10 @@ export default function DevelopersMarketingPage() {
       : isAfghanistan
         ? []
         : pkResources.map((r) => ({ ...r, label: 'View resource' }))
+  ).filter((r) => {
+    const href = String(r.href || '')
+    return !/\/docs(\/|$)/.test(href) && !href.includes('openapi.json')
+  })
 
   const title =
     hero?.heading || hero?.title || (isAfghanistan ? '' : 'Petroleu Developer Resources')

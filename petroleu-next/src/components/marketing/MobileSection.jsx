@@ -93,14 +93,16 @@ export function MobileSection() {
 
           <div className="relative mx-auto w-full">
             <div className="flex justify-center">
-              <img
-                src="/images/petroleu-mobile-real-mockup.png"
-                alt={heading.imageAlt || 'Petroleu mobile app dashboard mockup'}
-                width={560}
-                height={840}
-                className="w-full max-w-[400px] md:max-w-[480px] lg:max-w-[560px] max-h-[680px] h-auto object-contain drop-shadow-2xl"
-                loading="lazy"
-              />
+              {heading.imageUrl || heading.raw?.image_url ? (
+                <img
+                  src={heading.imageUrl || heading.raw?.image_url}
+                  alt={heading.imageAlt || 'Petroleu mobile app dashboard mockup'}
+                  width={560}
+                  height={840}
+                  className="w-full max-w-[400px] md:max-w-[480px] lg:max-w-[560px] max-h-[680px] h-auto object-contain drop-shadow-2xl"
+                  loading="lazy"
+                />
+              ) : null}
             </div>
             {platforms ? (
               <p className="mt-6 text-center text-sm text-muted-foreground">{platforms}</p>

@@ -45,8 +45,6 @@ Petroleu (https://www.petroleu.com) helps petrol pump owners manage nozzle readi
 ## Machine-readable resources
 - Sitemap: https://www.petroleu.com/sitemap.xml
 - Developer portal: https://www.petroleu.com/developers
-- OpenAPI: https://www.petroleu.com/openapi.json
-- Public API base: https://www.petroleu.com/api/public
 - Agent instructions: https://www.petroleu.com/llms.txt
 
 ## Support and contact

@@ -17,6 +17,7 @@ const NAV_GROUPS = [
     label: 'Website',
     items: [
       { to: '/admin/pages', label: 'Pages' },
+      { to: '/admin/sections', label: 'Sections' },
       { to: '/admin/pricing', label: 'Pricing Plans' },
       { to: '/admin/navigation', label: 'Navigation' },
       { to: '/admin/blog', label: 'Blog' },
@@ -171,8 +172,8 @@ export default function AdminLayout({ children }) {
               <div className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                 Developer tools
               </div>
-              <NavLink to="/admin/sections" className={linkClass}>
-                Advanced Sections
+              <NavLink to="/admin/sections?advanced=1" className={linkClass}>
+                Advanced section JSON
               </NavLink>
             </div>
           ) : null}

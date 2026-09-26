@@ -34,6 +34,11 @@ const YoutubeIcon = (props) => (
 export function SiteFooter() {
   const { routePrefix, isAfghanistan } = useMarketLocale()
   const { data: s = {} } = useCmsQuery(['settings', 'footer'], '/settings')
+  const { data: layoutFooter } = useCmsQuery(['layout', 'footer'], '/layout/footer')
+  const footerData =
+    layoutFooter?.data && typeof layoutFooter.data === 'object' && !Array.isArray(layoutFooter.data)
+      ? layoutFooter.data
+      : {}
   const { data: headerNav, isFetched: headerFetched } = useCmsQuery(
     ['nav', 'header', 'footer-reuse'],
     '/navigation',
@@ -52,24 +57,32 @@ export function SiteFooter() {
   const fb = websiteContent.footer
   const mp = (path) => marketPath(path, routePrefix)
 
-  const siteName = isAfghanistan ? s.site_name || 'Petroleu' : s.site_name || brand.name
-  const description = isAfghanistan
-    ? s.footer_description || s.site_tagline || ''
-    : s.footer_description || s.site_tagline || fb.description
+  const logoUrl = layoutFooter?.image_url || '/petroleu-logo.png'
+  const logoAlt =
+    layoutFooter?.image_alt || layoutFooter?.title || footerData.brand_name || 'Petroleu'
 
-  const phone = isAfghanistan ? s.phone || null : s.phone || fb.phone
+  const siteName = isAfghanistan
+    ? layoutFooter?.title || footerData.brand_name || s.site_name || 'Petroleu'
+    : layoutFooter?.title || footerData.brand_name || s.site_name || brand.name
+  const description = isAfghanistan
+    ? layoutFooter?.description || s.footer_description || s.site_tagline || ''
+    : layoutFooter?.description || s.footer_description || s.site_tagline || fb.description
+
+  const phone = isAfghanistan
+    ? footerData.phone || s.phone || null
+    : footerData.phone || s.phone || fb.phone
   const phoneTel = isAfghanistan
-    ? s.phone_tel || null
-    : s.phone_tel || brand.phoneTel || fb.phoneTel
+    ? footerData.phone_tel || s.phone_tel || null
+    : footerData.phone_tel || s.phone_tel || brand.phoneTel || fb.phoneTel
   const email = isAfghanistan
-    ? s.sales_email || s.contact_email || s.primary_email || null
-    : s.sales_email || s.contact_email || s.primary_email || fb.email
+    ? footerData.email || s.sales_email || s.contact_email || s.primary_email || null
+    : footerData.email || s.sales_email || s.contact_email || s.primary_email || fb.email
   const address = isAfghanistan
-    ? s.address || null
-    : s.address || s.address_pk || fb.address
+    ? footerData.address || s.address || null
+    : footerData.address || s.address || s.address_pk || fb.address
   const footerCredit = isAfghanistan
-    ? s.footer_credit || null
-    : s.footer_credit || 'Made with care in Pakistan'
+    ? footerData.footer_credit || s.footer_credit || null
+    : footerData.footer_credit || s.footer_credit || 'Made with care in Pakistan'
 
   const mapNavLinks = (rows) =>
     Array.isArray(rows)
@@ -89,9 +102,6 @@ export function SiteFooter() {
     { label: 'Mobile App', to: mp('/#mobile') },
   ]
   const defaultResourceLinks = [
-    { label: 'Developer Resources', to: mp('/developers') },
-    { label: 'Documentation', to: mp('/docs') },
-    { label: 'API Docs', to: mp('/docs/api') },
     { label: 'Analytics', to: mp('/analytics') },
     { label: 'Reports', to: mp('/product/reports') },
     { label: 'FAQs', to: mp('/faq') },
@@ -105,8 +115,12 @@ export function SiteFooter() {
         ? []
         : defaultProductLinks
 
-  const resourceLinks =
+  const resourceLinks = (
     cmsMegaLinks !== null ? cmsMegaLinks : isAfghanistan ? [] : defaultResourceLinks
+  ).filter((l) => {
+    const to = String(l.to || l.href || '')
+    return !/\/docs(\/|$)/.test(to) && !to.includes('openapi.json')
+  })
 
   const companyLinks = [
     {
@@ -149,10 +163,26 @@ export function SiteFooter() {
   const headingLegal = s.ui_legal || (isAfghanistan ? null : 'Legal')
 
   const socials = [
-    { url: s.facebook_url, label: 'Facebook', icon: <FacebookIcon className="h-4 w-4" /> },
-    { url: s.instagram_url, label: 'Instagram', icon: <InstagramIcon className="h-4 w-4" /> },
-    { url: s.linkedin_url, label: 'LinkedIn', icon: <LinkedinIcon className="h-4 w-4" /> },
-    { url: s.youtube_url, label: 'YouTube', icon: <YoutubeIcon className="h-4 w-4" /> },
+    {
+      url: footerData.facebook_url || s.facebook_url,
+      label: 'Facebook',
+      icon: <FacebookIcon className="h-4 w-4" />,
+    },
+    {
+      url: footerData.instagram_url || s.instagram_url,
+      label: 'Instagram',
+      icon: <InstagramIcon className="h-4 w-4" />,
+    },
+    {
+      url: footerData.linkedin_url || s.linkedin_url,
+      label: 'LinkedIn',
+      icon: <LinkedinIcon className="h-4 w-4" />,
+    },
+    {
+      url: footerData.youtube_url || s.youtube_url,
+      label: 'YouTube',
+      icon: <YoutubeIcon className="h-4 w-4" />,
+    },
   ].filter((x) => Boolean(x.url))
 
   // Pakistan may keep brand defaults when CMS socials unset
@@ -201,7 +231,7 @@ export function SiteFooter() {
         <div className="grid gap-8 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link to={mp('/')} className="flex items-center" aria-label={siteName}>
-              <img src="/petroleu-logo.png" alt="Petroleu" className="h-8 w-auto object-contain" />
+              <img src={logoUrl} alt={logoAlt} className="h-8 w-auto object-contain" />
             </Link>
 
             {description ? (

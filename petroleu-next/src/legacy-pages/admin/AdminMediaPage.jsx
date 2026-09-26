@@ -224,6 +224,23 @@ export default function AdminMediaPage() {
               {row.width ? ` · ${row.width}×${row.height}` : ''}
               {row.duration_seconds ? ` · ${row.duration_seconds}s` : ''}
             </div>
+            {(row.usage_count > 0 || (Array.isArray(row.usage) && row.usage.length > 0)) && (
+              <div className="mt-1 text-[10px] text-muted-foreground">
+                <span className="font-medium text-foreground">
+                  Used by: {row.usage_count || row.usage.length}
+                </span>
+                <ul className="mt-0.5 max-h-16 overflow-y-auto list-disc pl-3">
+                  {(row.usage || []).slice(0, 5).map((u) => (
+                    <li key={u} className="truncate">
+                      {u}
+                    </li>
+                  ))}
+                  {(row.usage || []).length > 5 ? (
+                    <li>+{(row.usage || []).length - 5} more</li>
+                  ) : null}
+                </ul>
+              </div>
+            )}
             {editId === row.id ? (
               <div className="mt-2 space-y-1">
                 <input className={fieldCls} value={editTitle} onChange={(e) => setEditTitle(e.target.value)} placeholder="Title" />
