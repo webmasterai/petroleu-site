@@ -38,10 +38,13 @@ COPY --from=build /app/public ./public
 COPY --from=build /app/storage-seed ./storage-seed
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
-RUN mkdir -p /app/scripts
+RUN mkdir -p /app/scripts /app/scripts/fixtures/production-home-media
 COPY --from=build /app/scripts/merge-seed-content-additive.mjs /app/scripts/merge-seed-content-additive.mjs
 COPY --from=build /app/scripts/cleanup-pk-home-stats-4.mjs /app/scripts/cleanup-pk-home-stats-4.mjs
 COPY --from=build /app/scripts/cleanup-pk-header-nav.mjs /app/scripts/cleanup-pk-header-nav.mjs
+# CMS media + FAQ migration tooling (version-controlled fixtures; not storage/data)
+COPY --from=build /app/scripts/migrate-production-home-media.mjs /app/scripts/migrate-production-home-media.mjs
+COPY --from=build /app/scripts/fixtures/production-home-media/ /app/scripts/fixtures/production-home-media/
 COPY docker-entrypoint.sh /app/docker-entrypoint.sh
 RUN chmod +x /app/docker-entrypoint.sh
 
