@@ -1,35 +1,58 @@
-# Production media migration (do not run yet)
+# Production Home CMS media + FAQ migration
 
-Safe procedure to apply local image-architecture fixes to production later.
+Self-contained on `origin/main`. **Does not use** local `storage/data`.
 
-## Goals
+## Script
 
-- Add missing Media Library records and feature mockup SVG files
-- Bind missing `image_url` values on feature cards (additive only)
-- Copy `/resources/*` blog assets so existing blog URLs resolve
-- Preserve all existing user-edited media and section content
+`scripts/migrate-production-home-media.mjs`
 
-## Do not
+## Version-controlled SOURCE
 
-- Reseed CMS
-- Delete production Media
-- Overwrite unrelated section/blog fields
-- Change URLs that already point to working assets
+| Need | Path |
+|---|---|
+| 86 FAQs | `scripts/fixtures/production-home-media/faq-pk-en-PK.json` |
+| Hero / Stats logo / Mobile / 9 Features bindings | `scripts/fixtures/production-home-media/section-image-bindings.json` |
+| Media Library metadata | `scripts/fixtures/production-home-media/media-manifest.json` |
+| Blog thumbs (4 homepage + 6 resources) | `storage-seed/blog-posts.json` |
+| Feature SVG files | `public/media/features/*.svg` |
+| Mobile PNG | `public/images/petroleu-mobile-real-mockup.png` |
+| Blog JPGs | `public/images/blog/petroleu-*.jpg` |
 
-## Steps
+## Commands
 
-1. **Backup** production `storage/data/media.json`, `sections.json`, and `blog-posts.json`.
-2. **Copy static files** into the production public volume:
-   - `public/media/features/*.svg`
-   - `public/resources/*`
-3. On a **restored snapshot** of production data (not live), run:
-   ```bash
-   node scripts/create-feature-mockup-media.mjs
-   node scripts/import-website-images-to-media.mjs
-   ```
-   Both scripts only fill **missing** `image_url` / missing media rows.
-4. **Diff** JSON against the backup; confirm only additive image bindings.
-5. Apply the verified data + public files to production.
-6. Smoke-test CMS previews and public pages; confirm broken images = 0.
+### Fresh-checkout empty simulation (no storage/ required)
 
-This migration has **not** been executed against production.
+```bash
+node scripts/migrate-production-home-media.mjs --simulate-empty-target --dry-run
+```
+
+Expected gate:
+
+- FAQ source count = 86
+- Features = 0/9 would-migrate (9 expected)
+- Hero = 0/1
+- Mobile = 0/1
+- Latest Resources = 0/4
+- Blog resources = 0/6
+
+### Dry-run against production data
+
+```bash
+node scripts/migrate-production-home-media.mjs --target /path/to/prod/storage/data --dry-run
+```
+
+### Apply (backup + additive writes)
+
+```bash
+node scripts/migrate-production-home-media.mjs \
+  --target /path/to/prod/storage/data \
+  --public-target /path/to/prod/public \
+  --apply
+```
+
+## Safety
+
+- Never overwrites a production image URL that is already set
+- Never touches `users.json`, `inquiries.json`, sessions, secrets
+- FAQ restore only when production has ≤4 FAQ rows vs fixture 86
+- Backs up `sections.json`, `media.json`, `blog-posts.json` before write

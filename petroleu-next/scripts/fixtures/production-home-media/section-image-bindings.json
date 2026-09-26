@@ -1,0 +1,68 @@
+{
+  "market_code": "pk",
+  "locale_code": "en-PK",
+  "hero": {
+    "page_slug": "home",
+    "section_key": "hero",
+    "image_url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PetroleuDashboard-45o0LNfASWEDxtDgDI6KSRExrYyMNC.png",
+    "dashboard_image_url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PetroleuDashboard-45o0LNfASWEDxtDgDI6KSRExrYyMNC.png"
+  },
+  "logo": {
+    "page_slug": "home",
+    "section_key": "logo",
+    "image_url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-04-25%20at%2010.54.14%E2%80%AFPM-tCsoz7x0MUzpqAy3VGnkK5P2cKj1bN.png"
+  },
+  "mobile": {
+    "page_slug": "home",
+    "section_key": "heading:mobile",
+    "image_url": "/images/petroleu-mobile-real-mockup.png",
+    "image_alt": "Petroleu mobile app dashboard mockup"
+  },
+  "features": [
+    {
+      "match_title": "Nozzle Reading Management",
+      "sort_order": 0,
+      "image_url": "/media/features/feature-mockup-stock-dip.svg"
+    },
+    {
+      "match_title": "Tank Dipping & Stock Control",
+      "sort_order": 1,
+      "image_url": "/media/features/feature-mockup-reporting-dashboard.svg"
+    },
+    {
+      "match_title": "Cash & Credit Sales",
+      "sort_order": 2,
+      "image_url": "/media/features/feature-mockup-cash-credit.svg"
+    },
+    {
+      "match_title": "Customer Credit Management",
+      "sort_order": 3,
+      "image_url": "/media/features/feature-mockup-sales-billing.svg"
+    },
+    {
+      "match_title": "Daily Closing Reports",
+      "sort_order": 4,
+      "image_url": "/media/features/feature-mockup-remote-visibility.svg"
+    },
+    {
+      "match_title": "Accounts & Ledgers",
+      "sort_order": 5,
+      "image_url": "/media/features/feature-mockup-fuel-inventory.svg"
+    },
+    {
+      "match_title": "Mobile Owner Dashboard",
+      "sort_order": 6,
+      "image_url": "/media/features/feature-mockup-staff-shift.svg"
+    },
+    {
+      "match_title": "Automation Station Monitoring",
+      "sort_order": 7,
+      "image_url": "/media/features/feature-mockup-lube-inventory.svg"
+    },
+    {
+      "match_title": "AI Reporting & Business Analysis",
+      "sort_order": 8,
+      "image_url": "/media/features/feature-mockup-cloud-access.svg"
+    }
+  ]
+}
